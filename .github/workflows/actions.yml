@@ -1,0 +1,78 @@
+name: Workflow
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  code-check:
+    name: Check Go formatting, linting, vetting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Run the formatter, linter, and vetter
+        uses: dell/common-github-actions/go-code-formatter-linter-vetter@main
+        with:
+          directories: ./...
+  sanitize:
+    name: Check for forbidden words
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Run the forbidden words scan
+        uses: dell/common-github-actions/code-sanitizer@main
+        with:
+          args: /github/workspace
+  test:
+    name: Run Go unit tests and check package coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Run unit tests and check package coverage
+        uses: dell/common-github-actions/go-code-tester@main
+        with:
+          threshold: 90
+  go_security_scan:
+    name: Go security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Run Go Security
+        uses: securego/gosec@master
+  malware_security_scan:
+    name: Malware Scanner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Run malware scan
+        uses: dell/common-github-actions/malware-scanner@main
+        with:
+          directories: .
+          options: -ri
+  image_security_scan:
+    name: Image Scanner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go 1.16+
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.16
+        id: go
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Install Mockgen
+        run: go get github.com/golang/mock/mockgen@v1.4.4
+      - name: Get dependencies
+        run:  go mod download
+      - name: Build Docker Images
+        run: make build image
+      - name: Image scanner
+        uses: Azure/container-scan@v0
+        with:
+          image-name: csm-common-installer
+          severity-threshold: HIGH
