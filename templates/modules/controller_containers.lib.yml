@@ -1,0 +1,239 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_application_containers(application):
+#@ if application == "isilon":
+#@    return get_containers_isilon(application)
+#@ elif application == "vxflexos":
+#@    return get_containers_vxflexos(application)
+#@ else:
+#@ assert.fail("containers for application {} not found".format(application))
+#@ end
+#@ end
+
+#! CONTAINER SPECS for application csi-isilon
+#@ def get_containers_isilon(application):
+containers:
+- #@ resizer_container_spec()
+- #@ attacher_container_spec()
+- #@ provisioner_container_spec(application)
+- #@ snapshotter_container_spec(application)
+- #@ driver_isilon_container_spec()
+#@ end
+
+
+#! CONTAINER SPECS for application csi-vxflexos
+#@ def get_containers_vxflexos(application):
+containers:
+- #@ resizer_container_spec()
+- #@ attacher_container_spec()
+- #@ provisioner_container_spec(application)
+- #@ snapshotter_container_spec(application)
+  #@ if data.values.podmon.enabled:
+- #@ podman_container_spec()
+  #@ end
+  #@ if data.values.vgsnapshotter.enabled:
+- #@ vgsnapshotter_container_spec()
+  #@ end
+- #@ driver_vxflexos_container_spec()
+#@ end
+
+
+#! spec for resizer sidecar container
+#@ def resizer_container_spec():
+name: resizer
+image: #@ data.values.images.resizer
+args:
+  - "--csi-address=$(ADDRESS)"
+  - "--v=5"
+  - "--leader-election"
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#!  spec for attacher sidecar container
+#@ def attacher_container_spec():
+name: attacher
+image: #@ data.values.images.attacher
+args:
+  - "--csi-address=$(ADDRESS)"
+  - "--v=5"
+  - "--leader-election"
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#!  spec for provisioner sidecar container
+#@ def provisioner_container_spec(application):
+name: provisioner
+image: #@ data.values.images.provisioner
+args:
+  - "--csi-address=$(ADDRESS)"
+  - #@ "--volume-name-prefix={}".format(data.values.volumeNamePrefix)
+  - "--volume-name-uuid-length=10"
+  - "--worker-threads=5"
+  - "--v=5"
+  - "--feature-gates=Topology=true"
+  - "--leader-election=true"
+  - "--extra-create-metadata"
+  #@ if application == "isilon":
+  - "--timeout=60s"
+  #@ elif application == "vxflexos":
+  - "--timeout=120s"
+  - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
+  #@ end
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#!  spec for snapshotter sidecar container
+#@ def snapshotter_container_spec(application):
+name: snapshotter
+#!image: quay.io/k8scsi/csi-snapshotter:v1.0.0
+image: #@ data.values.images.snapshotter
+args:
+  - "--csi-address=$(ADDRESS)"
+  - "--v=5"
+  - "--leader-election=true"
+  #@ if application == "isilon":
+  - "--timeout=15s"
+  #@ elif application == "vxflexos":
+  - "--timeout=120s"
+  #@ end
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#! spec for podman sidecar container
+#@ def podman_container_spec():
+name: podmon
+imagePullPolicy: Always
+image: #@ data.values.podmon.image
+args:
+#@ data.values.podmon.controller.args
+env:
+  - name: MY_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: MY_POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: MY_POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#! spec for vgsnapshotter sidecar container
+#@ def vgsnapshotter_container_spec():
+name: vg-snapshotter
+image: #@ data.values.vgsnapshotter.image
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+imagePullPolicy: Always
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+
+#! spec for csi-isilon driver sidecar container
+#@ def driver_isilon_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: IfNotPresent
+command: [ "/csi-isilon" ]
+args:
+  - "--leader-election"
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_DEBUG
+    value: #@ data.values.enableDebug
+  - name: X_CSI_ISI_INSECURE
+    value: #@ data.values.isiInsecure
+  - name: X_CSI_VERBOSE
+    value: #@ str(data.values.verbose)
+  - name: X_CSI_ISI_PORT
+    value: #@ data.values.isiPort
+  - name: X_CSI_ISI_AUTOPROBE
+    value: #@ data.values.autoProbe
+  - name: X_CSI_ISI_QUOTA_ENABLED
+    value: #@ data.values.enableQuota
+  - name: X_CSI_ISI_ACCESS_ZONE
+    value: #@ data.values.isiAccessZone
+  - name: X_CSI_CUSTOM_TOPOLOGY_ENABLED
+    value: #@ data.values.enableCustomTopology
+  - name: X_CSI_ISI_PATH
+    value: #@ data.values.isiPath
+  - name: X_CSI_ISILON_NO_PROBE_ON_START
+    value: #@ data.values.noProbeOnStart
+  - name: X_CSI_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: SSL_CERT_DIR
+    value: /certs
+  - name: X_CSI_ISILON_CONFIG_PATH
+    value: /isilon-configs/config
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: isilon-configs
+    mountPath: /isilon-configs
+#@ end
+
+
+#! spec for csi-vxflexos driver sidecar container
+#@ def driver_vxflexos_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: IfNotPresent
+command: [ "/csi-vxflexos.sh" ]
+args:
+  - "--leader-election"
+  - "--array-config=/vxflexos-config/config"
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_DEBUG
+    value: "true"
+  - name: X_CSI_VXFLEXOS_ENABLESNAPSHOTCGDELETE
+    value: #@ data.values.enablesnapshotcgdelete
+  - name: X_CSI_VXFLEXOS_ENABLELISTVOLUMESNAPSHOT
+    value: #@ data.values.enablelistvolumesnapshot
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: vxflexos-config
+    mountPath: /vxflexos-config
+#@ end

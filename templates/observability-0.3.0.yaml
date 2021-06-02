@@ -1,0 +1,464 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:yaml", "yaml")
+
+
+#@ if data.values.observability.enabled:
+
+apiVersion: v1
+data:
+  tls.crt: |-
+    todo-load-secret-from-file
+  tls.key: |-
+    todo-load-secret-from-file
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: karavi-topology-secret
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: v1
+data:
+  tls.crt: |-
+    todo-load-secret-from-file
+  tls.key: |-
+    todo-load-secret-from-file
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: otel-collector-secret
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
+rules:
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["csinodes", "storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["persistentvolumes", "nodes"]
+    verbs: ["list"]
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["*"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
+subjects:
+  - kind: ServiceAccount
+    name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
+    namespace: #@ data.values.Release.namespace
+roleRef:
+  kind: ClusterRole
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: karavi_metrics_powerflex
+    app.kubernetes.io/instance: #@ data.values.Release.name
+  name: karavi-metrics-powerflex
+  namespace: #@ data.values.Release.namespace
+spec:
+  type: #@ data.values.karaviMetricsPowerflex.service.type
+  ports:
+  - name: karavi-metrics-powerflex
+    port: 2222
+    targetPort: 2222
+  selector:
+    app.kubernetes.io/name: karavi_metrics_powerflex
+    app.kubernetes.io/instance: #@ data.values.Release.name
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karavi-metrics-powerflex
+  namespace: #@ data.values.Release.namespace
+  labels:
+    app.kubernetes.io/name: karavi_metrics_powerflex
+    app.kubernetes.io/instance: #@ data.values.Release.name
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: karavi_metrics_powerflex
+      app.kubernetes.io/instance: #@ data.values.Release.name
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: karavi_metrics_powerflex
+        app.kubernetes.io/instance: #@ data.values.Release.name
+    spec:
+      serviceAccount: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
+      containers:
+      - name: karavi-metrics-powerflex
+        image: #@ data.values.karaviMetricsPowerflex.image
+        resources: {}
+        env:
+        - name: POWERFLEX_METRICS_ENDPOINT	
+          value: #@ data.values.karaviMetricsPowerflex.endpoint
+        - name: POWERFLEX_METRICS_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: TLS_ENABLED
+          value: "true"
+        volumeMounts:
+        - name: vxflexos-config
+          mountPath: /vxflexos-config
+        - name: tls-secret
+          mountPath: /etc/ssl/certs
+          readOnly: true
+        - name: karavi-metrics-powerflex-configmap
+          mountPath: /etc/config
+      volumes:
+      - name: vxflexos-config
+        secret:
+          secretName: vxflexos-config
+      - name: tls-secret
+        secret:
+          secretName: otel-collector-secret
+          items:
+            - key: tls.crt
+              path: cert.crt
+      - name: karavi-metrics-powerflex-configmap
+        configMap:
+          name: karavi-metrics-powerflex-configmap
+      restartPolicy: Always
+status: {}
+
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: #@ data.values.Release.namespace
+
+---
+
+#@ def metricsPowerflexConfigmap():
+COLLECTOR_ADDR: #@ data.values.karaviMetricsPowerflex.collectorAddr
+PROVISIONER_NAMES: #@ data.values.karaviMetricsPowerflex.provisionerNames
+POWERFLEX_SDC_METRICS_ENABLED: #@ data.values.karaviMetricsPowerflex.sdcMetricsEnabled
+POWERFLEX_SDC_IO_POLL_FREQUENCY: #@ data.values.karaviMetricsPowerflex.sdcPollFrequencySeconds
+POWERFLEX_VOLUME_IO_POLL_FREQUENCY: #@ data.values.karaviMetricsPowerflex.volumePollFrequencySeconds
+POWERFLEX_VOLUME_METRICS_ENABLED: #@ data.values.karaviMetricsPowerflex.volumeMetricsEnabled
+POWERFLEX_STORAGE_POOL_METRICS_ENABLED: #@ data.values.karaviMetricsPowerflex.storageClassPoolMetricsEnabled
+POWERFLEX_STORAGE_POOL_POLL_FREQUENCY: #@ data.values.karaviMetricsPowerflex.storageClassPoolPollFrequencySeconds
+POWERFLEX_MAX_CONCURRENT_QUERIES: #@ data.values.karaviMetricsPowerflex.concurrentPowerflexQueries
+#@ end
+
+
+apiVersion: v1 
+kind: ConfigMap 
+metadata:
+  name: karavi-metrics-powerflex-configmap
+  namespace: #@ data.values.Release.namespace
+data:
+  karavi-metrics-powerflex.yaml: #@ yaml.encode(metricsPowerflexConfigmap())
+  
+---
+
+#@ def topologyConfigmap():
+PROVISIONER_NAMES: #@ data.values.karaviTopology.provisionerNames
+#@ end
+
+apiVersion: v1 
+kind: ConfigMap 
+metadata:
+  name: karavi-topology-configmap
+  namespace: #@ data.values.Release.namespace
+data:
+  karavi-topology.yaml: #@ yaml.encode(topologyConfigmap())
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
+rules:
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["list"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
+subjects:
+  - kind: ServiceAccount
+    name: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
+    namespace: #@ data.values.Release.namespace
+roleRef:
+  kind: ClusterRole
+  name: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: karavi_topology
+    app.kubernetes.io/instance:  #@ data.values.Release.name
+  name: karavi-topology
+  namespace: #@ data.values.Release.namespace
+spec:
+  type:  #@ data.values.karaviTopology.service.type
+  ports:
+  - name: karavi-topology
+    port: 8443
+    targetPort: 8443
+  selector:
+    app.kubernetes.io/name: karavi_topology
+    app.kubernetes.io/instance:  #@ data.values.Release.name
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karavi-topology
+  namespace: #@ data.values.Release.namespace
+  labels:
+    app.kubernetes.io/name: karavi_topology
+    app.kubernetes.io/instance: #@ data.values.Release.name
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: karavi_topology
+      app.kubernetes.io/instance: #@ data.values.Release.name
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: karavi_topology
+        app.kubernetes.io/instance: #@ data.values.Release.name
+    spec:
+      volumes:
+        - name: karavi-topology-secret-volume
+          secret:
+            secretName: karavi-topology-secret
+            items:
+            - key: tls.crt
+              path: localhost.crt
+            - key: tls.key
+              path: localhost.key
+        - name: karavi-topology-configmap
+          configMap:
+            name: karavi-topology-configmap
+      serviceAccount: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
+      containers:
+      - name: karavi-topology
+        image: #@ data.values.karaviTopology.image
+        resources: {}
+        env:
+        - name: PORT
+          value: "8443"
+        volumeMounts:
+        - name: karavi-topology-secret-volume
+          mountPath: "/certs"
+        - name: karavi-topology-configmap
+          mountPath: "/etc/config"
+      restartPolicy: Always
+status: {}
+
+---
+
+
+apiVersion: v1
+data:
+  otel-collector-config.yaml: |-
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            tls_settings:
+              cert_file: /etc/ssl/certs/tls.crt
+              key_file: /etc/ssl/certs/tls.key
+          http:
+      
+    exporters:
+      prometheus:
+        endpoint: 0.0.0.0:8889
+      logging:
+      
+    extensions:
+      health_check: {}
+      
+    service:
+      extensions: [health_check]
+      pipelines:
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [logging,prometheus]
+
+kind: ConfigMap
+metadata:
+  name: otel-collector-config
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: v1
+data:
+  nginx.conf: |-
+    worker_processes  1;
+    events {
+        worker_connections  1024;
+    }
+
+    pid /tmp/nginx.pid;
+
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+        sendfile        on;
+        keepalive_timeout  65;
+        server {
+          listen       8443 ssl;
+          server_name  localhost;
+          ssl_certificate      /etc/ssl/certs/tls.crt;
+          ssl_certificate_key  /etc/ssl/certs/tls.key;
+          ssl_protocols TLSv1.2;
+          ssl_ciphers AESGCM:-aNULL:-DH:-kRSA:@STRENGTH;
+          ssl_prefer_server_ciphers on;
+          location / {
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_pass http://127.0.0.1:8889/;
+          }
+        }
+    }
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: otel-collector
+  namespace: #@ data.values.Release.namespace
+  labels:
+    app.kubernetes.io/name: otel-collector
+    app.kubernetes.io/instance: #@ data.values.Release.name
+spec:
+  type:  #@ data.values.otelCollector.service.type
+  ports:
+    - port: 55680
+      targetPort: 55680
+      name: receiver
+    - port: 8443
+      targetPort: 8443
+      name: exporter-https
+  selector:
+    app.kubernetes.io/name: otel-collector
+    app.kubernetes.io/instance: #@ data.values.Release.name
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-collector
+  namespace: #@ data.values.Release.namespace
+  labels:
+    app.kubernetes.io/name: otel-collector
+    app.kubernetes.io/instance: #@ data.values.Release.name
+spec:  
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: otel-collector
+      app.kubernetes.io/instance: #@ data.values.Release.name
+  replicas: 1
+  strategy: {}
+  template:    
+    metadata:
+      labels:
+        app.kubernetes.io/name: otel-collector
+        app.kubernetes.io/instance: #@ data.values.Release.name
+    spec:
+      volumes:
+      - name: tls-secret
+        secret:
+          secretName: otel-collector-secret
+          items:
+            - key: tls.crt
+              path: tls.crt
+            - key: tls.key
+              path: tls.key
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+      - name: otel-collector-config
+        configMap:
+          name: otel-collector-config
+      containers:
+      - name: nginx-proxy
+        image: #@ data.values.otelCollector.nginxProxy.image
+        volumeMounts:
+          - name: tls-secret
+            mountPath: /etc/ssl/certs
+          - name: nginx-config
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
+      - name: otel-collector
+        image: #@ data.values.otelCollector.image
+        args:
+          - --config=/etc/otel-collector-config.yaml
+        resources: {}
+        volumeMounts:
+        - name: otel-collector-config
+          mountPath: /etc/otel-collector-config.yaml
+          subPath: otel-collector-config.yaml
+        - name: tls-secret
+          mountPath: /etc/ssl/certs
+      restartPolicy: Always
+status: {}
+
+#@ end

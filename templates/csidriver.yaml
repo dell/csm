@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ if data.values.application == "isilon":
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: csi-isilon.dellemc.com
+#@ elif data.values.application == "vxflexos":
+apiVersion: storage.k8s.io/v1beta1
+kind: CSIDriver
+metadata:
+  name: csi-vxflexos.dellemc.com
+#@ else:
+#@ assert.fail("application {} not found".format(data.values.application))
+#@ end
+spec:
+  attachRequired: true
+  podInfoOnMount: true
+  volumeLifecycleModes:
+    - Persistent
+    - Ephemeral
