@@ -1,0 +1,42 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_application_volumes(application):
+#@ if application == "isilon":
+#@    return get_volumes_isilon(application)
+#@ elif application == "vxflexos":
+#@    return get_volumes_vxflexos(application)
+#@ else:
+#@ assert.fail("volumes for application {} not found".format(application))
+#@ end
+#@ end
+
+#! VOLUMES for application csi-isilon
+#@ def get_volumes_isilon(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  - name: isilon-configs
+    secret:
+      secretName: #@ application + "-creds"
+#@ end
+
+#! VOLUMES for application csi-vxflexos
+#@ def get_volumes_vxflexos(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: vxflexos-config
+    secret:
+      secretName: #@ application + "-config"
+#@ end

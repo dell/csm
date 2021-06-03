@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: csm-data-collector
+  namespace: csm
+spec:
+  selector:
+    matchLabels:
+      app: csm-data-collector
+  template:
+    metadata:
+      labels:
+        app: csm-data-collector
+    spec:
+      initContainers:
+        - name: csm-init
+          image: localhost:5000/csm-data-collector:v0.0.1
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: etc
+              mountPath: /hostetc
+      volumes:
+        - name: etc
+          hostPath:
+            path: /etc
+      containers:
+        - name: pause
+          image: gcr.io/google_containers/pause

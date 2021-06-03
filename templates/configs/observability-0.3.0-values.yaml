@@ -1,0 +1,42 @@
+#@data/values
+---
+
+#@overlay/match missing_ok=True
+observability:
+  enabled: false
+
+#@overlay/match missing_ok=True
+Release:
+  name: csm-observability
+  namespace: csm
+
+#@overlay/match missing_ok=True
+karaviTopology:
+  image: dellemc/csm-topology:v0.3.0
+  provisionerNames: csi-vxflexos.dellemc.com
+  service:
+    type: ClusterIP
+
+#@overlay/match missing_ok=True
+karaviMetricsPowerflex:
+  image: dellemc/csm-metrics-powerflex:v0.3.0
+  collectorAddr: otel-collector:55680
+  provisionerNames: csi-vxflexos.dellemc.com
+  sdcMetricsEnabled: "true"
+  sdcPollFrequencySeconds: 10
+  volumePollFrequencySeconds: 10
+  volumeMetricsEnabled: "true"
+  storageClassPoolMetricsEnabled: "true"
+  storageClassPoolPollFrequencySeconds: 10
+  concurrentPowerflexQueries: 10
+  endpoint: karavi-metrics-powerflex
+  service:
+    type: ClusterIP
+
+#@overlay/match missing_ok=True
+otelCollector:
+  image: otel/opentelemetry-collector:0.9.0
+  service:
+    type: ClusterIP
+  nginxProxy:
+    image: nginxinc/nginx-unprivileged:1.18

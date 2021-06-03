@@ -1,0 +1,810 @@
+basePath: /api
+definitions:
+  handler.applicationCreateRequest:
+    properties:
+      application:
+        properties:
+          cluster_id:
+            type: integer
+          driver_configuration:
+            items:
+              type: string
+            type: array
+          driver_type_id:
+            type: integer
+          module_configuration:
+            items:
+              type: string
+            type: array
+          module_types:
+            items:
+              type: integer
+            type: array
+          name:
+            type: string
+          storage_arrays:
+            items:
+              type: integer
+            type: array
+        required:
+        - name
+        type: object
+    type: object
+  handler.applicationResponse:
+    properties:
+      application:
+        properties:
+          application_output:
+            type: string
+          cluster_id:
+            type: integer
+          driver_configuration:
+            items:
+              type: string
+            type: array
+          driver_type_id:
+            type: integer
+          id:
+            type: integer
+          module_configuration:
+            items:
+              type: string
+            type: array
+          module_types:
+            items:
+              type: integer
+            type: array
+          name:
+            type: string
+          storage_arrays:
+            items:
+              type: integer
+            type: array
+        type: object
+    type: object
+  handler.clusterResponse:
+    properties:
+      cluster:
+        properties:
+          cluster_id:
+            type: integer
+          cluster_name:
+            type: string
+          config_file:
+            type: string
+          nodes:
+            type: string
+        type: object
+    type: object
+  handler.storageArrayCreateRequest:
+    properties:
+      storage-array:
+        properties:
+          management_endpoint:
+            type: string
+          password:
+            type: string
+          storage_array_type:
+            type: string
+          unique_id:
+            type: string
+          username:
+            type: string
+        required:
+        - management_endpoint
+        - password
+        - storage_array_type
+        - unique_id
+        - username
+        type: object
+    type: object
+  handler.storageArrayResponse:
+    properties:
+      storage-array:
+        properties:
+          id:
+            type: integer
+          management_endpoint:
+            type: string
+          storage_array_type_id:
+            type: integer
+          unique_id:
+            type: string
+          username:
+            type: string
+        type: object
+    type: object
+  handler.taskResponse:
+    properties:
+      task:
+        properties:
+          _links:
+            additionalProperties:
+              additionalProperties:
+                type: string
+              type: object
+            type: object
+          application_id:
+            type: integer
+          id:
+            type: integer
+          logs:
+            type: string
+          status:
+            type: string
+        type: object
+    type: object
+  handler.userLoginRequest:
+    properties:
+      user:
+        properties:
+          password:
+            type: string
+          username:
+            type: string
+        required:
+        - password
+        - username
+        type: object
+    type: object
+  handler.userRegisterRequest:
+    properties:
+      user:
+        properties:
+          password:
+            type: string
+          username:
+            type: string
+        required:
+        - password
+        - username
+        type: object
+    type: object
+  handler.userResponse:
+    properties:
+      user:
+        properties:
+          token:
+            type: string
+          username:
+            type: string
+        type: object
+    type: object
+  handler.userUpdateRequest:
+    properties:
+      user:
+        properties:
+          bio:
+            type: string
+          email:
+            type: string
+          image:
+            type: string
+          password:
+            type: string
+          username:
+            type: string
+        type: object
+    type: object
+  utils.Error:
+    properties:
+      errors:
+        additionalProperties: true
+        type: object
+    type: object
+info:
+  contact: {}
+  description: CSM Deployment API
+  title: CSM Deployment API
+  version: "1.0"
+paths:
+  /applications:
+    post:
+      consumes:
+      - application/json
+      description: Create a new application
+      operationId: create-application
+      parameters:
+      - description: Application info for creation
+        in: body
+        name: application
+        required: true
+        schema:
+          $ref: '#/definitions/handler.applicationCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/handler.applicationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new application
+      tags:
+      - application
+  /applications/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an application
+      operationId: delete-application
+      parameters:
+      - description: Application ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.applicationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete an application
+      tags:
+      - application
+    get:
+      consumes:
+      - application/json
+      description: Get an application
+      operationId: get-application
+      parameters:
+      - description: Application ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.applicationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Get an application
+      tags:
+      - application
+    put:
+      consumes:
+      - application/json
+      description: Update an application
+      operationId: update-application
+      parameters:
+      - description: Application ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.applicationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Update an application
+      tags:
+      - application
+  /clusters:
+    post:
+      consumes:
+      - application/json
+      description: Create a new cluster
+      operationId: create-cluster
+      parameters:
+      - description: Name of the cluster
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: kube config file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/handler.clusterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new cluster
+      tags:
+      - cluster
+  /clusters/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a cluster
+      operationId: get-cluster
+      parameters:
+      - description: Cluster ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.clusterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a cluster
+      tags:
+      - cluster
+  /storageArrays:
+    get:
+      consumes:
+      - application/json
+      description: List all storage arrays
+      operationId: list-storage-arrays
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            items:
+              $ref: '#/definitions/handler.storageArrayResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: List all storage arrays
+      tags:
+      - storage-array
+    post:
+      consumes:
+      - application/json
+      description: Create a new storage array
+      operationId: create-storage-array
+      parameters:
+      - description: Storage Array info for creation
+        in: body
+        name: storageArray
+        required: true
+        schema:
+          $ref: '#/definitions/handler.storageArrayCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/handler.storageArrayResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new storage array
+      tags:
+      - storage-array
+  /storageArrays/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get storage array
+      operationId: get-storage-array
+      parameters:
+      - description: Storage Array ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.storageArrayResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Get storage array
+      tags:
+      - storage-array
+  /tasks/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an task
+      operationId: get-task
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.taskResponse'
+        "303":
+          description: See Other
+          schema:
+            $ref: '#/definitions/handler.taskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Get an task
+      tags:
+      - task
+  /tasks/{id}/approve:
+    post:
+      consumes:
+      - application/json
+      description: Approve state change for an application
+      operationId: approve-state-change-application
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task is associated with an Application update operation
+        in: query
+        name: updating
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/handler.taskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Approve state change for an application
+      tags:
+      - task
+  /tasks/{id}/cancel:
+    post:
+      consumes:
+      - application/json
+      description: Cancel state change for an application
+      operationId: cancel-state-change-application
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task is associated with an Application update operation
+        in: query
+        name: updating
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/handler.taskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Cancel state change for an application
+      tags:
+      - task
+  /user:
+    get:
+      consumes:
+      - application/json
+      description: Gets the currently logged-in user
+      operationId: current-user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.userResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Get the current user
+      tags:
+      - user
+    put:
+      consumes:
+      - application/json
+      description: Update user information for current user
+      operationId: update-user
+      parameters:
+      - description: User details to update. At least **one** field is required.
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.userUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.userResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Update current user
+      tags:
+      - user
+  /users:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user
+      operationId: sign-up
+      parameters:
+      - description: User info for registration
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.userRegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/handler.userResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      summary: Register a new user
+      tags:
+      - user
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login for existing user
+      operationId: login
+      parameters:
+      - description: Credentials to use
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.userLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.userResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      summary: Login for existing user
+      tags:
+      - user
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
