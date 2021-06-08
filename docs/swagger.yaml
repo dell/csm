@@ -114,6 +114,28 @@ definitions:
             type: string
         type: object
     type: object
+  handler.storageArrayUpdateRequest:
+    properties:
+      storage-array:
+        properties:
+          management_endpoint:
+            type: string
+          password:
+            type: string
+          storage_array_type:
+            type: string
+          unique_id:
+            type: string
+          username:
+            type: string
+        required:
+        - management_endpoint
+        - password
+        - storage_array_type
+        - unique_id
+        - username
+        type: object
+    type: object
   handler.taskResponse:
     properties:
       task:
@@ -486,7 +508,76 @@ paths:
       summary: Create a new storage array
       tags:
       - storage-array
+    put:
+      consumes:
+      - application/json
+      description: Update a storage array
+      operationId: update-storage-array
+      parameters:
+      - description: Storage Array info for update
+        in: body
+        name: storageArray
+        required: true
+        schema:
+          $ref: '#/definitions/handler.storageArrayUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.storageArrayResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a storage array
+      tags:
+      - storage-array
   /storageArrays/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete storage array
+      operationId: delete-storage-array
+      parameters:
+      - description: Storage Array ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete storage array
+      tags:
+      - storage-array
     get:
       consumes:
       - application/json

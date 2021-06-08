@@ -20,8 +20,10 @@ func NewStorageArrayHandler(as store.StorageArrayStoreInterface) *StorageArrayHa
 func (h *StorageArrayHandler) Register(api *echo.Group) {
 	jwtMiddleware := middleware.JWT(utils.JWTSecret)
 
-	applications := api.Group("/storageArrays", jwtMiddleware)
-	applications.POST("", h.CreateStorageArray)
-	applications.GET("", h.ListStorageArrays)
-	applications.GET("/:id", h.GetStorageArray)
+	storageArrays := api.Group("/storageArrays", jwtMiddleware)
+	storageArrays.POST("", h.CreateStorageArray)
+	storageArrays.GET("", h.ListStorageArrays)
+	storageArrays.GET("/:id", h.GetStorageArray)
+	storageArrays.DELETE("/:id", h.DeleteStorageArray)
+	storageArrays.PUT("/:id", h.UpdateStorageArray)
 }

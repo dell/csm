@@ -12,6 +12,9 @@ build:
 run: build
 	bash run.sh
 
+generate:
+	go generate ./...
+
 docs:
 	swag init
 

@@ -9,6 +9,7 @@ RUN wget -O kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v
 COPY templates templates
 
 COPY "dell-common-installer" .
+COPY samplecerts samplecerts
 
 CMD ["/app/dell-common-installer"]
 

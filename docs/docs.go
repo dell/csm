@@ -414,6 +414,62 @@ var doc = `{
                     }
                 }
             },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update a storage array",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage-array"
+                ],
+                "summary": "Update a storage array",
+                "operationId": "update-storage-array",
+                "parameters": [
+                    {
+                        "description": "Storage Array info for update",
+                        "name": "storageArray",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.storageArrayUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.storageArrayResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    }
+                }
+            },
             "post": {
                 "security": [
                     {
@@ -505,6 +561,57 @@ var doc = `{
                         "schema": {
                             "$ref": "#/definitions/handler.storageArrayResponse"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete storage array",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "storage-array"
+                ],
+                "summary": "Delete storage array",
+                "operationId": "delete-storage-array",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Storage Array ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
                     },
                     "400": {
                         "description": "Bad Request",
@@ -1123,6 +1230,38 @@ var doc = `{
                         },
                         "storage_array_type_id": {
                             "type": "integer"
+                        },
+                        "unique_id": {
+                            "type": "string"
+                        },
+                        "username": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "handler.storageArrayUpdateRequest": {
+            "type": "object",
+            "properties": {
+                "storage-array": {
+                    "type": "object",
+                    "required": [
+                        "management_endpoint",
+                        "password",
+                        "storage_array_type",
+                        "unique_id",
+                        "username"
+                    ],
+                    "properties": {
+                        "management_endpoint": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        },
+                        "storage_array_type": {
+                            "type": "string"
                         },
                         "unique_id": {
                             "type": "string"

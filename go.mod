@@ -9,6 +9,7 @@ require (
 	github.com/go-openapi/spec v0.20.3 // indirect
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
+	github.com/golang/mock v1.3.1 // indirect
 	github.com/k14s/ytt v0.33.0
 	github.com/labstack/echo/v4 v4.3.0
 	github.com/labstack/gommon v0.3.0
