@@ -63,37 +63,42 @@ func AutoMigrate(db *gorm.DB) {
 	)
 }
 
-// PopulateProductionDb will populate module_types, driver_types and storage_array_types
-func PopulateProductionDb(db *gorm.DB) {
+func PopulateInventory(db *gorm.DB) {
 	powerflex := &model.StorageArrayType{Name: model.ArrayTypePowerFlex}
-	db.FirstOrCreate(powerflex)
+	db.Create(powerflex)
 
 	isilon := &model.StorageArrayType{Name: model.ArrayTypeIsilon}
-	db.FirstOrCreate(isilon)
+	db.Create(isilon)
 
 	podmon := &model.ModuleType{
 		Name:    "podmon",
 		Version: "0.0.1",
 	}
-	db.FirstOrCreate(podmon)
+	db.Create(podmon)
+
+	observabilityModule := &model.ModuleType{
+		Name:       "observability",
+		Standalone: true,
+	}
+	db.Create(observabilityModule)
 
 	vgsnapshotter := &model.ModuleType{
 		Name:    "vgsnapshotter",
 		Version: "0.0.1",
 	}
-	db.FirstOrCreate(vgsnapshotter)
+	db.Create(vgsnapshotter)
 
 	powerflexdriver14 := &model.DriverType{
 		Version:            "1.4.0",
 		StorageArrayTypeID: powerflex.ID,
 	}
-	db.FirstOrCreate(powerflexdriver14)
+	db.Create(powerflexdriver14)
 
 	isilondriver15 := &model.DriverType{
 		Version:            "1.5.0",
 		StorageArrayTypeID: isilon.ID,
 	}
-	db.FirstOrCreate(isilondriver15)
+	db.Create(isilondriver15)
 }
 
 func PopulateTestDb(db *gorm.DB, configPath string) {

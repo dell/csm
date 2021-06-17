@@ -39,11 +39,13 @@ func (sas *StorageArrayStore) GetByID(id uint) (*model.StorageArray, error) {
 
 func (sas *StorageArrayStore) GetAllByID(v ...uint) ([]model.StorageArray, error) {
 	var sa []model.StorageArray
-	if err := sas.db.Preload(clause.Associations).Find(&sa, v).Error; err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return nil, nil
+	if len(v) > 0 {
+		if err := sas.db.Preload(clause.Associations).Find(&sa, v).Error; err != nil {
+			if errors.Is(err, gorm.ErrRecordNotFound) {
+				return nil, nil
+			}
+			return nil, err
 		}
-		return nil, err
 	}
 	return sa, nil
 }

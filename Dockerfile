@@ -7,6 +7,7 @@ WORKDIR /app
 RUN wget -O kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.36.0/kapp-linux-amd64 && chmod +x kapp
 
 COPY templates templates
+COPY samplecerts samplecerts
 
 COPY "dell-common-installer" .
 

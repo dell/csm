@@ -38,7 +38,7 @@ spec:
       containers:
         - name: dell-common-installer
           # Replace this with the built image name
-          image: localhost:5000/dell-common-installer:v0.0.1
+          image: <registry-ip>:<registry-port>/dell-common-installer:v0.0.1
           imagePullPolicy: Always
           env:
             - name: HOST
@@ -47,26 +47,15 @@ spec:
               value: "8080"
             - name: SCHEME
               value: "https"
-            - name: CERT_DIR
-              value: "/app/tls"
-            - name: CERT_FILE
-              value: "tls.crt"
-            - name: KEY_FILE
-              value: "tls.key"
             - name: DB_DIR
               value: "/app/db"
             - name: KAPP_BINARY
               value: "/app/kapp"
             - name: DATA_COLLECTOR_IMAGE
-              value: "localhost:5000/csm-data-collector:v0.0.1"
+              value: "<registry-ip>:<registry-port>/csm-data-collector:v0.0.1"
           volumeMounts:
             - name: cache-volume
               mountPath: /app/db
-            - name: tls-secret
-              mountPath: /app/tls
       volumes:
         - name: cache-volume
           emptyDir: { }
-        - name: tls-secret
-          secret:
-            secretName: dell-tls-secret
