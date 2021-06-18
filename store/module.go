@@ -35,11 +35,13 @@ func (ms *ModuleStore) GetByID(id uint) (*model.ModuleType, error) {
 
 func (ms *ModuleStore) GetAllByID(v ...uint) ([]model.ModuleType, error) {
 	var mt []model.ModuleType
-	if err := ms.db.Preload(clause.Associations).Find(&mt, v).Error; err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return nil, nil
+	if len(v) > 0 {
+		if err := ms.db.Preload(clause.Associations).Find(&mt, v).Error; err != nil {
+			if errors.Is(err, gorm.ErrRecordNotFound) {
+				return nil, nil
+			}
+			return nil, err
 		}
-		return nil, err
 	}
 	return mt, nil
 }

@@ -60,7 +60,7 @@ func main() {
 	}
 
 	db.AutoMigrate(d)
-	db.PopulateProductionDb(d)
+	db.PopulateInventory(d)
 
 	us := store.NewUserStore(d)
 	h := handler.New(us)

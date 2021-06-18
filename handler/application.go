@@ -3,12 +3,13 @@ package handler
 import (
 	"context"
 	"fmt"
-	"github.com/dell/csm-deployment/k8s"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/dell/csm-deployment/k8s"
 
 	"github.com/dell/csm-deployment/ytt"
 
