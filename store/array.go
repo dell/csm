@@ -8,12 +8,15 @@ import (
 	"gorm.io/gorm/clause"
 )
 
+//go:generate mockgen -destination=mocks/storage_array_store_interface.go -package=mocks github.com/dell/csm-deployment/store StorageArrayStoreInterface
 type StorageArrayStoreInterface interface {
 	GetByID(uint) (*model.StorageArray, error)
 	GetAllByID(...uint) ([]model.StorageArray, error)
 	GetTypeByTypeName(string) (*model.StorageArrayType, error)
 	Create(*model.StorageArray) error
 	GetAll() ([]model.StorageArray, error)
+	Delete(*model.StorageArray) error
+	Update(*model.StorageArray) error
 }
 
 type StorageArrayStore struct {
@@ -78,4 +81,12 @@ func (sas *StorageArrayStore) GetTypeByTypeName(typeName string) (*model.Storage
 
 func (sas *StorageArrayStore) Create(a *model.StorageArray) error {
 	return sas.db.Create(a).Error
+}
+
+func (sas *StorageArrayStore) Update(a *model.StorageArray) (err error) {
+	return sas.db.Save(a).Error
+}
+
+func (sas *StorageArrayStore) Delete(a *model.StorageArray) error {
+	return sas.db.Delete(a).Error
 }

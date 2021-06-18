@@ -10,6 +10,7 @@ COPY templates templates
 COPY samplecerts samplecerts
 
 COPY "dell-common-installer" .
+COPY samplecerts samplecerts
 
 CMD ["/app/dell-common-installer"]
 

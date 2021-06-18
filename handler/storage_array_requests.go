@@ -16,6 +16,16 @@ type storageArrayCreateRequest struct {
 	} `json:"storage-array"`
 }
 
+type storageArrayUpdateRequest struct {
+	StorageArray struct {
+		StorageArrayType   string `json:"storage_array_type" validate:"required"`
+		UniqueID           string `json:"unique_id" validate:"required"`
+		Username           string `json:"username" validate:"required"`
+		Password           string `json:"password" validate:"required"`
+		ManagementEndpoint string `json:"management_endpoint" validate:"required"`
+	} `json:"storage-array"`
+}
+
 type storageArrayResponse struct {
 	StorageArray struct {
 		ID                 uint   `json:"id"`
@@ -37,6 +47,26 @@ func newStorageArrayResponse(arr *model.StorageArray) *storageArrayResponse {
 }
 
 func (r *storageArrayCreateRequest) bind(c echo.Context, array *model.StorageArray) error {
+	if err := c.Bind(r); err != nil {
+		return err
+	}
+	if err := c.Validate(r); err != nil {
+		return err
+	}
+	array.UniqueID = r.StorageArray.UniqueID
+	array.Username = r.StorageArray.Username
+	array.ManagementEndpoint = r.StorageArray.ManagementEndpoint
+
+	// TODO: it better to store hash, but we will need password for secret creation
+	encrypted, err := utils.EncryptPassword([]byte(r.StorageArray.Password))
+	if err != nil {
+		return err
+	}
+	array.Password = string(encrypted)
+	return nil
+}
+
+func (r *storageArrayUpdateRequest) bind(c echo.Context, array *model.StorageArray) error {
 	if err := c.Bind(r); err != nil {
 		return err
 	}
