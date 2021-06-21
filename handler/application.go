@@ -86,7 +86,7 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 	}
 
 	// Retrieve the cluster associated with the application.
-	cluster, err := h.clusterStore.GetByClusterID(application.ClusterID)
+	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
 		return
@@ -289,7 +289,7 @@ func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 	}
 
 	// TODO: shouldn't delete request be async and create task too?
-	cluster, err := h.clusterStore.GetByClusterID(application.ClusterID)
+	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
 		return c.JSON(http.StatusInternalServerError, utils.NewError(err))

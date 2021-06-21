@@ -16,8 +16,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var ()
-
 func Test_CreateStorageArray(t *testing.T) {
 
 	tests := map[string]func(t *testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller){
@@ -247,7 +245,7 @@ func Test_ListStorageArrays(t *testing.T) {
 				ManagementEndpoint: "http://localhost:4321",
 				StorageArrayTypeID: 2,
 			})
-			storageArrayStore.EXPECT().GetAllByID(gomock.Any()).Times(1).Return(storageArrays, nil)
+			storageArrayStore.EXPECT().GetAll().Times(1).Return(storageArrays, nil)
 			handler := &StorageArrayHandler{storageArrayStore}
 			return http.StatusOK, handler, listStorageSystemResponseJSON, ctrl
 		},
@@ -255,7 +253,7 @@ func Test_ListStorageArrays(t *testing.T) {
 			ctrl := gomock.NewController(t)
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
-			storageArrayStore.EXPECT().GetAllByID(gomock.Any()).Times(1).Return(nil, errors.New("error"))
+			storageArrayStore.EXPECT().GetAll().Times(1).Return(nil, errors.New("error"))
 			handler := &StorageArrayHandler{storageArrayStore}
 			return http.StatusInternalServerError, handler, "", ctrl
 		},

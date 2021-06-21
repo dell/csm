@@ -1,4 +1,4 @@
-basePath: /api
+basePath: /api/v1
 definitions:
   handler.applicationCreateRequest:
     properties:
@@ -62,19 +62,21 @@ definitions:
             type: array
         type: object
     type: object
+  handler.clusterListResponse:
+    properties:
+      clusters:
+        items:
+          $ref: '#/definitions/handler.clusterResponse'
+        type: array
+    type: object
   handler.clusterResponse:
     properties:
-      cluster:
-        properties:
-          cluster_id:
-            type: integer
-          cluster_name:
-            type: string
-          config_file:
-            type: string
-          nodes:
-            type: string
-        type: object
+      cluster_id:
+        type: integer
+      cluster_name:
+        type: string
+      nodes:
+        type: string
     type: object
   handler.storageArrayCreateRequest:
     properties:
@@ -364,6 +366,35 @@ paths:
       tags:
       - application
   /clusters:
+    get:
+      consumes:
+      - application/json
+      description: List all clusters
+      operationId: list-clusters
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.clusterListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: List all clusters
+      tags:
+      - cluster
     post:
       consumes:
       - application/json
@@ -405,6 +436,39 @@ paths:
       tags:
       - cluster
   /clusters/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a cluster
+      operationId: delete-cluster
+      parameters:
+      - description: Cluster ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a cluster
+      tags:
+      - cluster
     get:
       consumes:
       - application/json
@@ -438,6 +502,49 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Get a cluster
+      tags:
+      - cluster
+    patch:
+      consumes:
+      - application/json
+      description: Update a cluster
+      operationId: update-cluster
+      parameters:
+      - description: Cluster ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Name of the cluster
+        in: formData
+        name: name
+        type: string
+      - description: kube config file
+        in: formData
+        name: file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.clusterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a cluster
       tags:
       - cluster
   /storageArrays:

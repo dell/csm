@@ -4,9 +4,13 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"io"
+	"strings"
+	"sync"
+	"time"
+
 	"github.com/dell/csm-deployment/utils"
 	"github.com/labstack/echo/v4"
-	"io"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -20,9 +24,6 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	ctrlClient "sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
-	"strings"
-	"sync"
-	"time"
 )
 
 type Interface interface {
@@ -34,6 +35,8 @@ type ControllerRuntimeClient struct {
 	client ctrlClient.Client
 	Logger echo.Logger
 }
+
+type K8sClient struct{}
 
 func (c ControllerRuntimeClient) CreateNameSpace(ctx context.Context, data []byte) error {
 	scheme := runtime.NewScheme()
@@ -134,7 +137,7 @@ func GetControllerClient(restConfig *rest.Config, scheme *runtime.Scheme) (ctrlC
 }
 
 // DiscoverK8sDetails - discover k8s details
-func DiscoverK8sDetails(data []byte) (string, *bool, *kubernetes.Clientset, error) {
+func (c K8sClient) DiscoverK8sDetails(data []byte) (string, *bool, *kubernetes.Clientset, error) {
 	k8sClientSet, err := getClientSet(data)
 	if err != nil {
 		return "", nil, nil, err

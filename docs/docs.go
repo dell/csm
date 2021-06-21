@@ -247,6 +247,51 @@ var doc = `{
             }
         },
         "/clusters": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List all clusters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cluster"
+                ],
+                "summary": "List all clusters",
+                "operationId": "list-clusters",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.clusterListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    }
+                }
+            },
             "post": {
                 "security": [
                     {
@@ -335,6 +380,123 @@ var doc = `{
                         "name": "id",
                         "in": "path",
                         "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.clusterResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete a cluster",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cluster"
+                ],
+                "summary": "Delete a cluster",
+                "operationId": "delete-cluster",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/utils.Error"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update a cluster",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cluster"
+                ],
+                "summary": "Update a cluster",
+                "operationId": "update-cluster",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the cluster",
+                        "name": "name",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "file",
+                        "description": "kube config file",
+                        "name": "file",
+                        "in": "formData"
                     }
                 ],
                 "responses": {
@@ -1162,25 +1324,28 @@ var doc = `{
                 }
             }
         },
+        "handler.clusterListResponse": {
+            "type": "object",
+            "properties": {
+                "clusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/handler.clusterResponse"
+                    }
+                }
+            }
+        },
         "handler.clusterResponse": {
             "type": "object",
             "properties": {
-                "cluster": {
-                    "type": "object",
-                    "properties": {
-                        "cluster_id": {
-                            "type": "integer"
-                        },
-                        "cluster_name": {
-                            "type": "string"
-                        },
-                        "config_file": {
-                            "type": "string"
-                        },
-                        "nodes": {
-                            "type": "string"
-                        }
-                    }
+                "cluster_id": {
+                    "type": "integer"
+                },
+                "cluster_name": {
+                    "type": "string"
+                },
+                "nodes": {
+                    "type": "string"
                 }
             }
         },
@@ -1417,7 +1582,7 @@ type swaggerInfo struct {
 var SwaggerInfo = swaggerInfo{
 	Version:     "1.0",
 	Host:        "",
-	BasePath:    "/api",
+	BasePath:    "/api/v1",
 	Schemes:     []string{},
 	Title:       "CSM Deployment API",
 	Description: "CSM Deployment API",

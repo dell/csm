@@ -210,7 +210,7 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 	application.DriverConfiguration = applicationStateChange.DriverConfiguration
 	application.ModuleConfiguration = applicationStateChange.ModuleConfiguration
 
-	cluster, err := h.clusterStore.GetByClusterID(application.ClusterID)
+	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
 		return

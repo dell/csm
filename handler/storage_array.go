@@ -90,7 +90,7 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 // @Security ApiKeyAuth
 // @Router /storageArrays [get]
 func (h *StorageArrayHandler) ListStorageArrays(c echo.Context) error {
-	arrays, err := h.arrayStore.GetAllByID()
+	arrays, err := h.arrayStore.GetAll()
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
 	}
