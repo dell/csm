@@ -23,7 +23,7 @@ Edit deployment.yaml with location of images based on registry IP and port: `vi 
 
 Install dell-common-installer into kubernetes: `kubectl apply -f manifests/deployment.yaml`
 
-If using Swagger, first access the REST API to accept the certificate in your browser (ex: `https://<k8s-node-ip>:31313/api/users`)
+If using Swagger, first access the REST API to accept the certificate in your browser (ex: `https://<k8s-node-ip>:31313/api/v1/users`)
 
 After accepting the certificate, cd into the scripts directory: `cd scripts`
 
