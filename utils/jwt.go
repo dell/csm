@@ -3,7 +3,7 @@ package utils
 import (
 	"time"
 
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 )
 
 // TODO: parameterize this value

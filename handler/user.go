@@ -3,7 +3,7 @@ package handler
 import (
 	"github.com/dell/csm-deployment/model"
 	"github.com/dell/csm-deployment/utils"
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
