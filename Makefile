@@ -15,6 +15,9 @@ run: build
 generate:
 	go generate ./...
 
+test:
+	go test -cover -race -count 1 -timeout 5m ./...
+
 docs:
 	swag init
 

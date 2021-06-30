@@ -151,7 +151,7 @@ func (c *client) TemplateFromApplication(appID uint,
 	arrayType := appState.StorageArrays[0].StorageArrayType
 	c.logger.Printf("Array type is %q \n", arrayType.Name)
 
-	cluster, err := cs.GetByClusterID(appState.ClusterID)
+	cluster, err := cs.GetByID(appState.ClusterID)
 	if err != nil {
 		return Output{}, err
 	}
