@@ -80,7 +80,7 @@ func (h *TaskHandler) GetTask(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Task ID"
 // @Param updating query boolean false "Task is associated with an Application update operation"
-// @Success 202 {object}
+// @Success 202 "Accepted"
 // @Failure 400 {object} utils.Error
 // @Failure 404 {object} utils.Error
 // @Failure 500 {object} utils.Error
@@ -122,7 +122,7 @@ var WaitGoProcessApplication = 10 * time.Second
 // @Produce  json
 // @Param id path string true "Task ID"
 // @Param updating query boolean false "Task is associated with an Application update operation"
-// @Success 201 {object}
+// @Success 200 "Success"
 // @Failure 400 {object} utils.Error
 // @Failure 404 {object} utils.Error
 // @Failure 500 {object} utils.Error
