@@ -732,10 +732,7 @@ var doc = `{
                 ],
                 "responses": {
                     "202": {
-                        "description": "Accepted",
-                        "schema": {
-                            "$ref": "#/definitions/handler.taskResponse"
-                        }
+                        "description": "Accepted"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -793,11 +790,8 @@ var doc = `{
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "Created",
-                        "schema": {
-                            "$ref": "#/definitions/handler.taskResponse"
-                        }
+                    "200": {
+                        "description": "Success"
                     },
                     "400": {
                         "description": "Bad Request",

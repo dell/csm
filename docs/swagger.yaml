@@ -671,8 +671,6 @@ paths:
       responses:
         "202":
           description: Accepted
-          schema:
-            $ref: '#/definitions/handler.taskResponse'
         "400":
           description: Bad Request
           schema:
@@ -709,10 +707,8 @@ paths:
       produces:
       - application/json
       responses:
-        "201":
-          description: Created
-          schema:
-            $ref: '#/definitions/handler.taskResponse'
+        "200":
+          description: Success
         "400":
           description: Bad Request
           schema:
