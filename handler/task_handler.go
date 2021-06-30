@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"github.com/dell/csm-deployment/kapp"
 	"github.com/dell/csm-deployment/store"
 	"github.com/dell/csm-deployment/utils"
 	"github.com/labstack/echo/v4"
@@ -12,14 +13,16 @@ type TaskHandler struct {
 	applicationStore            store.ApplicationStoreInterface
 	applicationStateChangeStore store.ApplicationStateChangeStoreInterface
 	clusterStore                store.ClusterStoreInterface
+	kappClient                  kapp.Interface
 }
 
-func NewTaskHandler(ts store.TaskStoreInterface, as store.ApplicationStoreInterface, asc store.ApplicationStateChangeStoreInterface, cs store.ClusterStoreInterface) *TaskHandler {
+func NewTaskHandler(ts store.TaskStoreInterface, as store.ApplicationStoreInterface, asc store.ApplicationStateChangeStoreInterface, cs store.ClusterStoreInterface, kapp kapp.Interface) *TaskHandler {
 	return &TaskHandler{
 		taskStore:                   ts,
 		applicationStore:            as,
 		applicationStateChangeStore: asc,
 		clusterStore:                cs,
+		kappClient:                  kapp,
 	}
 }
 

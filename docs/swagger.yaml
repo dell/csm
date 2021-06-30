@@ -138,23 +138,20 @@ definitions:
     type: object
   handler.taskResponse:
     properties:
-      task:
-        properties:
-          _links:
-            additionalProperties:
-              additionalProperties:
-                type: string
-              type: object
-            type: object
-          application_id:
-            type: integer
-          id:
-            type: integer
-          logs:
+      _links:
+        additionalProperties:
+          additionalProperties:
             type: string
-          status:
-            type: string
+          type: object
         type: object
+      application_id:
+        type: integer
+      id:
+        type: integer
+      logs:
+        type: string
+      status:
+        type: string
     type: object
   handler.userLoginRequest:
     properties:

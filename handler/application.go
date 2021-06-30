@@ -86,7 +86,7 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 	}
 
 	// Retrieve the cluster associated with the application.
-	cluster, err := h.clusterStore.GetByClusterID(application.ClusterID)
+	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
 		return
@@ -179,8 +179,8 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 		return
 	}
 
-	client := kapp.NewClient("", configFileName)
-	kappOutput, err := client.GetDeployDiff(ctx, output.AsCombinedBytes(), application.Name)
+	client := kapp.NewClient("")
+	kappOutput, err := client.GetDeployDiff(ctx, output.AsCombinedBytes(), application.Name, configFileName)
 	if err != nil {
 		c.Logger().Errorf("error deploying app: %+v", err)
 		t.Status = model.TaskStatusFailed
@@ -289,7 +289,7 @@ func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 	}
 
 	// TODO: shouldn't delete request be async and create task too?
-	cluster, err := h.clusterStore.GetByClusterID(application.ClusterID)
+	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
 		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
@@ -312,8 +312,8 @@ func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 		defer os.Remove(tmpFile.Name())
 	}
 
-	client := kapp.NewClient("", configFileName)
-	kappOutput, err := client.Delete(c.Request().Context(), application.Name)
+	client := kapp.NewClient("")
+	kappOutput, err := client.Delete(c.Request().Context(), application.Name, configFileName)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
 	}

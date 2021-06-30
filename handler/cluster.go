@@ -2,9 +2,10 @@ package handler
 
 import (
 	"io"
-	"k8s.io/client-go/kubernetes"
 	"net/http"
 	"strconv"
+
+	"k8s.io/client-go/kubernetes"
 
 	"github.com/dell/csm-deployment/k8s"
 
@@ -126,7 +127,7 @@ func (h *ClusterHandler) GetCluster(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusNotFound, utils.NotFound())
 	}
-	cluster, err := h.clusterStore.GetByClusterID(uint(clusterID))
+	cluster, err := h.clusterStore.GetByID(uint(clusterID))
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
 	}
