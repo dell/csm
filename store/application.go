@@ -2,12 +2,15 @@ package store
 
 import (
 	"errors"
+
 	"gorm.io/gorm/clause"
 
 	"github.com/dell/csm-deployment/model"
 	"gorm.io/gorm"
 )
 
+// ApplicationStoreInterface is used to define the interface for persisting Application
+//go:generate mockgen -destination=mocks/application_store_interface.go -package=mocks github.com/dell/csm-deployment/store ApplicationStoreInterface
 type ApplicationStoreInterface interface {
 	Create(*model.Application) error
 	GetByID(string) (*model.Application, error)

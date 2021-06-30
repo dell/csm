@@ -9,7 +9,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/dell/csm-deployment/kapp"
 	"github.com/dell/csm-deployment/model"
 	"github.com/dell/csm-deployment/utils"
 	"github.com/labstack/echo/v4"
@@ -53,10 +52,10 @@ func (h *TaskHandler) GetTask(c echo.Context) error {
 		cancelLink := fmt.Sprintf("%s://%s:%s/api/tasks/%d/cancel?updating=false", scheme, hostName, port, task.ApplicationID)
 
 		links := map[string]map[string]string{
-			"yes": map[string]string{
+			"yes": {
 				"href": approveLink,
 			},
-			"no": map[string]string{
+			"no": {
 				"href": cancelLink,
 			},
 		}
@@ -81,7 +80,7 @@ func (h *TaskHandler) GetTask(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Task ID"
 // @Param updating query boolean false "Task is associated with an Application update operation"
-// @Success 202 {object} taskResponse
+// @Success 202 {object}
 // @Failure 400 {object} utils.Error
 // @Failure 404 {object} utils.Error
 // @Failure 500 {object} utils.Error
@@ -101,11 +100,18 @@ func (h *TaskHandler) ApproveStateChange(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
 	}
 
-	go h.processApplication(context.Background(), *task, c)
+	GoProcessApplication(h, context.Background(), *task, c)
 
 	c.Response().Header().Set("Location", fmt.Sprintf("/api/tasks/%d", task.ID))
 	return c.NoContent(http.StatusAccepted)
 }
+
+// GoProcessApplication wrapper to call processApplication as Go routine
+var GoProcessApplication = func(h *TaskHandler, ctx context.Context, task model.Task, c echo.Context) {
+	go h.processApplication(ctx, task, c)
+}
+
+var WaitGoProcessApplication = 10 * time.Second
 
 // CancelStateChange godoc
 // @Summary Cancel state change for an application
@@ -116,7 +122,7 @@ func (h *TaskHandler) ApproveStateChange(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Task ID"
 // @Param updating query boolean false "Task is associated with an Application update operation"
-// @Success 201 {object} taskResponse
+// @Success 201 {object}
 // @Failure 400 {object} utils.Error
 // @Failure 404 {object} utils.Error
 // @Failure 500 {object} utils.Error
@@ -178,17 +184,19 @@ func (h *TaskHandler) CancelStateChange(c echo.Context) error {
 
 // TODO: This is specific to applications and should probably be moved. Find a way to call the application handler from here.
 func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c echo.Context) {
-	time.Sleep(10 * time.Second)
+	time.Sleep(WaitGoProcessApplication)
 	c.Logger().Printf("Updating task %d", task.ID)
 
 	// Retrieve the application associated with this task.
 	application, err := h.applicationStore.GetByID(fmt.Sprint(task.ApplicationID))
 	if err != nil {
 		c.Logger().Printf("error getting application: %v", task.ApplicationID)
+		c.JSON(http.StatusInternalServerError, utils.NewError(err))
 		return
 	}
 	if application == nil {
 		c.Logger().Printf("the application was not found: %v", task.ApplicationID)
+		c.JSON(http.StatusNotFound, utils.NotFound())
 		return
 	}
 
@@ -196,10 +204,12 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 	applicationStateChange, err := h.applicationStateChangeStore.GetByApplicationID(application.ID)
 	if err != nil {
 		c.Logger().Printf("error getting the application state change for application: %v", application.ID)
+		c.JSON(http.StatusInternalServerError, utils.NewError(err))
 		return
 	}
 	if applicationStateChange == nil {
 		c.Logger().Printf("the application state change was not found: %v", application.ID)
+		c.JSON(http.StatusNotFound, utils.NotFound())
 		return
 	}
 
@@ -213,6 +223,7 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
+		c.JSON(http.StatusInternalServerError, utils.NewError(err))
 		return
 	}
 	configData := cluster.ConfigFileData
@@ -222,11 +233,13 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 		tmpFile, err := ioutil.TempFile("", "config")
 		if err != nil {
 			c.Logger().Errorf("error creating temp file: %+v", err)
+			c.JSON(http.StatusInternalServerError, utils.NewError(err))
 			return
 		}
 		_, err = tmpFile.Write(configData)
 		if err != nil {
 			c.Logger().Errorf("error writing file: %+v", err)
+			c.JSON(http.StatusInternalServerError, utils.NewError(err))
 			return
 		}
 		configFileName = tmpFile.Name()
@@ -234,14 +247,14 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 	}
 
 	// TODO: not waiting resources to properly come up for now, should be changed later in development
-	client := kapp.NewClient("", configFileName)
-	kappOutput, err := client.DeployFromBytes(ctx, applicationStateChange.Template, application.Name, false)
+	kappOutput, err := h.kappClient.DeployFromBytes(ctx, applicationStateChange.Template, application.Name, false, configFileName)
 	if err != nil {
 		c.Logger().Errorf("error deploying app: output = %+v, err = %+v", kappOutput, err)
 		task.Status = model.TaskStatusFailed
 		if err := h.taskStore.Update(&task); err != nil {
 			c.Logger().Errorf("error updating task: %+v", err)
 		}
+		c.JSON(http.StatusInternalServerError, utils.NewError(err))
 		return
 	}
 
@@ -258,12 +271,14 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 		if err := h.taskStore.Update(&task); err != nil {
 			c.Logger().Printf("error creating application: %+v", err)
 		}
+		c.JSON(http.StatusInternalServerError, utils.NewError(err))
 		return
 	}
 
 	// Delete the pending application state change.
 	if err := h.applicationStateChangeStore.Delete(applicationStateChange); err != nil {
 		c.Logger().Printf("error deleting application state change for application %v", application.ID)
+		c.JSON(http.StatusInternalServerError, utils.NewError(err))
 		return
 	}
 

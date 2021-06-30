@@ -1441,31 +1441,26 @@ var doc = `{
         "handler.taskResponse": {
             "type": "object",
             "properties": {
-                "task": {
+                "_links": {
                     "type": "object",
-                    "properties": {
-                        "_links": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "object",
-                                "additionalProperties": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "application_id": {
-                            "type": "integer"
-                        },
-                        "id": {
-                            "type": "integer"
-                        },
-                        "logs": {
-                            "type": "string"
-                        },
-                        "status": {
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": {
                             "type": "string"
                         }
                     }
+                },
+                "application_id": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "logs": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
                 }
             }
         },

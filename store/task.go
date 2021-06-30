@@ -7,6 +7,8 @@ import (
 	"gorm.io/gorm"
 )
 
+// TaskStoreInterface is used to define the interface for persisting Task
+//go:generate mockgen -destination=mocks/task_store_interface.go -package=mocks github.com/dell/csm-deployment/store TaskStoreInterface
 type TaskStoreInterface interface {
 	Create(*model.Task) error
 	GetByID(string) (*model.Task, error)

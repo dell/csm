@@ -179,8 +179,8 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 		return
 	}
 
-	client := kapp.NewClient("", configFileName)
-	kappOutput, err := client.GetDeployDiff(ctx, output.AsCombinedBytes(), application.Name)
+	client := kapp.NewClient("")
+	kappOutput, err := client.GetDeployDiff(ctx, output.AsCombinedBytes(), application.Name, configFileName)
 	if err != nil {
 		c.Logger().Errorf("error deploying app: %+v", err)
 		t.Status = model.TaskStatusFailed
@@ -312,8 +312,8 @@ func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 		defer os.Remove(tmpFile.Name())
 	}
 
-	client := kapp.NewClient("", configFileName)
-	kappOutput, err := client.Delete(c.Request().Context(), application.Name)
+	client := kapp.NewClient("")
+	kappOutput, err := client.Delete(c.Request().Context(), application.Name, configFileName)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
 	}
