@@ -1,35 +1,30 @@
-# csm
-Dell EMC Container Storage Modules (CSM)
+<!--
+Copyright (c) 2020 Dell Inc., or its subsidiaries. All Rights Reserved.
 
-# How to build and deploy
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-Generate self-signed certificates using the following commands to add them to the `samplecerts` directory:
-```
-openssl req \
-    -newkey rsa:4096 -nodes -sha256 -keyout samplecerts/csi_ca.key \
-    -x509 -days 365 -out samplecerts/csi_ca.crt -subj '/'
+    http://www.apache.org/licenses/LICENSE-2.0
+-->
 
-openssl req \
-    -newkey rsa:4096 -nodes -sha256 -keyout samplecerts/samplecert.key \
-    -out samplecerts/samplecert.csr -subj '/'
+# CSM
 
-openssl x509 -req -days 365 -in samplecerts/samplecert.csr -CA samplecerts/csi_ca.crt \
-    -CAkey samplecerts/csi_ca.key -CAcreateserial -out samplecerts/samplecert.crt
-```
+## Table of Contents
 
-Build images and push to local registry: `DATA_COLLECTOR_IMAGE=<registry-ip>:<registry-port>/csm-data-collector IMAGE=<registry-ip>:<registry-port>/dell-common-installer make images`
+- [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
+- Guides
+  - [Getting Started Guide](./docs/GETTING_STARTED_GUIDE.md)
+  - [Maintainer Guide](./docs/MAINTAINER_GUIDE.md)
+  - [Committer Guide](./docs/COMMITTER_GUIDE.md)
+  - [Contributing Guide](./docs/CONTRIBUTING.md)
+- [Maintainers](./docs/MAINTAINERS.md)
+- [Support](./docs/SUPPORT.md)
+- [Security](./docs/SECURITY.md)
+- [About](#about)
 
-Edit deployment.yaml with location of images based on registry IP and port: `vi manifests/deployment.yaml`
+## About
 
-Install dell-common-installer into kubernetes: `kubectl apply -f manifests/deployment.yaml`
-
-If using Swagger, first access the REST API to accept the certificate in your browser (ex: `https://<k8s-node-ip>:31313/api/v1/users`)
-
-After accepting the certificate, cd into the scripts directory: `cd scripts`
-
-Edit the scripts/run-local-swagger.sh script with the IP to your kubernetes node.
-
-Run run-local-swagger.sh: `./run-local-swagger.sh`
-
-Open Swagger in your web browser using the IP address where the run-local-swagger.sh script is running: `http://<ip-address>:8080/swagger/`
-
+CSM is 100% open source and community-driven. All components are available
+under [Apache 2 License](https://www.apache.org/licenses/LICENSE-2.0.html) on
+GitHub.
