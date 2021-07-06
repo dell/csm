@@ -1,4 +1,4 @@
 *.db
 .idea/
 dell-common-installer
-
+scripts/swagger.json

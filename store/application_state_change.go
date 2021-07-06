@@ -2,12 +2,15 @@ package store
 
 import (
 	"errors"
+
 	"gorm.io/gorm/clause"
 
 	"github.com/dell/csm-deployment/model"
 	"gorm.io/gorm"
 )
 
+// ApplicationStateChangeStoreInterface is used to define the interface for persisting Application State Change
+//go:generate mockgen -destination=mocks/application_state_change_store_interface.go -package=mocks github.com/dell/csm-deployment/store ApplicationStateChangeStoreInterface
 type ApplicationStateChangeStoreInterface interface {
 	Create(*model.ApplicationStateChange) error
 	GetByApplicationID(uint) (*model.ApplicationStateChange, error)
