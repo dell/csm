@@ -15,8 +15,8 @@ import (
 )
 
 // GetTask godoc
-// @Summary Get an task
-// @Description Get an task
+// @Summary Get a task
+// @Description Get a task
 // @ID get-task
 // @Tags task
 // @Accept  json
