@@ -2,83 +2,65 @@ basePath: /api/v1
 definitions:
   ApplicationCreateRequest:
     properties:
-      application:
-        properties:
-          cluster_id:
-            type: integer
-          driver_configuration:
-            items:
-              type: string
-            type: array
-          driver_type_id:
-            type: integer
-          module_configuration:
-            items:
-              type: string
-            type: array
-          module_types:
-            items:
-              type: integer
-            type: array
-          name:
-            type: string
-          storage_arrays:
-            items:
-              type: integer
-            type: array
-        required:
-        - name
-        type: object
+      cluster_id:
+        type: integer
+      driver_configuration:
+        items:
+          type: string
+        type: array
+      driver_type_id:
+        type: integer
+      module_configuration:
+        items:
+          type: string
+        type: array
+      module_types:
+        items:
+          type: integer
+        type: array
+      name:
+        type: string
+      storage_arrays:
+        items:
+          type: integer
+        type: array
+    required:
+    - name
     type: object
   ApplicationResponse:
     properties:
-      application:
-        properties:
-          application_output:
-            type: string
-          cluster_id:
-            type: integer
-          driver_configuration:
-            items:
-              type: string
-            type: array
-          driver_type_id:
-            type: integer
-          id:
-            type: integer
-          module_configuration:
-            items:
-              type: string
-            type: array
-          module_types:
-            items:
-              type: integer
-            type: array
-          name:
-            type: string
-          storage_arrays:
-            items:
-              type: integer
-            type: array
-        type: object
-    type: object
-  ClusterListResponse:
-    properties:
-      clusters:
-        description: List of ClusterResponse
+      application_output:
+        type: string
+      cluster_id:
+        type: integer
+      driver_configuration:
         items:
-          $ref: '#/definitions/ClusterResponse'
+          type: string
+        type: array
+      driver_type_id:
+        type: integer
+      id:
+        type: integer
+      module_configuration:
+        items:
+          type: string
+        type: array
+      module_types:
+        items:
+          type: integer
+        type: array
+      name:
+        type: string
+      storage_arrays:
+        items:
+          type: integer
         type: array
     type: object
   ClusterResponse:
     properties:
       cluster_id:
-        description: Unique identifier of the cluster
         type: integer
       cluster_name:
-        description: |-
-          Unique name of the cluster
-          This value must contain 128 or fewer printable Unicode characters.
         type: string
       nodes:
         description: The nodes
@@ -156,63 +138,54 @@ definitions:
     type: object
   StorageArrayCreateRequest:
     properties:
-      storage-array:
-        properties:
-          management_endpoint:
-            type: string
-          password:
-            type: string
-          storage_array_type:
-            type: string
-          unique_id:
-            type: string
-          username:
-            type: string
-        required:
-        - management_endpoint
-        - password
-        - storage_array_type
-        - unique_id
-        - username
-        type: object
+      management_endpoint:
+        type: string
+      password:
+        type: string
+      storage_array_type:
+        type: string
+      unique_id:
+        type: string
+      username:
+        type: string
+    required:
+    - management_endpoint
+    - password
+    - storage_array_type
+    - unique_id
+    - username
     type: object
   StorageArrayResponse:
     properties:
-      storage-array:
-        properties:
-          id:
-            type: integer
-          management_endpoint:
-            type: string
-          storage_array_type_id:
-            type: integer
-          unique_id:
-            type: string
-          username:
-            type: string
-        type: object
+      id:
+        type: integer
+      management_endpoint:
+        type: string
+      storage_array_type_id:
+        type: integer
+      unique_id:
+        type: string
+      username:
+        type: string
     type: object
   StorageArrayUpdateRequest:
     properties:
-      storage-array:
-        properties:
-          management_endpoint:
-            type: string
-          password:
-            type: string
-          storage_array_type:
-            type: string
-          unique_id:
-            type: string
-          username:
-            type: string
-        required:
-        - management_endpoint
-        - password
-        - storage_array_type
-        - unique_id
-        - username
-        type: object
+      management_endpoint:
+        type: string
+      password:
+        type: string
+      storage_array_type:
+        type: string
+      unique_id:
+        type: string
+      username:
+        type: string
+    required:
+    - management_endpoint
+    - password
+    - storage_array_type
+    - unique_id
+    - username
     type: object
   TaskResponse:
     properties:
@@ -233,55 +206,43 @@ definitions:
     type: object
   UserLoginRequest:
     properties:
-      user:
-        properties:
-          password:
-            type: string
-          username:
-            type: string
-        required:
-        - password
-        - username
-        type: object
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
     type: object
   UserRegisterRequest:
     properties:
-      user:
-        properties:
-          password:
-            type: string
-          username:
-            type: string
-        required:
-        - password
-        - username
-        type: object
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
     type: object
   UserResponse:
     properties:
-      user:
-        properties:
-          token:
-            type: string
-          username:
-            type: string
-        type: object
+      token:
+        type: string
+      username:
+        type: string
     type: object
   UserUpdateRequest:
     properties:
-      user:
-        properties:
-          bio:
-            type: string
-          email:
-            type: string
-          image:
-            type: string
-          password:
-            type: string
-          username:
-            type: string
-        type: object
+      bio:
+        type: string
+      email:
+        type: string
+      image:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
     type: object
 info:
   contact: {}
@@ -444,7 +405,9 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/ClusterListResponse'
+            items:
+              $ref: '#/definitions/ClusterResponse'
+            type: array
         "400":
           description: Bad Request
           schema:
@@ -614,7 +577,7 @@ paths:
       summary: Update a cluster
       tags:
       - cluster
-  /storageArrays:
+  /storage-arrays:
     get:
       consumes:
       - application/json
@@ -718,7 +681,7 @@ paths:
       summary: Update a storage array
       tags:
       - storage-array
-  /storageArrays/{id}:
+  /storage-arrays/{id}:
     delete:
       consumes:
       - application/json

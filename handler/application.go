@@ -40,13 +40,13 @@ func (h *ApplicationHandler) CreateApplication(c echo.Context) error {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
-	arrays, err := h.arrayStore.GetAllByID(req.Application.StorageArrays...)
+	arrays, err := h.arrayStore.GetAllByID(req.StorageArrays...)
 	if err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	application.StorageArrays = arrays
 
-	modules, err := h.moduleStore.GetAllByID(req.Application.ModuleTypes...)
+	modules, err := h.moduleStore.GetAllByID(req.ModuleTypes...)
 	if err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}

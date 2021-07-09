@@ -24,7 +24,7 @@ import (
 // @Produce json
 // @Param name formData string true "Name of the cluster"
 // @Param file formData file true "kube config file"
-// @Success 201 {object} ClusterResponse
+// @Success 201 {object} clusterResponse
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
@@ -94,7 +94,7 @@ func (h *ClusterHandler) CreateCluster(c echo.Context) error {
 // @Param id path string true "Cluster ID"
 // @Param name formData string false "Name of the cluster"
 // @Param file formData file false "kube config file"
-// @Success 200 {object} ClusterResponse
+// @Success 200 {object} clusterResponse
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
@@ -203,7 +203,7 @@ func (h *ClusterHandler) updateClusterDetails(cluster *model.Cluster, clientset 
 // @Accept  json
 // @Produce  json
 // @Param id path string true "Cluster ID"
-// @Success 200 {object} ClusterResponse
+// @Success 200 {object} clusterResponse
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
@@ -232,7 +232,7 @@ func (h *ClusterHandler) GetCluster(c echo.Context) error {
 // @Tags cluster
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} ClusterListResponse
+// @Success 200 {array} clusterResponse
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
@@ -243,11 +243,10 @@ func (h *ClusterHandler) ListClusters(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
-	resp := ClusterListResponse{}
-	resp.Clusters = make([]*ClusterResponse, 0)
 
+	resp := make([]*clusterResponse, 0)
 	for _, cluster := range clusters {
-		resp.Clusters = append(resp.Clusters, newClusterResponse(&cluster))
+		resp = append(resp, newClusterResponse(&cluster))
 	}
 	return c.JSON(http.StatusOK, resp)
 }

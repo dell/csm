@@ -54,14 +54,14 @@ func (h *Handler) Login(c echo.Context) error {
 	if err := req.bind(c); err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
-	u, err := h.userStore.GetByUsername(req.User.Username)
+	u, err := h.userStore.GetByUsername(req.Username)
 	if err != nil {
 		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
 	}
 	if u == nil {
 		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
 	}
-	if !u.CheckPassword(req.User.Password) {
+	if !u.CheckPassword(req.Password) {
 		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
 	}
 	return c.JSON(http.StatusOK, newUserResponse(u))

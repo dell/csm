@@ -23,7 +23,7 @@ import (
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays [post]
+// @Router /storage-arrays [post]
 func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 	var storageArray model.StorageArray
 	req := &storageArrayCreateRequest{}
@@ -31,7 +31,7 @@ func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 
-	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArray.StorageArrayType))
+	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
 	if err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
@@ -56,7 +56,7 @@ func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays [put]
+// @Router /storage-arrays [put]
 func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 	var storageArray model.StorageArray
 	req := &storageArrayUpdateRequest{}
@@ -64,7 +64,7 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 
-	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArray.StorageArrayType))
+	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
 	if err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
@@ -88,7 +88,7 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays [get]
+// @Router /storage-arrays [get]
 func (h *StorageArrayHandler) ListStorageArrays(c echo.Context) error {
 	arrays, err := h.arrayStore.GetAll()
 	if err != nil {
@@ -114,7 +114,7 @@ func (h *StorageArrayHandler) ListStorageArrays(c echo.Context) error {
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays/{id} [get]
+// @Router /storage-arrays/{id} [get]
 func (h *StorageArrayHandler) GetStorageArray(c echo.Context) error {
 	arrayID := c.Param("id")
 	id, err := strconv.Atoi(arrayID)
@@ -144,7 +144,7 @@ func (h *StorageArrayHandler) GetStorageArray(c echo.Context) error {
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays/{id} [delete]
+// @Router /storage-arrays/{id} [delete]
 func (h *StorageArrayHandler) DeleteStorageArray(c echo.Context) error {
 	arrayID := c.Param("id")
 	id, err := strconv.Atoi(arrayID)

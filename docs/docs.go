@@ -269,7 +269,10 @@ var doc = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/ClusterListResponse"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ClusterResponse"
+                            }
                         }
                     },
                     "400": {
@@ -527,7 +530,7 @@ var doc = `{
                 }
             }
         },
-        "/storageArrays": {
+        "/storage-arrays": {
             "get": {
                 "security": [
                     {
@@ -689,7 +692,7 @@ var doc = `{
                 }
             }
         },
-        "/storageArrays/{id}": {
+        "/storage-arrays/{id}": {
             "get": {
                 "security": [
                     {
@@ -1234,46 +1237,41 @@ var doc = `{
     "definitions": {
         "ApplicationCreateRequest": {
             "type": "object",
+            "required": [
+                "name"
+            ],
             "properties": {
-                "application": {
-                    "type": "object",
-                    "required": [
-                        "name"
-                    ],
-                    "properties": {
-                        "cluster_id": {
-                            "type": "integer"
-                        },
-                        "driver_configuration": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "driver_type_id": {
-                            "type": "integer"
-                        },
-                        "module_configuration": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "module_types": {
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        },
-                        "name": {
-                            "type": "string"
-                        },
-                        "storage_arrays": {
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        }
+                "cluster_id": {
+                    "type": "integer"
+                },
+                "driver_configuration": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "driver_type_id": {
+                    "type": "integer"
+                },
+                "module_configuration": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "module_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "storage_arrays": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
                     }
                 }
             }
@@ -1281,60 +1279,43 @@ var doc = `{
         "ApplicationResponse": {
             "type": "object",
             "properties": {
-                "application": {
-                    "type": "object",
-                    "properties": {
-                        "application_output": {
-                            "type": "string"
-                        },
-                        "cluster_id": {
-                            "type": "integer"
-                        },
-                        "driver_configuration": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "driver_type_id": {
-                            "type": "integer"
-                        },
-                        "id": {
-                            "type": "integer"
-                        },
-                        "module_configuration": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "module_types": {
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        },
-                        "name": {
-                            "type": "string"
-                        },
-                        "storage_arrays": {
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "ClusterListResponse": {
-            "type": "object",
-            "properties": {
-                "clusters": {
-                    "description": "List of ClusterResponse",
+                "application_output": {
+                    "type": "string"
+                },
+                "cluster_id": {
+                    "type": "integer"
+                },
+                "driver_configuration": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ClusterResponse"
+                        "type": "string"
+                    }
+                },
+                "driver_type_id": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "module_configuration": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "module_types": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "storage_arrays": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
                     }
                 }
             }
@@ -1343,11 +1324,9 @@ var doc = `{
             "type": "object",
             "properties": {
                 "cluster_id": {
-                    "description": "Unique identifier of the cluster",
                     "type": "integer"
                 },
                 "cluster_name": {
-                    "description": "Unique name of the cluster\nThis value must contain 128 or fewer printable Unicode characters.",
                     "type": "string"
                 },
                 "nodes": {
@@ -1435,90 +1414,75 @@ var doc = `{
         },
         "StorageArrayCreateRequest": {
             "type": "object",
+            "required": [
+                "management_endpoint",
+                "password",
+                "storage_array_type",
+                "unique_id",
+                "username"
+            ],
             "properties": {
-                "storage-array": {
-                    "type": "object",
-                    "required": [
-                        "management_endpoint",
-                        "password",
-                        "storage_array_type",
-                        "unique_id",
-                        "username"
-                    ],
-                    "properties": {
-                        "management_endpoint": {
-                            "type": "string"
-                        },
-                        "password": {
-                            "type": "string"
-                        },
-                        "storage_array_type": {
-                            "type": "string"
-                        },
-                        "unique_id": {
-                            "type": "string"
-                        },
-                        "username": {
-                            "type": "string"
-                        }
-                    }
+                "management_endpoint": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "storage_array_type": {
+                    "type": "string"
+                },
+                "unique_id": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         },
         "StorageArrayResponse": {
             "type": "object",
             "properties": {
-                "storage-array": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "management_endpoint": {
-                            "type": "string"
-                        },
-                        "storage_array_type_id": {
-                            "type": "integer"
-                        },
-                        "unique_id": {
-                            "type": "string"
-                        },
-                        "username": {
-                            "type": "string"
-                        }
-                    }
+                "id": {
+                    "type": "integer"
+                },
+                "management_endpoint": {
+                    "type": "string"
+                },
+                "storage_array_type_id": {
+                    "type": "integer"
+                },
+                "unique_id": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         },
         "StorageArrayUpdateRequest": {
             "type": "object",
+            "required": [
+                "management_endpoint",
+                "password",
+                "storage_array_type",
+                "unique_id",
+                "username"
+            ],
             "properties": {
-                "storage-array": {
-                    "type": "object",
-                    "required": [
-                        "management_endpoint",
-                        "password",
-                        "storage_array_type",
-                        "unique_id",
-                        "username"
-                    ],
-                    "properties": {
-                        "management_endpoint": {
-                            "type": "string"
-                        },
-                        "password": {
-                            "type": "string"
-                        },
-                        "storage_array_type": {
-                            "type": "string"
-                        },
-                        "unique_id": {
-                            "type": "string"
-                        },
-                        "username": {
-                            "type": "string"
-                        }
-                    }
+                "management_endpoint": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "storage_array_type": {
+                    "type": "string"
+                },
+                "unique_id": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         },
@@ -1550,82 +1514,62 @@ var doc = `{
         },
         "UserLoginRequest": {
             "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
             "properties": {
-                "user": {
-                    "type": "object",
-                    "required": [
-                        "password",
-                        "username"
-                    ],
-                    "properties": {
-                        "password": {
-                            "type": "string"
-                        },
-                        "username": {
-                            "type": "string"
-                        }
-                    }
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         },
         "UserRegisterRequest": {
             "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
             "properties": {
-                "user": {
-                    "type": "object",
-                    "required": [
-                        "password",
-                        "username"
-                    ],
-                    "properties": {
-                        "password": {
-                            "type": "string"
-                        },
-                        "username": {
-                            "type": "string"
-                        }
-                    }
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         },
         "UserResponse": {
             "type": "object",
             "properties": {
-                "user": {
-                    "type": "object",
-                    "properties": {
-                        "token": {
-                            "type": "string"
-                        },
-                        "username": {
-                            "type": "string"
-                        }
-                    }
+                "token": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         },
         "UserUpdateRequest": {
             "type": "object",
             "properties": {
-                "user": {
-                    "type": "object",
-                    "properties": {
-                        "bio": {
-                            "type": "string"
-                        },
-                        "email": {
-                            "type": "string"
-                        },
-                        "image": {
-                            "type": "string"
-                        },
-                        "password": {
-                            "type": "string"
-                        },
-                        "username": {
-                            "type": "string"
-                        }
-                    }
+                "bio": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
                 }
             }
         }

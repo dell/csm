@@ -22,8 +22,8 @@ func Test_CreateStorageArray(t *testing.T) {
 		"success": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			createStorageSystemRequestJSON := `{"storage-array":{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}}`
-			createStorageSystemResponseJSON := `{"storage-array":{"id":0,"storage_array_type_id":0,"unique_id":"1","username":"admin","management_endpoint":"http://localhost"}}`
+			createStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
+			createStorageSystemResponseJSON := `{"id":0,"storage_array_type_id":0,"unique_id":"1","username":"admin","management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(&model.StorageArrayType{Name: "powerflex"}, nil)
@@ -43,7 +43,7 @@ func Test_CreateStorageArray(t *testing.T) {
 		"error getting array type": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			createStorageSystemRequestJSON := `{"storage-array":{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}}`
+			createStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(nil, errors.New("error"))
@@ -53,7 +53,7 @@ func Test_CreateStorageArray(t *testing.T) {
 		"error persisting to database": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			createStorageSystemRequestJSON := `{"storage-array":{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}}`
+			createStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(&model.StorageArrayType{Name: "powerflex"}, nil)
@@ -89,8 +89,8 @@ func Test_UpdateStorageArray(t *testing.T) {
 	tests := map[string]func(t *testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller){
 		"success": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			updateStorageSystemRequestJSON := `{"storage-array":{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}}`
-			updateStorageSystemResponseJSON := `{"storage-array":{"id":0,"storage_array_type_id":0,"unique_id":"1","username":"admin","management_endpoint":"http://localhost"}}`
+			updateStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
+			updateStorageSystemResponseJSON := `{"id":0,"storage_array_type_id":0,"unique_id":"1","username":"admin","management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(&model.StorageArrayType{Name: "powerflex"}, nil)
@@ -109,7 +109,7 @@ func Test_UpdateStorageArray(t *testing.T) {
 		"error getting array type": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			updateStorageSystemRequestJSON := `{"storage-array":{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}}`
+			updateStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(nil, errors.New("error"))
@@ -119,7 +119,7 @@ func Test_UpdateStorageArray(t *testing.T) {
 		"error persisting to database": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			updateStorageSystemRequestJSON := `{"storage-array":{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}}`
+			updateStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(&model.StorageArrayType{Name: "powerflex"}, nil)
@@ -138,7 +138,7 @@ func Test_UpdateStorageArray(t *testing.T) {
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
-			c.SetPath("/storageArrays/:id")
+			c.SetPath("/storage-arrays/:id")
 			c.SetParamNames("id")
 			c.SetParamValues("1")
 
@@ -160,7 +160,7 @@ func Test_GetStorageArray(t *testing.T) {
 	tests := map[string]func(t *testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller){
 		"success": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getStorageSystemResponseJSON := `{"storage-array":{"id":1,"storage_array_type_id":1,"unique_id":"def321","username":"user","management_endpoint":"http://localhost:4321"}}`
+			getStorageSystemResponseJSON := `{"id":1,"storage_array_type_id":1,"unique_id":"def321","username":"user","management_endpoint":"http://localhost:4321"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArray := model.StorageArray{
@@ -208,7 +208,7 @@ func Test_GetStorageArray(t *testing.T) {
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
-			c.SetPath("/storageArrays/:id")
+			c.SetPath("/storage-arrays/:id")
 			c.SetParamNames("id")
 			c.SetParamValues(storageSystemID)
 
@@ -228,7 +228,7 @@ func Test_ListStorageArrays(t *testing.T) {
 	tests := map[string]func(t *testing.T) (int, *StorageArrayHandler, string, *gomock.Controller){
 		"success": func(*testing.T) (int, *StorageArrayHandler, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			listStorageSystemResponseJSON := "[{\"storage-array\":{\"id\":0,\"storage_array_type_id\":1,\"unique_id\":\"abc123\",\"username\":\"admin\",\"management_endpoint\":\"http://localhost:1234\"}},{\"storage-array\":{\"id\":0,\"storage_array_type_id\":2,\"unique_id\":\"def321\",\"username\":\"user\",\"management_endpoint\":\"http://localhost:4321\"}}]"
+			listStorageSystemResponseJSON := "[{\"id\":0,\"storage_array_type_id\":1,\"unique_id\":\"abc123\",\"username\":\"admin\",\"management_endpoint\":\"http://localhost:1234\"},{\"id\":0,\"storage_array_type_id\":2,\"unique_id\":\"def321\",\"username\":\"user\",\"management_endpoint\":\"http://localhost:4321\"}]"
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 
@@ -341,7 +341,7 @@ func Test_DeleteStorageArray(t *testing.T) {
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
-			c.SetPath("/storageArrays/:id")
+			c.SetPath("/storage-arrays/:id")
 			c.SetParamNames("id")
 			c.SetParamValues(storageSystemID)
 
