@@ -11,7 +11,7 @@ type userRegisterRequest struct {
 		Username string `json:"username" validate:"required"`
 		Password string `json:"password" validate:"required"`
 	} `json:"user"`
-}
+} //@name UserRegisterRequest
 
 func (r *userRegisterRequest) bind(c echo.Context, u *model.User) error {
 	if err := c.Bind(r); err != nil {
@@ -34,7 +34,7 @@ type userLoginRequest struct {
 		Username string `json:"username" validate:"required"`
 		Password string `json:"password" validate:"required"`
 	} `json:"user"`
-}
+} //@name UserLoginRequest
 
 func (r *userLoginRequest) bind(c echo.Context) error {
 	if err := c.Bind(r); err != nil {
@@ -51,7 +51,7 @@ type userResponse struct {
 		Username string `json:"username"`
 		Token    string `json:"token"`
 	} `json:"user"`
-}
+} //@name UserResponse
 
 func newUserResponse(u *model.User) *userResponse {
 	r := new(userResponse)
@@ -68,7 +68,7 @@ type userUpdateRequest struct {
 		Bio      string `json:"bio"`
 		Image    string `json:"image"`
 	} `json:"user"`
-}
+} //@name UserUpdateRequest
 
 func newUserUpdateRequest() *userUpdateRequest {
 	return new(userUpdateRequest)

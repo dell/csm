@@ -18,7 +18,7 @@ type applicationCreateRequest struct {
 		DriverConfiguration []string `json:"driver_configuration"`
 		ModuleConfiguration []string `json:"module_configuration"`
 	} `json:"application"`
-}
+} //@name ApplicationCreateRequest
 
 type applicationResponse struct {
 	Application struct {
@@ -32,7 +32,7 @@ type applicationResponse struct {
 		ModuleConfiguration []string `json:"module_configuration"`
 		ApplicationOutput   string   `json:"application_output"`
 	} `json:"application"`
-}
+} //@name ApplicationResponse
 
 func newApplicationResponse(a *model.Application) *applicationResponse {
 	r := new(applicationResponse)

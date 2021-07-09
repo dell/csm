@@ -14,7 +14,7 @@ type storageArrayCreateRequest struct {
 		Password           string `json:"password" validate:"required"`
 		ManagementEndpoint string `json:"management_endpoint" validate:"required"`
 	} `json:"storage-array"`
-}
+} //@name StorageArrayCreateRequest
 
 type storageArrayUpdateRequest struct {
 	StorageArray struct {
@@ -24,7 +24,7 @@ type storageArrayUpdateRequest struct {
 		Password           string `json:"password" validate:"required"`
 		ManagementEndpoint string `json:"management_endpoint" validate:"required"`
 	} `json:"storage-array"`
-}
+} //@name StorageArrayUpdateRequest
 
 type storageArrayResponse struct {
 	StorageArray struct {
@@ -34,7 +34,7 @@ type storageArrayResponse struct {
 		Username           string `json:"username"`
 		ManagementEndpoint string `json:"management_endpoint"`
 	} `json:"storage-array"`
-}
+} //@name StorageArrayResponse
 
 func newStorageArrayResponse(arr *model.StorageArray) *storageArrayResponse {
 	r := new(storageArrayResponse)

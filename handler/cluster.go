@@ -24,10 +24,10 @@ import (
 // @Produce json
 // @Param name formData string true "Name of the cluster"
 // @Param file formData file true "kube config file"
-// @Success 201 {object} clusterResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Success 201 {object} ClusterResponse
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /clusters [post]
 func (h *ClusterHandler) CreateCluster(c echo.Context) error {
@@ -38,29 +38,29 @@ func (h *ClusterHandler) CreateCluster(c echo.Context) error {
 	if len(name) == 0 {
 		err := errors.New("name is required")
 		if err != nil {
-			return c.JSON(http.StatusBadRequest, utils.NewError(err))
+			return c.JSON(http.StatusBadRequest, utils.NewErrorResponse(http.StatusBadRequest, utils.CriticalSeverity, "", err))
 		}
 	}
 
 	// Source
 	file, err := c.FormFile("file")
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, utils.NewError(err))
+		return c.JSON(http.StatusBadRequest, utils.NewErrorResponse(http.StatusBadRequest, utils.CriticalSeverity, "", err))
 	}
 	src, err := file.Open()
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, utils.NewError(err))
+		return c.JSON(http.StatusBadRequest, utils.NewErrorResponse(http.StatusBadRequest, utils.CriticalSeverity, "", err))
 	}
 
 	defer src.Close()
 	data, err := io.ReadAll(src)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 
 	version, isOpenShift, clientset, err := h.k8sClient.DiscoverK8sDetails(data)
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, utils.NewError(err))
+		return c.JSON(http.StatusBadRequest, utils.NewErrorResponse(http.StatusBadRequest, utils.CriticalSeverity, "", err))
 	}
 
 	orchestratorType := model.OrchestratorTypeKubernetes
@@ -75,7 +75,7 @@ func (h *ClusterHandler) CreateCluster(c echo.Context) error {
 	cluster.Status = model.ClusterStatusConnected
 
 	if err := h.clusterStore.Create(cluster); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 
 	//Update the cluster details asynchronously
@@ -94,10 +94,10 @@ func (h *ClusterHandler) CreateCluster(c echo.Context) error {
 // @Param id path string true "Cluster ID"
 // @Param name formData string false "Name of the cluster"
 // @Param file formData file false "kube config file"
-// @Success 200 {object} clusterResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Success 200 {object} ClusterResponse
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /clusters/{id} [patch]
 func (h *ClusterHandler) UpdateCluster(c echo.Context) error {
@@ -105,14 +105,14 @@ func (h *ClusterHandler) UpdateCluster(c echo.Context) error {
 	id := c.Param("id")
 	clusterID, err := strconv.Atoi(id)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NotFound())
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 	cluster, err := h.clusterStore.GetByID(uint(clusterID))
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if cluster == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 
 	// cluster name is optional during update, if not provided use existing cluster name
@@ -129,18 +129,18 @@ func (h *ClusterHandler) UpdateCluster(c echo.Context) error {
 	} else {
 		src, err := file.Open()
 		if err != nil {
-			return c.JSON(http.StatusBadRequest, utils.NewError(err))
+			return c.JSON(http.StatusBadRequest, utils.NewErrorResponse(http.StatusBadRequest, utils.CriticalSeverity, "", err))
 		}
 		defer src.Close()
 		data, err = io.ReadAll(src)
 		if err != nil {
-			return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+			return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 		}
 	}
 
 	version, isOpenShift, clientset, err := h.k8sClient.DiscoverK8sDetails(data)
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, utils.NewError(err))
+		return c.JSON(http.StatusBadRequest, utils.NewErrorResponse(http.StatusBadRequest, utils.CriticalSeverity, "", err))
 	}
 
 	orchestratorType := model.OrchestratorTypeKubernetes
@@ -155,7 +155,7 @@ func (h *ClusterHandler) UpdateCluster(c echo.Context) error {
 	cluster.Status = model.ClusterStatusConnected
 
 	if err := h.clusterStore.Update(cluster); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 
 	//Update the cluster details asynchronously
@@ -203,24 +203,24 @@ func (h *ClusterHandler) updateClusterDetails(cluster *model.Cluster, clientset 
 // @Accept  json
 // @Produce  json
 // @Param id path string true "Cluster ID"
-// @Success 200 {object} clusterResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Success 200 {object} ClusterResponse
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /clusters/{id} [get]
 func (h *ClusterHandler) GetCluster(c echo.Context) error {
 	id := c.Param("id")
 	clusterID, err := strconv.Atoi(id)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NotFound())
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 	cluster, err := h.clusterStore.GetByID(uint(clusterID))
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if cluster == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 	return c.JSON(http.StatusOK, newClusterResponse(cluster))
 }
@@ -232,19 +232,19 @@ func (h *ClusterHandler) GetCluster(c echo.Context) error {
 // @Tags cluster
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} clusterListResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Success 200 {object} ClusterListResponse
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /clusters [get]
 func (h *ClusterHandler) ListClusters(c echo.Context) error {
 	clusters, err := h.clusterStore.GetAll()
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
-	resp := clusterListResponse{}
-	resp.Clusters = make([]*clusterResponse, 0)
+	resp := ClusterListResponse{}
+	resp.Clusters = make([]*ClusterResponse, 0)
 
 	for _, cluster := range clusters {
 		resp.Clusters = append(resp.Clusters, newClusterResponse(&cluster))
@@ -261,27 +261,27 @@ func (h *ClusterHandler) ListClusters(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Cluster ID"
 // @Success 204
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /clusters/{id} [delete]
 func (h *ClusterHandler) DeleteCluster(c echo.Context) error {
 	clusterID := c.Param("id")
 	id, err := strconv.Atoi(clusterID)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	cluster, err := h.clusterStore.GetByID(uint(id))
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if cluster == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 	if err := h.clusterStore.Delete(cluster); err != nil {
 		c.Logger().Errorf("error deleting cluster: %+v", err)
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	return c.JSON(http.StatusNoContent, nil)
 }

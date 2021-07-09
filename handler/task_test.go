@@ -84,7 +84,7 @@ func Test_GetTask(t *testing.T) {
 
 		"error getting task": func(*testing.T) (int, *TaskHandler, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"hello-world error"}}`
+			getTaskResponseJSON := `{"http_status_code":500,"messages":[{"code":500,"message":"Internal Server Error","message_l10n":"hello-world error","Arguments":null,"severity":"CRITICAL"}]}`
 
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			taskStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, errors.New("hello-world error"))
@@ -96,7 +96,7 @@ func Test_GetTask(t *testing.T) {
 
 		"task not found": func(*testing.T) (int, *TaskHandler, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"resource not found"}}`
+			getTaskResponseJSON := ``
 
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			taskStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, nil)
@@ -182,7 +182,7 @@ func Test_ApproveStateChange(t *testing.T) {
 
 		"task not found": func(*testing.T) (int, *TaskHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"resource not found"}}`
+			getTaskResponseJSON := ``
 
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			taskStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, errors.New("hello-world error"))
@@ -193,7 +193,7 @@ func Test_ApproveStateChange(t *testing.T) {
 		},
 		"error deploying form bytes": func(*testing.T) (int, *TaskHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"hello-world error"}}`
+			getTaskResponseJSON := ``
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			task := model.Task{
 				Status:        "task-status",
@@ -235,7 +235,7 @@ func Test_ApproveStateChange(t *testing.T) {
 		},
 		"error saving/creating deployment": func(*testing.T) (int, *TaskHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"hello-world error"}}`
+			getTaskResponseJSON := ``
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			task := model.Task{
 				Status:        "task-status",
@@ -361,7 +361,7 @@ func Test_CancelStateChange(t *testing.T) {
 
 		"task not found": func(*testing.T) (int, *TaskHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"resource not found"}}`
+			getTaskResponseJSON := ``
 
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			taskStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, errors.New("hello-world error"))
@@ -372,7 +372,7 @@ func Test_CancelStateChange(t *testing.T) {
 		},
 		"application not found": func(*testing.T) (int, *TaskHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"resource not found"}}`
+			getTaskResponseJSON := ``
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			task := model.Task{
 				Status:        "task-status",
@@ -394,7 +394,7 @@ func Test_CancelStateChange(t *testing.T) {
 		},
 		"application state change not found": func(*testing.T) (int, *TaskHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"resource not found"}}`
+			getTaskResponseJSON := ``
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			task := model.Task{
 				Status:        "task-status",
@@ -422,7 +422,7 @@ func Test_CancelStateChange(t *testing.T) {
 		},
 		"error deleting application state change": func(*testing.T) (int, *TaskHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getTaskResponseJSON := `{"errors":{"body":"hello-world error"}}`
+			getTaskResponseJSON := ``
 			taskStore := storeMocks.NewMockTaskStoreInterface(ctrl)
 			task := model.Task{
 				Status:        "task-status",

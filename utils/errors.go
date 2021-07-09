@@ -1,48 +1,105 @@
 package utils
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"gopkg.in/go-playground/validator.v9"
 )
 
-type Error struct {
-	Errors map[string]interface{} `json:"errors"`
-}
+type SeverityEnum string //@name SeverityEnum
 
-func NewError(err error) Error {
-	e := Error{}
-	e.Errors = make(map[string]interface{})
-	switch v := err.(type) {
-	case *echo.HTTPError:
-		e.Errors["body"] = v.Message
-	default:
-		e.Errors["body"] = v.Error()
+const (
+	// WarningSeverity captures enum value "WARNING"
+	WarningSeverity SeverityEnum = "WARNING"
+	// ErrorSeverity captures enum value "ERROR"
+	ErrorSeverity SeverityEnum = "ERROR"
+	// InfoSeverity captures enum value "INFO"
+	InfoSeverity SeverityEnum = "INFO"
+	// CriticalSeverity captures enum value "CRITICAL"
+	CriticalSeverity SeverityEnum = "CRITICAL"
+)
+
+// HTTPStatusEnum Possible HTTP status values of completed or failed jobs.
+type HTTPStatusEnum int32 //@name HTTPStatusEnum
+
+// A message describing the failure, a contributing factor to the failure, or possibly the aftermath of the failure.
+type ErrorMessage struct {
+	// HTTPStatusEnum  Possible HTTP status values of completed or failed jobs
+	ErrorCode HTTPStatusEnum `json:"code,omitempty" enums:"200,201,202,204,400,401,403,404,422,429,500,503"`
+	// Message string.
+	Message string `json:"message"`
+	// Localized message
+	MessageL10N interface{} `json:"message_l10n" swaggertype:"primitive,object"`
+	Arguments   []string
+
+	// SeverityEnum - The severity of the condition
+	// * INFO - Information that may be of use in understanding the failure. It is not a problem to fix.
+	// * WARNING - A condition that isn't a failure, but may be unexpected or a contributing factor. It may be necessary to fix the condition to successfully retry the request.
+	// * ERROR - An actual failure condition through which the request could not continue.
+	// * CRITICAL - A failure with significant impact to the system. Normally failed commands roll back and are just ERROR, but this is possible
+	//
+	Severity SeverityEnum `json:"severity,omitempty" enums:"INFO,WARNING,ERROR,CRITICAL"`
+} //@name ErrorMessage
+
+// ErrorResponse A standard response body used for all non-2xx REST responses.
+type ErrorResponse struct {
+	// HTTPStatusEnum  Possible HTTP status values of completed or failed jobs
+	ErrorCode HTTPStatusEnum `json:"http_status_code,omitempty" enums:"200,201,202,204,400,401,403,404,422,429,500,503"`
+
+	// A list of messages describing the failure encountered by this request. At least one will
+	// be of Error severity because Info and Warning conditions do not cause the request to fail
+	//
+	Messages []*ErrorMessage `json:"messages"`
+} //@name ErrorResponse
+
+func BuildErrorMessage(verbose string, code HTTPStatusEnum, severity SeverityEnum, errInterface interface{}) *ErrorMessage {
+	errorResponse := ErrorResponse{}
+
+	switch r := errInterface.(type) {
+	case error:
+		switch v := r.(type) {
+		case *echo.HTTPError:
+			cd := HTTPStatusEnum(v.Code)
+			return &ErrorMessage{Message: verbose, MessageL10N: v.Message, ErrorCode: cd, Severity: SeverityEnum(severity)}
+		default:
+			return &ErrorMessage{Message: verbose, MessageL10N: v.Error(), ErrorCode: code, Severity: SeverityEnum(severity)}
+		}
+
+	case *http.Response:
+		dec := json.NewDecoder(r.Body)
+		err := dec.Decode(&errorResponse)
+		cd := HTTPStatusEnum(r.StatusCode)
+		if err != nil || errorResponse.Messages == nil {
+			errMsg := verbose
+			buf := new(bytes.Buffer)
+			if _, err := buf.ReadFrom(dec.Buffered()); err == nil {
+				s := buf.String()
+				errMsg = fmt.Sprintf("%s: %s", errMsg, s)
+			}
+			return &ErrorMessage{ErrorCode: cd, Severity: severity,
+				Message: errMsg}
+		}
+		firstErrMsg := (errorResponse.Messages)[0]
+		firstErrMsg.ErrorCode = cd
+		return firstErrMsg
 	}
+	return &ErrorMessage{Message: verbose, MessageL10N: errInterface, ErrorCode: code, Severity: SeverityEnum(severity)}
+}
+
+func BuildErrorResponse(code HTTPStatusEnum, severity SeverityEnum, verbose string, errInterface interface{}) ErrorResponse {
+	e := ErrorResponse{}
+	e.ErrorCode = code
+	e.Messages = []*ErrorMessage{}
+	e.Messages = append(e.Messages, BuildErrorMessage(verbose, code, severity, errInterface))
 	return e
 }
 
-func NewValidatorError(err error) Error {
-	e := Error{}
-	e.Errors = make(map[string]interface{})
-	errs := err.(validator.ValidationErrors)
-	for _, v := range errs {
-		e.Errors[v.Field()] = fmt.Sprintf("%v", v.Tag())
+func NewErrorResponse(code int, sve SeverityEnum, verbose string, err error) ErrorResponse {
+	if verbose == "" {
+		verbose = http.StatusText(code)
 	}
-	return e
-}
-
-func AccessForbidden() Error {
-	e := Error{}
-	e.Errors = make(map[string]interface{})
-	e.Errors["body"] = "access forbidden"
-	return e
-}
-
-func NotFound() Error {
-	e := Error{}
-	e.Errors = make(map[string]interface{})
-	e.Errors["body"] = "resource not found"
-	return e
+	return BuildErrorResponse(HTTPStatusEnum(code), sve, verbose, err)
 }

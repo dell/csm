@@ -8,7 +8,7 @@ type taskResponse struct {
 	ApplicationID uint                         `json:"application_id"`
 	Logs          string                       `json:"logs"`
 	Links         map[string]map[string]string `json:"_links"`
-}
+} //@name TaskResponse
 
 func newTaskResponse(t *model.Task) *taskResponse {
 	r := taskResponse{}
