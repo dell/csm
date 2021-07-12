@@ -147,6 +147,12 @@ func PopulateTestDb(db *gorm.DB, configPath string) {
 	}
 	db.Create(array)
 
+	powerflexdriver14 := &model.DriverType{
+		Version:            "1.4.0",
+		StorageArrayTypeID: arrayType.ID,
+	}
+	db.Create(powerflexdriver14)
+
 	podmonModule := &model.ModuleType{
 		Name:       "podmon",
 		Standalone: false,

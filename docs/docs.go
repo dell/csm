@@ -530,6 +530,112 @@ var doc = `{
                 }
             }
         },
+        "/driver-types": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List all driver types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "driver-type"
+                ],
+                "summary": "List all driver types",
+                "operationId": "list-driver-types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DriverResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/driver-types/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get a driver type",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "driver-type"
+                ],
+                "summary": "Get a driver type",
+                "operationId": "get-driver-type",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Driver Type ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/DriverResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/storage-arrays": {
             "get": {
                 "security": [
@@ -809,7 +915,7 @@ var doc = `{
                         "ApiKeyAuth": []
                     }
                 ],
-                "description": "Get an task",
+                "description": "Get a task",
                 "consumes": [
                     "application/json"
                 ],
@@ -819,7 +925,7 @@ var doc = `{
                 "tags": [
                     "task"
                 ],
-                "summary": "Get an task",
+                "summary": "Get a task",
                 "operationId": "get-task",
                 "parameters": [
                     {
@@ -1331,6 +1437,20 @@ var doc = `{
                 },
                 "nodes": {
                     "description": "The nodes",
+                    "type": "string"
+                }
+            }
+        },
+        "DriverResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "storage_array_type_ID": {
+                    "type": "integer"
+                },
+                "version": {
                     "type": "string"
                 }
             }

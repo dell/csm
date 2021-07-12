@@ -41,7 +41,7 @@ curl -k -X POST "$URL/api/clusters" \
 	-F "file=@$KUBE_CONFIG" -F "name=demo-k8s-cluster"
 
 # Register a (powerflex) storage array.
-curl -k -X POST "$URL/api/storageArrays" \
+curl -k -X POST "$URL/api/storage-arrays" \
 	-H "accept: application/json" \
 	-H "Authorization: Bearer $DEPLOY_TOKEN" \
 	-H "Content-Type: application/json" \
