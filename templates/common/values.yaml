@@ -3,7 +3,7 @@
 ---
 #! "controllerCount" defines the number of csi driver controller pods to deploy
 #@overlay/match missing_ok=True
-controllerCount: 1
+controllerCount: 2
 
 #! "controller" allows to configure controller specific parameters
 #@overlay/match missing_ok=True

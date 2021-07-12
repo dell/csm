@@ -4,6 +4,10 @@
 #@ def get_application_containers(application):
 #@ if application == "isilon":
 #@    return get_containers_isilon(application)
+#@ elif application == "unity":
+#@    return get_containers_unity(application)
+#@ elif application == "powerstore":
+#@    return get_containers_powerstore(application)
 #@ elif application == "vxflexos":
 #@    return get_containers_vxflexos(application)
 #@ else:
@@ -18,6 +22,19 @@ containers:
   - #@ driver_isilon_container_spec()
 #@ end
 
+#! CONTAINER SPECS for application csi-unity
+#@ def get_containers_unity(application):
+containers:
+  - #@ registrar_container_spec(application)
+  - #@ driver_unity_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-powerstore
+#@ def get_containers_powerstore(application):
+containers:
+  - #@ registrar_container_spec(application)
+  - #@ driver_powerstore_container_spec()
+#@ end
 
 #! CONTAINER SPECS for application csi-vxflexos
 #@ def get_containers_vxflexos(application):
@@ -39,6 +56,10 @@ args:
   - "--csi-address=$(ADDRESS)"
   #@ if application == "isilon":
   - --kubelet-registration-path=/var/lib/kubelet/plugins/csi-isilon/csi_sock
+  #@ elif application == "unity":
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock
+  #@ elif application == "powerstore":
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/powerstore.emc.dell.com/csi_sock
   #@ elif application == "vxflexos":
   - --kubelet-registration-path=/var/lib/kubelet/plugins/vxflexos.emc.dell.com/csi_sock
   #@ end
@@ -173,6 +194,135 @@ volumeMounts:
 
 #@ end
 
+#! spec for csi-unity driver sidecar container
+#@ def driver_unity_container_spec():
+name: driver
+command: [ "/csi-unity" ]
+securityContext:
+  privileged: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+  allowPrivilegeEscalation: true
+image: #@ data.values.images.driver
+args:
+  - "--driver-name=csi-unity.dellemc.com"
+  - "--driver-config=/unity-config/config"
+imagePullPolicy: IfNotPresent
+env:
+  - name: CSI_ENDPOINT
+    value: unix:///var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock
+  - name: X_CSI_MODE
+    value: node
+  - name: X_CSI_DEBUG
+    value: #@ data.values.enableDebug
+  - name: X_CSI_UNITY_ALLOW_MULTI_POD_ACCESS
+    value: #@ data.values.allowRWOMultiPodAccess if data.values.allowRWOMultiPodAccess else "false"
+  - name: X_CSI_PRIVATE_MOUNT_DIR
+    value: "/var/lib/kubelet/plugins/unity.emc.dell.com/disks"
+  - name: X_CSI_EPHEMERAL_STAGING_PATH
+    value: /var/lib/kubelet/plugins/kubernetes.io/csi/pv/
+  - name: X_CSI_ISCSI_CHROOT
+    value: #@ data.values.ISCSIChroot if data.values.ISCSIChroot else "/noderoot"
+  - name: X_CSI_UNITY_AUTOPROBE
+    value: "true"
+  - name: X_CSI_UNITY_NODENAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: X_CSI_UNITY_NODENAME_PREFIX
+    value: #@ data.values.nodeNamePrefix
+  - name: SSL_CERT_DIR
+    value: /certs
+  - name: X_CSI_UNITY_SYNC_NODEINFO_INTERVAL
+    value: #@ data.values.syncNodeInfoInterval if data.values.syncNodeInfoInterval else "15"
+volumeMounts:
+  - name: driver-path
+    mountPath: /var/lib/kubelet/plugins/unity.emc.dell.com
+  - name: volumedevices-path
+    mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi
+  - name: pods-path
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: dev
+    mountPath: /dev
+  - name: noderoot
+    mountPath: /noderoot
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: unity-config
+    mountPath: /unity-config
+
+#@ end
+
+#! spec for csi-powerstore driver sidecar container
+#@ def driver_powerstore_container_spec():
+name: driver
+command: [ "/csi-powerstore" ]
+securityContext:
+  privileged: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+  allowPrivilegeEscalation: true
+image: #@ data.values.images.driver
+imagePullPolicy: Always
+env:
+  - name: CSI_ENDPOINT
+    value: unix:///var/lib/kubelet/plugins/powerstore.emc.dell.com/csi_sock
+  - name: X_CSI_MODE
+    value: node
+  - name: X_CSI_DEBUG
+    value: #@ data.values.enableDebug
+  - name: X_CSI_POWERSTORE_KUBE_NODE_NAME
+    valueFrom:
+      fieldRef:
+        apiVersion: v1
+        fieldPath: spec.nodeName
+  - name: X_CSI_POWERSTORE_NODE_NAME_PREFIX
+    value: #@ data.values.nodeNamePrefix
+  - name: X_CSI_POWERSTORE_NODE_ID_PATH
+    value: /node-id
+  - name: X_CSI_POWERSTORE_NODE_CHROOT_PATH
+    value: /noderoot
+  - name: X_CSI_POWERSTORE_TMP_DIR
+    value: /var/lib/kubelet/plugins/powerstore.dell.emc.com/tmp
+  - name: X_CSI_DRIVER_NAME
+    value: powerstore.dell.emc.com
+  - name: X_CSI_FC_PORTS_FILTER_FILE_PATH
+    value: #@ data.values.nodeFCPortsFilterFile    
+  - name: X_CSI_POWERSTORE_ENABLE_CHAP
+    value: #@ data.values.connection.enableCHAP if data.values.connection.enableCHAP else "false"  
+  - name: X_CSI_POWERSTORE_CONFIG_PATH
+    value: /powerstore-config/config
+  - name: GOPOWERSTORE_DEBUG
+    value: "true"
+volumeMounts:
+  - name: driver-path
+    mountPath: /var/lib/kubelet/plugins/powerstore.dell.emc.com
+  - name: csi-path
+    mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi
+    mountPropagation: "Bidirectional"
+  - name: pods-path
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: dev
+    mountPath: /dev
+  - name: sys
+    mountPath: /sys
+  - name: run
+    mountPath: /run
+  - name: node-id
+    mountPath: /node-id
+  - name: etciscsi
+    mountPath: /etc/iscsi
+  - name: mpath
+    mountPath: /etc/multipath.conf
+  - name: noderoot
+    mountPath: /noderoot
+  - name: powerstore-config
+    mountPath: /powerstore-config
+
+#@ end
 
 #! spec for csi-vxflexos driver sidecar container
 #@ def driver_vxflexos_container_spec():

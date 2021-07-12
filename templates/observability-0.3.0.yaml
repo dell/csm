@@ -114,7 +114,7 @@ spec:
         app.kubernetes.io/name: karavi_metrics_powerflex
         app.kubernetes.io/instance: #@ data.values.Release.name
     spec:
-      serviceAccount: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
+      serviceAccountName: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
       containers:
       - name: karavi-metrics-powerflex
         image: #@ data.values.karaviMetricsPowerflex.image
@@ -288,7 +288,7 @@ spec:
         - name: karavi-topology-configmap
           configMap:
             name: karavi-topology-configmap
-      serviceAccount: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
+      serviceAccountName: #@ "{}-{}".format(data.values.Release.name, "topology-controller")
       containers:
       - name: karavi-topology
         image: #@ data.values.karaviTopology.image

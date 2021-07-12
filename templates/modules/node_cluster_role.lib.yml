@@ -4,6 +4,10 @@
 #@ def get_cluster_rules(application):
 #@ if application == "isilon":
 #@    return get_cluster_rules_isilon()
+#@ elif application == "unity":
+#@    return get_cluster_rules_unity()
+#@ elif application == "powerstore":
+#@    return get_cluster_rules_powerstore()
 #@ elif application == "vxflexos":
 #@    return get_cluster_rules_vxflexos()
 #@ else:
@@ -37,6 +41,62 @@
   resourceNames: [ "privileged" ]
   resources: [ "securitycontextconstraints" ]
   verbs: [ "use" ]
+#@ end
+
+#@ def get_cluster_rules_unity():
+- apiGroups: [""]
+  resources: ["persistentvolumes"]
+  verbs: ["create", "delete", "get", "list", "watch", "update"]
+- apiGroups: [""]
+  resources: ["persistentvolumesclaims"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "list", "watch", "update", "patch"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["volumeattachments"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["volumeattachments"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: [ "security.openshift.io" ]
+  resourceNames: [ "privileged" ]
+  resources: [ "securitycontextconstraints" ]
+  verbs: [ "use" ]
+#@ end
+
+#@ def get_cluster_rules_powerstore():
+- apiGroups: [""]
+  resources: ["persistentvolumes"]
+  verbs: ["create", "delete", "get", "list", "watch", "update"]
+- apiGroups: [""]
+  resources: ["persistentvolumesclaims"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "list", "watch", "update", "patch"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["volumeattachments"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["volumeattachments"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: ["security.openshift.io"]
+  resourceNames: ["privileged"]
+  resources: ["securitycontextconstraints"]
+  verbs: ["use"]
 #@ end
 
 #@ def get_cluster_rules_vxflexos():

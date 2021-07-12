@@ -1,12 +1,12 @@
 # Change this to your IP address if you want to access the server from elsewhere
-export HOST="127.0.0.1"
+export HOST="localhost"
 
 # Change to the desired port
 # If you are accessing it from a different host, make sure your firewall allows it 
 export PORT="8080"
 
 # Allowed values are https & http (recommended is https)
-export SCHEME="https"
+export SCHEME="http"
 
 # Set it to a directory containing SSL certs
 export CERT_DIR="samplecerts"

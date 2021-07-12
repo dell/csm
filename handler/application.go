@@ -163,6 +163,20 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 		c.Logger().Errorf("error creating secret: %+v", err)
 		return
 	}
+	// For unity alone an empty secret has to be created
+	if applicationStateChange.StorageArrays[0].StorageArrayType.Name == model.ArrayTypeUnity {
+		// First create the secret manifest
+		emptySecretOutput, err := yttClient.GetEmptySecret()
+		if err != nil {
+			c.Logger().Errorf("error generating empty secret: %+v", err)
+			return
+		}
+		err = k8sClient.DeployFromBytes(ctx, emptySecretOutput.AsCombinedBytes())
+		if err != nil {
+			c.Logger().Errorf("error creating secret: %+v", err)
+			return
+		}
+	}
 
 	output, err := yttClient.TemplateFromApplication(applicationStateChange.ID, h.applicationStateChangeStore, h.clusterStore)
 	if err != nil {
