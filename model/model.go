@@ -84,7 +84,7 @@ type StorageArrayType struct {
 }
 
 type DriverType struct {
-	gorm.Model
+	gorm.Model         // This already contains ID field
 	Version            string
 	StorageArrayTypeID uint
 }

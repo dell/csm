@@ -66,6 +66,15 @@ definitions:
         description: The nodes
         type: string
     type: object
+  DriverResponse:
+    properties:
+      id:
+        type: integer
+      storage_array_type_ID:
+        type: integer
+      version:
+        type: string
+    type: object
   ErrorMessage:
     properties:
       arguments:
@@ -577,6 +586,74 @@ paths:
       summary: Update a cluster
       tags:
       - cluster
+  /driver-types:
+    get:
+      consumes:
+      - application/json
+      description: List all driver types
+      operationId: list-driver-types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/DriverResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all driver types
+      tags:
+      - driver-type
+  /driver-types/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a driver type
+      operationId: get-driver-type
+      parameters:
+      - description: Driver Type ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/DriverResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a driver type
+      tags:
+      - driver-type
   /storage-arrays:
     get:
       consumes:
@@ -756,7 +833,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: Get an task
+      description: Get a task
       operationId: get-task
       parameters:
       - description: Task ID
@@ -789,7 +866,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       security:
       - ApiKeyAuth: []
-      summary: Get an task
+      summary: Get a task
       tags:
       - task
   /tasks/{id}/approve:
