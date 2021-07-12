@@ -4,15 +4,12 @@ import (
 	"github.com/dell/csm-deployment/model"
 )
 
-type clusterListResponse struct {
-	Clusters []*clusterResponse `json:"clusters"`
-}
-
 type clusterResponse struct {
 	ClusterID   uint   `json:"cluster_id"`
 	ClusterName string `json:"cluster_name"`
-	Nodes       string `json:"nodes"`
-}
+	// The nodes
+	Nodes string `json:"nodes"`
+} //@name ClusterResponse
 
 func newClusterResponse(u *model.Cluster) *clusterResponse {
 	r := &clusterResponse{}

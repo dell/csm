@@ -28,33 +28,33 @@ import (
 // @Produce  json
 // @Param application body applicationCreateRequest true "Application info for creation"
 // @Success 202 {object} applicationResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /applications [post]
 func (h *ApplicationHandler) CreateApplication(c echo.Context) error {
 	var application model.Application
 	req := &applicationCreateRequest{}
 	if err := req.bind(c, &application, h.moduleStore); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
-	arrays, err := h.arrayStore.GetAllByID(req.Application.StorageArrays...)
+	arrays, err := h.arrayStore.GetAllByID(req.StorageArrays...)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	application.StorageArrays = arrays
 
-	modules, err := h.moduleStore.GetAllByID(req.Application.ModuleTypes...)
+	modules, err := h.moduleStore.GetAllByID(req.ModuleTypes...)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	application.ModuleTypes = modules
 
 	// Persist the application.  The name must be unique.
 	if err := h.applicationStore.Create(&application); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
 	// Create a task with "in progress" status.
@@ -62,7 +62,7 @@ func (h *ApplicationHandler) CreateApplication(c echo.Context) error {
 		Status: model.TaskStatusInProgress,
 	}
 	if err := h.taskStore.Create(&t); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
 	// get a diff of what we will be installing and request approval
@@ -208,19 +208,19 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 // @Produce  json
 // @Param id path string true "Application ID"
 // @Success 200 {object} applicationResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /applications/{id} [get]
 func (h *ApplicationHandler) GetApplication(c echo.Context) error {
 	applicationID := c.Param("id")
 	application, err := h.applicationStore.GetByID(applicationID)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	if application == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 	return c.JSON(http.StatusOK, newApplicationResponse(application))
 }
@@ -234,19 +234,19 @@ func (h *ApplicationHandler) GetApplication(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Application ID"
 // @Success 200 {object} applicationResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /applications/{id} [put]
 func (h *ApplicationHandler) UpdateApplication(c echo.Context) error {
 	applicationID := c.Param("id")
 	application, err := h.applicationStore.GetByID(applicationID)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	if application == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 
 	// Create a task with "in progress" status.
@@ -254,7 +254,7 @@ func (h *ApplicationHandler) UpdateApplication(c echo.Context) error {
 		Status: model.TaskStatusInProgress,
 	}
 	if err := h.taskStore.Create(&t); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
 	// Capture the diff and add it to the task which will need to be approved/cancelled to proceed with application update
@@ -273,26 +273,26 @@ func (h *ApplicationHandler) UpdateApplication(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Application ID"
 // @Success 200 {object} applicationResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /applications/{id} [delete]
 func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 	applicationID := c.Param("id")
 	application, err := h.applicationStore.GetByID(applicationID)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	if application == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 
 	// TODO: shouldn't delete request be async and create task too?
 	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 	configData := cluster.ConfigFileData
 
@@ -301,12 +301,12 @@ func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 		tmpFile, err := ioutil.TempFile("", "config")
 		if err != nil {
 			c.Logger().Errorf("error creating temp file: %+v", err)
-			return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+			return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 		}
 		_, err = tmpFile.Write(configData)
 		if err != nil {
 			c.Logger().Errorf("error writing file: %+v", err)
-			return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+			return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 		}
 		configFileName = tmpFile.Name()
 		defer os.Remove(tmpFile.Name())
@@ -315,12 +315,12 @@ func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 	client := kapp.NewClient("")
 	kappOutput, err := client.Delete(c.Request().Context(), application.Name, configFileName)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
 	if err := h.applicationStore.Delete(application); err != nil {
 		c.Logger().Errorf("error deleting application: %+v", err)
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
 	return c.JSON(http.StatusOK, kappOutput)

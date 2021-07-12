@@ -19,26 +19,26 @@ import (
 // @Produce  json
 // @Param storageArray body storageArrayCreateRequest true "Storage Array info for creation"
 // @Success 202 {object} storageArrayResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays [post]
+// @Router /storage-arrays [post]
 func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 	var storageArray model.StorageArray
 	req := &storageArrayCreateRequest{}
 	if err := req.bind(c, &storageArray); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 
-	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArray.StorageArrayType))
+	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 	storageArray.StorageArrayTypeID = arrayType.ID
 
 	if err := h.arrayStore.Create(&storageArray); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	return c.JSON(http.StatusCreated, newStorageArrayResponse(&storageArray))
 }
@@ -52,26 +52,26 @@ func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 // @Produce  json
 // @Param storageArray body storageArrayUpdateRequest true "Storage Array info for update"
 // @Success 200 {object} storageArrayResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays [put]
+// @Router /storage-arrays [put]
 func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 	var storageArray model.StorageArray
 	req := &storageArrayUpdateRequest{}
 	if err := req.bind(c, &storageArray); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 
-	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArray.StorageArrayType))
+	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 	storageArray.StorageArrayTypeID = arrayType.ID
 
 	if err := h.arrayStore.Update(&storageArray); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	return c.JSON(http.StatusOK, newStorageArrayResponse(&storageArray))
 }
@@ -84,15 +84,15 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 // @Accept  json
 // @Produce  json
 // @Success 202 {object} []storageArrayResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays [get]
+// @Router /storage-arrays [get]
 func (h *StorageArrayHandler) ListStorageArrays(c echo.Context) error {
 	arrays, err := h.arrayStore.GetAll()
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	resp := make([]*storageArrayResponse, 0)
 	for _, arr := range arrays {
@@ -110,23 +110,23 @@ func (h *StorageArrayHandler) ListStorageArrays(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Storage Array ID"
 // @Success 200 {object} storageArrayResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays/{id} [get]
+// @Router /storage-arrays/{id} [get]
 func (h *StorageArrayHandler) GetStorageArray(c echo.Context) error {
 	arrayID := c.Param("id")
 	id, err := strconv.Atoi(arrayID)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 	storageArray, err := h.arrayStore.GetByID(uint(id))
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if storageArray == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 	return c.JSON(http.StatusOK, newStorageArrayResponse(storageArray))
 }
@@ -139,28 +139,28 @@ func (h *StorageArrayHandler) GetStorageArray(c echo.Context) error {
 // @Accept  json
 // @Produce  json
 // @Param id path string true "Storage Array ID"
-// @Success 200
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Success 200 {string} string "Success"
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storageArrays/{id} [delete]
+// @Router /storage-arrays/{id} [delete]
 func (h *StorageArrayHandler) DeleteStorageArray(c echo.Context) error {
 	arrayID := c.Param("id")
 	id, err := strconv.Atoi(arrayID)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewError(err))
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 	storageArray, err := h.arrayStore.GetByID(uint(id))
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if storageArray == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 	if err := h.arrayStore.Delete(storageArray); err != nil {
 		c.Logger().Errorf("error deleting storage array: %+v", err)
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	return c.JSON(http.StatusOK, newStorageArrayResponse(storageArray))
 }
