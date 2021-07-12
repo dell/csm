@@ -384,7 +384,7 @@ func Test_ListClusters(t *testing.T) {
 	tests := map[string]func(t *testing.T) (int, *ClusterHandler, string, *gomock.Controller){
 		"success": func(*testing.T) (int, *ClusterHandler, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			listStorageSystemResponseJSON := "{\"clusters\":[{\"cluster_id\":0,\"cluster_name\":\"cluster-1\",\"nodes\":\"\"},{\"cluster_id\":0,\"cluster_name\":\"cluster-2\",\"nodes\":\"\"}]}"
+			listStorageSystemResponseJSON := "[{\"cluster_id\":0,\"cluster_name\":\"cluster-1\",\"nodes\":\"\"},{\"cluster_id\":0,\"cluster_name\":\"cluster-2\",\"nodes\":\"\"}]"
 
 			clusterStore := mocks.NewMockClusterStoreInterface(ctrl)
 

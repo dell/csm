@@ -84,6 +84,7 @@ type Interface interface {
 		as store.ApplicationStateChangeStoreInterface) (Output, error)
 	NamespaceTemplateFromApplication(appID uint,
 		as store.ApplicationStateChangeStoreInterface) (Output, error)
+	GetEmptySecret() (Output, error)
 }
 
 type client struct {
@@ -231,6 +232,18 @@ func (c *client) SecretTemplateFromApplication(appID uint, as store.ApplicationS
 		c.templatePath + fmt.Sprintf("templates/configs/values-%s.yaml", arrayType.Name),
 		c.templatePath + fmt.Sprintf("templates/configs/values-%s-secret.yaml", arrayType.Name),
 		c.templatePath + "templates/modules/driver_secret.lib.yml",
+	}
+
+	output, err := c.Template(paths, nil)
+	if err != nil {
+		return Output{}, err
+	}
+	return output, output.Err
+}
+
+func (c *client) GetEmptySecret() (Output, error) {
+	paths := []string{
+		c.templatePath + "templates/empty-secret.yaml",
 	}
 
 	output, err := c.Template(paths, nil)

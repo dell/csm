@@ -4,6 +4,10 @@
 #@ def get_application_volumes(application):
 #@ if application == "isilon":
 #@    return get_volumes(application)
+#@ elif application == "unity":
+#@    return get_volumes(application)
+#@ elif application == "powerstore":
+#@    return get_volumes(application)
 #@ elif application == "vxflexos":
 #@    return get_volumes(application)
 #@ else:
@@ -18,15 +22,26 @@ volumes:
     hostPath:
       path: /var/lib/kubelet/plugins_registry/
       type: DirectoryOrCreate
+  #@ if application == "unity":
+  - name: volumedevices-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/kubernetes.io/csi/
+      type: DirectoryOrCreate
+  #@ elif application == "powerstore":
+  - name: csi-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/kubernetes.io/csi
+      type: DirectoryOrCreate
+  #@ else:
   - name: volumedevices-path
     hostPath:
       path: /var/lib/kubelet/plugins/kubernetes.io/csi/volumeDevices
       type: DirectoryOrCreate
+  #@ end
   - name: pods-path
     hostPath:
       path: /var/lib/kubelet/pods
       type: Directory
-
   - name: dev
     hostPath:
       path: /dev
@@ -49,6 +64,62 @@ volumes:
   - name: isilon-configs
     secret:
       secretName: #@ application + "-creds"
+  #@ elif application == "unity":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/unity.emc.dell.com
+      type: DirectoryOrCreate
+  - name: noderoot
+    hostPath:
+      path: /
+      type: Directory
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  - name: unity-config
+    secret:
+      secretName: #@ application + "-config"
+  
+  #@ elif application == "powerstore":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/powerstore.emc.dell.com
+      type: DirectoryOrCreate
+  - name: node-id
+    hostPath:
+      path: #@ data.values.nodeIDPath
+      type: File
+  - name: etciscsi
+    hostPath:
+      path: /etc/iscsi
+      type: DirectoryOrCreate
+  - name: mpath
+    hostPath:
+      path: /etc/multipath.conf
+      type: FileOrCreate
+  - name: noderoot
+    hostPath:
+      path: /
+      type: Directory
+  - name: sys
+    hostPath:
+      path: /sys
+      type: Directory
+  - name: run
+    hostPath:
+      path: /run
+      type: Directory
+  - name: powerstore-config
+    secret:
+      secretName: #@ application + "-creds"
+
   #@ elif application == "vxflexos":
   - name: driver-path
     hostPath:
@@ -89,3 +160,4 @@ volumes:
     #@ end
   #@ end
 #@ end
+

@@ -4,6 +4,10 @@
 #@ def get_application_volumes(application):
 #@ if application == "isilon":
 #@    return get_volumes_isilon(application)
+#@ elif application == "unity":
+#@    return get_volumes_unity(application)
+#@ elif application == "powerstore":
+#@    return get_volumes_powerstore(application)
 #@ elif application == "vxflexos":
 #@    return get_volumes_vxflexos(application)
 #@ else:
@@ -27,6 +31,36 @@ volumes:
                 path: #@ "cert-" + str(i)
         #@ end
   - name: isilon-configs
+    secret:
+      secretName: #@ application + "-creds"
+#@ end
+
+#! VOLUMES for application csi-unity
+#@ def get_volumes_unity(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  - name: unity-config
+    secret:
+      secretName: #@ application + "-config"
+#@ end
+
+#! VOLUMES for application csi-powerstore
+#@ def get_volumes_powerstore(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: powerstore-configs
     secret:
       secretName: #@ application + "-creds"
 #@ end

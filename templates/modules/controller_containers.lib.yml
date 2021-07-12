@@ -4,6 +4,10 @@
 #@ def get_application_containers(application):
 #@ if application == "isilon":
 #@    return get_containers_isilon(application)
+#@ elif application == "unity":
+#@    return get_containers_unity(application)
+#@ elif application == "powerstore":
+#@    return get_containers_powerstore(application)
 #@ elif application == "vxflexos":
 #@    return get_containers_vxflexos(application)
 #@ else:
@@ -15,18 +19,37 @@
 #@ def get_containers_isilon(application):
 containers:
 - #@ resizer_container_spec()
-- #@ attacher_container_spec()
+- #@ attacher_container_spec(application)
 - #@ provisioner_container_spec(application)
 - #@ snapshotter_container_spec(application)
 - #@ driver_isilon_container_spec()
 #@ end
 
+#! CONTAINER SPECS for application csi-unity
+#@ def get_containers_unity(application):
+containers:
+- #@ resizer_container_spec()
+- #@ attacher_container_spec(application)
+- #@ provisioner_container_spec(application)
+- #@ snapshotter_container_spec(application)
+- #@ driver_unity_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-powerstore
+#@ def get_containers_powerstore(application):
+containers:
+- #@ resizer_container_spec()
+- #@ attacher_container_spec(application)
+- #@ provisioner_container_spec(application)
+- #@ snapshotter_container_spec(application)
+- #@ driver_powerstore_container_spec()
+#@ end
 
 #! CONTAINER SPECS for application csi-vxflexos
 #@ def get_containers_vxflexos(application):
 containers:
 - #@ resizer_container_spec()
-- #@ attacher_container_spec()
+- #@ attacher_container_spec(application)
 - #@ provisioner_container_spec(application)
 - #@ snapshotter_container_spec(application)
   #@ if data.values.podmon.enabled:
@@ -56,13 +79,18 @@ volumeMounts:
 #@ end
 
 #!  spec for attacher sidecar container
-#@ def attacher_container_spec():
+#@ def attacher_container_spec(application):
 name: attacher
 image: #@ data.values.images.attacher
 args:
   - "--csi-address=$(ADDRESS)"
   - "--v=5"
   - "--leader-election"
+  #@ if application == "powerstore":
+  - "--worker-threads=130"
+  - "--resync=10s"
+  - "--timeout=130s"
+  #@ end
 env:
   - name: ADDRESS
     value: /var/run/csi/csi.sock
@@ -79,13 +107,22 @@ args:
   - "--csi-address=$(ADDRESS)"
   - #@ "--volume-name-prefix={}".format(data.values.volumeNamePrefix)
   - "--volume-name-uuid-length=10"
+  #@ if application == "unity":
+  - "--worker-threads=6"
+  #@ else:
   - "--worker-threads=5"
+  #@ end
   - "--v=5"
   - "--feature-gates=Topology=true"
   - "--leader-election=true"
   - "--extra-create-metadata"
   #@ if application == "isilon":
   - "--timeout=60s"
+  #@ elif application == "unity":
+  - "--timeout=180s"
+  - "--leader-election"
+  - #@ "--leader-election-namespace={}".format(data.values.namespace)
+  - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
   #@ elif application == "vxflexos":
   - "--timeout=120s"
   - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
@@ -106,9 +143,17 @@ image: #@ data.values.images.snapshotter
 args:
   - "--csi-address=$(ADDRESS)"
   - "--v=5"
+  #@ if application == "unity":
+  - "--leader-election"
+  #@ else:
   - "--leader-election=true"
+  #@ end
   #@ if application == "isilon":
   - "--timeout=15s"
+  #@ elif application == "unity":
+  - "--timeout=360s"
+  - #@ "--snapshot-name-prefix={}".format(data.values.snapNamePrefix)
+  - "--snapshot-name-uuid-length=10"
   #@ elif application == "vxflexos":
   - "--timeout=120s"
   #@ end
@@ -210,6 +255,62 @@ volumeMounts:
     mountPath: /isilon-configs
 #@ end
 
+#! spec for csi-unity driver sidecar container
+#@ def driver_unity_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: IfNotPresent
+command: [ "/csi-unity" ]
+args:
+  - "--driver-name=csi-unity.dellemc.com"
+  - "--driver-config=/unity-config/config"
+  - "--leader-election"
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_UNITY_AUTOPROBE
+    value: "true"
+  - name: SSL_CERT_DIR
+    value: /certs
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: unity-config
+    mountPath: /unity-config
+#@ end
+
+#! spec for csi-powerstore driver sidecar container
+#@ def driver_powerstore_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: Always
+command: [ "/csi-powerstore" ]
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_DEBUG
+    value: "true"
+  - name: X_CSI_DRIVER_NAME
+    value: powerstore.dell.emc.com
+  - name: X_CSI_POWERSTORE_EXTERNAL_ACCESS
+    value: #@ data.values.externalAccess
+  - name: X_CSI_POWERSTORE_CONFIG_PATH
+    value: /powerstore-config/config
+  - name: GOPOWERSTORE_DEBUG
+    value: "true"
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: powerstore-config
+    mountPath: /powerstore-config
+#@ end
 
 #! spec for csi-vxflexos driver sidecar container
 #@ def driver_vxflexos_container_spec():

@@ -67,8 +67,17 @@ func PopulateInventory(db *gorm.DB) {
 	powerflex := &model.StorageArrayType{Name: model.ArrayTypePowerFlex}
 	db.Create(powerflex)
 
+	powerMax := &model.StorageArrayType{Name: model.ArrayTypePowerMax}
+	db.Create(powerMax)
+
 	isilon := &model.StorageArrayType{Name: model.ArrayTypeIsilon}
 	db.Create(isilon)
+
+	powerStore := &model.StorageArrayType{Name: model.ArrayTypePowerStore}
+	db.Create(powerStore)
+
+	unity := &model.StorageArrayType{Name: model.ArrayTypeUnity}
+	db.Create(unity)
 
 	podmon := &model.ModuleType{
 		Name:    "podmon",
@@ -99,6 +108,18 @@ func PopulateInventory(db *gorm.DB) {
 		StorageArrayTypeID: isilon.ID,
 	}
 	db.Create(isilondriver15)
+
+	unityDriver15 := &model.DriverType{
+		Version:            "1.5.0",
+		StorageArrayTypeID: unity.ID,
+	}
+	db.Create(unityDriver15)
+
+	powerStoreDriver15 := &model.DriverType{
+		Version:            "1.5.0",
+		StorageArrayTypeID: powerStore.ID,
+	}
+	db.Create(powerStoreDriver15)
 }
 
 func PopulateTestDb(db *gorm.DB, configPath string) {
@@ -139,7 +160,9 @@ func PopulateTestDb(db *gorm.DB, configPath string) {
 	db.Create(observabilityModule)
 
 	kubeConfigData, err := ioutil.ReadFile(configPath)
-
+	if err != nil {
+		panic(err)
+	}
 	cluster := &model.Cluster{
 		ClusterName:      "test-cluster",
 		ConfigFileData:   kubeConfigData,

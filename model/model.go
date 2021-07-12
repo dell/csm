@@ -23,6 +23,8 @@ const (
 	ArrayTypePowerFlex         string = "powerflex"
 	ArrayTypePowerMax          string = "powermax"
 	ArrayTypeIsilon            string = "isilon"
+	ArrayTypeUnity             string = "unity"
+	ArrayTypePowerStore        string = "powerstore"
 )
 
 type User struct {

@@ -15,8 +15,8 @@ import (
 )
 
 // GetTask godoc
-// @Summary Get an task
-// @Description Get an task
+// @Summary Get a task
+// @Description Get a task
 // @ID get-task
 // @Tags task
 // @Accept  json
@@ -24,19 +24,19 @@ import (
 // @Param id path string true "Task ID"
 // @Success 200 {object} taskResponse
 // @Success 303 {object} taskResponse
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /tasks/{id} [get]
 func (h *TaskHandler) GetTask(c echo.Context) error {
 	taskID := c.Param("id")
 	task, err := h.taskStore.GetByID(taskID)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if task == nil {
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 
 	// task requires user intervention, so return it with the appropriate _links to the application
@@ -80,10 +80,10 @@ func (h *TaskHandler) GetTask(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Task ID"
 // @Param updating query boolean false "Task is associated with an Application update operation"
-// @Success 202 "Accepted"
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Success 202 {string} string "Accepted"
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /tasks/{id}/approve [post]
 func (h *TaskHandler) ApproveStateChange(c echo.Context) error {
@@ -91,13 +91,14 @@ func (h *TaskHandler) ApproveStateChange(c echo.Context) error {
 	task, err := h.taskStore.GetByID(taskID)
 	if err != nil {
 		c.Logger().Errorf("error getting task: %+v", err)
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
+
 	}
 
 	// Put the task status back into in-progress.
 	task.Status = model.TaskStatusInProgress
 	if err := h.taskStore.Update(task); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 
 	GoProcessApplication(h, context.Background(), *task, c)
@@ -122,10 +123,10 @@ var WaitGoProcessApplication = 10 * time.Second
 // @Produce  json
 // @Param id path string true "Task ID"
 // @Param updating query boolean false "Task is associated with an Application update operation"
-// @Success 200 "Success"
-// @Failure 400 {object} utils.Error
-// @Failure 404 {object} utils.Error
-// @Failure 500 {object} utils.Error
+// @Success 200 {string} string "Success"
+// @Failure 400 {object} utils.ErrorResponse
+// @Failure 404 {object} utils.ErrorResponse
+// @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
 // @Router /tasks/{id}/cancel [post]
 func (h *TaskHandler) CancelStateChange(c echo.Context) error {
@@ -133,30 +134,31 @@ func (h *TaskHandler) CancelStateChange(c echo.Context) error {
 	task, err := h.taskStore.GetByID(taskID)
 	if err != nil {
 		c.Logger().Errorf("error getting task: %+v", err)
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 
 	application, err := h.applicationStore.GetByID(fmt.Sprint(task.ApplicationID))
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if application == nil {
 		c.Logger().Printf("no application with ID %v", task.ApplicationID)
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 
 	applicationStateChange, err := h.applicationStateChangeStore.GetByApplicationID(application.ID)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 	if applicationStateChange == nil {
 		c.Logger().Printf("no application state change found")
-		return c.JSON(http.StatusNotFound, utils.NotFound())
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 	}
 
 	if err := h.applicationStateChangeStore.Delete(applicationStateChange); err != nil {
-		c.Logger().Printf("error deleting application state change for application %v", application.ID)
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		errMgs := fmt.Sprintf("error deleting application state change for application %v", application.ID)
+		c.Logger().Print(errMgs)
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, errMgs, err))
 	}
 
 	// Check the updating query parameter.  If we're not updating (i.e. we're creating), then we can remove
@@ -165,18 +167,20 @@ func (h *TaskHandler) CancelStateChange(c echo.Context) error {
 	if isUpdating == "false" {
 		application.Name = fmt.Sprintf("_DEL%s_%v", application.Name, time.Now().UnixNano())
 		if err := h.applicationStore.Update(application); err != nil {
-			c.Logger().Printf("error updating application: %v", application.ID)
-			return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+			errMgs := fmt.Sprintf("error updating application: %v", application.ID)
+			c.Logger().Print(errMgs)
+			return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, errMgs, err))
 		}
 		if err := h.applicationStore.Delete(application); err != nil {
-			c.Logger().Printf("error deleting application: %v", application.ID)
-			return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+			errMgs := fmt.Sprintf("error deleting application: %v", application.ID)
+			c.Logger().Print(errMgs)
+			return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, errMgs, err))
 		}
 	}
 
 	task.Status = model.TaskStatusCompleted
 	if err := h.taskStore.Update(task); err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
 
 	return c.NoContent(http.StatusOK)
@@ -190,26 +194,28 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 	// Retrieve the application associated with this task.
 	application, err := h.applicationStore.GetByID(fmt.Sprint(task.ApplicationID))
 	if err != nil {
-		c.Logger().Printf("error getting application: %v", task.ApplicationID)
-		c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		errMgs := fmt.Sprintf("error getting application: %v", task.ApplicationID)
+		c.Logger().Print(errMgs)
+		c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, errMgs, err))
 		return
 	}
 	if application == nil {
 		c.Logger().Printf("the application was not found: %v", task.ApplicationID)
-		c.JSON(http.StatusNotFound, utils.NotFound())
+		c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 		return
 	}
 
 	// Retrieve the associated application state change.
 	applicationStateChange, err := h.applicationStateChangeStore.GetByApplicationID(application.ID)
 	if err != nil {
-		c.Logger().Printf("error getting the application state change for application: %v", application.ID)
-		c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		errMgs := fmt.Sprintf("error getting the application state change for application: %v", application.ID)
+		c.Logger().Print(errMgs)
+		c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, errMgs, err))
 		return
 	}
 	if applicationStateChange == nil {
 		c.Logger().Printf("the application state change was not found: %v", application.ID)
-		c.JSON(http.StatusNotFound, utils.NotFound())
+		c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
 		return
 	}
 
@@ -223,7 +229,7 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 	cluster, err := h.clusterStore.GetByID(application.ClusterID)
 	if err != nil {
 		c.Logger().Errorf("error getting cluster: %+v", err)
-		c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "error getting cluster", err))
 		return
 	}
 	configData := cluster.ConfigFileData
@@ -233,13 +239,13 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 		tmpFile, err := ioutil.TempFile("", "config")
 		if err != nil {
 			c.Logger().Errorf("error creating temp file: %+v", err)
-			c.JSON(http.StatusInternalServerError, utils.NewError(err))
+			c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "error creating temp file", err))
 			return
 		}
 		_, err = tmpFile.Write(configData)
 		if err != nil {
 			c.Logger().Errorf("error writing file: %+v", err)
-			c.JSON(http.StatusInternalServerError, utils.NewError(err))
+			c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "error writing file", err))
 			return
 		}
 		configFileName = tmpFile.Name()
@@ -254,7 +260,7 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 		if err := h.taskStore.Update(&task); err != nil {
 			c.Logger().Errorf("error updating task: %+v", err)
 		}
-		c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, fmt.Sprintf("error deploying app: output = %+v", kappOutput), err))
 		return
 	}
 
@@ -271,14 +277,15 @@ func (h *TaskHandler) processApplication(ctx context.Context, task model.Task, c
 		if err := h.taskStore.Update(&task); err != nil {
 			c.Logger().Printf("error creating application: %+v", err)
 		}
-		c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 		return
 	}
 
 	// Delete the pending application state change.
 	if err := h.applicationStateChangeStore.Delete(applicationStateChange); err != nil {
-		c.Logger().Printf("error deleting application state change for application %v", application.ID)
-		c.JSON(http.StatusInternalServerError, utils.NewError(err))
+		errMgs := fmt.Sprintf("error deleting application state change for application %v", application.ID)
+		c.Logger().Print(errMgs)
+		c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, errMgs, err))
 		return
 	}
 

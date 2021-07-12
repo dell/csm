@@ -47,7 +47,7 @@ spec:
       labels:
         app: #@ object_name()
     spec:
-      serviceAccount: #@ object_name()
+      serviceAccountName: #@ object_name()
       dnsPolicy: ClusterFirstWithHostNet
       hostNetwork: true
       #@ if data.values.node.nodeSelector:
