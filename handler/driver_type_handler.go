@@ -12,7 +12,7 @@ type DriverTypeHandler struct {
 	driverTypeStore store.DriverTypeStoreInterface
 }
 
-// NewClusterHandler creates a new ClusterHandler
+// NewDriverTypeHandler creates a new DriverTypeHandler
 func NewDriverTypeHandler(as store.DriverTypeStoreInterface) *DriverTypeHandler {
 	return &DriverTypeHandler{
 		driverTypeStore: as,

@@ -94,6 +94,9 @@ func main() {
 	dt := handler.NewDriverTypeHandler(dts)
 	dt.Register(api)
 
+	mt := handler.NewModuleTypeHandler(modules)
+	mt.Register(api)
+
 	if scheme == "http" {
 		rt.Logger.Fatal(rt.Start(hostNameWithPort))
 	} else if scheme == "https" {

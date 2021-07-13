@@ -90,7 +90,7 @@ type DriverType struct {
 }
 
 type ModuleType struct {
-	gorm.Model
+	gorm.Model // This already contains ID field
 	Name       string
 	Version    string
 	Standalone bool

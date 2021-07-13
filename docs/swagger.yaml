@@ -145,6 +145,17 @@ definitions:
           $ref: '#/definitions/ErrorMessage'
         type: array
     type: object
+  ModuleResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      stand_alone:
+        type: boolean
+      version:
+        type: string
+    type: object
   StorageArrayCreateRequest:
     properties:
       management_endpoint:
@@ -654,6 +665,74 @@ paths:
       summary: Get a driver type
       tags:
       - driver-type
+  /module-types:
+    get:
+      consumes:
+      - application/json
+      description: List all module types
+      operationId: list-module-type
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/ModuleResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all module types
+      tags:
+      - module-type
+  /module-types/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a module type
+      operationId: get-module-type
+      parameters:
+      - description: Module Type ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ModuleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a module type
+      tags:
+      - module-type
   /storage-arrays:
     get:
       consumes:
