@@ -3,6 +3,10 @@
 application: powerstore
 namespace: powerstore
 
+#! "defaultFsType" is used to set the default FS type which will be used
+#! for mount volumes if FsType is not specified in the storage class
+defaultFsType: ext4
+
 #! "volumeNamePrefix" defines a string prepended to each volume created by the CSI driver.
 volumeNamePrefix: csi
 
@@ -52,7 +56,7 @@ externalAccess:
 
 images:
   #! "images.driver" defines the container images used for the driver container.
-  driver: dellemc/csi-powerstore:v1.5.0
+  driver: amaas-eos-mw1.cec.lab.emc.com:5028/csi-powerstore:v2.0.0
 
 #! Indicates whether debug level logs should be logged
 enableDebug: "true"
