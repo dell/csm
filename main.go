@@ -90,6 +90,10 @@ func main() {
 	sah := handler.NewStorageArrayHandler(storageArrays)
 	sah.Register(api)
 
+	dts := store.NewDriverTypeStore(d)
+	dt := handler.NewDriverTypeHandler(dts)
+	dt.Register(api)
+
 	if scheme == "http" {
 		rt.Logger.Fatal(rt.Start(hostNameWithPort))
 	} else if scheme == "https" {

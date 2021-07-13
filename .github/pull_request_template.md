@@ -15,5 +15,4 @@
 
 ### Description of your changes
 < your description goes here >
-{"mode":"full","isActive":false}
 
