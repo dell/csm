@@ -56,7 +56,7 @@ externalAccess:
 
 images:
   #! "images.driver" defines the container images used for the driver container.
-  driver: amaas-eos-mw1.cec.lab.emc.com:5028/csi-powerstore:v2.0.0
+  driver: dellemc/csi-powerstore:v1.5.0
 
 #! Indicates whether debug level logs should be logged
 enableDebug: "true"
