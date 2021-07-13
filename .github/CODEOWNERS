@@ -1,0 +1,17 @@
+# CODEOWNERS
+#
+# documentation for this file can be found at:
+# https://help.github.com/en/articles/about-code-owners
+
+# These are the default owners for the code and will
+# be requested for review when someone opens a pull request.
+# order is alphabetical for easier maintenance.
+#
+# Harish P (harishp8889)
+# Michael Edegware (medegw01)
+# Nijay, Francis (nijayf)
+# Sean Gallacher (gallacher)
+# Trevor Dawe (tdawe)
+
+# for all files:
+* @harishp8889 @medegw01 @nijayf @gallacher @tdawe
