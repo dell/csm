@@ -89,6 +89,7 @@ type DriverType struct {
 	StorageArrayTypeID uint
 }
 
+//  ModuleType holds details about module used in application
 type ModuleType struct {
 	gorm.Model // This already contains ID field
 	Name       string

@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-// DriverTypeHandler is the handler for Cluster APIs
+// DriverTypeHandler is the handler for Driver Type APIs
 type DriverTypeHandler struct {
 	driverTypeStore store.DriverTypeStoreInterface
 }
@@ -19,7 +19,7 @@ func NewDriverTypeHandler(as store.DriverTypeStoreInterface) *DriverTypeHandler 
 	}
 }
 
-// Register will register all Cluster APIs
+// Register will register all Driver Type APIs
 func (h *DriverTypeHandler) Register(api *echo.Group) {
 	jwtMiddleware := middleware.JWT(utils.JWTSecret)
 

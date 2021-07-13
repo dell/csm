@@ -7,7 +7,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-// ModuleTypeHandler is the handler for Cluster APIs
+// ModuleTypeHandler is the handler for Module Type APIs
 type ModuleTypeHandler struct {
 	moduleTypeStore store.ModuleStoreInterface
 }
@@ -19,11 +19,11 @@ func NewModuleTypeHandler(as store.ModuleStoreInterface) *ModuleTypeHandler {
 	}
 }
 
-// Register will register all Cluster APIs
+// Register will register all Module Type APIs
 func (h *ModuleTypeHandler) Register(api *echo.Group) {
 	jwtMiddleware := middleware.JWT(utils.JWTSecret)
 
-	driverType := api.Group("/driver-types", jwtMiddleware)
-	driverType.GET("/:id", h.GetModuleType)
-	driverType.GET("", h.ListModuleType)
+	moduleType := api.Group("/module-types", jwtMiddleware)
+	moduleType.GET("/:id", h.GetModuleType)
+	moduleType.GET("", h.ListModuleType)
 }

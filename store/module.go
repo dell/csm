@@ -19,12 +19,14 @@ type ModuleStore struct {
 	db *gorm.DB
 }
 
+// NewModuleStore returns an instance of ModuleStore in db
 func NewModuleStore(db *gorm.DB) *ModuleStore {
 	return &ModuleStore{
 		db: db,
 	}
 }
 
+// GetByID returns an instance of ModuleStore  that matches id in db
 func (ms *ModuleStore) GetByID(id uint) (*model.ModuleType, error) {
 	var mt model.ModuleType
 	if err := ms.db.Preload(clause.Associations).First(&mt, id).Error; err != nil {
@@ -36,6 +38,7 @@ func (ms *ModuleStore) GetByID(id uint) (*model.ModuleType, error) {
 	return &mt, nil
 }
 
+// GetAll returns all instances of ModuleStore in db
 func (sas *ModuleStore) GetAll() ([]model.ModuleType, error) {
 	var sa []model.ModuleType
 	if err := sas.db.Preload(clause.Associations).Find(&sa).Error; err != nil {
@@ -47,6 +50,7 @@ func (sas *ModuleStore) GetAll() ([]model.ModuleType, error) {
 	return sa, nil
 }
 
+// GetAllByID returns instances of ModuleStore in db that match all passed in IDs
 func (ms *ModuleStore) GetAllByID(v ...uint) ([]model.ModuleType, error) {
 	var mt []model.ModuleType
 	if len(v) > 0 {
