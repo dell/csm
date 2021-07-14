@@ -19,11 +19,7 @@ func New(us store.UserStoreInterface) *Handler {
 
 func (h *Handler) Register(api *echo.Group) {
 	jwtMiddleware := middleware.JWT(utils.JWTSecret)
-	guestUsers := api.Group("/users")
-	guestUsers.POST("", h.SignUp)
-	guestUsers.POST("/login", h.Login)
 
-	user := api.Group("/user", jwtMiddleware)
-	user.GET("", h.CurrentUser)
-	user.PUT("", h.UpdateUser)
+	adminUsers := api.Group("/users", jwtMiddleware)
+	adminUsers.POST("/login", h.Login)
 }

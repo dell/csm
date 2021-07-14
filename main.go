@@ -10,6 +10,7 @@ import (
 	"github.com/dell/csm-deployment/handler"
 	"github.com/dell/csm-deployment/k8s"
 	"github.com/dell/csm-deployment/kapp"
+	"github.com/dell/csm-deployment/model"
 	"github.com/dell/csm-deployment/router"
 	"github.com/dell/csm-deployment/store"
 	"github.com/dell/csm-deployment/utils"
@@ -38,6 +39,8 @@ func main() {
 	certFileName := utils.GetEnv("CERT_FILE", "samplecert.crt")
 	keyFileName := utils.GetEnv("KEY_FILE", "samplecert.key")
 	dbDir := utils.GetEnv("DB_DIR", "")
+	adminUsername := utils.GetEnv("ADMIN_USERNAME", "admin")
+	adminPassword := utils.GetEnv("ADMIN_PASSWORD", "Password123")
 	hostNameWithPort := fmt.Sprintf("%s:%s", hostName, port)
 
 	// Update docs
@@ -65,6 +68,15 @@ func main() {
 	db.PopulateInventory(d)
 
 	us := store.NewUserStore(d)
+	// Add a single default user
+	adminUser := &model.User{
+		Username: adminUsername,
+		Password: adminPassword,
+		Admin:    true,
+	}
+	if err := us.Create(adminUser); err != nil {
+		rt.Logger.Fatalf("failed to create default Admin User: %v", err)
+	}
 	h := handler.New(us)
 	h.Register(api)
 
