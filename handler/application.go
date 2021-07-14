@@ -164,7 +164,8 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 		return
 	}
 	// For unity alone an empty secret has to be created
-	if applicationStateChange.StorageArrays[0].StorageArrayType.Name == model.ArrayTypeUnity {
+	if applicationStateChange.StorageArrays[0].StorageArrayType.Name == model.ArrayTypeUnity ||
+		applicationStateChange.StorageArrays[0].StorageArrayType.Name == model.ArrayTypeIsilon {
 		// First create the secret manifest
 		emptySecretOutput, err := yttClient.GetEmptySecret()
 		if err != nil {

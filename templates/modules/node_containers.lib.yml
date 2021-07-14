@@ -189,8 +189,8 @@ volumeMounts:
   - name: certs
     mountPath: /certs
     readOnly: true
-  - name: isilon-configs
-    mountPath: /isilon-configs
+  - name: isilon-config
+    mountPath: /isilon-config
 
 #@ end
 
