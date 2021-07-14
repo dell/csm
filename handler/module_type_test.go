@@ -21,7 +21,7 @@ func Test_GetModuleType(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			getModuleTypeResponseJSON := "{\"id\":1,\"name\":\"module-1\",\"version\":\"1.2.3\",\"standalone\":false}"
 
-			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
+			moduleTypeStore := mocks.NewMockModuleTypeStoreInterface(ctrl)
 			moduleType := model.ModuleType{
 				Version: "1.2.3",
 				Name:    "module-1",
@@ -35,7 +35,7 @@ func Test_GetModuleType(t *testing.T) {
 		"nil result from db": func(*testing.T) (int, *ModuleTypeHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
+			moduleTypeStore := mocks.NewMockModuleTypeStoreInterface(ctrl)
 			moduleTypeStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, nil)
 			handler := &ModuleTypeHandler{moduleTypeStore}
 			return http.StatusNotFound, handler, "1", "", ctrl
@@ -43,7 +43,7 @@ func Test_GetModuleType(t *testing.T) {
 		"error querying db": func(*testing.T) (int, *ModuleTypeHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
+			moduleTypeStore := mocks.NewMockModuleTypeStoreInterface(ctrl)
 			moduleTypeStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, errors.New("error"))
 			handler := &ModuleTypeHandler{moduleTypeStore}
 			return http.StatusInternalServerError, handler, "1", "", ctrl
@@ -51,7 +51,7 @@ func Test_GetModuleType(t *testing.T) {
 		"id is not numeric": func(*testing.T) (int, *ModuleTypeHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
+			moduleTypeStore := mocks.NewMockModuleTypeStoreInterface(ctrl)
 			handler := &ModuleTypeHandler{moduleTypeStore}
 			return http.StatusUnprocessableEntity, handler, "abc", "", ctrl
 		},
@@ -86,7 +86,7 @@ func Test_ListModuleType(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			listModuleTypeResponseJSON := "[{\"id\":0,\"name\":\"module-1\",\"version\":\"1.2.3\",\"standalone\":false},{\"id\":0,\"name\":\"module-2\",\"version\":\"1.2.3\",\"standalone\":false}]"
 
-			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
+			moduleTypeStore := mocks.NewMockModuleTypeStoreInterface(ctrl)
 
 			moduleTypeArrays := make([]model.ModuleType, 0)
 			moduleTypeArrays = append(moduleTypeArrays, model.ModuleType{
@@ -106,7 +106,7 @@ func Test_ListModuleType(t *testing.T) {
 		"error querying database": func(*testing.T) (int, *ModuleTypeHandler, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
+			moduleTypeStore := mocks.NewMockModuleTypeStoreInterface(ctrl)
 			moduleTypeStore.EXPECT().GetAll().Times(1).Return(nil, errors.New("error"))
 			handler := &ModuleTypeHandler{moduleTypeStore}
 
