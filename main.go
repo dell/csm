@@ -107,7 +107,11 @@ func main() {
 	arrays := store.NewStorageArrayStore(d)
 	modules := store.NewModuleTypeStore(d)
 
-	as := handler.NewApplicationHandler(applications, tasks, clusters, applicationStateChanges, arrays, modules)
+	dts := store.NewDriverTypeStore(d)
+	dt := handler.NewDriverTypeHandler(dts)
+	dt.Register(api)
+
+	as := handler.NewApplicationHandler(applications, tasks, clusters, applicationStateChanges, arrays, modules, dts, k8s.K8sClient{})
 	as.Register(api)
 
 	th := handler.NewTaskHandler(tasks, applications, applicationStateChanges, clusters, kapp.NewClient(""))
@@ -116,10 +120,6 @@ func main() {
 	storageArrays := store.NewStorageArrayStore(d)
 	sah := handler.NewStorageArrayHandler(storageArrays)
 	sah.Register(api)
-
-	dts := store.NewDriverTypeStore(d)
-	dt := handler.NewDriverTypeHandler(dts)
-	dt.Register(api)
 
 	mt := handler.NewModuleTypeHandler(modules)
 	mt.Register(api)

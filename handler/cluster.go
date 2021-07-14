@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"errors"
 	"io"
 	"net/http"
@@ -175,17 +176,15 @@ func (h *ClusterHandler) updateClusterDetails(cluster *model.Cluster, clientset 
 		return
 	}
 	logger.Info(nodes)
-	// serialize this list into comma separated strings
-	serializedNodes := ""
-	for i, node := range nodes {
-		if i == 0 {
-			serializedNodes = node
-		} else {
-			serializedNodes = serializedNodes + "," + node
-		}
+
+	nodeDetails, err := json.Marshal(nodes)
+	if err != nil {
+		logger.Error("failed to marshal node details node details", err.Error())
+		return
 	}
+
 	details := model.ClusterDetails{
-		Nodes: serializedNodes,
+		Nodes: string(nodeDetails),
 	}
 	err = h.clusterStore.UpdateClusterDetails(cluster, &details)
 	if err != nil {

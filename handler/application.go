@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/dell/csm-deployment/k8s"
+	"github.com/dell/csm-deployment/prechecks"
 
 	"github.com/dell/csm-deployment/ytt"
 
@@ -52,6 +53,11 @@ func (h *ApplicationHandler) CreateApplication(c echo.Context) error {
 	}
 	application.ModuleTypes = modules
 
+	err = h.precheck(c, req.ClusterID, req.DriverTypeID)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, utils.NewErrorResponse(http.StatusBadRequest, utils.CriticalSeverity, "", err))
+	}
+
 	// Persist the application.  The name must be unique.
 	if err := h.applicationStore.Create(&application); err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
@@ -72,6 +78,36 @@ func (h *ApplicationHandler) CreateApplication(c echo.Context) error {
 
 	c.Response().Header().Set("Location", fmt.Sprintf("/api/tasks/%d", t.ID))
 	return c.NoContent(http.StatusAccepted)
+}
+
+func (h *ApplicationHandler) precheck(c echo.Context, clusterID uint, driverID uint) error {
+	cluster, err := h.clusterStore.GetByID(clusterID)
+	if err != nil {
+		return err
+	}
+	if cluster == nil {
+		return fmt.Errorf("not able to find cluster with id %d", clusterID)
+	}
+
+	driver, err := h.driverStore.GetByID(driverID)
+	if err != nil {
+		return err
+	}
+	if driver == nil {
+		return fmt.Errorf("not able to find driver with id %d", driverID)
+	}
+
+	prechecks := prechecks.GetDriverPrechecks(driver.StorageArrayType.Name, cluster.ConfigFileData, cluster.ClusterDetails.Nodes)
+
+	for _, precheck := range prechecks {
+		c.Logger().Printf("Running precheck: %T for driver of type %s", precheck, driver.StorageArrayType.Name)
+		err := precheck.Validate()
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applicationID uint, t model.Task, c echo.Context) {

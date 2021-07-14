@@ -1,6 +1,7 @@
 package k8s
 
 import (
+	"bufio"
 	"bytes"
 	"context"
 	"fmt"
@@ -136,34 +137,62 @@ func GetControllerClient(restConfig *rest.Config, scheme *runtime.Scheme) (ctrlC
 	return client, nil
 }
 
-// DiscoverK8sDetails - discover k8s details
-func (c K8sClient) DiscoverK8sDetails(data []byte) (string, *bool, *kubernetes.Clientset, error) {
-	k8sClientSet, err := getClientSet(data)
+// IsOpenShift returns true if the cluster is OpenShift, otherwise returns false
+func (c K8sClient) IsOpenShift(data []byte) (bool, error) {
+	k8sClientSet, err := c.GetClientSet(data)
 	if err != nil {
-		return "", nil, nil, err
+		return false, err
 	}
-	sv, err := k8sClientSet.Discovery().ServerVersion()
-	if err != nil {
-		return "", nil, nil, err
-	}
-	versionString := fmt.Sprintf("%s.%s", sv.Major, sv.Minor)
-	fmt.Println(versionString)
 
 	serverGroups, _, err := k8sClientSet.Discovery().ServerGroupsAndResources()
 	if err != nil {
-		return versionString, nil, nil, err
+		return false, err
 	}
 	openshiftAPIGroup := "security.openshift.io"
-	isOpenShift := false
 	for i := 0; i < len(serverGroups); i++ {
 		if serverGroups[i].Name == openshiftAPIGroup {
-			isOpenShift = true
+			return true, nil
 		}
 	}
-	return versionString, &isOpenShift, k8sClientSet, nil
+	return false, nil
 }
 
-func getClientSet(data []byte) (*kubernetes.Clientset, error) {
+// GetVersion returns version of the k8s cluster
+func (c K8sClient) GetVersion(data []byte) (string, error) {
+	k8sClientSet, err := c.GetClientSet(data)
+	if err != nil {
+		return "", err
+	}
+	sv, err := k8sClientSet.Discovery().ServerVersion()
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf("%s.%s", sv.Major, sv.Minor), nil
+}
+
+// DiscoverK8sDetails - discover k8s details
+func (c K8sClient) DiscoverK8sDetails(data []byte) (string, *bool, *kubernetes.Clientset, error) {
+
+	version, err := c.GetVersion(data)
+	if err != nil {
+		return "", nil, nil, err
+	}
+
+	isOpenShift, err := c.IsOpenShift(data)
+	if err != nil {
+		return "", nil, nil, err
+	}
+
+	k8sClientSet, err := c.GetClientSet(data)
+	if err != nil {
+		return "", nil, nil, err
+	}
+
+	return version, &isOpenShift, k8sClientSet, nil
+}
+
+// GetClientSet returns a reference to the Clientset for the given cluster
+func (c K8sClient) GetClientSet(data []byte) (*kubernetes.Clientset, error) {
 	restConfig, err := clientcmd.RESTConfigFromKubeConfig(data)
 	if err != nil {
 		return nil, err
@@ -180,8 +209,8 @@ func newClientSet(restConfig *rest.Config) (*kubernetes.Clientset, error) {
 }
 
 type Node struct {
-	HostName      string
-	InitiatorName string
+	HostName          string            `json:"host_name"`
+	InstalledSoftware map[string]string `json:"installed_software"`
 }
 
 type NodeDataCollector struct {
@@ -264,7 +293,8 @@ func (collector *NodeDataCollector) Install() error {
 	return nil
 }
 
-func (collector *NodeDataCollector) Collect() ([]string, error) {
+// Collect will gather output from the data-collector daemonset that is installed on each node in the cluster
+func (collector *NodeDataCollector) Collect() ([]Node, error) {
 	collector.init()
 	// First install the daemonset
 	err := collector.Install()
@@ -290,12 +320,9 @@ func (collector *NodeDataCollector) Collect() ([]string, error) {
 	go collector.handlePendingPods(3 * time.Minute)
 	collector.wg.Wait()
 	close(collector.nodes)
-	nodes := make([]string, 0)
+	nodes := make([]Node, 0)
 	for node := range collector.nodes {
-		nodes = append(nodes, fmt.Sprintf("Node IP:%s\tNode ISCSI IQN: %s\n", node.HostName, node.InitiatorName))
-	}
-	if len(nodes) == 0 {
-		return nil, fmt.Errorf("failed to query details for any node")
+		nodes = append(nodes, node)
 	}
 	return nodes, nil
 }
@@ -305,20 +332,19 @@ func (collector *NodeDataCollector) handleTerminatedPod(duration time.Duration) 
 		select {
 		case pod := <-collector.readyPods:
 			logs := getPodLogs(collector.ClientSet, pod.Name, pod.Namespace)
-			comp := strings.Split(logs, "=")
-			status := "Unknown"
-			if len(comp) != 2 {
-				collector.Logger.Warn("Unable to determine the ISCSI installation status on this host: ", pod.Status.HostIP)
-				continue
-			} else {
-				status = comp[1]
-			}
-			if status == "Unavailable" {
-				collector.Logger.Warn("ISCSI daemon not installed on this host", pod.Status.HostIP)
+
+			installedSoftware := make(map[string]string)
+			scanner := bufio.NewScanner(strings.NewReader(logs))
+			for scanner.Scan() {
+				// expect enabled software to be of the form "<software-name>=<value>"
+				software := strings.Split(scanner.Text(), "=")
+				if len(software) == 2 {
+					installedSoftware[software[0]] = "enabled"
+				}
 			}
 			node := Node{
-				HostName:      pod.Status.HostIP,
-				InitiatorName: status,
+				HostName:          pod.Status.HostIP,
+				InstalledSoftware: installedSoftware,
 			}
 			collector.nodes <- node
 			if len(collector.nodes) == collector.nPods {
@@ -373,8 +399,8 @@ func (collector *NodeDataCollector) handlePendingPods(duration time.Duration) {
 	for pod := range collector.pendingPods {
 		// Update all these as unknown
 		node := Node{
-			HostName:      pod.Status.HostIP,
-			InitiatorName: "Unknown",
+			HostName:          pod.Status.HostIP,
+			InstalledSoftware: map[string]string{},
 		}
 		collector.nodes <- node
 	}
@@ -386,8 +412,8 @@ func (collector *NodeDataCollector) handleFailedPods() {
 	for pod := range collector.failedPods {
 		// Update all these as unknown
 		node := Node{
-			HostName:      pod.Status.HostIP,
-			InitiatorName: "Unknown",
+			HostName:          pod.Status.HostIP,
+			InstalledSoftware: map[string]string{},
 		}
 		collector.nodes <- node
 	}
@@ -497,6 +523,12 @@ func getDaemonset(imageName string) *appsv1.DaemonSet {
 								{
 									Name:      "etc",
 									MountPath: "/hostetc",
+									ReadOnly:  true,
+								},
+								{
+									Name:      "proc",
+									MountPath: "/hostproc",
+									ReadOnly:  true,
 								},
 							},
 						},
@@ -507,6 +539,14 @@ func getDaemonset(imageName string) *appsv1.DaemonSet {
 							VolumeSource: corev1.VolumeSource{
 								HostPath: &corev1.HostPathVolumeSource{
 									Path: "/etc",
+								},
+							},
+						},
+						{
+							Name: "proc",
+							VolumeSource: corev1.VolumeSource{
+								HostPath: &corev1.HostPathVolumeSource{
+									Path: "/proc",
 								},
 							},
 						},
