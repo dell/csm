@@ -1647,7 +1647,7 @@ var doc = `{
                 "name": {
                     "type": "string"
                 },
-                "stand_alone": {
+                "standalone": {
                     "type": "boolean"
                 },
                 "version": {

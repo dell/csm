@@ -36,7 +36,7 @@ import (
 func (h *ApplicationHandler) CreateApplication(c echo.Context) error {
 	var application model.Application
 	req := &applicationCreateRequest{}
-	if err := req.bind(c, &application, h.moduleStore); err != nil {
+	if err := req.bind(c, &application, h.ModuleTypeStore); err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}
 
@@ -46,7 +46,7 @@ func (h *ApplicationHandler) CreateApplication(c echo.Context) error {
 	}
 	application.StorageArrays = arrays
 
-	modules, err := h.moduleStore.GetAllByID(req.ModuleTypes...)
+	modules, err := h.ModuleTypeStore.GetAllByID(req.ModuleTypes...)
 	if err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 	}

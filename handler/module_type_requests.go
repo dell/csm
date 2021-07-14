@@ -6,7 +6,7 @@ type moduleResponse struct {
 	ID         uint   `json:"id"`
 	Name       string `json:"name"`
 	Version    string `json:"version"`
-	Standalone bool   `json:"stand_alone"`
+	Standalone bool   `json:"standalone"`
 } //@name ModuleResponse
 
 func newModuleResponse(t *model.ModuleType) *moduleResponse {

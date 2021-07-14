@@ -19,7 +19,7 @@ func Test_GetModuleType(t *testing.T) {
 	tests := map[string]func(t *testing.T) (int, *ModuleTypeHandler, string, string, *gomock.Controller){
 		"success": func(*testing.T) (int, *ModuleTypeHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			getModuleTypeResponseJSON := "{\"id\":1,\"name\":\"module-1\",\"version\":\"1.2.3\",\"stand_alone\":false}"
+			getModuleTypeResponseJSON := "{\"id\":1,\"name\":\"module-1\",\"version\":\"1.2.3\",\"standalone\":false}"
 
 			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
 			moduleType := model.ModuleType{
@@ -84,7 +84,7 @@ func Test_ListModuleType(t *testing.T) {
 	tests := map[string]func(t *testing.T) (int, *ModuleTypeHandler, string, *gomock.Controller){
 		"success": func(*testing.T) (int, *ModuleTypeHandler, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
-			listModuleTypeResponseJSON := "[{\"id\":0,\"name\":\"module-1\",\"version\":\"1.2.3\",\"stand_alone\":false},{\"id\":0,\"name\":\"module-2\",\"version\":\"1.2.3\",\"stand_alone\":false}]"
+			listModuleTypeResponseJSON := "[{\"id\":0,\"name\":\"module-1\",\"version\":\"1.2.3\",\"standalone\":false},{\"id\":0,\"name\":\"module-2\",\"version\":\"1.2.3\",\"standalone\":false}]"
 
 			moduleTypeStore := mocks.NewMockModuleStoreInterface(ctrl)
 

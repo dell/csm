@@ -9,11 +9,11 @@ import (
 
 // ModuleTypeHandler is the handler for Module Type APIs
 type ModuleTypeHandler struct {
-	moduleTypeStore store.ModuleStoreInterface
+	moduleTypeStore store.ModuleTypeStoreInterface
 }
 
 // NewModuleTypeHandler creates a new ModuleTypeHandler
-func NewModuleTypeHandler(as store.ModuleStoreInterface) *ModuleTypeHandler {
+func NewModuleTypeHandler(as store.ModuleTypeStoreInterface) *ModuleTypeHandler {
 	return &ModuleTypeHandler{
 		moduleTypeStore: as,
 	}
