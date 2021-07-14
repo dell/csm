@@ -60,9 +60,9 @@ volumes:
 volumes:
   - name: socket-dir
     emptyDir:
-  - name: powerstore-configs
+  - name: powerstore-config
     secret:
-      secretName: #@ application + "-creds"
+      secretName: #@ application + "-config"
 #@ end
 
 #! VOLUMES for application csi-vxflexos

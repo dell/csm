@@ -20,35 +20,35 @@
 containers:
   - #@ registrar_container_spec(application)
   - #@ driver_isilon_container_spec()
-#@ end
+    #@ end
 
-#! CONTAINER SPECS for application csi-unity
-#@ def get_containers_unity(application):
+    #! CONTAINER SPECS for application csi-unity
+  #@ def get_containers_unity(application):
 containers:
   - #@ registrar_container_spec(application)
   - #@ driver_unity_container_spec()
-#@ end
+    #@ end
 
-#! CONTAINER SPECS for application csi-powerstore
-#@ def get_containers_powerstore(application):
+    #! CONTAINER SPECS for application csi-powerstore
+  #@ def get_containers_powerstore(application):
 containers:
   - #@ registrar_container_spec(application)
   - #@ driver_powerstore_container_spec()
-#@ end
+    #@ end
 
-#! CONTAINER SPECS for application csi-vxflexos
-#@ def get_containers_vxflexos(application):
+    #! CONTAINER SPECS for application csi-vxflexos
+  #@ def get_containers_vxflexos(application):
 containers:
   - #@ registrar_container_spec(application)
   #@ if data.values.podmon.enabled:
   - #@ podman_container_spec()
   #@ end
   - #@ driver_vxflexos_container_spec()
-#@ end
+    #@ end
 
 
-#! spec for registrar sidecar container
-#@ def registrar_container_spec(application):
+    #! spec for registrar sidecar container
+  #@ def registrar_container_spec(application):
 name: registrar
 image: #@ data.values.images.registrar
 args:
@@ -59,7 +59,7 @@ args:
   #@ elif application == "unity":
   - --kubelet-registration-path=/var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock
   #@ elif application == "powerstore":
-  - --kubelet-registration-path=/var/lib/kubelet/plugins/powerstore.emc.dell.com/csi_sock
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/csi-powerstore.dellemc.com/csi_sock
   #@ elif application == "vxflexos":
   - --kubelet-registration-path=/var/lib/kubelet/plugins/vxflexos.emc.dell.com/csi_sock
   #@ end
@@ -84,7 +84,7 @@ name: podmon
 securityContext:
   privileged: true
   capabilities:
-    add: ["SYS_ADMIN"]
+    add: [ "SYS_ADMIN" ]
   allowPrivilegeEscalation: true
 imagePullPolicy: Always
 image: #@ data.values.podmon.image
@@ -268,7 +268,7 @@ image: #@ data.values.images.driver
 imagePullPolicy: Always
 env:
   - name: CSI_ENDPOINT
-    value: unix:///var/lib/kubelet/plugins/powerstore.emc.dell.com/csi_sock
+    value: unix:///var/lib/kubelet/plugins/csi-powerstore.dellemc.com/csi_sock
   - name: X_CSI_MODE
     value: node
   - name: X_CSI_DEBUG
@@ -287,7 +287,7 @@ env:
   - name: X_CSI_POWERSTORE_TMP_DIR
     value: /var/lib/kubelet/plugins/powerstore.dell.emc.com/tmp
   - name: X_CSI_DRIVER_NAME
-    value: powerstore.dell.emc.com
+    value: csi-powerstore.dellemc.com
   - name: X_CSI_FC_PORTS_FILTER_FILE_PATH
     value: #@ data.values.nodeFCPortsFilterFile    
   - name: X_CSI_POWERSTORE_ENABLE_CHAP
@@ -298,7 +298,7 @@ env:
     value: "true"
 volumeMounts:
   - name: driver-path
-    mountPath: /var/lib/kubelet/plugins/powerstore.dell.emc.com
+    mountPath: /var/lib/kubelet/plugins/csi-powerstore.dellemc.com
   - name: csi-path
     mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi
     mountPropagation: "Bidirectional"
@@ -331,7 +331,7 @@ securityContext:
   privileged: true
   allowPrivilegeEscalation: true
   capabilities:
-    add: ["SYS_ADMIN"]
+    add: [ "SYS_ADMIN" ]
 image: #@ data.values.images.driver
 imagePullPolicy: IfNotPresent
 command: [ "/csi-vxflexos.sh" ]

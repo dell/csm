@@ -90,7 +90,7 @@ volumes:
   #@ elif application == "powerstore":
   - name: driver-path
     hostPath:
-      path: /var/lib/kubelet/plugins/powerstore.emc.dell.com
+      path: /var/lib/kubelet/plugins/csi-powerstore.dellemc.com
       type: DirectoryOrCreate
   - name: node-id
     hostPath:
@@ -118,7 +118,7 @@ volumes:
       type: Directory
   - name: powerstore-config
     secret:
-      secretName: #@ application + "-creds"
+      secretName: #@ application + "-config"
 
   #@ elif application == "vxflexos":
   - name: driver-path
