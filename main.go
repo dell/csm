@@ -31,6 +31,10 @@ import (
 // @in header
 // @name Authorization
 
+// @securityDefinitions.basic BasicAuth
+// @in header
+// @name Authorization
+
 func main() {
 	scheme := utils.GetEnv("SCHEME", "https")
 	hostName := utils.GetEnv("HOST", "127.0.0.1")
@@ -39,10 +43,9 @@ func main() {
 	certFileName := utils.GetEnv("CERT_FILE", "samplecert.crt")
 	keyFileName := utils.GetEnv("KEY_FILE", "samplecert.key")
 	dbDir := utils.GetEnv("DB_DIR", "")
-	adminUsername := utils.GetEnv("ADMIN_USERNAME", "admin")
-	adminPassword := utils.GetEnv("ADMIN_PASSWORD", "Password123")
+	adminUsername := utils.GetEnv("ADMIN_USERNAME", handler.DefaultUsername)
+	adminPassword := utils.GetEnv("ADMIN_PASSWORD", handler.DefaultPassword)
 	hostNameWithPort := fmt.Sprintf("%s:%s", hostName, port)
-
 	// Update docs
 	docs.SwaggerInfo.Schemes = append(docs.SwaggerInfo.Schemes, scheme)
 	docs.SwaggerInfo.Host = hostNameWithPort

@@ -2,9 +2,7 @@ package handler
 
 import (
 	"github.com/dell/csm-deployment/store"
-	"github.com/dell/csm-deployment/utils"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 )
 
 type Handler struct {
@@ -18,8 +16,7 @@ func New(us store.UserStoreInterface) *Handler {
 }
 
 func (h *Handler) Register(api *echo.Group) {
-	jwtMiddleware := middleware.JWT(utils.JWTSecret)
-
-	adminUsers := api.Group("/users", jwtMiddleware)
+	adminUsers := api.Group("/users")
 	adminUsers.POST("/login", h.Login)
+	adminUsers.PATCH("/update", h.UpdateUser)
 }

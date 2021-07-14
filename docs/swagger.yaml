@@ -213,6 +213,20 @@ definitions:
       status:
         type: string
     type: object
+  UserResponse:
+    properties:
+      mesage:
+        type: string
+      token:
+        type: string
+    type: object
+  UserUpdateRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
 info:
   contact: {}
   description: CSM Deployment API
@@ -915,34 +929,19 @@ paths:
       - application/json
       description: Login for existing user
       operationId: login
-      parameters:
-      - default: Basic <base64 of username:password>
-        description: Basic access authentication
-        in: header
-        name: Authorization
-        required: true
-        type: string
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            type: string
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponse'
+            $ref: '#/definitions/UserResponse'
         "401":
           description: Unauthorized
           schema:
             $ref: '#/definitions/ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "422":
-          description: Unprocessable Entity
+        "403":
+          description: Forbidden
           schema:
             $ref: '#/definitions/ErrorResponse'
         "500":
@@ -954,9 +953,46 @@ paths:
       summary: Login for existing user
       tags:
       - user
+  /users/update:
+    patch:
+      consumes:
+      - application/json
+      description: Update user information for current user
+      operationId: update-user
+      parameters:
+      - description: User details to update. At least **one** field is required.
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/UserUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - BasicAuth: []
+      summary: Update current user
+      tags:
+      - user
 securityDefinitions:
   ApiKeyAuth:
     in: header
     name: Authorization
     type: apiKey
+  BasicAuth:
+    type: basic
 swagger: "2.0"

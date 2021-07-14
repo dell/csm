@@ -1113,27 +1113,11 @@ var doc = `{
                 ],
                 "summary": "Login for existing user",
                 "operationId": "login",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "default": "Basic \u003cbase64 of username:password\u003e",
-                        "description": "Basic access authentication",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/ErrorResponse"
+                            "$ref": "#/definitions/UserResponse"
                         }
                     },
                     "401": {
@@ -1142,14 +1126,63 @@ var doc = `{
                             "$ref": "#/definitions/ErrorResponse"
                         }
                     },
-                    "404": {
-                        "description": "Not Found",
+                    "403": {
+                        "description": "Forbidden",
                         "schema": {
                             "$ref": "#/definitions/ErrorResponse"
                         }
                     },
-                    "422": {
-                        "description": "Unprocessable Entity",
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/update": {
+            "patch": {
+                "security": [
+                    {
+                        "BasicAuth": []
+                    }
+                ],
+                "description": "Update user information for current user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Update current user",
+                "operationId": "update-user",
+                "parameters": [
+                    {
+                        "description": "User details to update. At least **one** field is required.",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
                         "schema": {
                             "$ref": "#/definitions/ErrorResponse"
                         }
@@ -1455,6 +1488,28 @@ var doc = `{
                     "type": "string"
                 }
             }
+        },
+        "UserResponse": {
+            "type": "object",
+            "properties": {
+                "mesage": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserUpdateRequest": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
         }
     },
     "securityDefinitions": {
@@ -1462,6 +1517,9 @@ var doc = `{
             "type": "apiKey",
             "name": "Authorization",
             "in": "header"
+        },
+        "BasicAuth": {
+            "type": "basic"
         }
     }
 }`
