@@ -18,52 +18,52 @@
 #! CONTAINER SPECS for application csi-isilon
 #@ def get_containers_isilon(application):
 containers:
-- #@ resizer_container_spec()
-- #@ attacher_container_spec(application)
-- #@ provisioner_container_spec(application)
-- #@ snapshotter_container_spec(application)
-- #@ driver_isilon_container_spec()
-#@ end
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  - #@ driver_isilon_container_spec()
+    #@ end
 
-#! CONTAINER SPECS for application csi-unity
-#@ def get_containers_unity(application):
+    #! CONTAINER SPECS for application csi-unity
+  #@ def get_containers_unity(application):
 containers:
-- #@ resizer_container_spec()
-- #@ attacher_container_spec(application)
-- #@ provisioner_container_spec(application)
-- #@ snapshotter_container_spec(application)
-- #@ driver_unity_container_spec()
-#@ end
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  - #@ driver_unity_container_spec()
+    #@ end
 
-#! CONTAINER SPECS for application csi-powerstore
-#@ def get_containers_powerstore(application):
+    #! CONTAINER SPECS for application csi-powerstore
+  #@ def get_containers_powerstore(application):
 containers:
-- #@ resizer_container_spec()
-- #@ attacher_container_spec(application)
-- #@ provisioner_container_spec(application)
-- #@ snapshotter_container_spec(application)
-- #@ driver_powerstore_container_spec()
-#@ end
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  - #@ driver_powerstore_container_spec()
+    #@ end
 
-#! CONTAINER SPECS for application csi-vxflexos
-#@ def get_containers_vxflexos(application):
+    #! CONTAINER SPECS for application csi-vxflexos
+  #@ def get_containers_vxflexos(application):
 containers:
-- #@ resizer_container_spec()
-- #@ attacher_container_spec(application)
-- #@ provisioner_container_spec(application)
-- #@ snapshotter_container_spec(application)
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
   #@ if data.values.podmon.enabled:
-- #@ podman_container_spec()
-  #@ end
+  - #@ podman_container_spec()
+    #@ end
   #@ if data.values.vgsnapshotter.enabled:
-- #@ vgsnapshotter_container_spec()
+  - #@ vgsnapshotter_container_spec()
   #@ end
-- #@ driver_vxflexos_container_spec()
-#@ end
+  - #@ driver_vxflexos_container_spec()
+    #@ end
 
 
-#! spec for resizer sidecar container
-#@ def resizer_container_spec():
+    #! spec for resizer sidecar container
+  #@ def resizer_container_spec():
 name: resizer
 image: #@ data.values.images.resizer
 args:
@@ -122,6 +122,8 @@ args:
   - "--timeout=180s"
   - "--leader-election"
   - #@ "--leader-election-namespace={}".format(data.values.namespace)
+  - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
+  #@ elif application == "powerstore":
   - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
   #@ elif application == "vxflexos":
   - "--timeout=120s"
@@ -298,7 +300,7 @@ env:
   - name: X_CSI_DEBUG
     value: "true"
   - name: X_CSI_DRIVER_NAME
-    value: powerstore.dell.emc.com
+    value: csi-powerstore.dellemc.com
   - name: X_CSI_POWERSTORE_EXTERNAL_ACCESS
     value: #@ data.values.externalAccess
   - name: X_CSI_POWERSTORE_CONFIG_PATH

@@ -3,6 +3,10 @@
 application: powerstore
 namespace: powerstore
 
+#! "defaultFsType" is used to set the default FS type which will be used
+#! for mount volumes if FsType is not specified in the storage class
+defaultFsType: ext4
+
 #! "volumeNamePrefix" defines a string prepended to each volume created by the CSI driver.
 volumeNamePrefix: csi
 
