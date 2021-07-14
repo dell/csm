@@ -78,7 +78,7 @@ func main() {
 
 	applications := store.NewApplicationStore(d)
 	arrays := store.NewStorageArrayStore(d)
-	modules := store.NewModuleStore(d)
+	modules := store.NewModuleTypeStore(d)
 
 	as := handler.NewApplicationHandler(applications, tasks, clusters, applicationStateChanges, arrays, modules)
 	as.Register(api)

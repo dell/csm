@@ -19,8 +19,8 @@ type ModuleTypeStore struct {
 	db *gorm.DB
 }
 
-// NewModuleStore returns an instance of ModuleTypeStore in db
-func NewModuleStore(db *gorm.DB) *ModuleTypeStore {
+// NewModuleTypeStore returns an instance of ModuleTypeStore in db
+func NewModuleTypeStore(db *gorm.DB) *ModuleTypeStore {
 	return &ModuleTypeStore{
 		db: db,
 	}
