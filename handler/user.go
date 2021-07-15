@@ -41,7 +41,7 @@ func getCredentials(basicAuth []string) (*userCredentials, error) {
 	}, nil
 }
 
-func (h *Handler) authenticateLogin(c echo.Context) (*model.User, int, utils.ErrorResponse) {
+func (h *UserHandler) authenticateLogin(c echo.Context) (*model.User, int, utils.ErrorResponse) {
 	creds, err := getCredentials(c.Request().Header.Values("authorization"))
 	if err != nil {
 		return nil, http.StatusUnauthorized, utils.NewErrorResponse(http.StatusUnauthorized, utils.ErrorSeverity, "parsing token", err)
@@ -72,12 +72,12 @@ func (h *Handler) authenticateLogin(c echo.Context) (*model.User, int, utils.Err
 // @Accept  json
 // @Produce  json
 // @Security BasicAuth
-// @Success 200 {object} userResponse
+// @Success 200 {string} string "Bearer Token for Logged in User"
 // @Failure 401 {object} utils.ErrorResponse
 // @Failure 403 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Router /users/login [post]
-func (h *Handler) Login(c echo.Context) error {
+func (h *UserHandler) Login(c echo.Context) error {
 	u, code, err := h.authenticateLogin(c)
 	if u != nil {
 		return c.JSON(http.StatusOK, newUserResponse(u))
@@ -86,34 +86,30 @@ func (h *Handler) Login(c echo.Context) error {
 	return c.JSON(code, err)
 }
 
-// UpdateUser godoc
-// @Summary Update current user
-// @Description Update user information for current user
-// @ID update-user
+// ChangePasword godoc
+// @Summary Change password for existing user
+// @Description Change password for existing user
+// @ID change-password
 // @Tags user
 // @Accept  json
 // @Produce  json
 // @Security BasicAuth
-// @Param user body userUpdateRequest true "User details to update. At least **one** field is required."
+// @Param password query string true "Enter New Password" format(password)
 // @Success 204 "No Content"
 // @Failure 401 {object} utils.ErrorResponse
 // @Failure 403 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
-// @Router /users/update [patch]
-func (h *Handler) UpdateUser(c echo.Context) error {
+// @Router /users/change-password [patch]
+func (h *UserHandler) ChangePasword(c echo.Context) error {
 	u, code, err := h.authenticateLogin(c)
 	if u == nil {
 		return c.JSON(code, err)
 	}
-	req := new(userUpdateRequest)
-	req.populate(u)
-	if err := req.bind(c, u); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
-	}
+
+	u.Password = c.QueryParam("password")
 	if err := h.userStore.Update(u); err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 
 	return c.JSON(http.StatusNoContent, nil)
-
 }

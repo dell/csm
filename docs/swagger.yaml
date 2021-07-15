@@ -213,20 +213,6 @@ definitions:
       status:
         type: string
     type: object
-  UserResponse:
-    properties:
-      mesage:
-        type: string
-      token:
-        type: string
-    type: object
-  UserUpdateRequest:
-    properties:
-      password:
-        type: string
-      username:
-        type: string
-    type: object
 info:
   contact: {}
   description: CSM Deployment API
@@ -923,49 +909,19 @@ paths:
       summary: Cancel state change for an application
       tags:
       - task
-  /users/login:
-    post:
-      consumes:
-      - application/json
-      description: Login for existing user
-      operationId: login
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/UserResponse'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "403":
-          description: Forbidden
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-      security:
-      - BasicAuth: []
-      summary: Login for existing user
-      tags:
-      - user
-  /users/update:
+  /users/change-password:
     patch:
       consumes:
       - application/json
-      description: Update user information for current user
-      operationId: update-user
+      description: Change password for existing user
+      operationId: change-password
       parameters:
-      - description: User details to update. At least **one** field is required.
-        in: body
-        name: user
+      - description: Enter New Password
+        format: password
+        in: query
+        name: password
         required: true
-        schema:
-          $ref: '#/definitions/UserUpdateRequest'
+        type: string
       produces:
       - application/json
       responses:
@@ -985,7 +941,37 @@ paths:
             $ref: '#/definitions/ErrorResponse'
       security:
       - BasicAuth: []
-      summary: Update current user
+      summary: Change password for existing user
+      tags:
+      - user
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login for existing user
+      operationId: login
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Bearer Token for Logged in User
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - BasicAuth: []
+      summary: Login for existing user
       tags:
       - user
 securityDefinitions:

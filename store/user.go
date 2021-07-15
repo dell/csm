@@ -2,10 +2,13 @@ package store
 
 import (
 	"errors"
+
 	"github.com/dell/csm-deployment/model"
 	"gorm.io/gorm"
 )
 
+// UserStoreInterface is used to define the interface for persisting User
+//go:generate mockgen -destination=mocks/user_store_interface.go -package=mocks github.com/dell/csm-deployment/store UserStoreInterface
 type UserStoreInterface interface {
 	GetByID(uint) (*model.User, error)
 	GetByUsername(string) (*model.User, error)

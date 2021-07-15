@@ -1094,14 +1094,14 @@ var doc = `{
                 }
             }
         },
-        "/users/login": {
-            "post": {
+        "/users/change-password": {
+            "patch": {
                 "security": [
                     {
                         "BasicAuth": []
                     }
                 ],
-                "description": "Login for existing user",
+                "description": "Change password for existing user",
                 "consumes": [
                     "application/json"
                 ],
@@ -1111,14 +1111,21 @@ var doc = `{
                 "tags": [
                     "user"
                 ],
-                "summary": "Login for existing user",
-                "operationId": "login",
+                "summary": "Change password for existing user",
+                "operationId": "change-password",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "password",
+                        "description": "Enter New Password",
+                        "name": "password",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/UserResponse"
-                        }
+                    "204": {
+                        "description": "No Content"
                     },
                     "401": {
                         "description": "Unauthorized",
@@ -1141,14 +1148,14 @@ var doc = `{
                 }
             }
         },
-        "/users/update": {
-            "patch": {
+        "/users/login": {
+            "post": {
                 "security": [
                     {
                         "BasicAuth": []
                     }
                 ],
-                "description": "Update user information for current user",
+                "description": "Login for existing user",
                 "consumes": [
                     "application/json"
                 ],
@@ -1158,22 +1165,14 @@ var doc = `{
                 "tags": [
                     "user"
                 ],
-                "summary": "Update current user",
-                "operationId": "update-user",
-                "parameters": [
-                    {
-                        "description": "User details to update. At least **one** field is required.",
-                        "name": "user",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/UserUpdateRequest"
-                        }
-                    }
-                ],
+                "summary": "Login for existing user",
+                "operationId": "login",
                 "responses": {
-                    "204": {
-                        "description": "No Content"
+                    "200": {
+                        "description": "Bearer Token for Logged in User",
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     "401": {
                         "description": "Unauthorized",
@@ -1485,28 +1484,6 @@ var doc = `{
                     "type": "string"
                 },
                 "status": {
-                    "type": "string"
-                }
-            }
-        },
-        "UserResponse": {
-            "type": "object",
-            "properties": {
-                "mesage": {
-                    "type": "string"
-                },
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
-        "UserUpdateRequest": {
-            "type": "object",
-            "properties": {
-                "password": {
-                    "type": "string"
-                },
-                "username": {
                     "type": "string"
                 }
             }

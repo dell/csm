@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/url"
+	"os"
 	"path"
 
 	"github.com/dell/csm-deployment/db"
@@ -43,8 +44,6 @@ func main() {
 	certFileName := utils.GetEnv("CERT_FILE", "samplecert.crt")
 	keyFileName := utils.GetEnv("KEY_FILE", "samplecert.key")
 	dbDir := utils.GetEnv("DB_DIR", "")
-	adminUsername := utils.GetEnv("ADMIN_USERNAME", handler.DefaultUsername)
-	adminPassword := utils.GetEnv("ADMIN_PASSWORD", handler.DefaultPassword)
 	hostNameWithPort := fmt.Sprintf("%s:%s", hostName, port)
 	// Update docs
 	docs.SwaggerInfo.Schemes = append(docs.SwaggerInfo.Schemes, scheme)
@@ -69,6 +68,16 @@ func main() {
 
 	db.AutoMigrate(d)
 	db.PopulateInventory(d)
+
+	adminUsername := os.Getenv("ADMIN_USERNAME")
+	if adminUsername == "" || adminUsername == "<admin-username>" {
+		rt.Logger.Fatal("ADMIN_USERNAME was not provided")
+	}
+
+	adminPassword := os.Getenv("ADMIN_PASSWORD")
+	if adminPassword == "" || adminPassword == "<admin-password>" {
+		rt.Logger.Fatal("ADMIN_PASSWORD was not provided")
+	}
 
 	us := store.NewUserStore(d)
 	// Add a single default user
