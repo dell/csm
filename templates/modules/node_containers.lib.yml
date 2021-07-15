@@ -173,7 +173,7 @@ env:
   - name: X_CSI_CUSTOM_TOPOLOGY_ENABLED
     value: #@ data.values.enableCustomTopology
   - name: X_CSI_ISILON_CONFIG_PATH
-    value: /isilon-configs/config
+    value: /isilon-config/config
   - name: X_CSI_MAX_VOLUMES_PER_NODE
     value: #@ str(data.values.maxIsilonVolumesPerNode)
 volumeMounts:

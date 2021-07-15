@@ -84,7 +84,7 @@ type Interface interface {
 		as store.ApplicationStateChangeStoreInterface) (Output, error)
 	NamespaceTemplateFromApplication(appID uint,
 		as store.ApplicationStateChangeStoreInterface) (Output, error)
-	GetEmptySecret() (Output, error)
+	GetEmptySecret(appID uint, as store.ApplicationStateChangeStoreInterface) (Output, error)
 }
 
 type client struct {
@@ -241,8 +241,23 @@ func (c *client) SecretTemplateFromApplication(appID uint, as store.ApplicationS
 	return output, output.Err
 }
 
-func (c *client) GetEmptySecret() (Output, error) {
+func (c *client) GetEmptySecret(appID uint, as store.ApplicationStateChangeStoreInterface) (Output, error) {
+	c.logger.Printf("Generating secret template from app state with id %d \n", appID)
+	appState, err := as.GetById(appID)
+	if err != nil {
+		return Output{}, err
+	}
+	if appState == nil {
+		return Output{}, fmt.Errorf("app state with id %d not found", appID)
+	}
+
+	if len(appState.StorageArrays) == 0 {
+		return Output{}, fmt.Errorf("couldn't find storage arrays for app state with %d", appID)
+	}
+	arrayType := appState.StorageArrays[0].StorageArrayType
+	c.logger.Printf("Array type is %q \n", arrayType.Name)
 	paths := []string{
+		c.templatePath + fmt.Sprintf("templates/configs/values-%s.yaml", arrayType.Name),
 		c.templatePath + "templates/empty-secret.yaml",
 	}
 
