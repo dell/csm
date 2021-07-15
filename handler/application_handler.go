@@ -13,7 +13,7 @@ type ApplicationHandler struct {
 	taskStore                   store.TaskStoreInterface
 	clusterStore                store.ClusterStoreInterface
 	applicationStateChangeStore store.ApplicationStateChangeStoreInterface
-	moduleStore                 store.ModuleStoreInterface
+	ModuleTypeStore             store.ModuleTypeStoreInterface
 }
 
 func NewApplicationHandler(is store.ApplicationStoreInterface,
@@ -21,14 +21,14 @@ func NewApplicationHandler(is store.ApplicationStoreInterface,
 	cs store.ClusterStoreInterface,
 	asc store.ApplicationStateChangeStoreInterface,
 	as store.StorageArrayStoreInterface,
-	ms store.ModuleStoreInterface) *ApplicationHandler {
+	ms store.ModuleTypeStoreInterface) *ApplicationHandler {
 	return &ApplicationHandler{
 		applicationStore:            is,
 		taskStore:                   ts,
 		clusterStore:                cs,
 		applicationStateChangeStore: asc,
 		arrayStore:                  as,
-		moduleStore:                 ms,
+		ModuleTypeStore:             ms,
 	}
 }
 

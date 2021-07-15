@@ -48,7 +48,7 @@ func newApplicationResponse(a *model.Application) *applicationResponse {
 	return r
 }
 
-func (r *applicationCreateRequest) bind(c echo.Context, application *model.Application, moduleTypeStore store.ModuleStoreInterface) error {
+func (r *applicationCreateRequest) bind(c echo.Context, application *model.Application, moduleTypeStore store.ModuleTypeStoreInterface) error {
 	if err := c.Bind(r); err != nil {
 		return err
 	}

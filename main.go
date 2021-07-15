@@ -78,7 +78,7 @@ func main() {
 
 	applications := store.NewApplicationStore(d)
 	arrays := store.NewStorageArrayStore(d)
-	modules := store.NewModuleStore(d)
+	modules := store.NewModuleTypeStore(d)
 
 	as := handler.NewApplicationHandler(applications, tasks, clusters, applicationStateChanges, arrays, modules)
 	as.Register(api)
@@ -93,6 +93,9 @@ func main() {
 	dts := store.NewDriverTypeStore(d)
 	dt := handler.NewDriverTypeHandler(dts)
 	dt.Register(api)
+
+	mt := handler.NewModuleTypeHandler(modules)
+	mt.Register(api)
 
 	if scheme == "http" {
 		rt.Logger.Fatal(rt.Start(hostNameWithPort))
