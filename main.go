@@ -61,7 +61,10 @@ func main() {
 		rt.Logger.Fatal("Error in initializing db", err.Error())
 	}
 
-	db.AutoMigrate(d)
+	err = db.AutoMigrate(d)
+	if err != nil {
+		rt.Logger.Fatal("Error in migrating the db", err.Error())
+	}
 	db.PopulateInventory(d)
 
 	us := store.NewUserStore(d)

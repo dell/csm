@@ -17,6 +17,7 @@ import (
 	"github.com/dell/csm-deployment/model"
 )
 
+// New - Creates a new DB instance
 func New(address string) (*gorm.DB, error) {
 	dbFile := ""
 	if address == "" {
@@ -48,8 +49,9 @@ func New(address string) (*gorm.DB, error) {
 	return db, nil
 }
 
-func AutoMigrate(db *gorm.DB) {
-	db.AutoMigrate(
+// AutoMigrate - Migrates the DB
+func AutoMigrate(db *gorm.DB) error {
+	err := db.AutoMigrate(
 		&model.User{},
 		&model.Cluster{},
 		&model.ClusterDetails{},
@@ -61,8 +63,13 @@ func AutoMigrate(db *gorm.DB) {
 		&model.ModuleType{},
 		&model.ApplicationStateChange{},
 	)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
+// PopulateInventory - Adds minimum data to the database
 func PopulateInventory(db *gorm.DB) {
 	powerflex := &model.StorageArrayType{Name: model.ArrayTypePowerFlex}
 	db.Create(powerflex)
@@ -122,6 +129,7 @@ func PopulateInventory(db *gorm.DB) {
 	db.Create(powerStoreDriver15)
 }
 
+// PopulateTestDb - Adds test data to the DB
 func PopulateTestDb(db *gorm.DB, configPath string) {
 	user := &model.User{
 		Username: "admin",
@@ -200,6 +208,7 @@ func PopulateTestDb(db *gorm.DB, configPath string) {
 	db.Create(stateChange)
 }
 
+// TestDB - Generates the .db file
 func TestDB() *gorm.DB {
 	db, err := gorm.Open(sqlite.Open("./../csm_test.db"), &gorm.Config{})
 	if err != nil {
@@ -215,6 +224,7 @@ func TestDB() *gorm.DB {
 	return db
 }
 
+// DropTestDB - Deletes the created test DB file
 func DropTestDB() error {
 	if err := os.Remove("./../csm_test.db"); err != nil {
 		return err
