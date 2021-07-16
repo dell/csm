@@ -28,7 +28,10 @@ openssl x509 -req -days 365 -in samplecerts/samplecert.csr -CA samplecerts/csi_c
 
 Build images and push to local registry: `DATA_COLLECTOR_IMAGE=<registry-ip>:<registry-port>/csm-data-collector IMAGE=<registry-ip>:<registry-port>/dell-common-installer make images`
 
-Edit deployment.yaml with location of images based on registry IP and port: `vi manifests/deployment.yaml`
+Perform the following changes to deployment.yaml: `vi manifests/deployment.yaml`
+
+- edit the location of images based on registry IP and port
+- edit the administrator username and password
 
 Install dell-common-installer into kubernetes: `kubectl apply -f manifests/deployment.yaml`
 
