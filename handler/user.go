@@ -49,16 +49,13 @@ func (h *UserHandler) authenticateLogin(c echo.Context) (*model.User, int, utils
 
 	u, err := h.userStore.GetByUsername(creds.username)
 	if err != nil {
-		v := fmt.Sprintf("encountered error looking for the user: %s", creds.username)
-		return nil, http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, v, err)
+		return nil, http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "encountered error looking for the user", err)
 	}
 	if u == nil {
-		v := fmt.Sprintf("the user, %s, is forbidden", creds.username)
-		return nil, http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, v, err)
+		return nil, http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "invalid username or password", err)
 	}
 	if u.Password != creds.password {
-		v := fmt.Sprintf("the password, %s, is forbidden", creds.password)
-		return nil, http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, v, err)
+		return nil, http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "invalid username or password", err)
 	}
 	return u, http.StatusOK, utils.ErrorResponse{}
 

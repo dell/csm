@@ -47,7 +47,7 @@ func Test_Login(t *testing.T) {
 
 			username := "admin"
 			password := "wrong-password123"
-			expectedResponse := "{\"http_status_code\":403,\"messages\":[{\"code\":403,\"message\":\"the password, wrong-password123, is forbidden\",\"message_l10n\":null,\"Arguments\":null,\"severity\":\"CRITICAL\"}]}"
+			expectedResponse := "{\"http_status_code\":403,\"messages\":[{\"code\":403,\"message\":\"invalid username or password\",\"message_l10n\":null,\"Arguments\":null,\"severity\":\"CRITICAL\"}]}"
 
 			userStore := mocks.NewMockUserStoreInterface(ctrl)
 			user := model.User{
