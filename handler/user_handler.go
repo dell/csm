@@ -10,7 +10,7 @@ type UserHandler struct {
 	userStore store.UserStoreInterface
 }
 
-// New create an handler for User
+// New creates an handler for a User
 func New(us store.UserStoreInterface) *UserHandler {
 	return &UserHandler{
 		userStore: us,
