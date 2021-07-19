@@ -61,7 +61,7 @@ func (h *UserHandler) authenticateLogin(c echo.Context) (*model.User, int, utils
 
 }
 
-// Login godoc
+// Login gets bearer token for the existing user
 // @Summary Login for existing user
 // @Description Login for existing user
 // @ID login
@@ -83,7 +83,7 @@ func (h *UserHandler) Login(c echo.Context) error {
 	return c.JSON(code, err)
 }
 
-// ChangePasword godoc
+// ChangePasword resets the password for the existing user
 // @Summary Change password for existing user
 // @Description Change password for existing user
 // @ID change-password
