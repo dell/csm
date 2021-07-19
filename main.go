@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/url"
+	"os"
 	"path"
 
 	"github.com/dell/csm-deployment/db"
@@ -10,6 +11,7 @@ import (
 	"github.com/dell/csm-deployment/handler"
 	"github.com/dell/csm-deployment/k8s"
 	"github.com/dell/csm-deployment/kapp"
+	"github.com/dell/csm-deployment/model"
 	"github.com/dell/csm-deployment/router"
 	"github.com/dell/csm-deployment/store"
 	"github.com/dell/csm-deployment/utils"
@@ -30,6 +32,10 @@ import (
 // @in header
 // @name Authorization
 
+// @securityDefinitions.basic BasicAuth
+// @in header
+// @name Authorization
+
 func main() {
 	scheme := utils.GetEnv("SCHEME", "https")
 	hostName := utils.GetEnv("HOST", "127.0.0.1")
@@ -39,7 +45,6 @@ func main() {
 	keyFileName := utils.GetEnv("KEY_FILE", "samplecert.key")
 	dbDir := utils.GetEnv("DB_DIR", "")
 	hostNameWithPort := fmt.Sprintf("%s:%s", hostName, port)
-
 	// Update docs
 	docs.SwaggerInfo.Schemes = append(docs.SwaggerInfo.Schemes, scheme)
 	docs.SwaggerInfo.Host = hostNameWithPort
@@ -67,7 +72,26 @@ func main() {
 	}
 	db.PopulateInventory(d)
 
+	adminUsername := os.Getenv("ADMIN_USERNAME")
+	if adminUsername == "" || adminUsername == "<admin-username>" {
+		rt.Logger.Fatal("ADMIN_USERNAME was not provided")
+	}
+
+	adminPassword := os.Getenv("ADMIN_PASSWORD")
+	if adminPassword == "" || adminPassword == "<admin-password>" {
+		rt.Logger.Fatal("ADMIN_PASSWORD was not provided")
+	}
+
 	us := store.NewUserStore(d)
+	// Add a single default user
+	adminUser := &model.User{
+		Username: adminUsername,
+		Password: adminPassword,
+		Admin:    true,
+	}
+	if err := us.Create(adminUser); err != nil {
+		rt.Logger.Fatalf("failed to create default Admin User: %v", err)
+	}
 	h := handler.New(us)
 	h.Register(api)
 

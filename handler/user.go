@@ -1,138 +1,112 @@
 package handler
 
 import (
+	"encoding/base64"
+	"errors"
+	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/dell/csm-deployment/model"
 	"github.com/dell/csm-deployment/utils"
-	"github.com/golang-jwt/jwt"
 	"github.com/labstack/echo/v4"
 )
 
-// SignUp godoc
-// @Summary Register a new user
-// @Description Register a new user
-// @ID sign-up
-// @Tags user
-// @Accept  json
-// @Produce  json
-// @Param user body userRegisterRequest true "User info for registration"
-// @Success 201 {object} userResponse
-// @Failure 400 {object} utils.ErrorResponse
-// @Failure 404 {object} utils.ErrorResponse
-// @Failure 500 {object} utils.ErrorResponse
-// @Router /users [post]
-func (h *Handler) SignUp(c echo.Context) error {
-	var u model.User
-	req := &userRegisterRequest{}
-	if err := req.bind(c, &u); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
-	}
-	if err := h.userStore.Create(&u); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
-	}
-	return c.JSON(http.StatusCreated, newUserResponse(&u))
+type userCredentials struct {
+	username string
+	password string
 }
 
-// Login godoc
+func getCredentials(basicAuth []string) (*userCredentials, error) {
+
+	if len(basicAuth) != 1 {
+		return nil, errors.New("ambiguity: basic token not found or it in proper format")
+	}
+	token := strings.Split(basicAuth[0], "Basic")
+	if len(token) != 2 {
+		return nil, errors.New("basic token not in proper format")
+	}
+	decoded, err := base64.StdEncoding.DecodeString(strings.TrimSpace(token[1]))
+	if err != nil {
+		return nil, fmt.Errorf("decode error: %v", err)
+	}
+	result := strings.Split((string)(decoded), ":")
+	if len(result) != 2 {
+		return nil, errors.New("basic token not in proper format")
+	}
+
+	return &userCredentials{
+		username: result[0],
+		password: result[1],
+	}, nil
+}
+
+func (h *UserHandler) authenticateLogin(c echo.Context) (*model.User, int, utils.ErrorResponse) {
+	creds, err := getCredentials(c.Request().Header.Values("authorization"))
+	if err != nil {
+		return nil, http.StatusUnauthorized, utils.NewErrorResponse(http.StatusUnauthorized, utils.ErrorSeverity, "parsing token", err)
+	}
+
+	u, err := h.userStore.GetByUsername(creds.username)
+	if err != nil {
+		return nil, http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "encountered error looking for the user", err)
+	}
+	if u == nil {
+		return nil, http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "invalid username or password", err)
+	}
+	if u.Password != creds.password {
+		return nil, http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "invalid username or password", err)
+	}
+	return u, http.StatusOK, utils.ErrorResponse{}
+
+}
+
+// Login gets bearer token for the existing user
 // @Summary Login for existing user
 // @Description Login for existing user
 // @ID login
 // @Tags user
 // @Accept  json
 // @Produce  json
-// @Param user body userLoginRequest true "Credentials to use"
-// @Success 200 {object} userResponse
-// @Failure 400 {object} utils.ErrorResponse
+// @Security BasicAuth
+// @Success 200 {string} string "Bearer Token for Logged in User"
 // @Failure 401 {object} utils.ErrorResponse
-// @Failure 422 {object} utils.ErrorResponse
-// @Failure 404 {object} utils.ErrorResponse
+// @Failure 403 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Router /users/login [post]
-func (h *Handler) Login(c echo.Context) error {
-	req := &userLoginRequest{}
-	if err := req.bind(c); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
+func (h *UserHandler) Login(c echo.Context) error {
+	u, code, err := h.authenticateLogin(c)
+	if u != nil {
+		return c.JSON(http.StatusOK, newUserResponse(u))
 	}
-	u, err := h.userStore.GetByUsername(req.Username)
-	if err != nil {
-		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
-	}
-	if u == nil {
-		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
-	}
-	if !u.CheckPassword(req.Password) {
-		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
-	}
-	return c.JSON(http.StatusOK, newUserResponse(u))
+
+	return c.JSON(code, err)
 }
 
-// CurrentUser godoc
-// @Summary Get the current user
-// @Description Gets the currently logged-in user
-// @ID current-user
+// ChangePasword resets the password for the existing user
+// @Summary Change password for existing user
+// @Description Change password for existing user
+// @ID change-password
 // @Tags user
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} userResponse
-// @Failure 400 {object} utils.ErrorResponse
+// @Security BasicAuth
+// @Param password query string true "Enter New Password" format(password)
+// @Success 204 "No Content"
 // @Failure 401 {object} utils.ErrorResponse
-// @Failure 422 {object} utils.ErrorResponse
-// @Failure 404 {object} utils.ErrorResponse
+// @Failure 403 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
-// @Security ApiKeyAuth
-// @Router /user [get]
-func (h *Handler) CurrentUser(c echo.Context) error {
-	c.Logger().Info("username from token ", userNameFromToken(c))
-	u, err := h.userStore.GetByUsername(userNameFromToken(c))
-	if err != nil {
-		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
-	}
+// @Router /users/change-password [patch]
+func (h *UserHandler) ChangePasword(c echo.Context) error {
+	u, code, err := h.authenticateLogin(c)
 	if u == nil {
-		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
+		return c.JSON(code, err)
 	}
-	return c.JSON(http.StatusOK, newUserResponse(u))
-}
 
-// UpdateUser godoc
-// @Summary Update current user
-// @Description Update user information for current user
-// @ID update-user
-// @Tags user
-// @Accept  json
-// @Produce  json
-// @Param user body userUpdateRequest true "User details to update. At least **one** field is required."
-// @Success 200 {object} userResponse
-// @Failure 400 {object} utils.ErrorResponse
-// @Failure 401 {object} utils.ErrorResponse
-// @Failure 422 {object} utils.ErrorResponse
-// @Failure 404 {object} utils.ErrorResponse
-// @Failure 500 {object} utils.ErrorResponse
-// @Security ApiKeyAuth
-// @Router /user [put]
-func (h *Handler) UpdateUser(c echo.Context) error {
-	c.Logger().Info("username from token ", userNameFromToken(c))
-	u, err := h.userStore.GetByUsername(userNameFromToken(c))
-	if err != nil {
-		return c.JSON(http.StatusForbidden, utils.NewErrorResponse(http.StatusForbidden, utils.CriticalSeverity, "", err))
-	}
-	if u == nil {
-		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
-	}
-	req := newUserUpdateRequest()
-	req.populate(u)
-	if err := req.bind(c, u); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
-	}
+	u.Password = c.QueryParam("password")
 	if err := h.userStore.Update(u); err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
-	return c.JSON(http.StatusOK, newUserResponse(u))
-}
 
-func userNameFromToken(c echo.Context) string {
-	user := c.Get("user").(*jwt.Token)
-	claims := user.Claims.(jwt.MapClaims)
-	name := claims["name"].(string)
-	return name
+	return c.JSON(http.StatusNoContent, nil)
 }
