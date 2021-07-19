@@ -19,7 +19,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// CreateApplication godoc
+// CreateApplication - Creates an application
 // @Summary Create a new application
 // @Description Create a new application
 // @ID create-application
@@ -110,7 +110,13 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 		return
 	}
 	configFileName = tmpFile.Name()
-	defer os.Remove(tmpFile.Name())
+	defer func(name string) {
+		err := os.Remove(name)
+		if err != nil {
+			c.Logger().Errorf("error removing file: %+v", err)
+			return
+		}
+	}(tmpFile.Name())
 
 	applicationStateChange := &model.ApplicationStateChange{
 		ApplicationID:       application.ID,
@@ -163,10 +169,11 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 		c.Logger().Errorf("error creating secret: %+v", err)
 		return
 	}
-	// For unity alone an empty secret has to be created
-	if applicationStateChange.StorageArrays[0].StorageArrayType.Name == model.ArrayTypeUnity {
-		// First create the secret manifest
-		emptySecretOutput, err := yttClient.GetEmptySecret()
+	// For Unity and PowerScale an empty secret has to be created
+	arrayType := applicationStateChange.StorageArrays[0].StorageArrayType.Name
+	if arrayType == model.ArrayTypeUnity || arrayType == model.ArrayTypeIsilon {
+		// Create the empty secret manifest
+		emptySecretOutput, err := yttClient.GetEmptySecret(applicationStateChange.ID, h.applicationStateChangeStore)
 		if err != nil {
 			c.Logger().Errorf("error generating empty secret: %+v", err)
 			return
@@ -213,7 +220,7 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 	log.Println("Marking task", t.ID, "as prompting")
 }
 
-// GetApplication godoc
+// GetApplication - Retrieves application by ID
 // @Summary Get an application
 // @Description Get an application
 // @ID get-application
@@ -239,7 +246,7 @@ func (h *ApplicationHandler) GetApplication(c echo.Context) error {
 	return c.JSON(http.StatusOK, newApplicationResponse(application))
 }
 
-// UpdateApplication godoc
+// UpdateApplication - Updates an application with ID and payload
 // @Summary Update an application
 // @Description Update an application
 // @ID update-application
@@ -278,7 +285,7 @@ func (h *ApplicationHandler) UpdateApplication(c echo.Context) error {
 	return c.NoContent(http.StatusAccepted)
 }
 
-// DeleteApplication godoc
+// DeleteApplication - Deletes an application
 // @Summary Delete an application
 // @Description Delete an application
 // @ID delete-application
@@ -323,7 +330,12 @@ func (h *ApplicationHandler) DeleteApplication(c echo.Context) error {
 			return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.CriticalSeverity, "", err))
 		}
 		configFileName = tmpFile.Name()
-		defer os.Remove(tmpFile.Name())
+		defer func(name string) {
+			err := os.Remove(name)
+			if err != nil {
+				c.Logger().Errorf("error removing file: %+v", err)
+			}
+		}(tmpFile.Name())
 	}
 
 	client := kapp.NewClient("")
