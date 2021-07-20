@@ -21,3 +21,6 @@ export DATA_COLLECTOR_IMAGE="localhost:5000/csm-data-collector:v0.0.1"
 
 # kapp binary must be installed on host where service is running
 export KAPP_BINARY="/root/kapp"
+
+# Path to store JWT token for cli
+export JWTPATH=/root/
