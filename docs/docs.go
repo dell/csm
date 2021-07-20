@@ -269,7 +269,7 @@ var doc = `{
                     {
                         "type": "string",
                         "description": "Cluster Name",
-                        "name": "cluster-name",
+                        "name": "cluster_name",
                         "in": "query"
                     }
                 ],

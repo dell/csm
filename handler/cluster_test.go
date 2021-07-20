@@ -411,7 +411,7 @@ func Test_ListClusters(t *testing.T) {
 			})
 			clusterStore.EXPECT().GetAllByName(gomock.Any()).Times(1).Return(clusters, nil)
 			handler := &ClusterHandler{clusterStore: clusterStore}
-			return http.StatusOK, handler, listStorageSystemResponseJSON, map[string]string{"cluster-name": "cluster-1"}, ctrl
+			return http.StatusOK, handler, listStorageSystemResponseJSON, map[string]string{"cluster_name": "cluster-1"}, ctrl
 		},
 		"error querying database": func(*testing.T) (int, *ClusterHandler, string, map[string]string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)

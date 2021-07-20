@@ -39,7 +39,7 @@ func (us *ClusterStore) GetAllByName(name string) ([]model.Cluster, error) {
 	if err := us.db.
 		Preload(clause.Associations).
 		Where(&model.Cluster{ClusterName: name}).
-		First(&clusters).
+		Find(&clusters).
 		Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, nil

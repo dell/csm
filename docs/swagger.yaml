@@ -382,7 +382,7 @@ paths:
       parameters:
       - description: Cluster Name
         in: query
-        name: cluster-name
+        name: cluster_name
         type: string
       produces:
       - application/json

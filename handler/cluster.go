@@ -232,7 +232,7 @@ func (h *ClusterHandler) GetCluster(c echo.Context) error {
 // @Tags cluster
 // @Accept  json
 // @Produce  json
-// @Param cluster-name query string false "Cluster Name"
+// @Param cluster_name query string false "Cluster Name"
 // @Success 200 {array} clusterResponse
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
@@ -241,7 +241,7 @@ func (h *ClusterHandler) GetCluster(c echo.Context) error {
 // @Router /clusters [get]
 func (h *ClusterHandler) ListClusters(c echo.Context) error {
 
-	name := c.QueryParam("cluster-name")
+	name := c.QueryParam("cluster_name")
 	var clusters []model.Cluster
 	var err error
 	if name != "" {
