@@ -43,7 +43,7 @@ func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 	return c.JSON(http.StatusCreated, newStorageArrayResponse(&storageArray))
 }
 
-// UpdateStorageArray godoc
+// UpdateStorageArray modifies a storage array
 // @Summary Update a storage array
 // @Description Update a storage array
 // @ID update-storage-array
@@ -52,7 +52,7 @@ func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 // @Produce  json
 // @Param id path string true "Storage Array ID"
 // @Param storageArray body storageArrayUpdateRequest true "Storage Array info for update"
-// @Success 200 {object} storageArrayResponse
+// @Success 204 "No Content"
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
@@ -87,7 +87,7 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 	if err := h.arrayStore.Update(storageArray); err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
-	return c.JSON(http.StatusOK, newStorageArrayResponse(storageArray))
+	return c.JSON(http.StatusNoContent, nil)
 }
 
 // ListStorageArrays godoc

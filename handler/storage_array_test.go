@@ -90,7 +90,7 @@ func Test_UpdateStorageArray(t *testing.T) {
 		"success": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 			updateStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
-			updateStorageSystemResponseJSON := `{"id":23,"storage_array_type_id":0,"unique_id":"1","username":"admin","management_endpoint":"http://localhost"}`
+			updateStorageSystemResponseJSON := "null"
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 
@@ -105,7 +105,7 @@ func Test_UpdateStorageArray(t *testing.T) {
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(&model.StorageArrayType{Name: "powerflex"}, nil)
 			storageArrayStore.EXPECT().Update(gomock.Any()).Times(1)
 			handler := &StorageArrayHandler{storageArrayStore}
-			return http.StatusOK, handler, updateStorageSystemRequestJSON, updateStorageSystemResponseJSON, ctrl
+			return http.StatusNoContent, handler, updateStorageSystemRequestJSON, updateStorageSystemResponseJSON, ctrl
 		},
 		"nil result from db": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
