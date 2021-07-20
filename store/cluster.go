@@ -18,6 +18,7 @@ type ClusterStoreInterface interface {
 	Delete(u *model.Cluster) error
 	Update(u *model.Cluster) error
 	GetAll() ([]model.Cluster, error)
+	GetAllByName(string) ([]model.Cluster, error)
 }
 
 // ClusterStore is used to operate on the Clusters persistent store
@@ -30,6 +31,22 @@ func NewClusterStore(db *gorm.DB) *ClusterStore {
 	return &ClusterStore{
 		db: db,
 	}
+}
+
+// GetAllByName will return all clusters with a matching name
+func (us *ClusterStore) GetAllByName(name string) ([]model.Cluster, error) {
+	var clusters []model.Cluster
+	if err := us.db.
+		Preload(clause.Associations).
+		Where(&model.Cluster{ClusterName: name}).
+		First(&clusters).
+		Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, nil
+		}
+		return nil, err
+	}
+	return clusters, nil
 }
 
 // GetByID returns a cluster with the given ID

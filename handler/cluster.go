@@ -232,6 +232,7 @@ func (h *ClusterHandler) GetCluster(c echo.Context) error {
 // @Tags cluster
 // @Accept  json
 // @Produce  json
+// @Param cluster-name query string false "Cluster Name"
 // @Success 200 {array} clusterResponse
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
@@ -239,7 +240,16 @@ func (h *ClusterHandler) GetCluster(c echo.Context) error {
 // @Security ApiKeyAuth
 // @Router /clusters [get]
 func (h *ClusterHandler) ListClusters(c echo.Context) error {
-	clusters, err := h.clusterStore.GetAll()
+
+	name := c.QueryParam("cluster-name")
+	var clusters []model.Cluster
+	var err error
+	if name != "" {
+		clusters, err = h.clusterStore.GetAllByName(name)
+	} else {
+		clusters, err = h.clusterStore.GetAll()
+	}
+
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}

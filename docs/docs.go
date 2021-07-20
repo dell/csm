@@ -265,6 +265,14 @@ var doc = `{
                 ],
                 "summary": "List all clusters",
                 "operationId": "list-clusters",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster Name",
+                        "name": "cluster-name",
+                        "in": "query"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",

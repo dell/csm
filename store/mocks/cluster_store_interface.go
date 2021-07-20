@@ -76,6 +76,21 @@ func (mr *MockClusterStoreInterfaceMockRecorder) GetAll() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAll", reflect.TypeOf((*MockClusterStoreInterface)(nil).GetAll))
 }
 
+// GetAllByName mocks base method
+func (m *MockClusterStoreInterface) GetAllByName(arg0 string) ([]model.Cluster, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetAllByName", arg0)
+	ret0, _ := ret[0].([]model.Cluster)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAllByName indicates an expected call of GetAllByName
+func (mr *MockClusterStoreInterfaceMockRecorder) GetAllByName(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllByName", reflect.TypeOf((*MockClusterStoreInterface)(nil).GetAllByName), arg0)
+}
+
 // GetByID mocks base method
 func (m *MockClusterStoreInterface) GetByID(arg0 uint) (*model.Cluster, error) {
 	m.ctrl.T.Helper()
