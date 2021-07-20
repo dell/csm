@@ -57,7 +57,7 @@ func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storage-arrays [patch]
+// @Router /storage-arrays{id} [patch]
 func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 	arrayID := c.Param("id")
 	id, err := strconv.Atoi(arrayID)
