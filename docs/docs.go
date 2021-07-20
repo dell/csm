@@ -1566,13 +1566,6 @@ var doc = `{
         },
         "StorageArrayUpdateRequest": {
             "type": "object",
-            "required": [
-                "management_endpoint",
-                "password",
-                "storage_array_type",
-                "unique_id",
-                "username"
-            ],
             "properties": {
                 "management_endpoint": {
                     "type": "string"

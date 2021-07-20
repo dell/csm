@@ -78,17 +78,29 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
 
-	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
-	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
+	if req.StorageArrayType != "" {
+		arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
+		if err != nil {
+			return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
+		}
+
+		storageArray.StorageArrayType = *arrayType
+		storageArray.StorageArrayTypeID = arrayType.ID
 	}
 
-	storageArray.StorageArrayType = *arrayType
-	storageArray.StorageArrayTypeID = arrayType.ID
-	storageArray.UniqueID = tmpStorageArray.UniqueID
-	storageArray.Password = tmpStorageArray.Password
-	storageArray.Username = tmpStorageArray.Username
-	storageArray.ManagementEndpoint = tmpStorageArray.ManagementEndpoint
+	// update other properties
+	if tmpStorageArray.UniqueID != "" {
+		storageArray.UniqueID = tmpStorageArray.UniqueID
+	}
+	if tmpStorageArray.Password != "" {
+		storageArray.Password = tmpStorageArray.Password
+	}
+	if tmpStorageArray.Username != "" {
+		storageArray.Username = tmpStorageArray.Username
+	}
+	if tmpStorageArray.ManagementEndpoint != "" {
+		storageArray.ManagementEndpoint = tmpStorageArray.ManagementEndpoint
+	}
 
 	if err := h.arrayStore.Update(storageArray); err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))

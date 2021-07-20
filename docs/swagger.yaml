@@ -200,12 +200,6 @@ definitions:
         type: string
       username:
         type: string
-    required:
-    - management_endpoint
-    - password
-    - storage_array_type
-    - unique_id
-    - username
     type: object
   TaskResponse:
     properties:
