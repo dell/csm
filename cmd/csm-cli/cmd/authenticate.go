@@ -25,8 +25,8 @@ import (
 // authenticateCmd represents the authenticate command
 var authenticateCmd = &cobra.Command{
 	Use:   "authenticate",
-	Short: "authenticate command - login the user and get generated token",
-	Long:  `authenticate command - login the user and get generated token`,
+	Short: "authenticate user",
+	Long:  `authenticate user - login the user and set jwt`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 		username, err := cmd.Flags().GetString("username")
