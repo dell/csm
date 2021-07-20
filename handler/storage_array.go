@@ -82,7 +82,13 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
+
+	storageArray.StorageArrayType = *arrayType
 	storageArray.StorageArrayTypeID = arrayType.ID
+	storageArray.UniqueID = tmpStorageArray.UniqueID
+	storageArray.Password = tmpStorageArray.Password
+	storageArray.Username = tmpStorageArray.Username
+	storageArray.ManagementEndpoint = tmpStorageArray.ManagementEndpoint
 
 	if err := h.arrayStore.Update(storageArray); err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
