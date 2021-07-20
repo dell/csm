@@ -2,6 +2,7 @@ package store
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/dell/csm-deployment/model"
 	"gorm.io/gorm"
@@ -15,6 +16,8 @@ type StorageArrayStoreInterface interface {
 	GetTypeByTypeName(string) (*model.StorageArrayType, error)
 	Create(*model.StorageArray) error
 	GetAll() ([]model.StorageArray, error)
+	GetAllByUniqueID(string) ([]model.StorageArray, error)
+	GetAllByStorageType(string) ([]model.StorageArray, error)
 	Delete(*model.StorageArray) error
 	Update(*model.StorageArray) error
 }
@@ -62,6 +65,45 @@ func (sas *StorageArrayStore) GetAll() ([]model.StorageArray, error) {
 		return nil, err
 	}
 	return sa, nil
+}
+
+// GetAllByUniqueID will return all storage arrays with matching unique id
+func (sas *StorageArrayStore) GetAllByUniqueID(uniqueID string) ([]model.StorageArray, error) {
+	var storageArrays []model.StorageArray
+	if err := sas.db.
+		Preload(clause.Associations).
+		Where(&model.StorageArray{UniqueID: uniqueID}).
+		Find(&storageArrays).
+		Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, nil
+		}
+		return nil, err
+	}
+	return storageArrays, nil
+}
+
+// GetAllByStorageType will return all storage arrays with matching storage type
+func (sas *StorageArrayStore) GetAllByStorageType(storageTypeName string) ([]model.StorageArray, error) {
+	var storageArrays []model.StorageArray
+	storageType, err := sas.GetTypeByTypeName(storageTypeName)
+	if err != nil {
+		return nil, err
+	}
+	if storageType == nil {
+		return nil, fmt.Errorf("unable to find storage type with name %s", storageTypeName)
+	}
+	if err := sas.db.
+		Preload(clause.Associations).
+		Where(&model.StorageArray{StorageArrayTypeID: storageType.ID}).
+		Find(&storageArrays).
+		Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, nil
+		}
+		return nil, err
+	}
+	return storageArrays, nil
 }
 
 func (sas *StorageArrayStore) GetTypeByTypeName(typeName string) (*model.StorageArrayType, error) {

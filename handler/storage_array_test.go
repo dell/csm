@@ -225,8 +225,8 @@ func Test_GetStorageArray(t *testing.T) {
 
 func Test_ListStorageArrays(t *testing.T) {
 
-	tests := map[string]func(t *testing.T) (int, *StorageArrayHandler, string, *gomock.Controller){
-		"success": func(*testing.T) (int, *StorageArrayHandler, string, *gomock.Controller) {
+	tests := map[string]func(t *testing.T) (int, *StorageArrayHandler, string, map[string]string, *gomock.Controller){
+		"success": func(*testing.T) (int, *StorageArrayHandler, string, map[string]string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 			listStorageSystemResponseJSON := "[{\"id\":0,\"storage_array_type_id\":1,\"unique_id\":\"abc123\",\"username\":\"admin\",\"management_endpoint\":\"http://localhost:1234\"},{\"id\":0,\"storage_array_type_id\":2,\"unique_id\":\"def321\",\"username\":\"user\",\"management_endpoint\":\"http://localhost:4321\"}]"
 
@@ -247,25 +247,65 @@ func Test_ListStorageArrays(t *testing.T) {
 			})
 			storageArrayStore.EXPECT().GetAll().Times(1).Return(storageArrays, nil)
 			handler := &StorageArrayHandler{storageArrayStore}
-			return http.StatusOK, handler, listStorageSystemResponseJSON, ctrl
+			return http.StatusOK, handler, listStorageSystemResponseJSON, nil, ctrl
 		},
-		"error querying database": func(*testing.T) (int, *StorageArrayHandler, string, *gomock.Controller) {
+		"success getting by unique_id": func(*testing.T) (int, *StorageArrayHandler, string, map[string]string, *gomock.Controller) {
+			ctrl := gomock.NewController(t)
+			listStorageSystemResponseJSON := "[{\"id\":0,\"storage_array_type_id\":2,\"unique_id\":\"def321\",\"username\":\"user\",\"management_endpoint\":\"http://localhost:4321\"}]"
+
+			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+
+			storageArrays := make([]model.StorageArray, 0)
+			storageArrays = append(storageArrays, model.StorageArray{
+				UniqueID:           "def321",
+				Username:           "user",
+				ManagementEndpoint: "http://localhost:4321",
+				StorageArrayTypeID: 2,
+			})
+			storageArrayStore.EXPECT().GetAllByUniqueID(gomock.Any()).Times(1).Return(storageArrays, nil)
+			handler := &StorageArrayHandler{storageArrayStore}
+			return http.StatusOK, handler, listStorageSystemResponseJSON, map[string]string{"unique_id": "def321"}, ctrl
+		},
+		"success getting by storage type": func(*testing.T) (int, *StorageArrayHandler, string, map[string]string, *gomock.Controller) {
+			ctrl := gomock.NewController(t)
+			listStorageSystemResponseJSON := "[{\"id\":0,\"storage_array_type_id\":2,\"unique_id\":\"def321\",\"username\":\"user\",\"management_endpoint\":\"http://localhost:4321\"}]"
+
+			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+
+			storageArrays := make([]model.StorageArray, 0)
+			storageArrays = append(storageArrays, model.StorageArray{
+				UniqueID:           "def321",
+				Username:           "user",
+				ManagementEndpoint: "http://localhost:4321",
+				StorageArrayTypeID: 2,
+			})
+			storageArrayStore.EXPECT().GetAllByStorageType(gomock.Any()).Times(1).Return(storageArrays, nil)
+			handler := &StorageArrayHandler{storageArrayStore}
+			return http.StatusOK, handler, listStorageSystemResponseJSON, map[string]string{"storage_type": "powerflex"}, ctrl
+		},
+		"error querying database": func(*testing.T) (int, *StorageArrayHandler, string, map[string]string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
 			storageArrayStore.EXPECT().GetAll().Times(1).Return(nil, errors.New("error"))
 			handler := &StorageArrayHandler{storageArrayStore}
-			return http.StatusInternalServerError, handler, "", ctrl
+			return http.StatusInternalServerError, handler, "", nil, ctrl
 		},
 	}
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 
-			expectedStatus, handler, expectedResponse, ctrl := tc(t)
+			expectedStatus, handler, expectedResponse, queryParams, ctrl := tc(t)
 
 			e := router.New()
 			req := httptest.NewRequest(http.MethodGet, "/", nil)
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+			q := req.URL.Query()
+			for key, value := range queryParams {
+				q.Add(key, value)
+			}
+			req.URL.RawQuery = q.Encode()
+
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
 

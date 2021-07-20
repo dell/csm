@@ -761,6 +761,20 @@ var doc = `{
                 ],
                 "summary": "List all storage arrays",
                 "operationId": "list-storage-arrays",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Unique ID",
+                        "name": "unique_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Storage Type",
+                        "name": "storage_type",
+                        "in": "query"
+                    }
+                ],
                 "responses": {
                     "202": {
                         "description": "Accepted",

@@ -83,6 +83,8 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 // @Tags storage-array
 // @Accept  json
 // @Produce  json
+// @Param unique_id query string false "Unique ID"
+// @Param storage_type query string false "Storage Type"
 // @Success 202 {object} []storageArrayResponse
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
@@ -90,7 +92,17 @@ func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
 // @Security ApiKeyAuth
 // @Router /storage-arrays [get]
 func (h *StorageArrayHandler) ListStorageArrays(c echo.Context) error {
-	arrays, err := h.arrayStore.GetAll()
+	uniqueID := c.QueryParam("unique_id")
+	storageTypeName := c.QueryParam("storage_type")
+	var arrays []model.StorageArray
+	var err error
+	if uniqueID != "" {
+		arrays, err = h.arrayStore.GetAllByUniqueID(uniqueID)
+	} else if storageTypeName != "" {
+		arrays, err = h.arrayStore.GetAllByStorageType(storageTypeName)
+	} else {
+		arrays, err = h.arrayStore.GetAll()
+	}
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
