@@ -25,5 +25,5 @@ func (h *StorageArrayHandler) Register(api *echo.Group) {
 	storageArrays.GET("", h.ListStorageArrays)
 	storageArrays.GET("/:id", h.GetStorageArray)
 	storageArrays.DELETE("/:id", h.DeleteStorageArray)
-	storageArrays.PUT("/:id", h.UpdateStorageArray)
+	storageArrays.PATCH("/:id", h.UpdateStorageArray)
 }
