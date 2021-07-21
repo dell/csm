@@ -31,13 +31,13 @@ func GetDriverPrechecks(driverType string, clusterData []byte, clusterNodeDetail
 		MinimumVersion: K8sMinimumSupportedVersion,
 		MaximumVersion: K8sMaximumSupportedVersion,
 		ClusterData:    clusterData,
-		K8sClient:      k8s.K8sClient{},
+		K8sClient:      k8s.Client{},
 	})
 	validators = append(validators, OpenshiftVersionValidator{
 		MinimumVersion: OpenshiftMinimumSupportedVersion,
 		MaximumVersion: OpenshiftMaximumSupportedVersion,
 		ClusterData:    clusterData,
-		K8sClient:      k8s.K8sClient{},
+		K8sClient:      k8s.Client{},
 	})
 	validators = append(validators, VolumeSnapshotResourcesValidator{
 		ClusterData:   clusterData,

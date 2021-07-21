@@ -98,7 +98,7 @@ func main() {
 	applicationStateChanges := store.NewApplicationStateChangeStore(d)
 
 	clusters := store.NewClusterStore(d)
-	hc := handler.NewClusterHandler(clusters, k8s.K8sClient{})
+	hc := handler.NewClusterHandler(clusters, k8s.Client{})
 	hc.Register(api)
 
 	tasks := store.NewTaskStore(d)
@@ -111,7 +111,7 @@ func main() {
 	dt := handler.NewDriverTypeHandler(dts)
 	dt.Register(api)
 
-	as := handler.NewApplicationHandler(applications, tasks, clusters, applicationStateChanges, arrays, modules, dts, k8s.K8sClient{})
+	as := handler.NewApplicationHandler(applications, tasks, clusters, applicationStateChanges, arrays, modules, dts, k8s.Client{})
 	as.Register(api)
 
 	th := handler.NewTaskHandler(tasks, applications, applicationStateChanges, clusters, kapp.NewClient(""))

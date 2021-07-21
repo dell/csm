@@ -33,12 +33,14 @@ type ControllerRuntimeInterface interface {
 	CreateNameSpace(ctx context.Context, data []byte) error
 }
 
+// ControllerRuntimeClient provides functionality for the controller runtime
 type ControllerRuntimeClient struct {
 	client ctrlClient.Client
 	Logger echo.Logger
 }
 
-type K8sClient struct{}
+// Client provides functionality for accessing the client go library
+type Client struct{}
 
 // CreateNameSpace will create the given Namespace in a k8s cluster
 func (c ControllerRuntimeClient) CreateNameSpace(ctx context.Context, data []byte) error {
@@ -142,7 +144,7 @@ func GetControllerClient(restConfig *rest.Config, scheme *runtime.Scheme) (ctrlC
 }
 
 // IsOpenShift returns true if the cluster is OpenShift, otherwise returns false
-func (c K8sClient) IsOpenShift(data []byte) (bool, error) {
+func (c Client) IsOpenShift(data []byte) (bool, error) {
 	k8sClientSet, err := c.GetClientSet(data)
 	if err != nil {
 		return false, err
@@ -162,7 +164,7 @@ func (c K8sClient) IsOpenShift(data []byte) (bool, error) {
 }
 
 // GetVersion returns version of the k8s cluster
-func (c K8sClient) GetVersion(data []byte) (string, error) {
+func (c Client) GetVersion(data []byte) (string, error) {
 	k8sClientSet, err := c.GetClientSet(data)
 	if err != nil {
 		return "", err
@@ -175,7 +177,7 @@ func (c K8sClient) GetVersion(data []byte) (string, error) {
 }
 
 // DiscoverK8sDetails - discover k8s details
-func (c K8sClient) DiscoverK8sDetails(data []byte) (string, *bool, *kubernetes.Clientset, error) {
+func (c Client) DiscoverK8sDetails(data []byte) (string, *bool, *kubernetes.Clientset, error) {
 
 	version, err := c.GetVersion(data)
 	if err != nil {
@@ -196,7 +198,7 @@ func (c K8sClient) DiscoverK8sDetails(data []byte) (string, *bool, *kubernetes.C
 }
 
 // GetClientSet returns a reference to the Clientset for the given cluster
-func (c K8sClient) GetClientSet(data []byte) (*kubernetes.Clientset, error) {
+func (c Client) GetClientSet(data []byte) (*kubernetes.Clientset, error) {
 	restConfig, err := clientcmd.RESTConfigFromKubeConfig(data)
 	if err != nil {
 		return nil, err
@@ -212,6 +214,7 @@ func newClientSet(restConfig *rest.Config) (*kubernetes.Clientset, error) {
 	return clientset, nil
 }
 
+// Node provides details about a node in a k8s cluster
 type Node struct {
 	HostName          string            `json:"host_name"`
 	InstalledSoftware map[string]string `json:"installed_software"`
