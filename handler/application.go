@@ -200,7 +200,7 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 		return
 	}
 
-	err = k8sClient.DeployFromBytes(ctx, secretOutput.AsCombinedBytes())
+	err = k8sClient.CreateSecret(ctx, secretOutput.AsCombinedBytes())
 	if err != nil {
 		c.Logger().Errorf("error creating secret: %+v", err)
 		return
@@ -214,7 +214,7 @@ func (h *ApplicationHandler) captureApplicationDiff(ctx context.Context, applica
 			c.Logger().Errorf("error generating empty secret: %+v", err)
 			return
 		}
-		err = k8sClient.DeployFromBytes(ctx, emptySecretOutput.AsCombinedBytes())
+		err = k8sClient.CreateSecret(ctx, emptySecretOutput.AsCombinedBytes())
 		if err != nil {
 			c.Logger().Errorf("error creating secret: %+v", err)
 			return

@@ -27,8 +27,9 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
 )
 
-type Interface interface {
-	DeployFromBytes(ctx context.Context, bytes []byte) error
+// ControllerRuntimeInterface is an interface to support operations for a runtime client
+type ControllerRuntimeInterface interface {
+	CreateSecret(ctx context.Context, bytes []byte) error
 	CreateNameSpace(ctx context.Context, data []byte) error
 }
 
@@ -39,6 +40,7 @@ type ControllerRuntimeClient struct {
 
 type K8sClient struct{}
 
+// CreateNameSpace will create the given Namespace in a k8s cluster
 func (c ControllerRuntimeClient) CreateNameSpace(ctx context.Context, data []byte) error {
 	scheme := runtime.NewScheme()
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
@@ -74,7 +76,8 @@ func (c ControllerRuntimeClient) CreateNameSpace(ctx context.Context, data []byt
 	return nil
 }
 
-func (c ControllerRuntimeClient) DeployFromBytes(ctx context.Context, data []byte) error {
+// CreateSecret will create the given Secret resource in a k8s cluster
+func (c ControllerRuntimeClient) CreateSecret(ctx context.Context, data []byte) error {
 	fmt.Println(data)
 	scheme := runtime.NewScheme()
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
@@ -98,7 +101,8 @@ func (c ControllerRuntimeClient) DeployFromBytes(ctx context.Context, data []byt
 	return nil
 }
 
-func NewControllerRuntimeClient(data []byte, logger echo.Logger) (Interface, error) {
+// NewControllerRuntimeClient will return a new controller runtime client for the given kubeconfig
+func NewControllerRuntimeClient(data []byte, logger echo.Logger) (ControllerRuntimeInterface, error) {
 	restConfig, err := clientcmd.RESTConfigFromKubeConfig(data)
 	if err != nil {
 		return nil, err
@@ -213,6 +217,7 @@ type Node struct {
 	InstalledSoftware map[string]string `json:"installed_software"`
 }
 
+// NodeDataCollector can gather logs from an installed daemon set on the cluster
 type NodeDataCollector struct {
 	clusterID   uint
 	nPods       int
@@ -232,6 +237,7 @@ func (collector *NodeDataCollector) init() {
 	collector.nodes = make(chan Node, 100)
 }
 
+// Install will install the data collector daemonset on a k8s cluster
 func (collector *NodeDataCollector) Install() error {
 	// Read the image name from env
 	img := utils.GetEnv("DATA_COLLECTOR_IMAGE", "")
