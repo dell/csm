@@ -7,16 +7,19 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
+// StorageArrayHandler constains the store interface for StorageArray
 type StorageArrayHandler struct {
 	arrayStore store.StorageArrayStoreInterface
 }
 
+// NewStorageArrayHandler creates an handler for a StorageArray
 func NewStorageArrayHandler(as store.StorageArrayStoreInterface) *StorageArrayHandler {
 	return &StorageArrayHandler{
 		arrayStore: as,
 	}
 }
 
+// Register rosters all the API endpoints for StorageArray
 func (h *StorageArrayHandler) Register(api *echo.Group) {
 	jwtMiddleware := middleware.JWT(utils.JWTSecret)
 
@@ -25,5 +28,5 @@ func (h *StorageArrayHandler) Register(api *echo.Group) {
 	storageArrays.GET("", h.ListStorageArrays)
 	storageArrays.GET("/:id", h.GetStorageArray)
 	storageArrays.DELETE("/:id", h.DeleteStorageArray)
-	storageArrays.PUT("/:id", h.UpdateStorageArray)
+	storageArrays.PATCH("/:id", h.UpdateStorageArray)
 }

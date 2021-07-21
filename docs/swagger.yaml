@@ -200,12 +200,6 @@ definitions:
         type: string
       username:
         type: string
-    required:
-    - management_endpoint
-    - password
-    - storage_array_type
-    - unique_id
-    - username
     type: object
   TaskResponse:
     properties:
@@ -761,42 +755,6 @@ paths:
       summary: Create a new storage array
       tags:
       - storage-array
-    put:
-      consumes:
-      - application/json
-      description: Update a storage array
-      operationId: update-storage-array
-      parameters:
-      - description: Storage Array info for update
-        in: body
-        name: storageArray
-        required: true
-        schema:
-          $ref: '#/definitions/StorageArrayUpdateRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/StorageArrayResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
-      summary: Update a storage array
-      tags:
-      - storage-array
   /storage-arrays/{id}:
     delete:
       consumes:
@@ -866,6 +824,46 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Get storage array
+      tags:
+      - storage-array
+  /storage-arrays{id}:
+    patch:
+      consumes:
+      - application/json
+      description: Update a storage array
+      operationId: update-storage-array
+      parameters:
+      - description: Storage Array ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Storage Array info for update
+        in: body
+        name: storageArray
+        required: true
+        schema:
+          $ref: '#/definitions/StorageArrayUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a storage array
       tags:
       - storage-array
   /tasks/{id}:

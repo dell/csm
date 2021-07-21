@@ -90,19 +90,45 @@ func Test_UpdateStorageArray(t *testing.T) {
 		"success": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 			updateStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
-			updateStorageSystemResponseJSON := `{"id":0,"storage_array_type_id":0,"unique_id":"1","username":"admin","management_endpoint":"http://localhost"}`
+			updateStorageSystemResponseJSON := "null"
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+
+			storageArray := model.StorageArray{
+				UniqueID:           "1",
+				Username:           "admin",
+				ManagementEndpoint: "http://localhost",
+				StorageArrayTypeID: 0,
+			}
+			storageArray.ID = 23
+			storageArrayStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(&storageArray, nil)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(&model.StorageArrayType{Name: "powerflex"}, nil)
 			storageArrayStore.EXPECT().Update(gomock.Any()).Times(1)
 			handler := &StorageArrayHandler{storageArrayStore}
-			return http.StatusOK, handler, updateStorageSystemRequestJSON, updateStorageSystemResponseJSON, ctrl
+			return http.StatusNoContent, handler, updateStorageSystemRequestJSON, updateStorageSystemResponseJSON, ctrl
+		},
+		"nil result from db": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
+			ctrl := gomock.NewController(t)
+
+			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+			storageArrayStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, nil)
+			handler := &StorageArrayHandler{storageArrayStore}
+			return http.StatusNotFound, handler, "1", "", ctrl
+		},
+		"error querying db": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
+			ctrl := gomock.NewController(t)
+
+			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+			storageArrayStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(nil, errors.New("error"))
+			handler := &StorageArrayHandler{storageArrayStore}
+			return http.StatusInternalServerError, handler, "1", "", ctrl
 		},
 		"invalid request": func(*testing.T) (int, *StorageArrayHandler, string, string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 			updateStorageSystemRequestJSON := `invalid-request`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+			storageArrayStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(&model.StorageArray{StorageArrayTypeID: 1}, nil)
 			handler := &StorageArrayHandler{storageArrayStore}
 			return http.StatusUnprocessableEntity, handler, updateStorageSystemRequestJSON, "", ctrl
 		},
@@ -112,6 +138,7 @@ func Test_UpdateStorageArray(t *testing.T) {
 			updateStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+			storageArrayStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(&model.StorageArray{StorageArrayTypeID: 1}, nil)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(nil, errors.New("error"))
 			handler := &StorageArrayHandler{storageArrayStore}
 			return http.StatusUnprocessableEntity, handler, updateStorageSystemRequestJSON, "", ctrl
@@ -122,6 +149,7 @@ func Test_UpdateStorageArray(t *testing.T) {
 			updateStorageSystemRequestJSON := `{"storage_array_type":"powerflex", "unique_id":"1", "username":"admin", "password":"password", "management_endpoint":"http://localhost"}`
 
 			storageArrayStore := mocks.NewMockStorageArrayStoreInterface(ctrl)
+			storageArrayStore.EXPECT().GetByID(gomock.Any()).Times(1).Return(&model.StorageArray{StorageArrayTypeID: 1}, nil)
 			storageArrayStore.EXPECT().GetTypeByTypeName("powerflex").Times(1).Return(&model.StorageArrayType{Name: "powerflex"}, nil)
 			storageArrayStore.EXPECT().Update(gomock.Any()).Return(errors.New("error")).Times(1)
 			handler := &StorageArrayHandler{storageArrayStore}
@@ -134,13 +162,13 @@ func Test_UpdateStorageArray(t *testing.T) {
 			expectedStatus, handler, request, expectedResponse, ctrl := tc(t)
 
 			e := router.New()
-			req := httptest.NewRequest(http.MethodPut, "/", strings.NewReader(request))
+			req := httptest.NewRequest(http.MethodPatch, "/", strings.NewReader(request))
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
 			c.SetPath("/storage-arrays/:id")
 			c.SetParamNames("id")
-			c.SetParamValues("1")
+			c.SetParamValues("23")
 
 			assert.NoError(t, handler.UpdateStorageArray(c))
 			assert.Equal(t, expectedStatus, rec.Code)

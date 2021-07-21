@@ -43,37 +43,69 @@ func (h *StorageArrayHandler) CreateStorageArray(c echo.Context) error {
 	return c.JSON(http.StatusCreated, newStorageArrayResponse(&storageArray))
 }
 
-// UpdateStorageArray godoc
+// UpdateStorageArray modifies a storage array
 // @Summary Update a storage array
 // @Description Update a storage array
 // @ID update-storage-array
 // @Tags storage-array
 // @Accept  json
 // @Produce  json
+// @Param id path string true "Storage Array ID"
 // @Param storageArray body storageArrayUpdateRequest true "Storage Array info for update"
-// @Success 200 {object} storageArrayResponse
+// @Success 204 "No Content"
 // @Failure 400 {object} utils.ErrorResponse
 // @Failure 404 {object} utils.ErrorResponse
 // @Failure 500 {object} utils.ErrorResponse
 // @Security ApiKeyAuth
-// @Router /storage-arrays [put]
+// @Router /storage-arrays{id} [patch]
 func (h *StorageArrayHandler) UpdateStorageArray(c echo.Context) error {
-	var storageArray model.StorageArray
-	req := &storageArrayUpdateRequest{}
-	if err := req.bind(c, &storageArray); err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
-	}
-
-	arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
+	arrayID := c.Param("id")
+	id, err := strconv.Atoi(arrayID)
 	if err != nil {
 		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
 	}
-	storageArray.StorageArrayTypeID = arrayType.ID
-
-	if err := h.arrayStore.Update(&storageArray); err != nil {
+	storageArray, err := h.arrayStore.GetByID(uint(id))
+	if err != nil {
 		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
 	}
-	return c.JSON(http.StatusOK, newStorageArrayResponse(&storageArray))
+	if storageArray == nil {
+		return c.JSON(http.StatusNotFound, utils.NewErrorResponse(http.StatusNotFound, utils.ErrorSeverity, "", err))
+	}
+
+	var tmpStorageArray model.StorageArray
+	req := &storageArrayUpdateRequest{}
+	if err := req.bind(c, &tmpStorageArray); err != nil {
+		return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
+	}
+
+	if req.StorageArrayType != "" {
+		arrayType, err := h.arrayStore.GetTypeByTypeName(strings.ToLower(req.StorageArrayType))
+		if err != nil {
+			return c.JSON(http.StatusUnprocessableEntity, utils.NewErrorResponse(http.StatusUnprocessableEntity, utils.ErrorSeverity, "", err))
+		}
+
+		storageArray.StorageArrayType = *arrayType
+		storageArray.StorageArrayTypeID = arrayType.ID
+	}
+
+	// update other properties
+	if tmpStorageArray.UniqueID != "" {
+		storageArray.UniqueID = tmpStorageArray.UniqueID
+	}
+	if tmpStorageArray.Password != "" {
+		storageArray.Password = tmpStorageArray.Password
+	}
+	if tmpStorageArray.Username != "" {
+		storageArray.Username = tmpStorageArray.Username
+	}
+	if tmpStorageArray.ManagementEndpoint != "" {
+		storageArray.ManagementEndpoint = tmpStorageArray.ManagementEndpoint
+	}
+
+	if err := h.arrayStore.Update(storageArray); err != nil {
+		return c.JSON(http.StatusInternalServerError, utils.NewErrorResponse(http.StatusInternalServerError, utils.CriticalSeverity, "", err))
+	}
+	return c.JSON(http.StatusNoContent, nil)
 }
 
 // ListStorageArrays godoc

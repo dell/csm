@@ -15,11 +15,11 @@ type storageArrayCreateRequest struct {
 } //@name StorageArrayCreateRequest
 
 type storageArrayUpdateRequest struct {
-	StorageArrayType   string `json:"storage_array_type" validate:"required"`
-	UniqueID           string `json:"unique_id" validate:"required"`
-	Username           string `json:"username" validate:"required"`
-	Password           string `json:"password" validate:"required"`
-	ManagementEndpoint string `json:"management_endpoint" validate:"required"`
+	StorageArrayType   string `json:"storage_array_type"`
+	UniqueID           string `json:"unique_id"`
+	Username           string `json:"username"`
+	Password           string `json:"password"`
+	ManagementEndpoint string `json:"management_endpoint"`
 } //@name StorageArrayUpdateRequest
 
 type storageArrayResponse struct {
