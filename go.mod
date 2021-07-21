@@ -10,12 +10,14 @@ require (
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/golang-jwt/jwt v3.2.1+incompatible
-	github.com/golang/mock v1.3.1
+	github.com/golang/mock v1.5.0
 	github.com/k14s/ytt v0.33.0
 	github.com/labstack/echo/v4 v4.3.0
 	github.com/labstack/gommon v0.3.0
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/spf13/cobra v1.2.1
+	github.com/spf13/viper v1.8.1
 	github.com/stretchr/testify v1.7.0
 	github.com/swaggo/echo-swagger v1.1.0
 	github.com/swaggo/swag v1.7.0
