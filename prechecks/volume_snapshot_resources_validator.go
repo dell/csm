@@ -12,16 +12,16 @@ var (
 	snapshotResources = []string{"VolumeSnapshotClass", "VolumeSnapshotContent", "VolumeSnapshot"}
 )
 
-// K8sClientExplainInterface is the required interface for querying the k8s cluster
-//go:generate mockgen -destination=mocks/k8s_client_explain_interface.go -package=mocks github.com/dell/csm-deployment/prechecks K8sClientExplainInterface
-type K8sClientExplainInterface interface {
+// K8sClientAPIResourceInterface is the required interface for querying the k8s cluster
+//go:generate mockgen -destination=mocks/k8s_client_api_resource_interface.go -package=mocks github.com/dell/csm-deployment/prechecks K8sClientAPIResourceInterface
+type K8sClientAPIResourceInterface interface {
 	GetAPIResource([]byte, string) (*metav1.APIResource, string, error)
 }
 
 // VolumeSnapshotResourcesValidator validates the required VolumeSnapshot CRDs and versions on the k8s cluster
 type VolumeSnapshotResourcesValidator struct {
 	ClusterData []byte
-	K8sClient   K8sClientExplainInterface
+	K8sClient   K8sClientAPIResourceInterface
 }
 
 // Validate will check that the expected CRD resources exist and that they are not of the version 'v1alphav1'

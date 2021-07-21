@@ -15,7 +15,7 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 		"success": func(*testing.T) (bool, VolumeSnapshotResourcesValidator, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
+			k8sclient := mocks.NewMockK8sClientAPIResourceInterface(ctrl)
 			k8sclient.EXPECT().GetAPIResource(gomock.Any(), gomock.Any()).Times(3).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1", nil)
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
@@ -27,7 +27,7 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 		"error - found v1alphav1 version of a crd": func(*testing.T) (bool, VolumeSnapshotResourcesValidator, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
+			k8sclient := mocks.NewMockK8sClientAPIResourceInterface(ctrl)
 			k8sclient.EXPECT().GetAPIResource(gomock.Any(), gomock.Any()).Times(1).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1alpha1", nil)
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
@@ -39,7 +39,7 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 		"error - k8sclient returned error": func(*testing.T) (bool, VolumeSnapshotResourcesValidator, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
+			k8sclient := mocks.NewMockK8sClientAPIResourceInterface(ctrl)
 			k8sclient.EXPECT().GetAPIResource(gomock.Any(), gomock.Any()).Times(1).Return(nil, "", errors.New("error"))
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
