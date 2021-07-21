@@ -14,6 +14,8 @@ type ApplicationHandler struct {
 	clusterStore                store.ClusterStoreInterface
 	applicationStateChangeStore store.ApplicationStateChangeStoreInterface
 	ModuleTypeStore             store.ModuleTypeStoreInterface
+	driverStore                 store.DriverTypeStoreInterface
+	k8sClient                   K8sClientInterface
 }
 
 func NewApplicationHandler(is store.ApplicationStoreInterface,
@@ -21,7 +23,9 @@ func NewApplicationHandler(is store.ApplicationStoreInterface,
 	cs store.ClusterStoreInterface,
 	asc store.ApplicationStateChangeStoreInterface,
 	as store.StorageArrayStoreInterface,
-	ms store.ModuleTypeStoreInterface) *ApplicationHandler {
+	ms store.ModuleTypeStoreInterface,
+	ds store.DriverTypeStoreInterface,
+	k8sClient K8sClientInterface) *ApplicationHandler {
 	return &ApplicationHandler{
 		applicationStore:            is,
 		taskStore:                   ts,
@@ -29,6 +33,8 @@ func NewApplicationHandler(is store.ApplicationStoreInterface,
 		applicationStateChangeStore: asc,
 		arrayStore:                  as,
 		ModuleTypeStore:             ms,
+		driverStore:                 ds,
+		k8sClient:                   k8sClient,
 	}
 }
 
