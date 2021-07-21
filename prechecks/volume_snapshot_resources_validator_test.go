@@ -16,7 +16,7 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 			ctrl := gomock.NewController(t)
 
 			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
-			k8sclient.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(3).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1", nil)
+			k8sclient.EXPECT().GetAPIResource(gomock.Any(), gomock.Any()).Times(3).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1", nil)
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
 				K8sClient: k8sclient,
@@ -28,7 +28,7 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 			ctrl := gomock.NewController(t)
 
 			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
-			k8sclient.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(1).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1alpha1", nil)
+			k8sclient.EXPECT().GetAPIResource(gomock.Any(), gomock.Any()).Times(1).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1alpha1", nil)
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
 				K8sClient: k8sclient,
@@ -40,7 +40,7 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 			ctrl := gomock.NewController(t)
 
 			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
-			k8sclient.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(1).Return(nil, "", errors.New("error"))
+			k8sclient.EXPECT().GetAPIResource(gomock.Any(), gomock.Any()).Times(1).Return(nil, "", errors.New("error"))
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
 				K8sClient: k8sclient,
