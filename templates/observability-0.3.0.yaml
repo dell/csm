@@ -1,15 +1,20 @@
 #@ load("@ytt:data", "data")
 #@ load("@ytt:yaml", "yaml")
-
+#@ load("@ytt:base64", "base64")
 
 #@ if data.values.observability.enabled:
 
+#@ hasUserIssuedCertTopology = (hasattr(data.values.karaviTopology, "certificateFile") and hasattr(data.values.karaviTopology, "privateKeyFile"))
+#@ hasUserIssuedCertOtelCollector = (hasattr(data.values.otelCollector, "certificateFile") and hasattr(data.values.otelCollector, "privateKeyFile"))
+
+#! If the karavi-topology cert and key are provided, deploy a CA Issuer using the cert and key
+#@ if hasUserIssuedCertTopology:
+#@ certificateFileContents = data.values.karaviTopology.certificateFile
+#@ privateKeyFileContents = data.values.karaviTopology.privateKeyFile
 apiVersion: v1
 data:
-  tls.crt: |-
-    todo-load-secret-from-file
-  tls.key: |-
-    todo-load-secret-from-file
+  tls.crt: #@ base64.encode(certificateFileContents)
+  tls.key: #@ base64.encode(privateKeyFileContents)
 kind: Secret
 type: kubernetes.io/tls
 metadata:
@@ -18,17 +23,128 @@ metadata:
 
 ---
 
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: karavi-topology-issuer
+  namespace: #@ data.values.Release.namespace
+spec:
+  ca:
+    secretName: karavi-topology-secret
+
+#@ end
+---
+
+
+
+#! If the otelCollector cert and key are provided, deploy a CA Issuer using the cert and key
+#@ if hasUserIssuedCertOtelCollector:
+#@ certificateFileContents = data.values.otelCollector.certificateFile
+#@ privateKeyFileContents = data.values.otelCollector.privateKeyFile
 apiVersion: v1
 data:
-  tls.crt: |-
-    todo-load-secret-from-file
-  tls.key: |-
-    todo-load-secret-from-file
+  tls.crt: #@ base64.encode(certificateFileContents)
+  tls.key: #@ base64.encode(privateKeyFileContents)
 kind: Secret
 type: kubernetes.io/tls
 metadata:
   name: otel-collector-secret
   namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: otel-collector-issuer
+  namespace: #@ data.values.Release.namespace
+spec:
+  ca:
+    secretName: otel-collector-secret
+
+#@ end
+---
+
+
+#! If any set of cert+key combos are not provided, deploy a selfsigned-issuer
+#@ if ((not hasUserIssuedCertTopology) or (not hasUserIssuedCertOtelCollector)):
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned-issuer
+  namespace: #@ data.values.Release.namespace
+spec:
+  selfSigned: {}
+
+#@ end
+--- 
+
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: otel-collector
+  namespace: #@ data.values.Release.namespace
+spec:
+  secretName: otel-collector-tls
+  duration: 2160h #! 90d
+  renewBefore: 360h #! 15d
+  subject:
+    organizations:
+    - dellemc
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - otel-collector
+  - #@ "otel-collector.{}.svc.kubernetes.local".format(data.values.Release.namespace)
+  issuerRef:
+    #@ if hasUserIssuedCertOtelCollector:
+    name: otel-collector-issuer
+    #@ else:
+    name: selfsigned-issuer
+    #@ end
+    kind: Issuer
+    group: cert-manager.io
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: karavi-topology
+  namespace: #@ data.values.Release.namespace
+spec:
+  secretName: karavi-topology-tls
+  duration: 2160h #! 90d
+  renewBefore: 360h #! 15d
+  subject:
+    organizations:
+    - dellemc
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - karavi-topology
+  - #@ "karavi-topology.{}.svc.kubernetes.local".format(data.values.Release.namespace)
+  issuerRef:
+    #@ if hasUserIssuedCertTopology:
+    name: karavi-topology-issuer
+    #@ else:
+    name: selfsigned-issuer
+    #@ end
+    kind: Issuer
+    group: cert-manager.io
 
 ---
 
@@ -120,7 +236,7 @@ spec:
         image: #@ data.values.karaviMetricsPowerflex.image
         resources: {}
         env:
-        - name: POWERFLEX_METRICS_ENDPOINT	
+        - name: POWERFLEX_METRICS_ENDPOINT
           value: #@ data.values.karaviMetricsPowerflex.endpoint
         - name: POWERFLEX_METRICS_NAMESPACE
           valueFrom:
@@ -142,7 +258,7 @@ spec:
           secretName: vxflexos-config
       - name: tls-secret
         secret:
-          secretName: otel-collector-secret
+          secretName: otel-collector-tls
           items:
             - key: tls.crt
               path: cert.crt
@@ -279,7 +395,7 @@ spec:
       volumes:
         - name: karavi-topology-secret-volume
           secret:
-            secretName: karavi-topology-secret
+            secretName: karavi-topology-tls
             items:
             - key: tls.crt
               path: localhost.crt
@@ -426,7 +542,7 @@ spec:
       volumes:
       - name: tls-secret
         secret:
-          secretName: otel-collector-secret
+          secretName: otel-collector-tls
           items:
             - key: tls.crt
               path: tls.crt
