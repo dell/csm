@@ -6,6 +6,35 @@
 
 #@ hasUserIssuedCertTopology = (hasattr(data.values.karaviTopology, "certificateFile") and hasattr(data.values.karaviTopology, "privateKeyFile"))
 #@ hasUserIssuedCertOtelCollector = (hasattr(data.values.otelCollector, "certificateFile") and hasattr(data.values.otelCollector, "privateKeyFile"))
+#@ hasUserIssuedCertPowerStoreMetrics = (hasattr(data.values.karaviMetricsPowerstore, "certificateFile") and hasattr(data.values.karaviMetricsPowerstore, "privateKeyFile"))
+
+#! If the karavi-metrics-powerstore cert and key are provided, deploy a CA Issuer using the cert and key
+#@ if hasUserIssuedCertPowerStoreMetrics:
+#@ certificateFileContents = data.values.karaviMetricsPowerstore.certificateFile
+#@ privateKeyFileContents = data.values.karaviMetricsPowerstore.privateKeyFile
+apiVersion: v1
+data:
+  tls.crt: #@ base64.encode(certificateFileContents)
+  tls.key: #@ base64.encode(privateKeyFileContents)
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: karavi-metrics-powerstore-secret
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: karavi-metrics-powerstore-issuer
+  namespace: #@ data.values.Release.namespace
+spec:
+  ca:
+    secretName: karavi-metrics-powerstore-secret
+
+#@ end
+---
 
 #! If the karavi-topology cert and key are provided, deploy a CA Issuer using the cert and key
 #@ if hasUserIssuedCertTopology:
@@ -67,7 +96,7 @@ spec:
 
 
 #! If any set of cert+key combos are not provided, deploy a selfsigned-issuer
-#@ if ((not hasUserIssuedCertTopology) or (not hasUserIssuedCertOtelCollector)):
+#@ if ((not hasUserIssuedCertTopology) or (not hasUserIssuedCertOtelCollector) or (not hasUserIssuedCertPowerStoreMetrics)):
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -79,7 +108,7 @@ spec:
 #@ end
 --- 
 
-
+#@ if data.values.karaviMetricsPowerstore.enabled or data.values.karaviMetricsPowerflex.enabled:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -112,8 +141,10 @@ spec:
     kind: Issuer
     group: cert-manager.io
 
+#@ end
 ---
 
+#@ if data.values.karaviTopology.enabled:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -146,14 +177,52 @@ spec:
     kind: Issuer
     group: cert-manager.io
 
+#@ end
 ---
 
+
+#@ if data.values.karaviMetricsPowerstore.enabled:
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: karavi-metrics-powerstore
+  namespace: #@ data.values.Release.namespace
+spec:
+  secretName: karavi-metrics-powerstore-tls
+  duration: 2160h #! 90d
+  renewBefore: 360h #! 15d
+  subject:
+    organizations:
+    - dellemc
+  isCA: false
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+  usages:
+    - server auth
+    - client auth
+  dnsNames:
+  - karavi-metrics-powerstore
+  - #@ "karavi-metrics-powerstore.{}.svc.kubernetes.local".format(data.values.Release.namespace)
+  issuerRef:
+    #@ if hasUserIssuedCertPowerStoreMetrics:
+    name: karavi-metrics-powerstore-issuer
+    #@ else:
+    name: selfsigned-issuer
+    #@ end
+    kind: Issuer
+    group: cert-manager.io
+
+#@ end
+---
+
+#@ if data.values.karaviMetricsPowerflex.enabled:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerflex-controller")
   namespace: #@ data.values.Release.namespace
-
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
@@ -267,7 +336,6 @@ spec:
           name: karavi-metrics-powerflex-configmap
       restartPolicy: Always
 status: {}
-
 ---
 
 
@@ -288,6 +356,8 @@ POWERFLEX_VOLUME_METRICS_ENABLED: #@ data.values.karaviMetricsPowerflex.volumeMe
 POWERFLEX_STORAGE_POOL_METRICS_ENABLED: #@ data.values.karaviMetricsPowerflex.storageClassPoolMetricsEnabled
 POWERFLEX_STORAGE_POOL_POLL_FREQUENCY: #@ data.values.karaviMetricsPowerflex.storageClassPoolPollFrequencySeconds
 POWERFLEX_MAX_CONCURRENT_QUERIES: #@ data.values.karaviMetricsPowerflex.concurrentPowerflexQueries
+LOG_LEVEL: #@ data.values.karaviMetricsPowerflex.logLevel
+LOG_FORMAT: #@ data.values.karaviMetricsPowerflex.logFormat
 #@ end
 
 
@@ -298,22 +368,179 @@ metadata:
   namespace: #@ data.values.Release.namespace
 data:
   karavi-metrics-powerflex.yaml: #@ yaml.encode(metricsPowerflexConfigmap())
-  
+
+
+#@ end  
 ---
 
-#@ def topologyConfigmap():
-PROVISIONER_NAMES: #@ data.values.karaviTopology.provisionerNames
+#@ if data.values.karaviMetricsPowerstore.enabled:
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerstore-controller")
+  namespace: #@ data.values.Release.namespace
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerstore-controller")
+rules:
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["csinodes", "storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["persistentvolumes", "nodes"]
+    verbs: ["list"]
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["*"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerstore-controller")
+subjects:
+  - kind: ServiceAccount
+    name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerstore-controller")
+    namespace: #@ data.values.Release.namespace
+roleRef:
+  kind: ClusterRole
+  name: #@ "{}-{}".format(data.values.Release.name, "metrics-powerstore-controller")
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: karavi_metrics_powerstore
+    app.kubernetes.io/instance: #@ data.values.Release.name
+  name: karavi-metrics-powerstore
+  namespace: #@ data.values.Release.namespace
+spec:
+  type: #@ data.values.karaviMetricsPowerstore.service.type
+  ports:
+  - name: karavi-metrics-powerstore
+    port: 9090
+    targetPort: 9090
+  selector:
+    app.kubernetes.io/name: karavi_metrics_powerstore
+    app.kubernetes.io/instance: #@ data.values.Release.name
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karavi-metrics-powerstore
+  namespace: #@ data.values.Release.namespace
+  labels:
+    app.kubernetes.io/name: karavi_metrics_powerstore
+    app.kubernetes.io/instance: #@ data.values.Release.name
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: karavi_metrics_powerstore
+      app.kubernetes.io/instance: #@ data.values.Release.name
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: karavi_metrics_powerstore
+        app.kubernetes.io/instance: #@ data.values.Release.name
+    spec:
+      serviceAccountName: #@ "{}-{}".format(data.values.Release.name, "metrics-powerstore-controller")
+      containers:
+      - name:  karavi-metrics-powerstore
+        image: #@ data.values.karaviMetricsPowerstore.image
+        resources: {}
+        env:
+        - name: POWERSTORE_METRICS_ENDPOINT
+          value: #@ data.values.karaviMetricsPowerstore.endpoint
+        - name: POWERSTORE_METRICS_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: TLS_ENABLED
+          value: "true"
+        volumeMounts:
+        - name: karavi-metrics-powerstore-secret-volume
+          mountPath: "/certs"
+        - name: powerstore-config
+          mountPath: /powerstore-config
+        - name: tls-secret
+          mountPath: /etc/ssl/certs
+          readOnly: true
+        - name: karavi-metrics-powerstore-configmap
+          mountPath: /etc/config
+      volumes:
+      - name: karavi-metrics-powerstore-secret-volume
+        secret:
+          secretName: karavi-metrics-powerstore-tls
+          items:
+            - key: tls.crt
+              path: localhost.crt
+            - key: tls.key
+              path: localhost.key
+      - name: powerstore-config
+        secret:
+          secretName: powerstore-config
+      - name: tls-secret
+        secret:
+          secretName: otel-collector-tls
+          items:
+            - key: tls.crt
+              path: cert.crt
+      - name:  karavi-metrics-powerstore-configmap
+        configMap:
+          name:  karavi-metrics-powerstore-configmap
+      restartPolicy: Always
+status: {}
+---
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: #@ data.values.Release.namespace
+
+---
+
+#@ def metricsPowerstoreConfigmap():
+COLLECTOR_ADDR: #@ data.values.karaviMetricsPowerstore.collectorAddr
+PROVISIONER_NAMES: #@ data.values.karaviMetricsPowerstore.provisionerNames
+POWERSTORE_VOLUME_IO_POLL_FREQUENCY: #@ data.values.karaviMetricsPowerstore.volumePollFrequencySeconds
+POWERSTORE_VOLUME_METRICS_ENABLED: #@ data.values.karaviMetricsPowerstore.volumeMetricsEnabled
+POWERSTORE_MAX_CONCURRENT_QUERIES: #@ data.values.karaviMetricsPowerstore.concurrentPowerstoreQueries
+LOG_LEVEL: #@ data.values.karaviMetricsPowerstore.logLevel
+LOG_FORMAT: #@ data.values.karaviMetricsPowerstore.logFormat
+ZIPKIN_URI: #@ data.values.karaviMetricsPowerstore.zipkin.uri
+ZIPKIN_SERVICE_NAME: #@ data.values.karaviMetricsPowerstore.zipkin.serviceName
+ZIPKIN_PROBABILITY: #@ data.values.karaviMetricsPowerstore.zipkin.probability
 #@ end
 
 apiVersion: v1 
 kind: ConfigMap 
 metadata:
-  name: karavi-topology-configmap
+  name: karavi-metrics-powerstore-configmap
   namespace: #@ data.values.Release.namespace
 data:
-  karavi-topology.yaml: #@ yaml.encode(topologyConfigmap())
+  karavi-metrics-powerstore.yaml: #@ yaml.encode(metricsPowerstoreConfigmap())
 
+
+#@ end  
 ---
+
+
+#@ if data.values.karaviTopology.enabled:
 
 apiVersion: v1
 kind: ServiceAccount
@@ -348,7 +575,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 
 ---
-
 
 
 apiVersion: v1
@@ -421,8 +647,28 @@ spec:
 status: {}
 
 ---
+#@ def topologyConfigmap():
+PROVISIONER_NAMES: #@ data.values.karaviTopology.provisionerNames
+LOG_LEVEL: #@ data.values.karaviTopology.logLevel
+LOG_FORMAT: #@ data.values.karaviTopology.logFormat
+ZIPKIN_URI: #@ data.values.karaviTopology.zipkin.uri
+ZIPKIN_SERVICE_NAME: #@ data.values.karaviTopology.zipkin.serviceName
+ZIPKIN_PROBABILITY: #@ data.values.karaviTopology.zipkin.probability
+#@ end
+
+apiVersion: v1 
+kind: ConfigMap 
+metadata:
+  name: karavi-topology-configmap
+  namespace: #@ data.values.Release.namespace
+data:
+  karavi-topology.yaml: #@ yaml.encode(topologyConfigmap())
 
 
+#@ end
+---
+
+#@ if data.values.karaviMetricsPowerstore.enabled or data.values.karaviMetricsPowerflex.enabled:
 apiVersion: v1
 data:
   otel-collector-config.yaml: |-
@@ -576,5 +822,6 @@ spec:
           mountPath: /etc/ssl/certs
       restartPolicy: Always
 status: {}
+#@ end
 
 #@ end
