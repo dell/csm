@@ -224,46 +224,6 @@ definitions:
       status:
         type: string
     type: object
-  UserLoginRequest:
-    properties:
-      password:
-        type: string
-      username:
-        type: string
-    required:
-    - password
-    - username
-    type: object
-  UserRegisterRequest:
-    properties:
-      password:
-        type: string
-      username:
-        type: string
-    required:
-    - password
-    - username
-    type: object
-  UserResponse:
-    properties:
-      token:
-        type: string
-      username:
-        type: string
-    type: object
-  UserUpdateRequest:
-    properties:
-      bio:
-        type: string
-      email:
-        type: string
-      image:
-        type: string
-      password:
-        type: string
-      username:
-        type: string
-    type: object
 info:
   contact: {}
   description: CSM Deployment API
@@ -1028,33 +988,30 @@ paths:
       summary: Cancel state change for an application
       tags:
       - task
-  /user:
-    get:
+  /users/change-password:
+    patch:
       consumes:
       - application/json
-      description: Gets the currently logged-in user
-      operationId: current-user
+      description: Change password for existing user
+      operationId: change-password
+      parameters:
+      - description: Enter New Password
+        format: password
+        in: query
+        name: password
+        required: true
+        type: string
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/UserResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponse'
+        "204":
+          description: No Content
         "401":
           description: Unauthorized
           schema:
             $ref: '#/definitions/ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "422":
-          description: Unprocessable Entity
+        "403":
+          description: Forbidden
           schema:
             $ref: '#/definitions/ErrorResponse'
         "500":
@@ -1062,87 +1019,8 @@ paths:
           schema:
             $ref: '#/definitions/ErrorResponse'
       security:
-      - ApiKeyAuth: []
-      summary: Get the current user
-      tags:
-      - user
-    put:
-      consumes:
-      - application/json
-      description: Update user information for current user
-      operationId: update-user
-      parameters:
-      - description: User details to update. At least **one** field is required.
-        in: body
-        name: user
-        required: true
-        schema:
-          $ref: '#/definitions/UserUpdateRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/UserResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "401":
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "422":
-          description: Unprocessable Entity
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-      security:
-      - ApiKeyAuth: []
-      summary: Update current user
-      tags:
-      - user
-  /users:
-    post:
-      consumes:
-      - application/json
-      description: Register a new user
-      operationId: sign-up
-      parameters:
-      - description: User info for registration
-        in: body
-        name: user
-        required: true
-        schema:
-          $ref: '#/definitions/UserRegisterRequest'
-      produces:
-      - application/json
-      responses:
-        "201":
-          description: Created
-          schema:
-            $ref: '#/definitions/UserResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-      summary: Register a new user
+      - BasicAuth: []
+      summary: Change password for existing user
       tags:
       - user
   /users/login:
@@ -1151,40 +1029,27 @@ paths:
       - application/json
       description: Login for existing user
       operationId: login
-      parameters:
-      - description: Credentials to use
-        in: body
-        name: user
-        required: true
-        schema:
-          $ref: '#/definitions/UserLoginRequest'
       produces:
       - application/json
       responses:
         "200":
-          description: OK
+          description: Bearer Token for Logged in User
           schema:
-            $ref: '#/definitions/UserResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponse'
+            type: string
         "401":
           description: Unauthorized
           schema:
             $ref: '#/definitions/ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        "422":
-          description: Unprocessable Entity
+        "403":
+          description: Forbidden
           schema:
             $ref: '#/definitions/ErrorResponse'
         "500":
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
+      security:
+      - BasicAuth: []
       summary: Login for existing user
       tags:
       - user
@@ -1193,4 +1058,6 @@ securityDefinitions:
     in: header
     name: Authorization
     type: apiKey
+  BasicAuth:
+    type: basic
 swagger: "2.0"

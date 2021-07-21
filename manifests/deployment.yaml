@@ -53,6 +53,10 @@ spec:
               value: "/app/kapp"
             - name: DATA_COLLECTOR_IMAGE
               value: "<registry-ip>:<registry-port>/csm-data-collector:v0.0.1"
+            - name: ADMIN_USERNAME
+              value: "<admin-username>"
+            - name: ADMIN_PASSWORD
+              value: "<admin-password>"
           volumeMounts:
             - name: cache-volume
               mountPath: /app/db

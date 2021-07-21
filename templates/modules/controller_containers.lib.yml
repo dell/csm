@@ -246,15 +246,15 @@ env:
   - name: SSL_CERT_DIR
     value: /certs
   - name: X_CSI_ISILON_CONFIG_PATH
-    value: /isilon-configs/config
+    value: /isilon-config/config
 volumeMounts:
   - name: socket-dir
     mountPath: /var/run/csi
   - name: certs
     mountPath: /certs
     readOnly: true
-  - name: isilon-configs
-    mountPath: /isilon-configs
+  - name: isilon-config
+    mountPath: /isilon-config
 #@ end
 
 #! spec for csi-unity driver sidecar container

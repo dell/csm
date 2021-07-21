@@ -30,9 +30,9 @@ volumes:
               - key: #@ "cert-" + str(i)
                 path: #@ "cert-" + str(i)
         #@ end
-  - name: isilon-configs
+  - name: isilon-config
     secret:
-      secretName: #@ application + "-creds"
+      secretName: #@ application + "-config"
 #@ end
 
 #! VOLUMES for application csi-unity
