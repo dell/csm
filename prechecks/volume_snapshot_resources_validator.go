@@ -2,51 +2,37 @@ package prechecks
 
 import (
 	"fmt"
-	"io/ioutil"
-	"os"
 	"regexp"
 
 	"github.com/pkg/errors"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 var (
-	snapshotResources = []string{"VolumeSnapshotClasses", "VolumeSnapshotContents", "VolumeSnapshots"}
+	snapshotResources = []string{"VolumeSnapshotClass", "VolumeSnapshotContent", "VolumeSnapshot"}
 )
 
-// KubectlExplainInterface is the interface required to explain resources using kubectl
-//go:generate mockgen -destination=mocks/kubectl_explain_interface.go -package=mocks github.com/dell/csm-deployment/prechecks KubectlExplainInterface
-type KubectlExplainInterface interface {
-	Explain(string, string) ([]byte, error)
+// K8sClientExplainInterface is the required interface for querying the k8s cluster
+//go:generate mockgen -destination=mocks/k8s_client_explain_interface.go -package=mocks github.com/dell/csm-deployment/prechecks K8sClientExplainInterface
+type K8sClientExplainInterface interface {
+	Explain([]byte, string) (*metav1.APIResource, string, error)
 }
 
 // VolumeSnapshotResourcesValidator validates the required VolumeSnapshot CRDs and versions on the k8s cluster
 type VolumeSnapshotResourcesValidator struct {
-	ClusterData   []byte
-	KubectlClient KubectlExplainInterface
+	ClusterData []byte
+	K8sClient   K8sClientExplainInterface
 }
 
 // Validate will check that the expected CRD resources exist and that they are not of the version 'v1alphav1'
 func (k VolumeSnapshotResourcesValidator) Validate() error {
-	tmpFile, err := ioutil.TempFile("", "config")
-	if err != nil {
-		return err
-	}
-
-	_, err = tmpFile.Write(k.ClusterData)
-	if err != nil {
-		return err
-	}
-	defer os.Remove(tmpFile.Name())
-
 	for _, resource := range snapshotResources {
-
-		out, err := k.KubectlClient.Explain(tmpFile.Name(), resource)
+		_, groupVersion, err := k.K8sClient.Explain(k.ClusterData, resource)
 		if err != nil {
 			return errors.Wrap(err, fmt.Sprintf("unable to find CRD for %s", resource))
 		}
-
-		re := regexp.MustCompile(`VERSION.*v1alpha1$`)
-		hasAlphav1 := re.Match([]byte(out))
+		re := regexp.MustCompile(`v1alpha1`)
+		hasAlphav1 := re.Match([]byte(groupVersion))
 		if hasAlphav1 {
 			return fmt.Errorf("has alphav1 of %s", resource)
 		}

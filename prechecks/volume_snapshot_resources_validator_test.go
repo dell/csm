@@ -7,6 +7,7 @@ import (
 	"github.com/dell/csm-deployment/prechecks/mocks"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
@@ -14,11 +15,11 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 		"success": func(*testing.T) (bool, VolumeSnapshotResourcesValidator, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			kubectl := mocks.NewMockKubectlExplainInterface(ctrl)
-			kubectl.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(3).Return([]byte(""), nil)
+			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
+			k8sclient.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(3).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1", nil)
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
-				KubectlClient: kubectl,
+				K8sClient: k8sclient,
 			}
 
 			return true, snapshotValidator, ctrl
@@ -26,25 +27,24 @@ func Test_VolumeSnapshotResourcesValidator(t *testing.T) {
 		"error - found v1alphav1 version of a crd": func(*testing.T) (bool, VolumeSnapshotResourcesValidator, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			kubectl := mocks.NewMockKubectlExplainInterface(ctrl)
-			kubectl.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(1).Return([]byte("VERSION: snapshot.storage.k8s.io/v1alpha1"), nil)
+			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
+			k8sclient.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(1).Return(&metav1.APIResource{}, "snapshot.storage.k8s.io/v1alpha1", nil)
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
-				KubectlClient: kubectl,
+				K8sClient: k8sclient,
 			}
 
 			return false, snapshotValidator, ctrl
 		},
-		"error - kubectl returned error": func(*testing.T) (bool, VolumeSnapshotResourcesValidator, *gomock.Controller) {
+		"error - k8sclient returned error": func(*testing.T) (bool, VolumeSnapshotResourcesValidator, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
-			kubectl := mocks.NewMockKubectlExplainInterface(ctrl)
-			kubectl.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(1).Return([]byte(""), errors.New("error"))
+			k8sclient := mocks.NewMockK8sClientExplainInterface(ctrl)
+			k8sclient.EXPECT().Explain(gomock.Any(), gomock.Any()).Times(1).Return(nil, "", errors.New("error"))
 
 			snapshotValidator := VolumeSnapshotResourcesValidator{
-				KubectlClient: kubectl,
+				K8sClient: k8sclient,
 			}
-
 			return false, snapshotValidator, ctrl
 		},
 	}

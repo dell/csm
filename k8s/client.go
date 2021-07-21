@@ -163,6 +163,26 @@ func (c Client) IsOpenShift(data []byte) (bool, error) {
 	return false, nil
 }
 
+// Explain will return details about a specific CRD resource
+func (c Client) Explain(data []byte, resource string) (*metav1.APIResource, string, error) {
+	k8sClientSet, err := c.GetClientSet(data)
+	if err != nil {
+		return nil, "", err
+	}
+	list, err := k8sClientSet.Discovery().ServerPreferredResources()
+	if err != nil {
+		return nil, "", err
+	}
+	for _, res := range list {
+		for _, tes := range res.APIResources {
+			if tes.Kind == resource {
+				return &tes, res.GroupVersion, nil
+			}
+		}
+	}
+	return nil, "", fmt.Errorf("resource %s not found", resource)
+}
+
 // GetVersion returns version of the k8s cluster
 func (c Client) GetVersion(data []byte) (string, error) {
 	k8sClientSet, err := c.GetClientSet(data)

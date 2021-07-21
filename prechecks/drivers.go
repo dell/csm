@@ -2,7 +2,6 @@ package prechecks
 
 import (
 	"github.com/dell/csm-deployment/k8s"
-	"github.com/dell/csm-deployment/kubectl"
 	"github.com/dell/csm-deployment/model"
 )
 
@@ -40,8 +39,8 @@ func GetDriverPrechecks(driverType string, clusterData []byte, clusterNodeDetail
 		K8sClient:      k8s.Client{},
 	})
 	validators = append(validators, VolumeSnapshotResourcesValidator{
-		ClusterData:   clusterData,
-		KubectlClient: kubectl.Kubectl{},
+		ClusterData: clusterData,
+		K8sClient:   k8s.Client{},
 	})
 
 	switch driverType {

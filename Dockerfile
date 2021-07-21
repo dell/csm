@@ -6,8 +6,6 @@ WORKDIR /app
 
 RUN wget -O kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.36.0/kapp-linux-amd64 && chmod +x kapp
 
-RUN wget -O kubectl https://storage.googleapis.com/kubernetes-release/release/v1.21.2/bin/linux/amd64/kubectl && chmod +x kubectl
-
 COPY templates templates
 COPY samplecerts samplecerts
 
