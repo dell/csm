@@ -698,6 +698,15 @@ paths:
       - application/json
       description: List all storage arrays
       operationId: list-storage-arrays
+      parameters:
+      - description: Unique ID
+        in: query
+        name: unique_id
+        type: string
+      - description: Storage Type
+        in: query
+        name: storage_type
+        type: string
       produces:
       - application/json
       responses:

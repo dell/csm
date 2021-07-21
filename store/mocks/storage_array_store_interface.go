@@ -95,6 +95,36 @@ func (mr *MockStorageArrayStoreInterfaceMockRecorder) GetAllByID(arg0 ...interfa
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllByID", reflect.TypeOf((*MockStorageArrayStoreInterface)(nil).GetAllByID), arg0...)
 }
 
+// GetAllByStorageType mocks base method
+func (m *MockStorageArrayStoreInterface) GetAllByStorageType(arg0 string) ([]model.StorageArray, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetAllByStorageType", arg0)
+	ret0, _ := ret[0].([]model.StorageArray)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAllByStorageType indicates an expected call of GetAllByStorageType
+func (mr *MockStorageArrayStoreInterfaceMockRecorder) GetAllByStorageType(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllByStorageType", reflect.TypeOf((*MockStorageArrayStoreInterface)(nil).GetAllByStorageType), arg0)
+}
+
+// GetAllByUniqueID mocks base method
+func (m *MockStorageArrayStoreInterface) GetAllByUniqueID(arg0 string) ([]model.StorageArray, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetAllByUniqueID", arg0)
+	ret0, _ := ret[0].([]model.StorageArray)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAllByUniqueID indicates an expected call of GetAllByUniqueID
+func (mr *MockStorageArrayStoreInterfaceMockRecorder) GetAllByUniqueID(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllByUniqueID", reflect.TypeOf((*MockStorageArrayStoreInterface)(nil).GetAllByUniqueID), arg0)
+}
+
 // GetByID mocks base method
 func (m *MockStorageArrayStoreInterface) GetByID(arg0 uint) (*model.StorageArray, error) {
 	m.ctrl.T.Helper()
