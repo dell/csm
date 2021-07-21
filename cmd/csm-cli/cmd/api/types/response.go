@@ -1,10 +1,7 @@
 package types
 
-// Struct to capture user login response
-type UserLoginResponse struct {
-	Username string `json:"username"`
-	Token    string `json:"token"`
-}
+// captures JWT Token
+var JWTToken string
 
 // Struct to capture cluster response
 type ClusterResponse struct {
