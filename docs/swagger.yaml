@@ -373,6 +373,11 @@ paths:
       - application/json
       description: List all clusters
       operationId: list-clusters
+      parameters:
+      - description: Cluster Name
+        in: query
+        name: cluster_name
+        type: string
       produces:
       - application/json
       responses:

@@ -381,8 +381,8 @@ func Test_GetCluster(t *testing.T) {
 
 func Test_ListClusters(t *testing.T) {
 
-	tests := map[string]func(t *testing.T) (int, *ClusterHandler, string, *gomock.Controller){
-		"success": func(*testing.T) (int, *ClusterHandler, string, *gomock.Controller) {
+	tests := map[string]func(t *testing.T) (int, *ClusterHandler, string, map[string]string, *gomock.Controller){
+		"success": func(*testing.T) (int, *ClusterHandler, string, map[string]string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 			listStorageSystemResponseJSON := "[{\"cluster_id\":0,\"cluster_name\":\"cluster-1\",\"nodes\":\"\"},{\"cluster_id\":0,\"cluster_name\":\"cluster-2\",\"nodes\":\"\"}]"
 
@@ -397,25 +397,44 @@ func Test_ListClusters(t *testing.T) {
 			})
 			clusterStore.EXPECT().GetAll().Times(1).Return(clusters, nil)
 			handler := &ClusterHandler{clusterStore: clusterStore}
-			return http.StatusOK, handler, listStorageSystemResponseJSON, ctrl
+			return http.StatusOK, handler, listStorageSystemResponseJSON, nil, ctrl
 		},
-		"error querying database": func(*testing.T) (int, *ClusterHandler, string, *gomock.Controller) {
+		"success listing by cluster_name": func(*testing.T) (int, *ClusterHandler, string, map[string]string, *gomock.Controller) {
+			ctrl := gomock.NewController(t)
+			listStorageSystemResponseJSON := "[{\"cluster_id\":0,\"cluster_name\":\"cluster-2\",\"nodes\":\"\"}]"
+
+			clusterStore := mocks.NewMockClusterStoreInterface(ctrl)
+
+			clusters := make([]model.Cluster, 0)
+			clusters = append(clusters, model.Cluster{
+				ClusterName: "cluster-2",
+			})
+			clusterStore.EXPECT().GetAllByName(gomock.Any()).Times(1).Return(clusters, nil)
+			handler := &ClusterHandler{clusterStore: clusterStore}
+			return http.StatusOK, handler, listStorageSystemResponseJSON, map[string]string{"cluster_name": "cluster-1"}, ctrl
+		},
+		"error querying database": func(*testing.T) (int, *ClusterHandler, string, map[string]string, *gomock.Controller) {
 			ctrl := gomock.NewController(t)
 
 			clusterStore := mocks.NewMockClusterStoreInterface(ctrl)
 			clusterStore.EXPECT().GetAll().Times(1).Return(nil, errors.New("error"))
 			handler := &ClusterHandler{clusterStore: clusterStore}
-			return http.StatusInternalServerError, handler, "", ctrl
+			return http.StatusInternalServerError, handler, "", nil, ctrl
 		},
 	}
 	for name, tc := range tests {
 		t.Run(name, func(t *testing.T) {
 
-			expectedStatus, handler, expectedResponse, ctrl := tc(t)
+			expectedStatus, handler, expectedResponse, queryParams, ctrl := tc(t)
 
 			e := router.New()
 			req := httptest.NewRequest(http.MethodGet, "/", nil)
 			req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+			q := req.URL.Query()
+			for key, value := range queryParams {
+				q.Add(key, value)
+			}
+			req.URL.RawQuery = q.Encode()
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
 
