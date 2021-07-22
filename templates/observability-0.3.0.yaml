@@ -5,7 +5,7 @@
 #@ if data.values.observability.enabled:
 
 #@ if hasattr(data.values, "namespace"):
-#! deployment with driver so use driver's username
+#! deployment with driver so use driver's namespace
 #@ observabilityNamespace = data.values.namespace
 #@ else:
 #! standalone deployment of observability
