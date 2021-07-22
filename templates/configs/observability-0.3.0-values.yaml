@@ -5,11 +5,13 @@
 observability:
   enabled: false
   name: csm-observability
+  #! this will only be used for standalone deployment
+  namespace: csm
 
 #@overlay/match missing_ok=True
 karaviTopology:
   image: dellemc/csm-topology:v0.3.0
-  enabled: true
+  enabled: false
   #! comma separated list of provisioner names (ex: csi-vxflexos.dellemc.com)
   provisionerNames: csi-vxflexos.dellemc.com,csi-powerstore.dellemc.com
   service:
@@ -24,7 +26,7 @@ karaviTopology:
 #@overlay/match missing_ok=True
 karaviMetricsPowerflex:
   image: dellemc/csm-metrics-powerflex:v0.3.0
-  enabled: true
+  enabled: false
   collectorAddr: otel-collector:55680
   provisionerNames: csi-vxflexos.dellemc.com
   sdcMetricsEnabled: "true"

@@ -3,6 +3,15 @@
 #@ load("@ytt:base64", "base64")
 
 #@ if data.values.observability.enabled:
+
+#@ if hasattr(data.values, "namespace"):
+#! deployment with driver so use driver's username
+#@ observabilityNamespace = data.values.namespace
+#@ else:
+#! standalone deployment of observability
+#@ observabilityNamespace = data.values.observability.namespace
+#@ end
+
 #@ hasUserIssuedCertTopology = (hasattr(data.values.karaviTopology, "certificateFile") and hasattr(data.values.karaviTopology, "privateKeyFile"))
 #@ hasUserIssuedCertOtelCollector = (hasattr(data.values.otelCollector, "certificateFile") and hasattr(data.values.otelCollector, "privateKeyFile"))
 #@ hasUserIssuedCertPowerStoreMetrics = (hasattr(data.values.karaviMetricsPowerstore, "certificateFile") and hasattr(data.values.karaviMetricsPowerstore, "privateKeyFile"))
@@ -19,7 +28,7 @@ kind: Secret
 type: kubernetes.io/tls
 metadata:
   name: karavi-metrics-powerstore-secret
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 
 ---
 
@@ -27,7 +36,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: karavi-metrics-powerstore-issuer
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   ca:
     secretName: karavi-metrics-powerstore-secret
@@ -47,7 +56,7 @@ kind: Secret
 type: kubernetes.io/tls
 metadata:
   name: karavi-topology-secret
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 
 ---
 
@@ -55,7 +64,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: karavi-topology-issuer
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   ca:
     secretName: karavi-topology-secret
@@ -77,7 +86,7 @@ kind: Secret
 type: kubernetes.io/tls
 metadata:
   name: otel-collector-secret
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 
 ---
 
@@ -85,7 +94,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: otel-collector-issuer
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   ca:
     secretName: otel-collector-secret
@@ -100,7 +109,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: selfsigned-issuer
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   selfSigned: {}
 
@@ -112,7 +121,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: otel-collector
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   secretName: otel-collector-tls
   duration: 2160h #! 90d
@@ -130,7 +139,7 @@ spec:
     - client auth
   dnsNames:
   - otel-collector
-  - #@ "otel-collector.{}.svc.kubernetes.local".format(data.values.namespace)
+  - #@ "otel-collector.{}.svc.kubernetes.local".format(observabilityNamespace)
   issuerRef:
     #@ if hasUserIssuedCertOtelCollector:
     name: otel-collector-issuer
@@ -148,7 +157,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: karavi-topology
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   secretName: karavi-topology-tls
   duration: 2160h #! 90d
@@ -166,7 +175,7 @@ spec:
     - client auth
   dnsNames:
   - karavi-topology
-  - #@ "karavi-topology.{}.svc.kubernetes.local".format(data.values.namespace)
+  - #@ "karavi-topology.{}.svc.kubernetes.local".format(observabilityNamespace)
   issuerRef:
     #@ if hasUserIssuedCertTopology:
     name: karavi-topology-issuer
@@ -185,7 +194,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: karavi-metrics-powerstore
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   secretName: karavi-metrics-powerstore-tls
   duration: 2160h #! 90d
@@ -203,7 +212,7 @@ spec:
     - client auth
   dnsNames:
   - karavi-metrics-powerstore
-  - #@ "karavi-metrics-powerstore.{}.svc.kubernetes.local".format(data.values.namespace)
+  - #@ "karavi-metrics-powerstore.{}.svc.kubernetes.local".format(observabilityNamespace)
   issuerRef:
     #@ if hasUserIssuedCertPowerStoreMetrics:
     name: karavi-metrics-powerstore-issuer
@@ -221,7 +230,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: #@ "{}-{}".format(data.values.observability.name, "metrics-powerflex-controller")
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
@@ -248,7 +257,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: #@ "{}-{}".format(data.values.observability.name, "metrics-powerflex-controller")
-    namespace: #@ data.values.namespace
+    namespace: #@ observabilityNamespace
 roleRef:
   kind: ClusterRole
   name: #@ "{}-{}".format(data.values.observability.name, "metrics-powerflex-controller")
@@ -264,7 +273,7 @@ metadata:
     app.kubernetes.io/name: karavi_metrics_powerflex
     app.kubernetes.io/instance: #@ data.values.observability.name
   name: karavi-metrics-powerflex
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   type: #@ data.values.karaviMetricsPowerflex.service.type
   ports:
@@ -281,7 +290,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: karavi-metrics-powerflex
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
   labels:
     app.kubernetes.io/name: karavi_metrics_powerflex
     app.kubernetes.io/instance: #@ data.values.observability.name
@@ -341,7 +350,7 @@ status: {}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: #@ data.values.namespace
+  name: #@ observabilityNamespace
 
 ---
 
@@ -364,7 +373,7 @@ apiVersion: v1
 kind: ConfigMap 
 metadata:
   name: karavi-metrics-powerflex-configmap
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 data:
   karavi-metrics-powerflex.yaml: #@ yaml.encode(metricsPowerflexConfigmap())
 
@@ -378,7 +387,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: #@ "{}-{}".format(data.values.observability.name, "metrics-powerstore-controller")
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 
 ---
 
@@ -406,7 +415,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: #@ "{}-{}".format(data.values.observability.name, "metrics-powerstore-controller")
-    namespace: #@ data.values.namespace
+    namespace: #@ observabilityNamespace
 roleRef:
   kind: ClusterRole
   name: #@ "{}-{}".format(data.values.observability.name, "metrics-powerstore-controller")
@@ -422,7 +431,7 @@ metadata:
     app.kubernetes.io/name: karavi_metrics_powerstore
     app.kubernetes.io/instance: #@ data.values.observability.name
   name: karavi-metrics-powerstore
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   type: #@ data.values.karaviMetricsPowerstore.service.type
   ports:
@@ -439,7 +448,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: karavi-metrics-powerstore
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
   labels:
     app.kubernetes.io/name: karavi_metrics_powerstore
     app.kubernetes.io/instance: #@ data.values.observability.name
@@ -509,7 +518,7 @@ status: {}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: #@ data.values.namespace
+  name: #@ observabilityNamespace
 
 ---
 
@@ -530,7 +539,7 @@ apiVersion: v1
 kind: ConfigMap 
 metadata:
   name: karavi-metrics-powerstore-configmap
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 data:
   karavi-metrics-powerstore.yaml: #@ yaml.encode(metricsPowerstoreConfigmap())
 
@@ -545,7 +554,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: #@ "{}-{}".format(data.values.observability.name, "topology-controller")
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 
 ---
 
@@ -567,7 +576,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: #@ "{}-{}".format(data.values.observability.name, "topology-controller")
-    namespace: #@ data.values.namespace
+    namespace: #@ observabilityNamespace
 roleRef:
   kind: ClusterRole
   name: #@ "{}-{}".format(data.values.observability.name, "topology-controller")
@@ -583,7 +592,7 @@ metadata:
     app.kubernetes.io/name: karavi_topology
     app.kubernetes.io/instance:  #@ data.values.observability.name
   name: karavi-topology
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 spec:
   type:  #@ data.values.karaviTopology.service.type
   ports:
@@ -600,7 +609,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: karavi-topology
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
   labels:
     app.kubernetes.io/name: karavi_topology
     app.kubernetes.io/instance: #@ data.values.observability.name
@@ -659,7 +668,7 @@ apiVersion: v1
 kind: ConfigMap 
 metadata:
   name: karavi-topology-configmap
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 data:
   karavi-topology.yaml: #@ yaml.encode(topologyConfigmap())
 
@@ -699,7 +708,7 @@ data:
 kind: ConfigMap
 metadata:
   name: otel-collector-config
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 
 ---
 
@@ -736,7 +745,7 @@ data:
 kind: ConfigMap
 metadata:
   name: nginx-config
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
 
 ---
 
@@ -744,7 +753,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: otel-collector
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
   labels:
     app.kubernetes.io/name: otel-collector
     app.kubernetes.io/instance: #@ data.values.observability.name
@@ -767,7 +776,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: otel-collector
-  namespace: #@ data.values.namespace
+  namespace: #@ observabilityNamespace
   labels:
     app.kubernetes.io/name: otel-collector
     app.kubernetes.io/instance: #@ data.values.observability.name
