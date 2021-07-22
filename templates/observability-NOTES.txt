@@ -5,11 +5,11 @@ Karavi Topology
   The Karavi Topology deployment has been successfully installed.
 (@ if data.values.karaviTopology.service.type == "NodePort": @)
   Execute the following commands in your shell to print the URL that can be used to access the Karavi Topology service: 
-  export NODE_PORT=$(kubectl get --namespace (@= data.values.Release.namespace @) -o jsonpath="{.spec.ports[0].nodePort}" services karavi-topology)
-  export NODE_IP=$(kubectl get nodes --namespace (@= data.values.Release.namespace @) -o jsonpath="{.items[0].status.addresses[0].address}")
+  export NODE_PORT=$(kubectl get --namespace (@= data.values.namespace @) -o jsonpath="{.spec.ports[0].nodePort}" services karavi-topology)
+  export NODE_IP=$(kubectl get nodes --namespace (@= data.values.namespace @) -o jsonpath="{.items[0].status.addresses[0].address}")
   echo https://$NODE_IP:$NODE_PORT
 (@ elif data.values.karaviTopology.service.type == "ClusterIP": @)
-  The Karavi Topology service can be accessed at the following URL from within the Kubernetes cluster: https://karavi-topology.(@= data.values.Release.namespace @).svc.cluster.local
+  The Karavi Topology service can be accessed at the following URL from within the Kubernetes cluster: https://karavi-topology.(@= data.values.namespace @).svc.cluster.local
 (@ end -@)
 
 (@ end -@)

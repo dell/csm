@@ -4,11 +4,7 @@
 #@overlay/match missing_ok=True
 observability:
   enabled: false
-
-#@overlay/match missing_ok=True
-Release:
   name: csm-observability
-  namespace: csm
 
 #@overlay/match missing_ok=True
 karaviTopology:
