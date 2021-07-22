@@ -95,10 +95,11 @@ func (suite *YttTestSuite) TestTemplateFromApplication_StandaloneModule() {
 	suite.db.Create(app)
 
 	stateChange := &model.ApplicationStateChange{
-		ApplicationID: app.ID,
-		ClusterID:     1,
-		ModuleTypes:   []model.ModuleType{*observabilityModule},
-		StorageArrays: []model.StorageArray{*array},
+		ApplicationID:       app.ID,
+		ClusterID:           1,
+		ModuleTypes:         []model.ModuleType{*observabilityModule},
+		StorageArrays:       []model.StorageArray{*array},
+		ModuleConfiguration: "observability.namespace=test-csm-namespace",
 	}
 	suite.db.Create(stateChange)
 
