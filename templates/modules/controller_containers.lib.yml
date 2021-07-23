@@ -137,6 +137,7 @@ args:
   #@ if application == "isilon":
   - "--timeout=60s"
   #@ elif application == "powermax":
+  - "--timeout=180s"
   - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
   #@ elif application == "unity":
   - "--timeout=180s"
@@ -356,14 +357,11 @@ env:
   - name: X_CSI_DEBUG
     value: 'true'
   #@ val = ""
-  #@ for i in range(len(data.values.globalConfig.storageArrays)):    
-    #@ if i < len(data.values.globalConfig.storageArrays):
-      #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId + ","    
-      #@ else:
-      #! we don't want to add , at the end of last array
-      #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId  
-    #@ end
+  #@ for i in range(len(data.values.globalConfig.storageArrays)):        
+    #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId + ","    
   #@ end
+  #! To remove additional , at the end of string
+  #@ val=val[:-1]
   - name: X_CSI_MANAGED_ARRAYS
     value: #@ val
   #@ if data.values.csireverseproxy.enabled == False:
@@ -408,9 +406,9 @@ env:
     value: #@ data.values.arrayWhitelist
   - name: X_CSI_GRPC_MAX_THREADS
   #@ if data.values.csireverseproxy.enabled:
-    value: 50
+    value: "50"
   #@ else:
-    value: 4
+    value: "4"
   #@ end
   - name: X_CSI_TRANSPORT_PROTOCOL
     value: #@ data.values.transportProtocol

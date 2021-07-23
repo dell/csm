@@ -337,7 +337,7 @@ volumeMounts:
 #! spec for csi-powermax driver sidecar container
 #@ def driver_powermax_container_spec(application):
 name: driver
-command: [ "/csi-powersmax.sh" ]
+command: [ "/csi-powermax.sh" ]
 securityContext:
   privileged: true
   capabilities:
@@ -357,14 +357,11 @@ env:
   - name: X_CSI_PRIVATE_MOUNT_DIR
     value: "/var/lib/kubelet/plugins/powermax.emc.dell.com/disks"
   #@ val = ""
-  #@ for i in range(len(data.values.globalConfig.storageArrays)):    
-    #@ if i < len(data.values.globalConfig.storageArrays):
-      #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId + ","    
-      #@ else:
-      #! we don't want to add , at the end of last array
-      #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId  
-    #@ end
+  #@ for i in range(len(data.values.globalConfig.storageArrays)):        
+    #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId + ","    
   #@ end
+  #! To remove additional , at the end of string
+  #@ val=val[:-1]
   - name: X_CSI_MANAGED_ARRAYS
     value: #@ val
   #@ if data.values.csireverseproxy.enabled == False:
@@ -402,7 +399,7 @@ env:
   - name: X_CSI_POWERMAX_ISCSI_CHAP_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: #@ application + "-creds"
+        name: #@ application + "-config"
         key: chapsecret
   #@ else:
   - name: X_CSI_POWERMAX_ISCSI_ENABLE_CHAP
@@ -420,9 +417,9 @@ env:
     value: #@ data.values.ISCSIChroot
   - name: X_CSI_GRPC_MAX_THREADS
   #@ if data.values.csireverseproxy.enabled:
-    value: 50
+    value: "50"
   #@ else:
-    value: 4
+    value: "4"
   #@ end
   - name: X_CSI_TRANSPORT_PROTOCOL
     value: #@ data.values.transportProtocol

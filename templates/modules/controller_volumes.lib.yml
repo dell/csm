@@ -67,14 +67,14 @@ volumes:
       secretName: #@ application + "-config"
 #@ end
 
-#! VOLUMES for application csi-powerstore
+#! VOLUMES for application csi-powermax
 #@ def get_volumes_powermax(application):
 volumes:
   - name: socket-dir
     emptyDir:
   - name: certs
     secret:
-        secretName: #@ application + "-certs"
+        secretName: #@ application + "-config"
         optional: true 
   - name: configmap-volume
     configMap:

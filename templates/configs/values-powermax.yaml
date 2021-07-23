@@ -4,12 +4,11 @@ application: powermax
 namespace: powermax
 
 globalConfig:
-  defaultCredentialsSecret: powermax-creds
+  defaultCredentialsSecret: powermax-config
   storageArrays:
-    - storageArrayId: "000000000001"
-    - storageArrayId: "000000000002"
+    - storageArrayId: "000000000001"    
   managementServers:
-    - endpoint: https://10.243.149.106:8443
+    - endpoint: https://primary-1.unisphe.re:8443
 
 #! If you are using the CSI PowerMax ReverseProxy then comment the entire section
 #! for 'global' above and uncomment the following section and fill out the required configuration
@@ -17,7 +16,7 @@ globalConfig:
 #! and the various ReverseProxy modes
 
 #! global:
-#!  defaultCredentialsSecret: powermax-creds
+#!  defaultCredentialsSecret: powermax-config
 #!  storageArrays:
 #!    - storageArrayId: "000000000001"
 #!      endpoint: https://primary-1.unisphe.re:8443
@@ -114,7 +113,7 @@ csireverseproxy:
 #! clusterPrefix defines a prefix that is appended onto all resources created in the Array
 #! This should be unique per K8s/CSI deployment
 #!maximum length of this value is 3 characters
-clusterPrefix: ABC
+clusterPrefix: CBB
 
 #! volumeNamePrefix defines a prefix that is prepended to volumes.
 #! THIS MUST BE ALL LOWER CASE.
@@ -126,11 +125,11 @@ snapNamePrefix: pmsn
 
 #! "controllerCount" defines the number of PowerMax controller nodes to deploy to
 #! the Kubernetes release
-controllerCount: 2
+controllerCount: 1
 
 #! "portGroups" defines the set of existing port groups that the driver will use.
 #! It is a comma separated list of portgroup names.
-portGroups: iscsi_ports
+portGroups: csi_pg1
 
 #! Use of this param is depreciated; setting this to any value will have no effect.
 #! "arrayWhitelist", if set, defines a set of arrays that will be exposed via the CSI Driver.
