@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
+// ApplicationHandler - Place holder for Api Interfaces
 type ApplicationHandler struct {
 	applicationStore            store.ApplicationStoreInterface
 	arrayStore                  store.StorageArrayStoreInterface
@@ -18,6 +19,7 @@ type ApplicationHandler struct {
 	k8sClient                   K8sClientInterface
 }
 
+// NewApplicationHandler -  returns a new ApplicationHandler
 func NewApplicationHandler(is store.ApplicationStoreInterface,
 	ts store.TaskStoreInterface,
 	cs store.ClusterStoreInterface,
@@ -38,6 +40,7 @@ func NewApplicationHandler(is store.ApplicationStoreInterface,
 	}
 }
 
+//Register new Application Handler
 func (h *ApplicationHandler) Register(api *echo.Group) {
 	jwtMiddleware := middleware.JWT(utils.JWTSecret)
 

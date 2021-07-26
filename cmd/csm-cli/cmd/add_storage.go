@@ -1,4 +1,5 @@
-// Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
+// Package cmd
+//Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +29,7 @@ var addStorageCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println(err)
 		}
-		uniqueId, err := cmd.Flags().GetString("unique-id")
+		uniqueID, err := cmd.Flags().GetString("unique-id")
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -41,7 +42,7 @@ var addStorageCmd = &cobra.Command{
 			fmt.Println(err)
 		}
 
-		_, err = api.AddStorage(endpoint, username, password, uniqueId, storageType)
+		_, err = api.AddStorage(endpoint, username, password, uniqueID, storageType)
 		if err != nil {
 			fmt.Println(err)
 			fmt.Println("add storage array failed")

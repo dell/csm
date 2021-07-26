@@ -1,3 +1,4 @@
+// Package cmd
 // Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,6 +27,7 @@ var rootCmd = &cobra.Command{
 	Run:   func(cmd *cobra.Command, args []string) { fmt.Println("CSM-CLI Initiated") },
 }
 
+// Execute base command
 func Execute() {
 	cobra.CheckErr(rootCmd.Execute())
 }

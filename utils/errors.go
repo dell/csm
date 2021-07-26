@@ -9,6 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// SeverityEnum - Placeholder for Error Severity
 type SeverityEnum string //@name SeverityEnum
 
 const (
@@ -25,7 +26,7 @@ const (
 // HTTPStatusEnum Possible HTTP status values of completed or failed jobs.
 type HTTPStatusEnum int32 //@name HTTPStatusEnum
 
-// A message describing the failure, a contributing factor to the failure, or possibly the aftermath of the failure.
+// ErrorMessage- A message describing the failure, a contributing factor to the failure, or possibly the aftermath of the failure.
 type ErrorMessage struct {
 	// HTTPStatusEnum  Possible HTTP status values of completed or failed jobs
 	ErrorCode HTTPStatusEnum `json:"code,omitempty" enums:"200,201,202,204,400,401,403,404,422,429,500,503"`
@@ -55,6 +56,7 @@ type ErrorResponse struct {
 	Messages []*ErrorMessage `json:"messages"`
 } //@name ErrorResponse
 
+//BuildErrorMessage - Builds error message
 func BuildErrorMessage(verbose string, code HTTPStatusEnum, severity SeverityEnum, errInterface interface{}) *ErrorMessage {
 	errorResponse := ErrorResponse{}
 
@@ -89,6 +91,7 @@ func BuildErrorMessage(verbose string, code HTTPStatusEnum, severity SeverityEnu
 	return &ErrorMessage{Message: verbose, MessageL10N: errInterface, ErrorCode: code, Severity: SeverityEnum(severity)}
 }
 
+//BuildErrorResponse - Builds response with error
 func BuildErrorResponse(code HTTPStatusEnum, severity SeverityEnum, verbose string, errInterface interface{}) ErrorResponse {
 	e := ErrorResponse{}
 	e.ErrorCode = code
@@ -97,6 +100,7 @@ func BuildErrorResponse(code HTTPStatusEnum, severity SeverityEnum, verbose stri
 	return e
 }
 
+//NewErrorResponse - Returns response with error
 func NewErrorResponse(code int, sve SeverityEnum, verbose string, err error) ErrorResponse {
 	if verbose == "" {
 		verbose = http.StatusText(code)

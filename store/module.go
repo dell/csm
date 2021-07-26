@@ -9,12 +9,14 @@ import (
 )
 
 //go:generate mockgen -destination=mocks/module_type_store_interface.go -package=mocks github.com/dell/csm-deployment/store ModuleTypeStoreInterface
+// ModuleTypeStoreInterface is used to define the interface for persisting Modules
 type ModuleTypeStoreInterface interface {
 	GetByID(uint) (*model.ModuleType, error)
 	GetAll() ([]model.ModuleType, error)
 	GetAllByID(...uint) ([]model.ModuleType, error)
 }
 
+// ModuleTypeStore - Placeholder for Module Type Store
 type ModuleTypeStore struct {
 	db *gorm.DB
 }
@@ -39,9 +41,9 @@ func (ms *ModuleTypeStore) GetByID(id uint) (*model.ModuleType, error) {
 }
 
 // GetAll returns all instances of ModuleTypeStore in db
-func (sas *ModuleTypeStore) GetAll() ([]model.ModuleType, error) {
+func (ms *ModuleTypeStore) GetAll() ([]model.ModuleType, error) {
 	var sa []model.ModuleType
-	if err := sas.db.Preload(clause.Associations).Find(&sa).Error; err != nil {
+	if err := ms.db.Preload(clause.Associations).Find(&sa).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, nil
 		}

@@ -11,6 +11,7 @@ import (
 	"github.com/dell/csm-deployment/cmd/csm-cli/cmd/api/types"
 )
 
+// LoginUser - user login to access installer
 func LoginUser(username, password string) error {
 	userLogin := &types.User{
 		Username: username,

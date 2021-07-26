@@ -16,16 +16,19 @@ type UserStoreInterface interface {
 	Update(*model.User) error
 }
 
+// UserStore - Placeholder for User store
 type UserStore struct {
 	db *gorm.DB
 }
 
+// NewUserStore - returns an instance of UserStore in db
 func NewUserStore(db *gorm.DB) *UserStore {
 	return &UserStore{
 		db: db,
 	}
 }
 
+// GetByID - Method to get user by Id
 func (us *UserStore) GetByID(id uint) (*model.User, error) {
 	var m model.User
 	if err := us.db.First(&m, id).Error; err != nil {
@@ -37,6 +40,7 @@ func (us *UserStore) GetByID(id uint) (*model.User, error) {
 	return &m, nil
 }
 
+// GetByUsername - Method to get User by name
 func (us *UserStore) GetByUsername(username string) (*model.User, error) {
 	var m model.User
 	if err := us.db.Where(&model.User{Username: username}).First(&m).Error; err != nil {
@@ -48,10 +52,12 @@ func (us *UserStore) GetByUsername(username string) (*model.User, error) {
 	return &m, nil
 }
 
+// Create - Method to create User
 func (us *UserStore) Create(u *model.User) (err error) {
 	return us.db.Create(u).Error
 }
 
+// Update - Method to update User
 func (us *UserStore) Update(u *model.User) error {
 	return us.db.Model(u).Updates(u).Error
 }

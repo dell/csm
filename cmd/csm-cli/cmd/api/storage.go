@@ -9,17 +9,23 @@ import (
 )
 
 const (
+	// StorageUniqueIdResponseField - Place holder for field "unique_id"
 	StorageUniqueIdResponseField = "unique_id"
+
+	// StorageTypeIdResponseField - Place holder for field "storage_array_type_id"
 	StorageTypeIdResponseField   = "storage_array_type_id"
+
+	// EndpointResponseField - Place holder for field "management_endpoint"
 	EndpointResponseField        = "management_endpoint"
 )
 
-func AddStorage(endpoint, username, password, uniqueId, storageType string) (*types.StorageResponse, error) {
+// AddStorage - Create new storage array
+func AddStorage(endpoint, username, password, uniqueID, storageType string) (*types.StorageResponse, error) {
 	addStorageReq := &types.Storage{
 		Endpoint:    endpoint,
 		Username:    username,
 		Password:    password,
-		UniqueId:    uniqueId,
+		UniqueId:    uniqueID,
 		StorageType: storageType,
 	}
 
@@ -31,6 +37,7 @@ func AddStorage(endpoint, username, password, uniqueId, storageType string) (*ty
 	return addStorageResponse, nil
 }
 
+// GetStorageByParam - return storage array based on parameter and value
 func GetStorageByParam(param, value string) ([]types.StorageResponse, error) {
 	getStorageResponse := []types.StorageResponse{}
 	err := HttpClient(http.MethodGet, fmt.Sprintf(GetStorageByParamURI, param, value), nil, &getStorageResponse)
@@ -40,6 +47,7 @@ func GetStorageByParam(param, value string) ([]types.StorageResponse, error) {
 	return getStorageResponse, nil
 }
 
+// GetAllStorage - returns all storage arrays
 func GetAllStorage() ([]types.StorageResponse, error) {
 	getStorageResponse := []types.StorageResponse{}
 	err := HttpClient(http.MethodGet, GetStorageByParamURI, nil, &getStorageResponse)
@@ -49,8 +57,9 @@ func GetAllStorage() ([]types.StorageResponse, error) {
 	return getStorageResponse, nil
 }
 
-func DeleteStorage(uniqueId string) error {
-	getStorageResp, err := GetStorageByParam(StorageUniqueIdResponseField, uniqueId)
+// DeleteStorage - Delete storage array based on ID
+func DeleteStorage(uniqueID string) error {
+	getStorageResp, err := GetStorageByParam(StorageUniqueIdResponseField, uniqueID)
 	if err != nil {
 		return errors.New("storage array does not exist")
 	}
@@ -65,12 +74,13 @@ func DeleteStorage(uniqueId string) error {
 	return nil
 }
 
+// GetStorageTypeId - returns storageType based on ID
 func GetStorageTypeId(storageType string) string {
-	mapId := make(map[string]string)
-	mapId["unity"] = "0"
-	mapId["powermax"] = "1"
-	mapId["vxflexos"] = "2"
-	mapId["powerstore"] = "3"
-	mapId["powerscale"] = "4"
-	return mapId[storageType]
+	mapID := make(map[string]string)
+	mapID["unity"] = "0"
+	mapID["powermax"] = "1"
+	mapID["vxflexos"] = "2"
+	mapID["powerstore"] = "3"
+	mapID["powerscale"] = "4"
+	return mapID[storageType]
 }

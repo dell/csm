@@ -5,6 +5,7 @@ import (
 )
 
 const (
+	//OrchestratorTypeKubernetes - Kubernetes Orchestrator
 	OrchestratorTypeKubernetes string = "k8s"
 	OrchestratorTypeOpenshift  string = "openshift"
 	ClusterStatusConnected     string = "connected"
@@ -27,6 +28,7 @@ const (
 	ArrayTypePowerStore        string = "powerstore"
 )
 
+// User - Placeholder for User information
 type User struct {
 	gorm.Model
 	Username string `gorm:"unique_index;not null"`
@@ -34,6 +36,7 @@ type User struct {
 	Admin    bool
 }
 
+// Cluster - Placeholder for Cluster information
 type Cluster struct {
 	gorm.Model              // This already contains ID field
 	ClusterName      string `gorm:"unique;not null"`
@@ -45,12 +48,14 @@ type Cluster struct {
 	ClusterDetails   ClusterDetails
 }
 
+// ClusterDetails - Placeholder for Cluster and Nodes information
 type ClusterDetails struct {
 	gorm.Model // This already contains ID field
 	ClusterID  string
 	Nodes      string
 }
 
+// Application - Placeholder for Application
 type Application struct {
 	gorm.Model
 	Name                string `gorm:"uniqueIndex:name_id"`
@@ -66,6 +71,7 @@ type Application struct {
 	ApplicationOutput string
 }
 
+// ApplicationStateChange - Placeholder for Application State Change
 type ApplicationStateChange struct {
 	gorm.Model
 	ApplicationID       uint
@@ -78,11 +84,13 @@ type ApplicationStateChange struct {
 	ModuleConfiguration string
 }
 
+// StorageArrayType - Placeholder for Storage array type
 type StorageArrayType struct {
 	gorm.Model
 	Name string
 }
 
+// DriverType - Placeholder for Driver type
 type DriverType struct {
 	gorm.Model         // This already contains ID field
 	Version            string
@@ -90,7 +98,7 @@ type DriverType struct {
 	StorageArrayType   StorageArrayType
 }
 
-//  ModuleType holds details about module used in application
+// ModuleType holds details about module used in application
 type ModuleType struct {
 	gorm.Model // This already contains ID field
 	Name       string
@@ -98,6 +106,7 @@ type ModuleType struct {
 	Standalone bool
 }
 
+// Task - Placeholder for Task
 type Task struct {
 	gorm.Model
 	Status        string `gorm:"not null"`
@@ -106,11 +115,13 @@ type Task struct {
 	ApplicationID uint
 }
 
+// ApplicationArray - Placeholder for Storage Array and Application
 type ApplicationArray struct {
 	StorageArray
 	Application
 }
 
+// StorageArray - Placeholder for storage array
 type StorageArray struct {
 	gorm.Model
 	UniqueID           string `gorm:"unique"`

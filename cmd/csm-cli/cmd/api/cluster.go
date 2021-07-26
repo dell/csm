@@ -8,6 +8,7 @@ import (
 	"github.com/dell/csm-deployment/cmd/csm-cli/cmd/api/types"
 )
 
+// AddCluster - Create new cluster
 //@TODO implement idempotency in all api methods (Decide whether to implement at api level or cli level)
 func AddCluster(clusterName, configFilePath string) (*types.ClusterResponse, error) {
 	reqFields := make(map[string]string)
@@ -21,6 +22,7 @@ func AddCluster(clusterName, configFilePath string) (*types.ClusterResponse, err
 	return addClusterResponse, nil
 }
 
+// GetClusterByName - returns a cluster based on name
 func GetClusterByName(clusterName string) ([]types.ClusterResponse, error) {
 	getClusterResponse := []types.ClusterResponse{}
 	err := HttpClient(http.MethodGet, fmt.Sprintf(GetClusterByNameURI, clusterName), nil, &getClusterResponse)
@@ -30,6 +32,7 @@ func GetClusterByName(clusterName string) ([]types.ClusterResponse, error) {
 	return getClusterResponse, nil
 }
 
+// GetAllClusters - returns all clusters
 func GetAllClusters() ([]types.ClusterResponse, error) {
 	getClusterResponse := []types.ClusterResponse{}
 	err := HttpClient(http.MethodGet, GetClusterByNameURI, nil, &getClusterResponse)
@@ -39,6 +42,7 @@ func GetAllClusters() ([]types.ClusterResponse, error) {
 	return getClusterResponse, nil
 }
 
+// PatchCluster - Update cluster info
 func PatchCluster(clusterName, newClusterName, newConfigFilePath string) (*types.ClusterResponse, error) {
 	getClusterResp, err := GetClusterByName(clusterName)
 	if err != nil {
@@ -61,6 +65,7 @@ func PatchCluster(clusterName, newClusterName, newConfigFilePath string) (*types
 	return patchClusterResponse, nil
 }
 
+// DeleteCluster - Deletes cluster info
 func DeleteCluster(clusterName string) error {
 	getClusterResp, err := GetClusterByName(clusterName)
 	if err != nil {

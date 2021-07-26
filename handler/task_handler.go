@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
+// TaskHandler - Place holder for taska nd application Interfaces
 type TaskHandler struct {
 	taskStore                   store.TaskStoreInterface
 	applicationStore            store.ApplicationStoreInterface
@@ -16,6 +17,7 @@ type TaskHandler struct {
 	kappClient                  kapp.Interface
 }
 
+//NewTaskHandler - returns a new TaskHandler
 func NewTaskHandler(ts store.TaskStoreInterface, as store.ApplicationStoreInterface, asc store.ApplicationStateChangeStoreInterface, cs store.ClusterStoreInterface, kapp kapp.Interface) *TaskHandler {
 	return &TaskHandler{
 		taskStore:                   ts,
@@ -26,6 +28,7 @@ func NewTaskHandler(ts store.TaskStoreInterface, as store.ApplicationStoreInterf
 	}
 }
 
+// Register -registers a new TaskHandler
 func (h *TaskHandler) Register(api *echo.Group) {
 	jwtMiddleware := middleware.JWT(utils.JWTSecret)
 

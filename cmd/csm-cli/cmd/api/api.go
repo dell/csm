@@ -16,19 +16,21 @@ import (
 	"github.com/dell/csm-deployment/cmd/csm-cli/cmd/api/types"
 )
 
-var ApiServer = fmt.Sprintf("%s://%s:%s", os.Getenv("SCHEME"), os.Getenv("HOST"), os.Getenv("PORT"))
+// APIServer - Placeholder for API Server
+var APIServer = fmt.Sprintf("%s://%s:%s", os.Getenv("SCHEME"), os.Getenv("HOST"), os.Getenv("PORT"))
 
+// GetClient - return http client
 func GetClient(protocol string) *http.Client {
 	if protocol == "https" {
 		tr := &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		}
 		return &http.Client{Transport: tr}
-	} else {
-		return &http.Client{}
 	}
+	return &http.Client{}
 }
 
+// DoAndGetResponse - Execute http request and return response
 func DoAndGetResponse(httpReq *http.Request, client *http.Client, resp interface{}) error {
 	res, err := client.Do(httpReq)
 	if err != nil {
@@ -47,6 +49,7 @@ func DoAndGetResponse(httpReq *http.Request, client *http.Client, resp interface
 	return nil
 }
 
+// GetUserAuthCreds - get credentials
 func GetUserAuthCreds() (string, string, string, error) {
 	authCredsFile, err := ioutil.ReadFile(filepath.Join(os.Getenv("AUTH_CONFIG_PATH"), "user.json"))
 	if err != nil {
@@ -65,6 +68,7 @@ func basicAuth(username, password string) string {
 	return base64.StdEncoding.EncodeToString([]byte(auth))
 }
 
+// HttpClient - Execute http request based on method and uri
 func HttpClient(method, uri string, req, resp interface{}) error {
 	reqJson, err := json.Marshal(req)
 	if err != nil {
@@ -72,7 +76,7 @@ func HttpClient(method, uri string, req, resp interface{}) error {
 	}
 
 	protocol := os.Getenv("SCHEME")
-	url := fmt.Sprintf("%s%s", ApiServer, uri)
+	url := fmt.Sprintf("%s%s", APIServer, uri)
 	client := GetClient(protocol)
 
 	username, password, jwtToken, err := GetUserAuthCreds()
@@ -97,6 +101,7 @@ func HttpClient(method, uri string, req, resp interface{}) error {
 	return nil
 }
 
+// HttpClusterClient - Execute http request based on method uri and config file
 func HttpClusterClient(method, uri, configFilePath string, reqFields map[string]string, resp interface{}) error {
 	body, writer, err := createClusterMultipartFormData(reqFields, configFilePath)
 	if err != nil {
@@ -104,7 +109,7 @@ func HttpClusterClient(method, uri, configFilePath string, reqFields map[string]
 	}
 
 	protocol := os.Getenv("SCHEME")
-	url := fmt.Sprintf("%s%s", ApiServer, uri)
+	url := fmt.Sprintf("%s%s", APIServer, uri)
 	client := GetClient(protocol)
 
 	username, password, jwtToken, err := GetUserAuthCreds()

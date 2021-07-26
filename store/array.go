@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm/clause"
 )
 
+// StorageArrayStoreInterface  is used to define the interface for persisting Array type
 //go:generate mockgen -destination=mocks/storage_array_store_interface.go -package=mocks github.com/dell/csm-deployment/store StorageArrayStoreInterface
 type StorageArrayStoreInterface interface {
 	GetByID(uint) (*model.StorageArray, error)
@@ -32,6 +33,7 @@ func NewStorageArrayStore(db *gorm.DB) *StorageArrayStore {
 	}
 }
 
+// GetByID -  returns array by Id
 func (sas *StorageArrayStore) GetByID(id uint) (*model.StorageArray, error) {
 	var sa model.StorageArray
 	if err := sas.db.Preload(clause.Associations).First(&sa, id).Error; err != nil {
@@ -43,6 +45,7 @@ func (sas *StorageArrayStore) GetByID(id uint) (*model.StorageArray, error) {
 	return &sa, nil
 }
 
+// GetAllByID - returns arrays by Id
 func (sas *StorageArrayStore) GetAllByID(v ...uint) ([]model.StorageArray, error) {
 	var sa []model.StorageArray
 	if len(v) > 0 {
@@ -56,6 +59,7 @@ func (sas *StorageArrayStore) GetAllByID(v ...uint) ([]model.StorageArray, error
 	return sa, nil
 }
 
+// GetAll will return all storage arrays
 func (sas *StorageArrayStore) GetAll() ([]model.StorageArray, error) {
 	var sa []model.StorageArray
 	if err := sas.db.Preload(clause.Associations).Find(&sa).Error; err != nil {
@@ -106,6 +110,7 @@ func (sas *StorageArrayStore) GetAllByStorageType(storageTypeName string) ([]mod
 	return storageArrays, nil
 }
 
+// GetTypeByTypeName - get array type by name
 func (sas *StorageArrayStore) GetTypeByTypeName(typeName string) (*model.StorageArrayType, error) {
 	var sat model.StorageArrayType
 	if err := sas.db.
@@ -121,14 +126,17 @@ func (sas *StorageArrayStore) GetTypeByTypeName(typeName string) (*model.Storage
 	return &sat, nil
 }
 
+// Create - Method to add new Array
 func (sas *StorageArrayStore) Create(a *model.StorageArray) error {
 	return sas.db.Create(a).Error
 }
 
+// Update - Method to update array info
 func (sas *StorageArrayStore) Update(a *model.StorageArray) (err error) {
 	return sas.db.Save(a).Error
 }
 
+// Delete - Method to delete array
 func (sas *StorageArrayStore) Delete(a *model.StorageArray) error {
 	return sas.db.Delete(a).Error
 }

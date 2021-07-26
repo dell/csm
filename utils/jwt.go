@@ -7,8 +7,10 @@ import (
 )
 
 // TODO: parameterize this value
+// JWTSecret - Placeholder for Jwt Secret
 var JWTSecret = []byte("!!SECRET!!")
 
+// GenerateJWT - Method to generate jwt token
 func GenerateJWT(name string) string {
 	token := jwt.New(jwt.SigningMethodHS256)
 	claims := token.Claims.(jwt.MapClaims)

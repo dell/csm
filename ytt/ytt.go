@@ -13,25 +13,30 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+//EchoLoggerWrapper - Define log wrapper object
 type EchoLoggerWrapper struct {
 	echoLogger echo.Logger
 	debug      bool
 }
 
+// Printf - Printf wrapper
 func (e *EchoLoggerWrapper) Printf(s string, i ...interface{}) {
 	e.echoLogger.Printf(s, i)
 }
 
+// Debugf - Debug log wrapper
 func (e *EchoLoggerWrapper) Debugf(s string, i ...interface{}) {
 	if e.debug {
 		e.echoLogger.Debugf(s, i)
 	}
 }
 
+// Warnf - Warn log wrapper
 func (e *EchoLoggerWrapper) Warnf(s string, i ...interface{}) {
 	e.echoLogger.Warnf(s, i)
 }
 
+// DebugWriter - Print err if debug enabled
 func (e *EchoLoggerWrapper) DebugWriter() io.Writer {
 	if e.debug {
 		return os.Stderr
@@ -45,10 +50,12 @@ var _ io.Writer = noopWriter{}
 
 func (w noopWriter) Write(data []byte) (int, error) { return len(data), nil }
 
+// Output -
 type Output struct {
 	*template.Output
 }
 
+// CreateAt - Create file at outputPath
 func (out *Output) CreateAt(outputPath string) error {
 	for _, file := range out.Files {
 		err := file.Create(outputPath)
@@ -59,6 +66,7 @@ func (out *Output) CreateAt(outputPath string) error {
 	return nil
 }
 
+//AsBytes - Append file bytes
 func (out *Output) AsBytes() [][]byte {
 	var res [][]byte
 	for _, file := range out.Files {
@@ -67,6 +75,7 @@ func (out *Output) AsBytes() [][]byte {
 	return res
 }
 
+// AsCombinedBytes - Append file bytes
 func (out *Output) AsCombinedBytes() []byte {
 	var res []byte
 	for _, file := range out.Files {
@@ -76,6 +85,7 @@ func (out *Output) AsCombinedBytes() []byte {
 	return res
 }
 
+// Interface -
 type Interface interface {
 	Template([]string, []string) (Output, error)
 	TemplateFromApplication(appID uint,
@@ -92,14 +102,17 @@ type client struct {
 	templatePath string
 }
 
+// Option -
 type Option func(*client)
 
+// WithLogger - Set logger
 func WithLogger(logger echo.Logger, debug bool) Option {
 	return func(c *client) {
 		c.logger = &EchoLoggerWrapper{echoLogger: logger, debug: debug}
 	}
 }
 
+// WithTemplatePath - Set template path to client
 func WithTemplatePath(path string) Option {
 	return func(c *client) {
 		c.templatePath = path
@@ -111,6 +124,7 @@ var defaultOptions Option = func(c *client) {
 	c.templatePath = "./"
 }
 
+// NewClient - Creates a new client
 func NewClient(opts ...Option) Interface {
 	c := &client{}
 	defaultOptions(c)
