@@ -8,6 +8,8 @@
 #@    return get_cluster_rules_unity()
 #@ elif application == "powerstore":
 #@    return get_cluster_rules_powerstore()
+#@ elif application == "powermax":
+#@    return get_cluster_rules_powermax()
 #@ elif application == "vxflexos":
 #@    return get_cluster_rules_vxflexos()
 #@ else:
@@ -97,6 +99,13 @@
   resourceNames: [ "privileged" ]
   resources: [ "securitycontextconstraints" ]
   verbs: [ "use" ]
+#@ end
+
+#@ def get_cluster_rules_powermax():
+- apiGroups: ["security.openshift.io"]
+  resources: ["securitycontextconstraints"]
+  resourceNames: ["privileged"]
+  verbs: ["use"]
 #@ end
 
 #@ def get_cluster_rules_vxflexos():
