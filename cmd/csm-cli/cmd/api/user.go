@@ -24,7 +24,7 @@ func LoginUser(username, password string) error {
 	}
 
 	userLoginResponse := types.JWTToken
-	err = HttpClient(http.MethodPost, UserLoginURI, nil, &userLoginResponse)
+	err = HTTPClient(http.MethodPost, UserLoginURI, nil, &userLoginResponse)
 	if err != nil {
 		return err
 	}
