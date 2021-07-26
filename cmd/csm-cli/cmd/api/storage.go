@@ -13,10 +13,10 @@ const (
 	StorageUniqueIDResponseField = "unique_id"
 
 	// StorageTypeIDResponseField - Place holder for field "storage_array_type_id"
-	StorageTypeIDResponseField   = "storage_array_type_id"
+	StorageTypeIDResponseField = "storage_array_type_id"
 
 	// EndpointResponseField - Place holder for field "management_endpoint"
-	EndpointResponseField        = "management_endpoint"
+	EndpointResponseField = "management_endpoint"
 )
 
 // AddStorage - Create new storage array
@@ -25,12 +25,12 @@ func AddStorage(endpoint, username, password, uniqueID, storageType string) (*ty
 		Endpoint:    endpoint,
 		Username:    username,
 		Password:    password,
-		UniqueId:    uniqueID,
+		UniqueID:    uniqueID,
 		StorageType: storageType,
 	}
 
 	addStorageResponse := &types.StorageResponse{}
-	err := HttpClient(http.MethodPost, AddStorageURI, addStorageReq, addStorageResponse)
+	err := HTTPClient(http.MethodPost, AddStorageURI, addStorageReq, addStorageResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -40,7 +40,7 @@ func AddStorage(endpoint, username, password, uniqueID, storageType string) (*ty
 // GetStorageByParam - return storage array based on parameter and value
 func GetStorageByParam(param, value string) ([]types.StorageResponse, error) {
 	getStorageResponse := []types.StorageResponse{}
-	err := HttpClient(http.MethodGet, fmt.Sprintf(GetStorageByParamURI, param, value), nil, &getStorageResponse)
+	err := HTTPClient(http.MethodGet, fmt.Sprintf(GetStorageByParamURI, param, value), nil, &getStorageResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func GetStorageByParam(param, value string) ([]types.StorageResponse, error) {
 // GetAllStorage - returns all storage arrays
 func GetAllStorage() ([]types.StorageResponse, error) {
 	getStorageResponse := []types.StorageResponse{}
-	err := HttpClient(http.MethodGet, GetStorageByParamURI, nil, &getStorageResponse)
+	err := HTTPClient(http.MethodGet, GetStorageByParamURI, nil, &getStorageResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func DeleteStorage(uniqueID string) error {
 		return errors.New("multiple storage array with same unique id exist")
 	}
 
-	err = HttpClient(http.MethodDelete, fmt.Sprintf(DeleteClusterURI, getStorageResp[0].Id), nil, nil)
+	err = HTTPClient(http.MethodDelete, fmt.Sprintf(DeleteClusterURI, getStorageResp[0].ID), nil, nil)
 	if err != nil {
 		return err
 	}

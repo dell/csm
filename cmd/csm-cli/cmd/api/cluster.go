@@ -15,7 +15,7 @@ func AddCluster(clusterName, configFilePath string) (*types.ClusterResponse, err
 	reqFields["name"] = clusterName
 
 	addClusterResponse := &types.ClusterResponse{}
-	err := HttpClusterClient(http.MethodPost, AddCLusterURI, configFilePath, reqFields, addClusterResponse)
+	err := HTTPClusterClient(http.MethodPost, AddCLusterURI, configFilePath, reqFields, addClusterResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -25,7 +25,7 @@ func AddCluster(clusterName, configFilePath string) (*types.ClusterResponse, err
 // GetClusterByName - returns a cluster based on name
 func GetClusterByName(clusterName string) ([]types.ClusterResponse, error) {
 	getClusterResponse := []types.ClusterResponse{}
-	err := HttpClient(http.MethodGet, fmt.Sprintf(GetClusterByNameURI, clusterName), nil, &getClusterResponse)
+	err := HTTPClient(http.MethodGet, fmt.Sprintf(GetClusterByNameURI, clusterName), nil, &getClusterResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -35,7 +35,7 @@ func GetClusterByName(clusterName string) ([]types.ClusterResponse, error) {
 // GetAllClusters - returns all clusters
 func GetAllClusters() ([]types.ClusterResponse, error) {
 	getClusterResponse := []types.ClusterResponse{}
-	err := HttpClient(http.MethodGet, GetClusterByNameURI, nil, &getClusterResponse)
+	err := HTTPClient(http.MethodGet, GetClusterByNameURI, nil, &getClusterResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func PatchCluster(clusterName, newClusterName, newConfigFilePath string) (*types
 	}
 
 	patchClusterResponse := &types.ClusterResponse{}
-	err = HttpClusterClient(http.MethodPatch, fmt.Sprintf(PatchClusterURI, getClusterResp[0].ClusterId), newConfigFilePath, reqFields, patchClusterResponse)
+	err = HTTPClusterClient(http.MethodPatch, fmt.Sprintf(PatchClusterURI, getClusterResp[0].ClusterID), newConfigFilePath, reqFields, patchClusterResponse)
 	if err != nil {
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func DeleteCluster(clusterName string) error {
 		return errors.New("multiple clusters with same name exist")
 	}
 
-	err = HttpClient(http.MethodDelete, fmt.Sprintf(DeleteClusterURI, getClusterResp[0].ClusterId), nil, nil)
+	err = HTTPClient(http.MethodDelete, fmt.Sprintf(DeleteClusterURI, getClusterResp[0].ClusterID), nil, nil)
 	if err != nil {
 		return err
 	}

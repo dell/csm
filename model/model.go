@@ -9,61 +9,61 @@ const (
 	OrchestratorTypeKubernetes string = "k8s"
 
 	// OrchestratorTypeOpenshift - placeholder for constant openshift
-	OrchestratorTypeOpenshift  string = "openshift"
+	OrchestratorTypeOpenshift string = "openshift"
 
 	// ClusterStatusConnected - placeholder for constant connected
-	ClusterStatusConnected     string = "connected"
+	ClusterStatusConnected string = "connected"
 
 	// ClusterStatusDisconnected - placeholder for constant disconnected
-	ClusterStatusDisconnected  string = "disconnected"
+	ClusterStatusDisconnected string = "disconnected"
 
 	// DriverStatusOperational - placeholder for constant operational
-	DriverStatusOperational    string = "operational"
+	DriverStatusOperational string = "operational"
 
 	// DriverStatusFailing - placeholder for constant failing
-	DriverStatusFailing        string = "failing"
+	DriverStatusFailing string = "failing"
 
 	// ModuleTypeStandalone - placeholder for constant standalone
-	ModuleTypeStandalone       string = "standalone"
+	ModuleTypeStandalone string = "standalone"
 
 	// ModuleTypeSidecar - placeholder for constant sidecar
-	ModuleTypeSidecar          string = "sidecar"
+	ModuleTypeSidecar string = "sidecar"
 
 	// TaskStatusInProgress - placeholder for constant task in progress
-	TaskStatusInProgress       string = "in progress"
+	TaskStatusInProgress string = "in progress"
 
 	// TaskStatusCompleted - placeholder for constant task completed
-	TaskStatusCompleted        string = "completed"
+	TaskStatusCompleted string = "completed"
 
 	// TaskStatusPrompting - placeholder for constant task prompting
-	TaskStatusPrompting        string = "prompting"
+	TaskStatusPrompting string = "prompting"
 
 	// TaskStatusFailed - placeholder for constant task failed
-	TaskStatusFailed           string = "failed"
+	TaskStatusFailed string = "failed"
 
 	// TaskTypeInstall - placeholder for constant task install
-	TaskTypeInstall            string = "install"
+	TaskTypeInstall string = "install"
 
 	// TaskTypeUpdate - placeholder for constant task update
-	TaskTypeUpdate             string = "update"
+	TaskTypeUpdate string = "update"
 
 	// TaskTypeDelete - placeholder for constant task delete
-	TaskTypeDelete             string = "delete"
+	TaskTypeDelete string = "delete"
 
 	// ArrayTypePowerFlex - placeholder for constant powerflex
-	ArrayTypePowerFlex         string = "powerflex"
+	ArrayTypePowerFlex string = "powerflex"
 
 	// ArrayTypePowerMax - placeholder for constant powermax
-	ArrayTypePowerMax          string = "powermax"
+	ArrayTypePowerMax string = "powermax"
 
 	// ArrayTypeIsilon - placeholder for constant isilon
-	ArrayTypeIsilon            string = "isilon"
+	ArrayTypeIsilon string = "isilon"
 
 	// ArrayTypeUnity - placeholder for constant unity
-	ArrayTypeUnity             string = "unity"
+	ArrayTypeUnity string = "unity"
 
 	// ArrayTypePowerStore - placeholder for constant powerstore
-	ArrayTypePowerStore        string = "powerstore"
+	ArrayTypePowerStore string = "powerstore"
 )
 
 // User - Placeholder for User information
