@@ -1,4 +1,4 @@
-// Package cmd
+// Package cmd for db commands
 // Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
