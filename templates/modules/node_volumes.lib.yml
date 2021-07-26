@@ -8,6 +8,8 @@
 #@    return get_volumes(application)
 #@ elif application == "powerstore":
 #@    return get_volumes(application)
+#@ elif application == "powermax":
+#@    return get_volumes(application)
 #@ elif application == "vxflexos":
 #@    return get_volumes(application)
 #@ else:
@@ -120,7 +122,33 @@ volumes:
     secret:
       secretName: #@ application + "-config"
 
-  #@ elif application == "vxflexos":
+  #@ elif application == "powermax":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/powermax.emc.dell.com
+      type: DirectoryOrCreate
+  - name: noderoot
+    hostPath:
+      path: /
+      type: Directory
+  - name: sys
+    hostPath:
+      path: /sys
+      type: Directory
+  - name: run
+    hostPath:
+      path: /run
+      type: Directory
+  - name: dbus-socket
+    hostPath:
+      path: /run/dbus/system_bus_socket
+      type: Socket
+  - name: certs
+    secret:
+      secretName: #@ application + "-certs"
+      optional: true      
+
+#@ elif application == "vxflexos":
   - name: driver-path
     hostPath:
       path: /var/lib/kubelet/plugins/vxflexos.emc.dell.com

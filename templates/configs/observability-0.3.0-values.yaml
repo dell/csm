@@ -4,22 +4,29 @@
 #@overlay/match missing_ok=True
 observability:
   enabled: false
-
-#@overlay/match missing_ok=True
-Release:
   name: csm-observability
+  #! this will only be used for standalone deployment
   namespace: csm
 
 #@overlay/match missing_ok=True
 karaviTopology:
   image: dellemc/csm-topology:v0.3.0
-  provisionerNames: csi-vxflexos.dellemc.com
+  enabled: true
+  #! comma separated list of provisioner names (ex: csi-vxflexos.dellemc.com)
+  provisionerNames: csi-vxflexos.dellemc.com,csi-powerstore.dellemc.com
   service:
     type: ClusterIP
+  logLevel: INFO
+  logFormat: text
+  zipkin:
+    uri: ""
+    serviceName: karavi-topology
+    probability: 0.0  
 
 #@overlay/match missing_ok=True
 karaviMetricsPowerflex:
   image: dellemc/csm-metrics-powerflex:v0.3.0
+  enabled: true
   collectorAddr: otel-collector:55680
   provisionerNames: csi-vxflexos.dellemc.com
   sdcMetricsEnabled: "true"
@@ -32,6 +39,33 @@ karaviMetricsPowerflex:
   endpoint: karavi-metrics-powerflex
   service:
     type: ClusterIP
+  logLevel: INFO
+  logFormat: text 
+
+#@overlay/match missing_ok=True
+karaviMetricsPowerstore:
+  image: dellemc/csm-metrics-powerstore:v0.1.0
+  enabled: true
+  collectorAddr: otel-collector:55680
+  #! comma separated list of provisioner names (ex: csi-powerstore.dellemc.com)
+  provisionerNames: csi-powerstore.dellemc.com
+  #! set polling frequency to the PowerStore array to get metrics data
+  volumePollFrequencySeconds: 10
+  #! set volumeMetricsEnabled to "false" to disable collection of Volume metrics
+  volumeMetricsEnabled: "true"
+  #! set the the default max concurrent queries to powerstore
+  concurrentPowerstoreQueries: 10
+  #! set the default endpoint for powerstore service
+  endpoint: karavi-metrics-powerstore
+  service:
+    type: ClusterIP
+  logLevel: INFO
+  logFormat: text
+  zipkin:
+    uri: ""
+    serviceName: metrics-powerstore
+    probability: 0.0
+
 
 #@overlay/match missing_ok=True
 otelCollector:

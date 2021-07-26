@@ -8,6 +8,8 @@
 #@    return get_volumes_unity(application)
 #@ elif application == "powerstore":
 #@    return get_volumes_powerstore(application)
+#@ elif application == "powermax":
+#@    return get_volumes_powermax(application)
 #@ elif application == "vxflexos":
 #@    return get_volumes_vxflexos(application)
 #@ else:
@@ -63,6 +65,26 @@ volumes:
   - name: powerstore-config
     secret:
       secretName: #@ application + "-config"
+#@ end
+
+#! VOLUMES for application csi-powermax
+#@ def get_volumes_powermax(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: certs
+    secret:
+        secretName: #@ application + "-config"
+        optional: true 
+  - name: configmap-volume
+    configMap:
+      name: #@ application + "-reverseproxy-config"
+      optional: true
+  - name: tls-secret
+    secret:
+      secretName: #@ data.values.csireverseproxy.tlsSecret
+  - name: cert-dir
+    emptyDir:
 #@ end
 
 #! VOLUMES for application csi-vxflexos
