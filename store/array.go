@@ -23,10 +23,12 @@ type StorageArrayStoreInterface interface {
 	Update(*model.StorageArray) error
 }
 
+// StorageArrayStore is used to operate on the Storage Array persistent store
 type StorageArrayStore struct {
 	db *gorm.DB
 }
 
+// NewStorageArrayStore creates new StorageArrayStore
 func NewStorageArrayStore(db *gorm.DB) *StorageArrayStore {
 	return &StorageArrayStore{
 		db: db,

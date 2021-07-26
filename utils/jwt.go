@@ -6,8 +6,8 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
-// TODO: parameterize this value
 // JWTSecret - Placeholder for Jwt Secret
+// TODO: parameterize this value
 var JWTSecret = []byte("!!SECRET!!")
 
 // GenerateJWT - Method to generate jwt token

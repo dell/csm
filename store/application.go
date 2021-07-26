@@ -30,7 +30,7 @@ func NewApplicationStore(db *gorm.DB) *ApplicationStore {
 	}
 }
 
-// GetById - returns Application by Id
+// GetByID - returns Application by Id
 func (as *ApplicationStore) GetByID(id string) (*model.Application, error) {
 	var m model.Application
 	if err := as.db.Preload(clause.Associations).Preload("StorageArrays.StorageArrayType").First(&m, id).Error; err != nil {

@@ -10,7 +10,7 @@ type User struct {
 // Cluster - Struct for cluster
 type Cluster struct {
 	Name string `json:"name,omitempty"`
-	Id   string `json:"id,omitempty"`
+	ID   string `json:"id,omitempty"`
 }
 
 // Storage - Struct for storage array
@@ -18,6 +18,6 @@ type Storage struct {
 	Endpoint    string `json:"management_endpoint,omitempty"`
 	Username    string `json:"username,omitempty"`
 	Password    string `json:"password,omitempty"`
-	UniqueId    string `json:"unique_id,omitempty"`
+	UniqueID    string `json:"unique_id,omitempty"`
 	StorageType string `json:"storage_array_type,omitempty"`
 }

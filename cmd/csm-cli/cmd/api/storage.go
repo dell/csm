@@ -9,11 +9,11 @@ import (
 )
 
 const (
-	// StorageUniqueIdResponseField - Place holder for field "unique_id"
-	StorageUniqueIdResponseField = "unique_id"
+	// StorageUniqueIDResponseField - Place holder for field "unique_id"
+	StorageUniqueIDResponseField = "unique_id"
 
-	// StorageTypeIdResponseField - Place holder for field "storage_array_type_id"
-	StorageTypeIdResponseField   = "storage_array_type_id"
+	// StorageTypeIDResponseField - Place holder for field "storage_array_type_id"
+	StorageTypeIDResponseField   = "storage_array_type_id"
 
 	// EndpointResponseField - Place holder for field "management_endpoint"
 	EndpointResponseField        = "management_endpoint"
@@ -59,7 +59,7 @@ func GetAllStorage() ([]types.StorageResponse, error) {
 
 // DeleteStorage - Delete storage array based on ID
 func DeleteStorage(uniqueID string) error {
-	getStorageResp, err := GetStorageByParam(StorageUniqueIdResponseField, uniqueID)
+	getStorageResp, err := GetStorageByParam(StorageUniqueIDResponseField, uniqueID)
 	if err != nil {
 		return errors.New("storage array does not exist")
 	}
@@ -74,8 +74,8 @@ func DeleteStorage(uniqueID string) error {
 	return nil
 }
 
-// GetStorageTypeId - returns storageType based on ID
-func GetStorageTypeId(storageType string) string {
+// GetStorageTypeID - returns storageType based on ID
+func GetStorageTypeID(storageType string) string {
 	mapID := make(map[string]string)
 	mapID["unity"] = "0"
 	mapID["powermax"] = "1"

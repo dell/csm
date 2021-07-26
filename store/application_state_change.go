@@ -30,8 +30,8 @@ func NewApplicationStateChangeStore(db *gorm.DB) *ApplicationStateChangeStore {
 	}
 }
 
-// GetById - returns Application by Id
-func (as *ApplicationStateChangeStore) GetById(id uint) (*model.ApplicationStateChange, error) {
+// GetByID - returns Application by Id
+func (as *ApplicationStateChangeStore) GetByID(id uint) (*model.ApplicationStateChange, error) {
 	var m model.ApplicationStateChange
 	if err := as.db.Preload(clause.Associations).Preload("StorageArrays.StorageArrayType").First(&m, id).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {

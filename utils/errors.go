@@ -26,7 +26,7 @@ const (
 // HTTPStatusEnum Possible HTTP status values of completed or failed jobs.
 type HTTPStatusEnum int32 //@name HTTPStatusEnum
 
-// ErrorMessage- A message describing the failure, a contributing factor to the failure, or possibly the aftermath of the failure.
+// ErrorMessage - A message describing the failure, a contributing factor to the failure, or possibly the aftermath of the failure.
 type ErrorMessage struct {
 	// HTTPStatusEnum  Possible HTTP status values of completed or failed jobs
 	ErrorCode HTTPStatusEnum `json:"code,omitempty" enums:"200,201,202,204,400,401,403,404,422,429,500,503"`
