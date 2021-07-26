@@ -152,7 +152,7 @@ func (c *client) Template(paths []string, values []string) (Output, error) {
 func (c *client) TemplateFromApplication(appID uint,
 	as store.ApplicationStateChangeStoreInterface, cs store.ClusterStoreInterface) (Output, error) {
 	c.logger.Printf("Generating template from app state with id %d \n", appID)
-	appState, err := as.GetById(appID)
+	appState, err := as.GetByID(appID)
 	if err != nil {
 		return Output{}, err
 	}
@@ -227,7 +227,7 @@ func (c *client) TemplateFromApplication(appID uint,
 
 func (c *client) SecretTemplateFromApplication(appID uint, as store.ApplicationStateChangeStoreInterface) (Output, error) {
 	c.logger.Printf("Generating secret template from app state with id %d \n", appID)
-	appState, err := as.GetById(appID)
+	appState, err := as.GetByID(appID)
 	if err != nil {
 		return Output{}, err
 	}
@@ -257,7 +257,7 @@ func (c *client) SecretTemplateFromApplication(appID uint, as store.ApplicationS
 
 func (c *client) GetEmptySecret(appID uint, as store.ApplicationStateChangeStoreInterface) (Output, error) {
 	c.logger.Printf("Generating secret template from app state with id %d \n", appID)
-	appState, err := as.GetById(appID)
+	appState, err := as.GetByID(appID)
 	if err != nil {
 		return Output{}, err
 	}
@@ -284,7 +284,7 @@ func (c *client) GetEmptySecret(appID uint, as store.ApplicationStateChangeStore
 
 func (c *client) NamespaceTemplateFromApplication(appID uint, as store.ApplicationStateChangeStoreInterface) (Output, error) {
 	c.logger.Printf("Generating namespace template from app state with id %d \n", appID)
-	appState, err := as.GetById(appID)
+	appState, err := as.GetByID(appID)
 	if err != nil {
 		return Output{}, err
 	}

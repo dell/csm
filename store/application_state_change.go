@@ -14,7 +14,7 @@ import (
 type ApplicationStateChangeStoreInterface interface {
 	Create(*model.ApplicationStateChange) error
 	GetByApplicationID(uint) (*model.ApplicationStateChange, error)
-	GetById(id uint) (*model.ApplicationStateChange, error)
+	GetByID(id uint) (*model.ApplicationStateChange, error)
 	Delete(a *model.ApplicationStateChange) error
 }
 
