@@ -26,14 +26,14 @@ var getStorageCmd = &cobra.Command{
 			fmt.Println(err)
 		}
 		if uniqueID != "" {
-			storageArrays, err := api.GetStorageByParam(api.StorageTypeIdResponseField, uniqueID)
+			storageArrays, err := api.GetStorageByParam(api.StorageTypeIDResponseField, uniqueID)
 			if err != nil {
 				fmt.Println(err)
 				fmt.Println("get storage array by unique id failed")
 			} else {
 				fmt.Println("get storage array result for unique id " + uniqueID + ":")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}
@@ -49,7 +49,7 @@ var getStorageCmd = &cobra.Command{
 			} else {
 				fmt.Println("get storage array result for endpoint " + endpoint + ":")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}
@@ -57,16 +57,16 @@ var getStorageCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println(err)
 		}
-		storageTypeID := api.GetStorageTypeId(storageType)
+		storageTypeID := api.GetStorageTypeID(storageType)
 		if storageType != "" {
-			storageArrays, err := api.GetStorageByParam(api.StorageTypeIdResponseField, storageTypeID)
+			storageArrays, err := api.GetStorageByParam(api.StorageTypeIDResponseField, storageTypeID)
 			if err != nil {
 				fmt.Println(err)
 				fmt.Println("get storage array by storage type failed")
 			} else {
 				fmt.Println("get storage array result for storage type " + storageType + ":")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}
@@ -82,7 +82,7 @@ var getStorageCmd = &cobra.Command{
 			} else {
 				fmt.Println("get all storage arrays result:")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}

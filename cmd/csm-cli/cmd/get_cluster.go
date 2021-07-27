@@ -37,7 +37,7 @@ var getClusterCmd = &cobra.Command{
 				fmt.Println("get cluster failed")
 			}
 			for _, cluster := range clusters {
-				fmt.Println(fmt.Sprint(cluster.ClusterId) + " " + cluster.ClusterName + " " + cluster.Nodes)
+				fmt.Println(fmt.Sprint(cluster.ClusterID) + " " + cluster.ClusterName + " " + cluster.Nodes)
 			}
 		} else if all {
 			clusters, err := api.GetAllClusters()
@@ -48,7 +48,7 @@ var getClusterCmd = &cobra.Command{
 				fmt.Println("no clusters added")
 			} else {
 				for _, cluster := range clusters {
-					fmt.Println(fmt.Sprint(cluster.ClusterId) + " " + cluster.ClusterName + " " + cluster.Nodes)
+					fmt.Println(fmt.Sprint(cluster.ClusterID) + " " + cluster.ClusterName + " " + cluster.Nodes)
 				}
 			}
 		} else {
