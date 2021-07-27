@@ -15,16 +15,19 @@ type TaskStoreInterface interface {
 	Update(*model.Task) error
 }
 
+// TaskStore - Placeholder for Task store
 type TaskStore struct {
 	db *gorm.DB
 }
 
+// NewTaskStore - returns an instance of TaskStore in db
 func NewTaskStore(db *gorm.DB) *TaskStore {
 	return &TaskStore{
 		db: db,
 	}
 }
 
+// GetByID - Method to get Task by Id
 func (ts *TaskStore) GetByID(id string) (*model.Task, error) {
 	var t model.Task
 	if err := ts.db.First(&t, id).Error; err != nil {
@@ -36,10 +39,12 @@ func (ts *TaskStore) GetByID(id string) (*model.Task, error) {
 	return &t, nil
 }
 
+// Create - Method to create Task
 func (ts *TaskStore) Create(t *model.Task) error {
 	return ts.db.Create(t).Error
 }
 
+// Update - Method to update Task
 func (ts *TaskStore) Update(t *model.Task) error {
 	return ts.db.Model(t).Updates(t).Error
 }

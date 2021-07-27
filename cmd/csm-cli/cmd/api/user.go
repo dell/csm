@@ -11,6 +11,7 @@ import (
 	"github.com/dell/csm-deployment/cmd/csm-cli/cmd/api/types"
 )
 
+// LoginUser - user login to access installer
 func LoginUser(username, password string) error {
 	userLogin := &types.User{
 		Username: username,
@@ -23,7 +24,7 @@ func LoginUser(username, password string) error {
 	}
 
 	userLoginResponse := types.JWTToken
-	err = HttpClient(http.MethodPost, UserLoginURI, nil, &userLoginResponse)
+	err = HTTPClient(http.MethodPost, UserLoginURI, nil, &userLoginResponse)
 	if err != nil {
 		return err
 	}

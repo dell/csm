@@ -38,7 +38,7 @@ func (h *DriverTypeHandler) GetDriverType(c echo.Context) error {
 	return c.JSON(http.StatusOK, newDriverResponse(driverType))
 }
 
-// ListDriverTypes godoc
+// ListDriverType godoc
 // @Summary List all driver types
 // @Description List all driver types
 // @ID list-driver-types

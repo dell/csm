@@ -1,3 +1,4 @@
+// Package cmd for db commands
 // Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,19 +21,19 @@ var getStorageCmd = &cobra.Command{
 	Short: "get storage arrays",
 	Long:  `get storage arrays`,
 	Run: func(cmd *cobra.Command, args []string) {
-		uniqueId, err := cmd.Flags().GetString("unique-id")
+		uniqueID, err := cmd.Flags().GetString("unique-id")
 		if err != nil {
 			fmt.Println(err)
 		}
-		if uniqueId != "" {
-			storageArrays, err := api.GetStorageByParam(api.StorageTypeIdResponseField, uniqueId)
+		if uniqueID != "" {
+			storageArrays, err := api.GetStorageByParam(api.StorageTypeIDResponseField, uniqueID)
 			if err != nil {
 				fmt.Println(err)
 				fmt.Println("get storage array by unique id failed")
 			} else {
-				fmt.Println("get storage array result for unique id " + uniqueId + ":")
+				fmt.Println("get storage array result for unique id " + uniqueID + ":")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}
@@ -48,7 +49,7 @@ var getStorageCmd = &cobra.Command{
 			} else {
 				fmt.Println("get storage array result for endpoint " + endpoint + ":")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}
@@ -56,16 +57,16 @@ var getStorageCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println(err)
 		}
-		storageTypeId := api.GetStorageTypeId(storageType)
+		storageTypeID := api.GetStorageTypeID(storageType)
 		if storageType != "" {
-			storageArrays, err := api.GetStorageByParam(api.StorageTypeIdResponseField, storageTypeId)
+			storageArrays, err := api.GetStorageByParam(api.StorageTypeIDResponseField, storageTypeID)
 			if err != nil {
 				fmt.Println(err)
 				fmt.Println("get storage array by storage type failed")
 			} else {
 				fmt.Println("get storage array result for storage type " + storageType + ":")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}
@@ -81,7 +82,7 @@ var getStorageCmd = &cobra.Command{
 			} else {
 				fmt.Println("get all storage arrays result:")
 				for _, array := range storageArrays {
-					fmt.Println(array.Endpoint + " " + array.UniqueId)
+					fmt.Println(array.Endpoint + " " + array.UniqueID)
 				}
 			}
 		}

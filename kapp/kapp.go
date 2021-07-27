@@ -22,6 +22,7 @@ type client struct {
 	kappPath string
 }
 
+// NewClient -  - returns a new instance of client
 func NewClient(kappPath string) Interface {
 	if kappPath == "" {
 		kappPath = utils.GetEnv("KAPP_BINARY", "/root/kapp")

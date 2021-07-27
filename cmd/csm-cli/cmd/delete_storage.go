@@ -1,4 +1,5 @@
-// Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
+// Package cmd for db commands
+//Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,11 +21,11 @@ var deleteStorageCmd = &cobra.Command{
 	Short: "delete storage array",
 	Long:  `delete storage array`,
 	Run: func(cmd *cobra.Command, args []string) {
-		uniqueId, err := cmd.Flags().GetString("unique-id")
+		uniqueID, err := cmd.Flags().GetString("unique-id")
 		if err != nil {
 			fmt.Println(err)
 		}
-		err = api.DeleteStorage(uniqueId)
+		err = api.DeleteStorage(uniqueID)
 		if err != nil {
 			fmt.Println(err)
 			fmt.Println("delete storage array failed")

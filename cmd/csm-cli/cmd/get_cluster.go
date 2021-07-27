@@ -1,3 +1,4 @@
+// Package cmd for db commands
 // Copyright (c) 2021 Dell Inc., or its subsidiaries. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +37,7 @@ var getClusterCmd = &cobra.Command{
 				fmt.Println("get cluster failed")
 			}
 			for _, cluster := range clusters {
-				fmt.Println(fmt.Sprint(cluster.ClusterId) + " " + cluster.ClusterName + " " + cluster.Nodes)
+				fmt.Println(fmt.Sprint(cluster.ClusterID) + " " + cluster.ClusterName + " " + cluster.Nodes)
 			}
 		} else if all {
 			clusters, err := api.GetAllClusters()
@@ -47,7 +48,7 @@ var getClusterCmd = &cobra.Command{
 				fmt.Println("no clusters added")
 			} else {
 				for _, cluster := range clusters {
-					fmt.Println(fmt.Sprint(cluster.ClusterId) + " " + cluster.ClusterName + " " + cluster.Nodes)
+					fmt.Println(fmt.Sprint(cluster.ClusterID) + " " + cluster.ClusterName + " " + cluster.Nodes)
 				}
 			}
 		} else {

@@ -112,6 +112,7 @@ var GoProcessApplication = func(h *TaskHandler, ctx context.Context, task model.
 	go h.processApplication(ctx, task, c)
 }
 
+// WaitGoProcessApplication - Place holder for Process wait time
 var WaitGoProcessApplication = 10 * time.Second
 
 // CancelStateChange godoc

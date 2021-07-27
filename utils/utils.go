@@ -11,6 +11,7 @@ import (
 // TODO: approach should be sanitized
 var cipherKey = []byte("thisshouldbeparameterized32bytes")
 
+// GetEnv - Utility method to get Environment variable
 func GetEnv(envName string, defaultValue string) string {
 	val := os.Getenv(envName)
 	if val == "" {
@@ -19,6 +20,7 @@ func GetEnv(envName string, defaultValue string) string {
 	return val
 }
 
+// EncryptPassword - Method to encrypts password
 func EncryptPassword(plainText []byte) ([]byte, error) {
 	c, err := aes.NewCipher(cipherKey)
 	if err != nil {
@@ -38,6 +40,7 @@ func EncryptPassword(plainText []byte) ([]byte, error) {
 	return gcm.Seal(nonce, nonce, plainText, nil), nil
 }
 
+// DecryptPassword - Method to decipher password
 func DecryptPassword(cipherText []byte) ([]byte, error) {
 	c, err := aes.NewCipher(cipherKey)
 	if err != nil {

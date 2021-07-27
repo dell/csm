@@ -6,6 +6,7 @@ import (
 	"github.com/labstack/gommon/log"
 )
 
+// New - returns new Validator
 func New() *echo.Echo {
 	e := echo.New()
 	e.Logger.SetLevel(log.DEBUG)
