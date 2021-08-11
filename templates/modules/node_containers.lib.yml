@@ -131,6 +131,13 @@ volumeMounts:
     mountPath: /usr-bin
   - name: var-run
     mountPath: /var/run
+  #@ if application == "unity":
+  - name: unity-config
+    mountPath: /unity-config
+  #@ elif application == "vxflexos":
+  - name: vxflexos-config-params
+    mountPath: /vxflexos-config-params
+  #@ end
 #@ end
 
 #! spec for csi-isilon driver sidecar container

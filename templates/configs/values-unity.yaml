@@ -55,17 +55,19 @@ podmon:
   image:
   controller:
     args:
-      - "-csisock=unix:/var/run/csi/csi.sock"
-      - "-labelvalue=csi-unity"
-      - "-driverPath=csi-unity.dellemc.com"
-      - "-mode=controller"
+      - "--csisock=unix:/var/run/csi/csi.sock"
+      - "--labelvalue=csi-unity"
+      - "--driverPath=csi-unity.dellemc.com"
+      - "--mode=controller"
+      - "--driver-config-params=/unity-config/driver-config-params.yaml"
   node:
     args:
-      - "-csisock=unix:/var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock"
-      - "-labelvalue=csi-unity"
-      - "-driverPath=csi-unity.dellemc.com"
-      - "-mode=node"
-      - "-leaderelection=false"
+      - "--csisock=unix:/var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock"
+      - "--labelvalue=csi-unity"
+      - "--driverPath=csi-unity.dellemc.com"
+      - "--mode=node"
+      - "--leaderelection=false"
+      - "--driver-config-params=/unity-config/driver-config-params.yaml"
 
 images:
   #! "images.driver" defines the container images used for the driver container.

@@ -215,6 +215,13 @@ env:
 volumeMounts:
   - name: socket-dir
     mountPath: /var/run/csi
+  #@ if application == "unity":
+  - name: unity-config
+    mountPath: /unity-config
+  #@ elif application == "vxflexos":
+  - name: vxflexos-config-params
+    mountPath: /vxflexos-config-params
+  #@ end
 #@ end
 
 #! spec for vgsnapshotter sidecar container

@@ -57,15 +57,17 @@ podmon:
   image: dellemc/podmon:v0.1.0
   controller:
     args:
-    - "-csisock=unix:/var/run/csi/csi.sock"
-    - "-labelvalue=csi-vxflexos"
-    - "-mode=controller"
+    - "--csisock=unix:/var/run/csi/csi.sock"
+    - "--labelvalue=csi-vxflexos"
+    - "--mode=controller"
+    - "--driver-config-params=/vxflexos-config-params/driver-config-params.yaml"
   node:
     args:
-    - "-csisock=unix:/var/lib/kubelet/plugins/vxflexos.emc.dell.com/csi_sock"
-    - "-labelvalue=csi-vxflexos"
-    - "-mode=node"
-    - "-leaderelection=false"
+    - "--csisock=unix:/var/lib/kubelet/plugins/vxflexos.emc.dell.com/csi_sock"
+    - "--labelvalue=csi-vxflexos"
+    - "--mode=node"
+    - "--leaderelection=false"
+    - "--driver-config-params=/vxflexos-config-params/driver-config-params.yaml"
 
 #! IT IS RECOMMENDED YOU DO NOT CHANGE THE IMAGES TO BE USED.
 images:
