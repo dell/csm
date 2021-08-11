@@ -65,7 +65,7 @@ containers:
   - #@ provisioner_container_spec(application)
   - #@ snapshotter_container_spec(application)
   #@ if data.values.podmon.enabled:
-  - #@ podman_container_spec()
+  - #@ podman_container_spec(application)
   #@ end
   #@ if data.values.vgsnapshotter.enabled:
   - #@ vgsnapshotter_container_spec()
@@ -193,7 +193,7 @@ volumeMounts:
 #@ end
 
 #! spec for podman sidecar container
-#@ def podman_container_spec():
+#@ def podman_container_spec(application):
 name: podmon
 imagePullPolicy: Always
 image: #@ data.values.podmon.image

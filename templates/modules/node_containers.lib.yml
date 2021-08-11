@@ -50,7 +50,7 @@ containers:
 containers:
   - #@ registrar_container_spec(application)
   #@ if data.values.podmon.enabled:
-  - #@ podman_container_spec()
+  - #@ podman_container_spec(application)
   #@ end
   - #@ driver_vxflexos_container_spec()
 #@ end
@@ -90,7 +90,7 @@ volumeMounts:
 #@ end
 
 #! spec for podman sidecar container
-#@ def podman_container_spec():
+#@ def podman_container_spec(application):
 name: podmon
 securityContext:
   privileged: true
