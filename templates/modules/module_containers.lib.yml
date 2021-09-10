@@ -1,0 +1,41 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_module_containers(module):
+  #@ if module == "powermax-reverseproxy":
+  #@    return get_containers_reverseproxy(module)
+  #@ else:
+  #@ assert.fail("containers for module {} not found".format(module))
+  #@ end
+#@ end
+
+#! CONTAINER SPECS for module powermax-reverseproxy
+#@ def get_containers_reverseproxy(module):
+containers:
+  - #@ reverseproxy_container_spec(module)
+#@ end
+
+#! spec for reverseproxy sidecar container
+#@ def reverseproxy_container_spec(module):
+name: #@ module
+image: #@ data.values.csireverseproxy.image
+env:
+  - name: X_CSI_REVPROXY_CONFIG_DIR
+    value: /etc/config/configmap
+  - name: X_CSI_REVPROXY_CONFIG_FILE_NAME
+    value: config.yaml
+  - name: X_CSI_REVRPOXY_IN_CLUSTER
+    value: "true"
+  - name: X_CSI_REVPROXY_TLS_CERT_DIR
+    value: /app/tls
+  - name: X_CSI_REVPROXY_WATCH_NAMESPACE
+    value: #@ data.values.namespace
+volumeMounts:
+  - name: configmap-volume
+    mountPath: /etc/config/configmap
+  - name: tls-secret
+    mountPath: /app/tls
+  - name: cert-dir
+    mountPath: /app/certs
+#@ end
+

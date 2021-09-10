@@ -1,0 +1,125 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_application_volumes(application):
+#@ if application == "isilon":
+#@    return get_volumes_isilon(application)
+#@ elif application == "unity":
+#@    return get_volumes_unity(application)
+#@ elif application == "powerstore":
+#@    return get_volumes_powerstore(application)
+#@ elif application == "powermax":
+#@    return get_volumes_powermax(application)
+#@ elif application == "vxflexos":
+#@    return get_volumes_vxflexos(application)
+#@ else:
+#@ assert.fail("volumes for application {} not found".format(application))
+#@ end
+#@ end
+
+#! VOLUMES for application csi-isilon
+#@ def get_volumes_isilon(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  - name: isilon-config
+    secret:
+      secretName: #@ application + "-config"
+  - name: isilon-config-params
+    configMap:
+       name: #@ application + "-config-params"
+#@ end
+
+#! VOLUMES for application csi-unity
+#@ def get_volumes_unity(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  - name: unity-config
+    configMap:
+      name: #@ application + "-config-params"
+  - name: unity-secret
+    secret:
+      secretName: #@ application + "-config"
+#@ end
+
+#! VOLUMES for application csi-powerstore
+#@ def get_volumes_powerstore(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: powerstore-config
+    secret:
+      secretName: #@ application + "-config"
+  - name: powerstore-config-params
+    configMap:
+      name: #@ application + "-config-params"
+#@ end
+
+#! VOLUMES for application csi-powermax
+#@ def get_volumes_powermax(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: certs
+    secret:
+        secretName: #@ application + "-certs"
+        optional: true 
+  - name: configmap-volume
+    configMap:
+      name: #@ application + "-reverseproxy-config"
+      optional: true
+  - name: tls-secret
+    secret:
+      secretName: #@ data.values.csireverseproxy.tlsSecret
+  - name: cert-dir
+    emptyDir:
+  - name: powermax-config-params
+    configMap:
+      name: #@ application + "-config-params"
+#@ end
+
+#! VOLUMES for application csi-vxflexos
+#@ def get_volumes_vxflexos(application):
+volumes:
+  - name: socket-dir
+    emptyDir:
+  - name: vxflexos-config
+    secret:
+      secretName: #@ application + "-config"
+  - name: vxflexos-config-params
+    configMap:
+      name: #@ application + "-config-params"
+  #@ if data.values.certSecretCount >= 1:
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  #@ end
+#@ end

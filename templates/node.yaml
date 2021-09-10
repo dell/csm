@@ -1,0 +1,65 @@
+#@ load("@ytt:data", "data")
+#@ load("node_cluster_role.lib.yml", "get_cluster_rules")
+#@ load("node_containers.lib.yml", "get_application_containers")
+#@ load("node_volumes.lib.yml", "get_application_volumes")
+#@ def object_name():
+#@ return data.values.application + "-node"
+#@ end
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: #@ object_name()
+rules: #@ get_cluster_rules(data.values.application)
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: #@ object_name()
+subjects:
+  - kind: ServiceAccount
+    name: #@ object_name()
+    namespace: #@ data.values.namespace
+roleRef:
+  kind: ClusterRole
+  name: #@ object_name()
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+spec:
+  selector:
+    matchLabels:
+      app: #@ object_name()
+  template:
+    metadata:
+      labels:
+        app: #@ object_name()
+    spec:
+      serviceAccountName: #@ object_name()
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      #@ if data.values.node.nodeSelector:
+      nodeSelector: #@ data.values.node.nodeSelector
+      #@ end
+      #@ if data.values.node.tolerations:
+      tolerations: #@ data.values.node.tolerations
+      #@ end
+      #@ if "monitor" in data.values and data.values.monitor.enabled and data.values.monitor.hostPID:
+      hostPID: true
+      #@ else:
+      hostPID: false
+      #@ end
+      containers: #@ get_application_containers(data.values.application)["containers"]
+      volumes: #@ get_application_volumes(data.values.application)["volumes"]

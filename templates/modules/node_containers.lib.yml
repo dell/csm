@@ -1,0 +1,522 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_application_containers(application):
+#@ if application == "isilon":
+#@    return get_containers_isilon(application)
+#@ elif application == "unity":
+#@    return get_containers_unity(application)
+#@ elif application == "powerstore":
+#@    return get_containers_powerstore(application)
+#@ elif application == "powermax":
+#@    return get_containers_powermax(application)
+#@ elif application == "vxflexos":
+#@    return get_containers_vxflexos(application)
+#@ else:
+#@ assert.fail("containers for application {} not found".format(application))
+#@ end
+#@ end
+
+#! CONTAINER SPECS for application csi-isilon
+#@ def get_containers_isilon(application):
+containers:
+  - #@ registrar_container_spec(application)
+  - #@ driver_isilon_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-unity
+#@ def get_containers_unity(application):
+containers:
+ - #@ registrar_container_spec(application)
+  #@ if data.values.podmon.enabled:
+ - #@ podmon_container_spec(application)
+  #@ end
+ - #@ driver_unity_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-powerstore
+#@ def get_containers_powerstore(application):
+containers:
+  - #@ registrar_container_spec(application)
+  - #@ driver_powerstore_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-powermax
+#@ def get_containers_powermax(application):
+containers:
+  - #@ registrar_container_spec(application)
+  - #@ driver_powermax_container_spec(application)
+#@ end
+
+#! CONTAINER SPECS for application csi-vxflexos
+#@ def get_containers_vxflexos(application):
+containers:
+  - #@ registrar_container_spec(application)
+  #@ if data.values.podmon.enabled:
+  - #@ podmon_container_spec(application)
+  #@ end
+  - #@ driver_vxflexos_container_spec()
+#@ end
+
+
+#! spec for registrar sidecar container
+#@ def registrar_container_spec(application):
+name: registrar
+image: #@ data.values.images.registrar
+args:
+  - "--v=5"
+  - "--csi-address=$(ADDRESS)"
+  #@ if application == "isilon":
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/csi-isilon/csi_sock
+  #@ elif application == "unity":
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock
+  #@ elif application == "powerstore":
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/csi-powerstore.dellemc.com/csi_sock
+  #@ elif application == "powermax":
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/powermax.emc.dell.com/csi_sock
+  #@ elif application == "vxflexos":
+  - --kubelet-registration-path=/var/lib/kubelet/plugins/vxflexos.emc.dell.com/csi_sock
+  #@ end
+env:
+  - name: ADDRESS
+    value: /csi/csi_sock
+  - name: KUBE_NODE_NAME
+    valueFrom:
+      fieldRef:
+        apiVersion: v1
+        fieldPath: spec.nodeName
+volumeMounts:
+  - name: registration-dir
+    mountPath: /registration
+  - name: driver-path
+    mountPath: /csi
+#@ end
+
+#! spec for podmon sidecar container
+#@ def podmon_container_spec(application):
+name: podmon
+securityContext:
+  privileged: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+  allowPrivilegeEscalation: true
+imagePullPolicy: #@ data.values.imagePullPolicy
+image: #@ data.values.podmon.image
+args: #@ data.values.podmon.node.args
+env:
+  - name: KUBE_NODE_NAME
+    valueFrom:
+      fieldRef:
+        apiVersion: v1
+        fieldPath: spec.nodeName
+  - name: X_CSI_PRIVATE_MOUNT_DIR
+    #@ if application == "unity":
+    value: "/var/lib/kubelet/plugins/unity.emc.dell.com/disks"
+    #@ else:
+    value: "/var/lib/kubelet/plugins/vxflexos.emc.dell.com/disks"
+    #@ end
+  - name: MY_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: MY_POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: MY_POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+volumeMounts:
+  - name: kubelet-pods
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: driver-path
+    #@ if application == "unity":
+    mountPath: /var/lib/kubelet/plugins/unity.emc.dell.com
+    #@ else:
+    mountPath: /var/lib/kubelet/plugins/vxflexos.emc.dell.com
+    #@ end
+    mountPropagation: "Bidirectional"
+  - name: usr-bin
+    mountPath: /usr-bin
+  - name: var-run
+    mountPath: /var/run
+  #@ if application == "unity":
+  - name: unity-config
+    mountPath: /unity-config
+  #@ elif application == "vxflexos":
+  - name: vxflexos-config-params
+    mountPath: /vxflexos-config-params
+  #@ end
+#@ end
+
+#! spec for csi-isilon driver sidecar container
+#@ def driver_isilon_container_spec():
+name: driver
+command: [ "/csi-isilon" ]
+args:
+  - "--driver-config-params=/isilon-config-params/driver-config-params.yaml"
+securityContext:
+  privileged: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+  allowPrivilegeEscalation: true
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+env:
+  - name: CSI_ENDPOINT
+    value: /var/lib/kubelet/plugins/csi-isilon/csi_sock
+  - name: X_CSI_MODE
+    value: node
+  - name: X_CSI_ISI_SKIP_CERTIFICATE_VALIDATION
+    value: #@ data.values.skipCertificateValidation
+  - name: X_CSI_ALLOWED_NETWORKS
+    value: #@ str(data.values.allowedNetworks)
+  - name: X_CSI_VERBOSE
+    value: #@ str(data.values.verbose)
+  - name: X_CSI_PRIVATE_MOUNT_DIR
+    value: "/var/lib/kubelet/plugins/csi-isilon/disks"
+  - name: X_CSI_ISI_PORT
+    value: #@ data.values.isiPort
+  - name: X_CSI_ISI_PATH
+    value: #@ data.values.isiPath
+  - name: X_CSI_ISILON_NO_PROBE_ON_START
+    value: #@ data.values.noProbeOnStart
+  - name: X_CSI_ISI_AUTOPROBE
+    value: #@ data.values.autoProbe
+  - name: X_CSI_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: X_CSI_NODE_IP
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
+  - name: SSL_CERT_DIR
+    value: /certs
+  - name: X_CSI_ISI_QUOTA_ENABLED
+    value: #@ data.values.enableQuota
+  - name: X_CSI_CUSTOM_TOPOLOGY_ENABLED
+    value: #@ data.values.enableCustomTopology
+  - name: X_CSI_ISI_CONFIG_PATH
+    value: /isilon-configs/config
+  - name: X_CSI_MAX_VOLUMES_PER_NODE
+    value: #@ str(data.values.maxIsilonVolumesPerNode)
+volumeMounts:
+  - name: driver-path
+    mountPath: /var/lib/kubelet/plugins/csi-isilon
+  - name: volumedevices-path
+    mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi/volumeDevices
+  - name: pods-path
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: dev
+    mountPath: /dev
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: isilon-config
+    mountPath: /isilon-configs
+  - name: isilon-config-params
+    mountPath: /isilon-config-params
+
+#@ end
+
+#! spec for csi-unity driver sidecar container
+#@ def driver_unity_container_spec():
+name: driver
+securityContext:
+  privileged: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+  allowPrivilegeEscalation: true
+image: #@ data.values.images.driver
+args:
+  - "--driver-name=csi-unity.dellemc.com"
+  - "--driver-config=/unity-config/driver-config-params.yaml"
+  - "--driver-secret=/unity-secret/config"
+imagePullPolicy: #@ data.values.imagePullPolicy
+env:
+  - name: CSI_ENDPOINT
+    value: /var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock
+  - name: X_CSI_MODE
+    value: node
+  - name: X_CSI_UNITY_ALLOW_MULTI_POD_ACCESS
+    value: #@ data.values.allowRWOMultiPodAccess if data.values.allowRWOMultiPodAccess else "false"
+  - name: X_CSI_PRIVATE_MOUNT_DIR
+    value: "/var/lib/kubelet/plugins/unity.emc.dell.com/disks"
+  - name: X_CSI_EPHEMERAL_STAGING_PATH
+    value: /var/lib/kubelet/plugins/kubernetes.io/csi/pv/
+  - name: X_CSI_ISCSI_CHROOT
+    value: #@ data.values.ISCSIChroot if data.values.ISCSIChroot else "/noderoot"
+  - name: X_CSI_UNITY_AUTOPROBE
+    value: "true"
+  - name: X_CSI_UNITY_NODENAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: X_CSI_UNITY_NODENAME_PREFIX
+    value: #@ data.values.nodeNamePrefix
+  - name: SSL_CERT_DIR
+    value: /certs
+  - name: X_CSI_UNITY_SYNC_NODEINFO_INTERVAL
+    value: #@ data.values.syncNodeInfoInterval if data.values.syncNodeInfoInterval else "15"
+volumeMounts:
+  - name: driver-path
+    mountPath: /var/lib/kubelet/plugins/unity.emc.dell.com
+  - name: volumedevices-path
+    mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi
+    mountPropagation: Bidirectional
+  - name: pods-path
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: dev
+    mountPath: /dev
+  - name: noderoot
+    mountPath: /noderoot
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: unity-config
+    mountPath: /unity-config
+  - name: unity-secret
+    mountPath: /unity-secret
+
+#@ end
+
+#! spec for csi-powerstore driver sidecar container
+#@ def driver_powerstore_container_spec():
+name: driver
+command: [ "/csi-powerstore" ]
+securityContext:
+  privileged: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+  allowPrivilegeEscalation: true
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+env:
+  - name: CSI_ENDPOINT
+    value: unix:///var/lib/kubelet/plugins/csi-powerstore.dellemc.com/csi_sock
+  - name: X_CSI_MODE
+    value: node
+  - name: X_CSI_POWERSTORE_KUBE_NODE_NAME
+    valueFrom:
+      fieldRef:
+        apiVersion: v1
+        fieldPath: spec.nodeName
+  - name: X_CSI_POWERSTORE_NODE_NAME_PREFIX
+    value: #@ data.values.nodeNamePrefix
+  - name: X_CSI_POWERSTORE_NODE_ID_PATH
+    value: /node-id
+  - name: X_CSI_POWERSTORE_NODE_CHROOT_PATH
+    value: /noderoot
+  - name: X_CSI_POWERSTORE_TMP_DIR
+    value: /var/lib/kubelet/plugins/powerstore.dell.emc.com/tmp
+  - name: X_CSI_DRIVER_NAME
+    value: csi-powerstore.dellemc.com
+  - name: X_CSI_FC_PORTS_FILTER_FILE_PATH
+    value: #@ data.values.nodeFCPortsFilterFile    
+  - name: X_CSI_POWERSTORE_ENABLE_CHAP
+    value: #@ data.values.connection.enableCHAP if data.values.connection.enableCHAP else "false"  
+  - name: X_CSI_POWERSTORE_CONFIG_PATH
+    value: /powerstore-config/config
+  - name: X_CSI_POWERSTORE_CONFIG_PARAMS_PATH
+    value: /powerstore-config-params/driver-config-params.yaml
+  - name: GOPOWERSTORE_DEBUG
+    value: "true"
+volumeMounts:
+  - name: driver-path
+    mountPath: /var/lib/kubelet/plugins/csi-powerstore.dellemc.com
+  - name: csi-path
+    mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi
+    mountPropagation: "Bidirectional"
+  - name: pods-path
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: dev
+    mountPath: /dev
+  - name: sys
+    mountPath: /sys
+  - name: run
+    mountPath: /run
+  - name: node-id
+    mountPath: /node-id
+  - name: etciscsi
+    mountPath: /etc/iscsi
+  - name: mpath
+    mountPath: /etc/multipath.conf
+  - name: noderoot
+    mountPath: /noderoot
+  - name: powerstore-config
+    mountPath: /powerstore-config
+  - name: powerstore-config-params
+    mountPath: /powerstore-config-params
+#@ end
+
+#! spec for csi-powermax driver sidecar container
+#@ def driver_powermax_container_spec(application):
+name: driver
+command: [ "/csi-powermax.sh" ]
+securityContext:
+  privileged: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+  allowPrivilegeEscalation: true
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+env:
+  - name: X_CSI_POWERMAX_DRIVER_NAME  
+    value: #@ "{}".format(data.values.customDriverName if data.values.customDriverName else "csi-powermax.dellemc.com")       
+  - name: CSI_ENDPOINT
+    value: unix:///var/lib/kubelet/plugins/powermax.emc.dell.com/csi_sock
+  - name: X_CSI_MODE
+    value: node
+  - name: X_CSI_PRIVATE_MOUNT_DIR
+    value: "/var/lib/kubelet/plugins/powermax.emc.dell.com/disks"
+  #@ val = ""
+  #@ for i in range(len(data.values.globalConfig.storageArrays)):        
+    #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId + ","    
+  #@ end
+  #! To remove additional , at the end of string
+  #@ val=val[:-1]
+  - name: X_CSI_MANAGED_ARRAYS
+    value: #@ val
+  #@ if data.values.csireverseproxy.enabled == False:
+  - name: X_CSI_POWERMAX_ENDPOINT
+    value: #@ data.values.globalConfig.managementServers[0].endpoint
+  #@ end
+  - name: X_CSI_POWERMAX_DEBUG
+    value: #@ data.values.powerMaxDebug
+  - name: X_CSI_POWERMAX_SKIP_CERTIFICATE_VALIDATION
+    value: #@ data.values.skipCertificateValidation
+  - name: X_CSI_K8S_CLUSTER_PREFIX
+    value:  #@ data.values.clusterPrefix
+  - name: X_CSI_POWERMAX_USER
+    valueFrom:
+      secretKeyRef:
+        name: #@ data.values.globalConfig.defaultCredentialsSecret
+        key: username
+  - name: X_CSI_POWERMAX_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: #@ data.values.globalConfig.defaultCredentialsSecret
+        key: password
+  - name: X_CSI_POWERMAX_NODENAME
+    valueFrom:
+      fieldRef:
+        apiVersion: v1
+        fieldPath: spec.nodeName
+  #@ if data.values.enableCHAP:
+  - name: X_CSI_POWERMAX_ISCSI_ENABLE_CHAP
+    value: "true"
+  - name: X_CSI_POWERMAX_ISCSI_CHAP_USERNAME
+    value: ""
+  - name: X_CSI_POWERMAX_ISCSI_CHAP_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: #@ application + "-config"
+        key: chapsecret
+  #@ else:
+  - name: X_CSI_POWERMAX_ISCSI_ENABLE_CHAP
+    value: "false"
+  #@ end
+  - name: X_CSI_POWERMAX_PROXY_SERVICE_NAME
+  #@ if data.values.csireverseproxy.enabled:
+    value: #@ application + "-reverseproxy"
+  #@ else:
+    value: "none"
+  #@ end
+  - name: X_CSI_ISCSI_CHROOT
+    value: #@ data.values.ISCSIChroot
+  - name: X_CSI_GRPC_MAX_THREADS
+  #@ if data.values.csireverseproxy.enabled:
+    value: "50"
+  #@ else:
+    value: "4"
+  #@ end
+  - name: X_CSI_TRANSPORT_PROTOCOL
+    value: #@ data.values.transportProtocol
+  - name: SSL_CERT_DIR
+    value: /certs
+  - name: X_CSI_POWERMAX_CONFIG_PATH
+    value: /powermax-config-params/driver-config-params.yaml
+  - name: X_CSI_IG_NODENAME_TEMPLATE
+    value: #@ data.values.nodeNameTemplate
+  - name: X_CSI_IG_MODIFY_HOSTNAME
+    value: #@ data.values.modifyHostName
+  - name: X_CSI_POWERMAX_PORTGROUPS
+    value: #@ data.values.portGroups
+volumeMounts:
+  - name: driver-path
+    mountPath: /var/lib/kubelet/plugins/powermax.emc.dell.com
+  - name: volumedevices-path
+    mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi/volumeDevices
+    mountPropagation: "Bidirectional"
+  - name: pods-path
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: dev
+    mountPath: /dev
+  - name: sys
+    mountPath: /sys
+  - name: noderoot
+    mountPath: #@ data.values.ISCSIChroot
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: dbus-socket
+    mountPath: /run/dbus/system_bus_socket
+  - name: powermax-config-params
+    mountPath: /powermax-config-params
+#@ end
+
+#! spec for csi-vxflexos driver sidecar container
+#@ def driver_vxflexos_container_spec():
+name: driver
+securityContext:
+  privileged: true
+  allowPrivilegeEscalation: true
+  capabilities:
+    add: [ "SYS_ADMIN" ]
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+command: [ "/csi-vxflexos.sh" ]
+args:
+  - "--array-config=/vxflexos-config/config"
+  - "--driver-config-params=/vxflexos-config-params/driver-config-params.yaml"
+env:
+  - name: CSI_ENDPOINT
+    value: unix:///var/lib/kubelet/plugins/vxflexos.emc.dell.com/csi_sock
+  - name: X_CSI_MODE
+    value: node
+  - name: X_CSI_DEBUG
+    value: "true"
+  - name: X_CSI_PRIVATE_MOUNT_DIR
+    value: "/var/lib/kubelet/plugins/vxflexos.emc.dell.com/disks"
+  - name: X_CSI_ALLOW_RWO_MULTI_POD_ACCESS
+    value: #@ data.values.allowRWOMultiPodAccess
+  - name: SSL_CERT_DIR
+    value: /certs
+volumeMounts:
+  - name: driver-path
+    mountPath: /var/lib/kubelet/plugins/vxflexos.emc.dell.com
+  - name: volumedevices-path
+    mountPath: /var/lib/kubelet/plugins/kubernetes.io/csi/volumeDevices
+    mountPropagation: "Bidirectional"
+  - name: pods-path
+    mountPath: /var/lib/kubelet/pods
+    mountPropagation: "Bidirectional"
+  - name: dev
+    mountPath: /dev
+  - name: vxflexos-config
+    mountPath: /vxflexos-config
+  - name: vxflexos-config-params
+    mountPath: /vxflexos-config-params
+  #@ if data.values.certSecretCount >= 1:
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  #@ end
+#@ end

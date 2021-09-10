@@ -1,0 +1,68 @@
+#@ load("@ytt:data", "data")
+#@ load("controller_cluster_role.lib.yml", "get_cluster_rules")
+#@ load("controller_containers.lib.yml", "get_application_containers")
+#@ load("controller_volumes.lib.yml", "get_application_volumes")
+
+#@ def object_name():
+#@ return data.values.application + "-controller"
+#@ end
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: #@ object_name()
+rules: #@ get_cluster_rules(data.values.application)
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: #@ object_name()
+subjects:
+  - kind: ServiceAccount
+    name: #@ object_name()
+    namespace: #@ data.values.namespace
+roleRef:
+  kind: ClusterRole
+  name: #@ object_name()
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+spec:
+  selector:
+    matchLabels:
+      app: #@ object_name()
+  replicas: #@ int(data.values.controllerCount)
+  template:
+    metadata:
+      labels:
+        app: #@ object_name()
+    spec:
+      serviceAccountName: #@ object_name()
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - #@ object_name()
+              topologyKey: kubernetes.io/hostname
+      #@ if data.values.controller.nodeSelector:
+      nodeSelector: #@ data.values.controller.nodeSelector
+      #@ end
+      #@ if data.values.controller.tolerations:
+      tolerations: #@ data.values.controller.tolerations
+      #@ end
+      containers: #@ get_application_containers(data.values.application)["containers"]
+      volumes: #@ get_application_volumes(data.values.application)["volumes"]

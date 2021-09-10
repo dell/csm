@@ -1,0 +1,39 @@
+#@ load("@ytt:overlay", "overlay")
+#@data/values
+---
+#! "controllerCount" defines the number of csi driver controller pods to deploy
+#@overlay/match missing_ok=True
+controllerCount: 2
+
+#! "controller" allows to configure controller specific parameters
+#@overlay/match missing_ok=True
+controller:
+  nodeSelector:  
+
+  #! Define tolerations for the controllers, if required
+  tolerations:
+
+#! "node" allows to configure node specific parameters
+#@overlay/match missing_ok=True
+node:
+  #! "node.nodeSelector" defines what nodes would be selected for pods of node daemonset
+  #! Leave as blank to use all nodes
+  nodeSelector:  
+
+  #! "node.tolerations" defines tolerations that would be applied to node daemonset
+  #! Add/Remove tolerations as per requirement
+  #! Leave as blank if you wish to not apply any tolerations
+  tolerations:
+#!    - key: "node.kubernetes.io/memory-pressure"
+#!      operator: "Exists"
+#!      effect: "NoExecute"
+#!    - key: "node.kubernetes.io/disk-pressure"
+#!      operator: "Exists"
+#!      effect: "NoExecute"
+#!    - key: "node.kubernetes.io/network-unavailable"
+#!      operator: "Exists"
+#!      effect: "NoExecute"
+
+#! "arrayconfig" allows dynamic of drivers that support multi-array
+#@overlay/match missing_ok=True
+arrayconfig: ""

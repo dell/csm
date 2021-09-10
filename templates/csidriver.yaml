@@ -1,0 +1,47 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ if data.values.application == "isilon":
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: csi-isilon.dellemc.com
+
+#@ elif data.values.application == "vxflexos":
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: csi-vxflexos.dellemc.com
+
+#@ elif data.values.application == "unity":
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: csi-unity.dellemc.com
+
+#@ elif data.values.application == "powerstore":
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: csi-powerstore.dellemc.com
+
+#@ elif data.values.application == "powermax":
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:  
+  name: #@ data.values.customDriverName if data.values.customDriverName else "csi-powermax.dellemc.com"  
+  spec:
+    attachRequired: true
+
+#@ else:
+  #@ assert.fail("application {} not found".format(data.values.application))
+#@ end
+
+#@ if data.values.application != "powermax":
+spec:
+  attachRequired: true
+  podInfoOnMount: true
+  volumeLifecycleModes:
+    - Persistent
+    - Ephemeral
+#@ end

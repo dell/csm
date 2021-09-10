@@ -1,0 +1,176 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:yaml", "yaml")
+#@ load("module_containers.lib.yml", "get_module_containers")
+#@ load("module_volumes.lib.yml", "get_module_volumes")
+
+#@ def object_name():
+#@ return data.values.application + "-reverseproxy"
+#@ end
+
+#@ def reverseProxyConfigMapParams():
+mode: #@ data.values.csireverseproxy.mode
+port: #@ str(data.values.csireverseproxy.port)
+#@ if data.values.csireverseproxy.mode == "Linked":
+linkConfig:
+  #@ for i in range(len(data.values.globalConfig.managementServers)):
+  #@ if i == 0:
+  primary:
+    #@ primary = data.values.globalConfig.managementServers[i]
+    url: #@ primary.endpoint
+    #@ if hasattr(primary, "certSecret"):
+    skipCertificateValidation: #@ primary.skipCertificateValidation
+    certSecret: #@ primary.certSecret
+    #@ else:
+    skipCertificateValidation: true
+    certSecret: ""
+    #@ end
+    #@ if hasattr(primary, "limits"):
+    limits:
+      maxActiveRead: #@ primary.limits.maxActiveRead
+      maxActiveWrite: #@ primary.limits.maxActiveWrite
+      maxOutStandingRead: #@ primary.limits.maxOutStandingRead
+      maxOutStandingWrite: #@ primary.limits.maxOutStandingWrite
+    #@ end
+  #@ end
+  #@ if i == 1:
+  backup:
+    #@ backup = data.values.globalConfig.managementServers[i]
+    url: #@ backup.endpoint
+    #@ if hasattr(backup, "certSecret"):
+    skipCertificateValidation: #@ backup.skipCertificateValidation
+    certSecret: #@ backup.certSecret
+    #@ else:
+    skipCertificateValidation: true
+    certSecret: ""
+    #@ end
+    #@ if hasattr(backup, "limits"):
+    limits:
+      maxActiveRead: #@ backup.limits.maxActiveRead
+      maxActiveWrite: #@ backup.limits.maxActiveWrite
+      maxOutStandingRead: #@ backup.limits.maxOutStandingRead
+      maxOutStandingWrite: #@ backup.limits.maxOutStandingWrite
+    #@ end
+  #@ end
+  #@ end
+#@ end
+#@ if data.values.csireverseproxy.mode == "StandAlone":
+standAloneConfig:
+  storageArrays:
+    #@ for i in range(len(data.values.globalConfig.storageArrays)):
+    #@ value = data.values.globalConfig.storageArrays[i]
+    - storageArrayId: #@ value.storageArrayId
+      primaryURL: #@ value.endpoint
+      #@ if hasattr(value, "backupEndpoint"):
+      backupURL: #@ value.backupEndpoint
+      #@ end
+      #@ if hasattr(data.values.globalConfig, "defaultCredentialsSecret"):
+      proxyCredentialSecrets:
+        - #@ data.values.globalConfig.defaultCredentialsSecret
+      #@ end
+    #@ end
+  managementServers:
+    #@ for i in range(len(data.values.globalConfig.managementServers)):
+    #@ value = data.values.globalConfig.managementServers[i]
+    - url: #@ value.endpoint
+      #@ if hasattr(value, "credentialsSecret"):
+      arrayCredentialSecret: #@ value.credentialsSecret
+      #@ elif hasattr(data.values.globalConfig, "defaultCredentialsSecret"):
+      arrayCredentialSecret: #@ data.values.globalConfig.defaultCredentialsSecret
+      #@ end
+      #@ if hasattr(value, "certSecret"):
+      skipCertificateValidation: #@ value.skipCertificateValidation
+      certSecret: #@ value.certSecret
+      #@ else:
+      skipCertificateValidation: true
+      certSecret: ""
+      #@ end
+      #@ if hasattr(value, "limits"):
+      limits:
+        maxActiveRead: #@ value.limits.maxActiveRead
+        maxActiveWrite: #@ value.limits.maxActiveWrite
+        maxOutStandingRead: #@ value.limits.maxOutStandingRead
+        maxOutStandingWrite: #@ value.limits.maxOutStandingWrite
+      #@ end
+    #@ end
+#@ end
+#@ end
+
+#@ if hasattr(data.values, "csireverseproxy") and data.values.csireverseproxy.enabled:
+apiVersion: v1
+kind: Service
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+spec:
+  ports:
+    - port: #@ data.values.csireverseproxy.port
+      protocol: TCP
+      targetPort: 2222
+  selector:
+    #@ if data.values.csireverseproxy.deployAsSidecar:
+    app: #@ data.values.application + "-controller"
+    #@ else:
+    app: #@ object_name()
+    #@ end
+  type: ClusterIP
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: #@ object_name() + "-config"
+  namespace: #@ data.values.namespace
+data: 
+  config.yaml: #@ yaml.encode(reverseProxyConfigMapParams())
+#@ if not data.values.csireverseproxy.deployAsSidecar:
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["list", "watch", "get"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+subjects:
+  - kind: ServiceAccount
+    name: #@ object_name()
+    namespace: #@ data.values.namespace
+roleRef:
+  kind: Role
+  name: #@ object_name()
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: #@ object_name()
+  namespace: #@ data.values.namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: #@ object_name()
+  template:
+    metadata:
+      labels:
+        name: #@ object_name()
+    spec:
+      serviceAccountName: #@ object_name()
+      containers: #@ get_module_containers(object_name())["containers"]
+      volumes: #@ get_module_volumes(object_name())["volumes"]
+#@ end
+#@ end
+

@@ -1,0 +1,32 @@
+#@ load("@ytt:overlay", "overlay")
+#@data/values
+---
+#@overlay/match missing_ok=True
+kubeversion: "v1.20"
+
+#! IT IS RECOMMENDED YOU DO NOT CHANGE THE IMAGES TO BE DOWNLOADED.
+#@overlay/merge
+images:
+  #! "images.attacher" defines the container images used for the csi attacher
+  #! container.
+  #@overlay/match missing_ok=True
+  attacher: k8s.gcr.io/sig-storage/csi-attacher:v3.3.0
+
+  #! "images.provisioner" defines the container images used for the csi provisioner
+  #! container.
+  #@overlay/match missing_ok=True
+  provisioner: k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2
+
+  #! "images.snapshotter" defines the container image used for the csi snapshotter
+  #@overlay/match missing_ok=True
+  snapshotter: k8s.gcr.io/sig-storage/csi-snapshotter:v4.1.1
+
+  #! "images.registrar" defines the container images used for the csi registrar
+  #! container.
+  #@overlay/match missing_ok=True
+  registrar: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.3.0
+
+  #! "images.resizer" defines the container images used for the csi resizer
+  #! container.
+  #@overlay/match missing_ok=True
+  resizer: k8s.gcr.io/sig-storage/csi-resizer:v1.2.0

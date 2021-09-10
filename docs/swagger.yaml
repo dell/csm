@@ -1,0 +1,1395 @@
+basePath: /api/v1
+definitions:
+  ApplicationCreateRequest:
+    properties:
+      cluster_id:
+        type: string
+      driver_configuration:
+        items:
+          type: string
+        type: array
+      driver_type_id:
+        type: string
+      module_configuration:
+        items:
+          type: string
+        type: array
+      module_types:
+        items:
+          type: string
+        type: array
+      name:
+        type: string
+      storage_arrays:
+        items:
+          type: string
+        type: array
+    required:
+    - cluster_id
+    - driver_type_id
+    - name
+    type: object
+  ApplicationResponse:
+    properties:
+      application_output:
+        type: string
+      cluster_id:
+        type: string
+      driver_configuration:
+        items:
+          type: string
+        type: array
+      driver_type_id:
+        type: string
+      id:
+        type: string
+      module_configuration:
+        items:
+          type: string
+        type: array
+      module_types:
+        items:
+          type: string
+        type: array
+      name:
+        type: string
+      storage_arrays:
+        items:
+          type: string
+        type: array
+    type: object
+  ClusterResponse:
+    properties:
+      cluster_id:
+        type: string
+      cluster_name:
+        type: string
+      nodes:
+        description: The nodes
+        type: string
+    type: object
+  ConfigFileResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  DriverResponse:
+    properties:
+      id:
+        type: string
+      storage_array_type_id:
+        type: string
+      version:
+        type: string
+    type: object
+  ErrorMessage:
+    properties:
+      arguments:
+        items:
+          type: string
+        type: array
+      code:
+        description: HTTPStatusEnum  Possible HTTP status values of completed or failed
+          jobs
+        enum:
+        - 200
+        - 201
+        - 202
+        - 204
+        - 400
+        - 401
+        - 403
+        - 404
+        - 422
+        - 429
+        - 500
+        - 503
+        type: integer
+      message:
+        description: Message string.
+        type: string
+      message_l10n:
+        description: Localized message
+        type: object
+      severity:
+        description: |-
+          SeverityEnum - The severity of the condition
+          * INFO - Information that may be of use in understanding the failure. It is not a problem to fix.
+          * WARNING - A condition that isn't a failure, but may be unexpected or a contributing factor. It may be necessary to fix the condition to successfully retry the request.
+          * ERROR - An actual failure condition through which the request could not continue.
+          * CRITICAL - A failure with significant impact to the system. Normally failed commands roll back and are just ERROR, but this is possible
+        enum:
+        - INFO
+        - WARNING
+        - ERROR
+        - CRITICAL
+        type: string
+    type: object
+  ErrorResponse:
+    properties:
+      http_status_code:
+        description: HTTPStatusEnum  Possible HTTP status values of completed or failed
+          jobs
+        enum:
+        - 200
+        - 201
+        - 202
+        - 204
+        - 400
+        - 401
+        - 403
+        - 404
+        - 422
+        - 429
+        - 500
+        - 503
+        type: integer
+      messages:
+        description: |-
+          A list of messages describing the failure encountered by this request. At least one will
+          be of Error severity because Info and Warning conditions do not cause the request to fail
+        items:
+          $ref: '#/definitions/ErrorMessage'
+        type: array
+    type: object
+  ModuleResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      standalone:
+        type: boolean
+      version:
+        type: string
+    type: object
+  StorageArrayCreateRequest:
+    properties:
+      management_endpoint:
+        type: string
+      meta_data:
+        items:
+          type: string
+        type: array
+      password:
+        type: string
+      storage_array_type:
+        type: string
+      unique_id:
+        type: string
+      username:
+        type: string
+    required:
+    - management_endpoint
+    - password
+    - storage_array_type
+    - unique_id
+    - username
+    type: object
+  StorageArrayResponse:
+    properties:
+      id:
+        type: string
+      management_endpoint:
+        type: string
+      meta_data:
+        items:
+          type: string
+        type: array
+      storage_array_type_id:
+        type: string
+      unique_id:
+        type: string
+      username:
+        type: string
+    type: object
+  StorageArrayTypeResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  StorageArrayUpdateRequest:
+    properties:
+      management_endpoint:
+        type: string
+      meta_data:
+        items:
+          type: string
+        type: array
+      password:
+        type: string
+      storage_array_type:
+        type: string
+      unique_id:
+        type: string
+      username:
+        type: string
+    type: object
+  TaskResponse:
+    properties:
+      _links:
+        additionalProperties:
+          additionalProperties:
+            type: string
+          type: object
+        type: object
+      application_name:
+        type: string
+      id:
+        type: string
+      logs:
+        type: string
+      status:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: CSM Deployment API
+  title: CSM Deployment API
+  version: "1.0"
+paths:
+  /applications:
+    get:
+      consumes:
+      - application/json
+      description: List all applications
+      operationId: list-applications
+      parameters:
+      - description: Application Name
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/ApplicationResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all applications
+      tags:
+      - application
+    post:
+      consumes:
+      - application/json
+      description: Create a new application
+      operationId: create-application
+      parameters:
+      - description: Application info for creation
+        in: body
+        name: application
+        required: true
+        schema:
+          $ref: '#/definitions/ApplicationCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new application
+      tags:
+      - application
+  /applications/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an application
+      operationId: delete-application
+      parameters:
+      - description: Application ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete an application
+      tags:
+      - application
+    get:
+      consumes:
+      - application/json
+      description: Get an application
+      operationId: get-application
+      parameters:
+      - description: Application ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ApplicationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get an application
+      tags:
+      - application
+  /clusters:
+    get:
+      consumes:
+      - application/json
+      description: List all clusters
+      operationId: list-clusters
+      parameters:
+      - description: Cluster Name
+        in: query
+        name: cluster_name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/ClusterResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all clusters
+      tags:
+      - cluster
+    post:
+      consumes:
+      - application/json
+      description: Create a new cluster
+      operationId: create-cluster
+      parameters:
+      - description: Name of the cluster
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: kube config file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/ClusterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new cluster
+      tags:
+      - cluster
+  /clusters/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a cluster
+      operationId: delete-cluster
+      parameters:
+      - description: Cluster ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a cluster
+      tags:
+      - cluster
+    get:
+      consumes:
+      - application/json
+      description: Get a cluster
+      operationId: get-cluster
+      parameters:
+      - description: Cluster ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a cluster
+      tags:
+      - cluster
+    patch:
+      consumes:
+      - application/json
+      description: Update a cluster
+      operationId: update-cluster
+      parameters:
+      - description: Cluster ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Name of the cluster
+        in: formData
+        name: name
+        type: string
+      - description: kube config file
+        in: formData
+        name: file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ClusterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a cluster
+      tags:
+      - cluster
+  /configuration-files:
+    get:
+      consumes:
+      - application/json
+      description: List all configuration files
+      operationId: list-config-file
+      parameters:
+      - description: Name of the configuration file
+        in: query
+        name: config_name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/ConfigFileResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all configuration files
+      tags:
+      - configuration-file
+    post:
+      consumes:
+      - application/json
+      description: Create a new configuration file
+      operationId: create-config-file
+      parameters:
+      - description: Name of the configuration file
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Configuration file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/ConfigFileResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new configuration file
+      tags:
+      - configuration-file
+  /configuration-files/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a configuration file
+      operationId: delete-config-file
+      parameters:
+      - description: Configuration file ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a configuration file
+      tags:
+      - configuration-file
+    get:
+      consumes:
+      - application/json
+      description: Get a configuration file
+      operationId: get-config-file
+      parameters:
+      - description: Configuration file ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ConfigFileResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a configuration file
+      tags:
+      - configuration-file
+    patch:
+      consumes:
+      - application/json
+      description: Update a configuration file
+      operationId: update-config-file
+      parameters:
+      - description: Configuration file ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Name of the configuration file
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: Configuration file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a configuration file
+      tags:
+      - configuration-file
+  /driver-types:
+    get:
+      consumes:
+      - application/json
+      description: List all driver types
+      operationId: list-driver-types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/DriverResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all driver types
+      tags:
+      - driver-type
+  /driver-types/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a driver type
+      operationId: get-driver-type
+      parameters:
+      - description: Driver Type ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/DriverResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a driver type
+      tags:
+      - driver-type
+  /module-types:
+    get:
+      consumes:
+      - application/json
+      description: List all module types
+      operationId: list-module-type
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/ModuleResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all module types
+      tags:
+      - module-type
+  /module-types/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a module type
+      operationId: get-module-type
+      parameters:
+      - description: Module Type ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ModuleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a module type
+      tags:
+      - module-type
+  /storage-array-types:
+    get:
+      consumes:
+      - application/json
+      description: List all storage array types
+      operationId: list-storage-array-type
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/StorageArrayTypeResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all storage array types
+      tags:
+      - storage-array-type
+  /storage-array-types/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a storage array type
+      operationId: get-storage-array-type
+      parameters:
+      - description: Storage Array Type ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/StorageArrayTypeResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a storage array type
+      tags:
+      - storage-array-type
+  /storage-arrays:
+    get:
+      consumes:
+      - application/json
+      description: List all storage arrays
+      operationId: list-storage-arrays
+      parameters:
+      - description: Unique ID
+        in: query
+        name: unique_id
+        type: string
+      - description: Storage Type
+        in: query
+        name: storage_type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            items:
+              $ref: '#/definitions/StorageArrayResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all storage arrays
+      tags:
+      - storage-array
+    post:
+      consumes:
+      - application/json
+      description: Create a new storage array
+      operationId: create-storage-array
+      parameters:
+      - description: Storage Array info for creation
+        in: body
+        name: storageArray
+        required: true
+        schema:
+          $ref: '#/definitions/StorageArrayCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/StorageArrayResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new storage array
+      tags:
+      - storage-array
+  /storage-arrays/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete storage array
+      operationId: delete-storage-array
+      parameters:
+      - description: Storage Array ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete storage array
+      tags:
+      - storage-array
+    get:
+      consumes:
+      - application/json
+      description: Get storage array
+      operationId: get-storage-array
+      parameters:
+      - description: Storage Array ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/StorageArrayResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get storage array
+      tags:
+      - storage-array
+    patch:
+      consumes:
+      - application/json
+      description: Update a storage array
+      operationId: update-storage-array
+      parameters:
+      - description: Storage Array ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Storage Array info for update
+        in: body
+        name: storageArray
+        required: true
+        schema:
+          $ref: '#/definitions/StorageArrayUpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a storage array
+      tags:
+      - storage-array
+  /tasks:
+    get:
+      consumes:
+      - application/json
+      description: List all tasks
+      operationId: list-tasks
+      parameters:
+      - description: Application Name
+        in: query
+        name: application_name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/TaskResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: List all tasks
+      tags:
+      - task
+  /tasks/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a task
+      operationId: get-task
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/TaskResponse'
+        "303":
+          description: See Other
+          schema:
+            $ref: '#/definitions/TaskResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a task
+      tags:
+      - task
+  /tasks/{id}/approve:
+    post:
+      consumes:
+      - application/json
+      description: Approve state change for an application
+      operationId: approve-state-change-application
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task is associated with an Application update operation
+        in: query
+        name: updating
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Approve state change for an application
+      tags:
+      - task
+  /tasks/{id}/cancel:
+    post:
+      consumes:
+      - application/json
+      description: Cancel state change for an application
+      operationId: cancel-state-change-application
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Task is associated with an Application update operation
+        in: query
+        name: updating
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Cancel state change for an application
+      tags:
+      - task
+  /users/change-password:
+    patch:
+      consumes:
+      - application/json
+      description: Change password for existing user
+      operationId: change-password
+      parameters:
+      - description: Enter New Password
+        format: password
+        in: query
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - BasicAuth: []
+      summary: Change password for existing user
+      tags:
+      - user
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login for existing user
+      operationId: login
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Bearer Token for Logged in User
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+      security:
+      - BasicAuth: []
+      summary: Login for existing user
+      tags:
+      - user
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  BasicAuth:
+    type: basic
+swagger: "2.0"

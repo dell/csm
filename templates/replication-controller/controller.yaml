@@ -1,0 +1,258 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: dell-replication-manager-role
+rules:
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - create
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumeclaims
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumeclaims/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - persistentvolumes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - replication.storage.dell.com
+  resources:
+  - dellcsireplicationgroups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - replication.storage.dell.com
+  resources:
+  - dellcsireplicationgroups/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - storageclasses
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: dell-replication-metrics-reader
+rules:
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: dell-replication-proxy-role
+rules:
+- apiGroups:
+  - authentication.k8s.io
+  resources:
+  - tokenreviews
+  verbs:
+  - create
+- apiGroups:
+  - authorization.k8s.io
+  resources:
+  - subjectaccessreviews
+  verbs:
+  - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dell-replication-manager-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: dell-replication-manager-role
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: dell-replication-controller
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dell-replication-proxy-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: dell-replication-proxy-role
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: dell-replication-controller
+---
+apiVersion: v1
+data:
+  config.yaml: |
+    clusterId: ""
+    targets: []
+    logLevel: "info"
+kind: ConfigMap
+metadata:
+  name: dell-replication-controller-config
+  namespace: dell-replication-controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    control-plane: controller-manager
+  name: dell-replication-controller-manager-metrics-service
+  namespace: dell-replication-controller
+spec:
+  ports:
+  - name: https
+    port: 8443
+    targetPort: https
+  selector:
+    control-plane: controller-manager
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    control-plane: controller-manager
+  name: dell-replication-controller-manager
+  namespace: dell-replication-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      containers:
+      - args:
+        - --enable-leader-election
+        - --prefix=replication.storage.dell.com
+        command:
+        - /dell-replication-controller
+        env:
+        - name: X_CSI_REPLICATION_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: X_CSI_REPLICATION_IN_CLUSTER
+          value: "true"
+        - name: X_CSI_REPLICATION_WATCH_NAMESPACE
+          value: dell-replication-controller
+        - name: X_CSI_REPLICATION_CONFIG_DIR
+          value: /app/config
+        - name: X_CSI_REPLICATION_CERT_DIR
+          value: /app/certs
+        - name: X_CSI_REPLICATION_CONFIG_FILE_NAME
+          value: config
+        image: dellemc/dell-replication-controller:v1.0.0
+        imagePullPolicy: Always
+        name: manager
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        volumeMounts:
+        - mountPath: /app/config
+          name: configmap-volume
+        - mountPath: /app/certs
+          name: cert-dir
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - emptyDir: null
+        name: cert-dir
+      - configMap:
+          name: dell-replication-controller-config
+          optional: true
+        name: configmap-volume

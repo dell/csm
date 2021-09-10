@@ -1,0 +1,235 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_application_volumes(application):
+#@ if application == "isilon":
+#@    return get_volumes(application)
+#@ elif application == "unity":
+#@    return get_volumes(application)
+#@ elif application == "powerstore":
+#@    return get_volumes(application)
+#@ elif application == "powermax":
+#@    return get_volumes(application)
+#@ elif application == "vxflexos":
+#@    return get_volumes(application)
+#@ else:
+#@ assert.fail("volumes for application {} not found".format(application))
+#@ end
+#@ end
+
+#! VOLUMES for applications
+#@ def get_volumes(application):
+volumes:
+  - name: registration-dir
+    hostPath:
+      path: /var/lib/kubelet/plugins_registry/
+      type: DirectoryOrCreate
+  #@ if application == "unity":
+  - name: volumedevices-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/kubernetes.io/csi/
+      type: DirectoryOrCreate
+      mountPropagation: Bidirectional
+  #@ elif application == "powerstore":
+  - name: csi-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/kubernetes.io/csi
+      type: DirectoryOrCreate
+      mountPropagation: Bidirectional
+  #@ else:
+  - name: volumedevices-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/kubernetes.io/csi/volumeDevices
+      type: DirectoryOrCreate
+  #@ end
+  - name: pods-path
+    hostPath:
+      path: /var/lib/kubelet/pods
+      type: Directory
+      mountPropagation: Bidirectional
+  - name: dev
+    hostPath:
+      path: /dev
+      type: Directory
+  #@ if application == "isilon":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/csi-isilon
+      type: DirectoryOrCreate
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  - name: isilon-config
+    secret:
+      secretName: #@ application + "-config"
+  - name: isilon-config-params
+    configMap:
+      name: #@ application + "-config-params"
+
+  #@ elif application == "unity":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/unity.emc.dell.com
+      type: DirectoryOrCreate
+  - name: noderoot
+    hostPath:
+      path: /
+      type: Directory
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  - name: unity-config
+    configMap:
+      name: #@ application + "-config-params"
+  - name: unity-secret
+    secret:
+      secretName: #@ application + "-config"
+  #@ if data.values.podmon.enabled:
+  - name: usr-bin
+    hostPath:
+      path: /usr/bin
+      type: Directory
+  - name: kubelet-pods
+    hostPath:
+      path: /var/lib/kubelet/pods
+      type: Directory
+  - name: var-run
+    hostPath:
+      path: /var/run
+      type: Directory
+  #@ end
+
+  #@ elif application == "powerstore":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/csi-powerstore.dellemc.com
+      type: DirectoryOrCreate
+  - name: node-id
+    hostPath:
+      path: #@ data.values.nodeIDPath
+      type: File
+  - name: etciscsi
+    hostPath:
+      path: /etc/iscsi
+      type: DirectoryOrCreate
+  - name: mpath
+    hostPath:
+      path: /etc/multipath.conf
+      type: FileOrCreate
+  - name: noderoot
+    hostPath:
+      path: /
+      type: Directory
+  - name: sys
+    hostPath:
+      path: /sys
+      type: Directory
+  - name: run
+    hostPath:
+      path: /run
+      type: Directory
+  - name: powerstore-config
+    secret:
+      secretName: #@ application + "-config"
+  - name: powerstore-config-params
+    configMap:
+      name: #@ application + "-config-params"
+
+  #@ elif application == "powermax":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/powermax.emc.dell.com
+      type: DirectoryOrCreate
+  - name: noderoot
+    hostPath:
+      path: /
+      type: Directory
+  - name: sys
+    hostPath:
+      path: /sys
+      type: Directory
+  - name: run
+    hostPath:
+      path: /run
+      type: Directory
+  - name: dbus-socket
+    hostPath:
+      path: /run/dbus/system_bus_socket
+      type: Socket
+  - name: powermax-config-params
+    configMap:
+      name: #@ application + "-config-params"
+  - name: certs
+    secret:
+      secretName: #@ application + "-certs"
+      optional: true      
+
+#@ elif application == "vxflexos":
+  - name: driver-path
+    hostPath:
+      path: /var/lib/kubelet/plugins/vxflexos.emc.dell.com
+      type: DirectoryOrCreate
+  - name: scaleio-path-opt
+    hostPath:
+      path: /opt/emc/scaleio/sdc/bin
+      type: DirectoryOrCreate
+  - name: sdc-storage
+    hostPath:
+      path: /var/emc-scaleio
+      type: DirectoryOrCreate
+  - name: udev-d
+    hostPath:
+      path: /etc/udev/rules.d
+      type: Directory
+  - name: os-release
+    hostPath:
+      path: /etc/os-release
+      type: File
+  - name: vxflexos-config
+    secret:
+      secretName: #@ application + "-config"
+  - name: vxflexos-config-params
+    configMap:
+      name: #@ application + "-config-params"
+  #@ if data.values.certSecretCount >= 1:
+  - name: certs
+    projected:
+      sources:
+        #@ for i in range(data.values.certSecretCount):
+        - secret:
+            name: #@ application + "-certs-" + str(i)
+            items:
+              - key: #@ "cert-" + str(i)
+                path: #@ "cert-" + str(i)
+        #@ end
+  #@ end
+  #@ if data.values.podmon.enabled:
+  - name: usr-bin
+    hostPath:
+      path: /usr/bin
+      type: Directory
+  - name: kubelet-pods
+    hostPath:
+      path: /var/lib/kubelet/pods
+      type: Directory
+  - name: var-run
+    hostPath:
+      path: /var/run
+      type: Directory
+  #@ end
+  #@ end
+#@ end

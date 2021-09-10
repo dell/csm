@@ -1,0 +1,169 @@
+#@data/values
+---
+application: powermax
+namespace: powermax
+
+#! CSI driver log level
+#! Allowed values: "error", "warn"/"warning", "info", "debug"
+#! Default value: "debug"
+logLevel: "debug"
+
+#! CSI driver log format
+#! Allowed values: "TEXT" or "JSON"
+#! Default value: "TEXT"
+logFormat: "TEXT"
+
+#! The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image
+#! if it already exists. If you would like to always force a pull, use "Always"
+imagePullPolicy: IfNotPresent
+  
+globalConfig:
+  defaultCredentialsSecret: powermax-config
+  storageArrays:
+    - storageArrayId: "000000000001"
+      endpoint: "https://primary-1.unisphe.re:8443"
+  managementServers:
+    - endpoint: "https://primary-1.unisphe.re:8443"
+#! If you are using the CSI PowerMax ReverseProxy then comment the entire section
+#! for 'global' above and uncomment the following section and fill out the required configuration
+#! Please refer to the doc website about a detailed explanation of each configuration parameter
+#! and the various ReverseProxy modes
+
+#! globalConfig:
+#!  defaultCredentialsSecret: powermax-config
+#!  storageArrays:
+#!    - storageArrayId: "000000000001"
+#!      endpoint: https://primary-1.unisphe.re:8443
+#!      backupEndpoint: https://backup-1.unisphe.re:8443
+#!    - storageArrayId: "000000000002"
+#!      endpoint: https://primary-2.unisphe.re:8443
+#!      backupEndpoint: https://backup-2.unisphe.re:8443
+#!  managementServers:
+#!    - endpoint: https://primary-1.unisphe.re:8443
+#!      credentialsSecret: primary-1-secret
+#!      skipCertificateValidation: false
+#!      certSecret: primary-cert
+#!      limits:
+#!        maxActiveRead: 5
+#!        maxActiveWrite: 4
+#!        maxOutStandingRead: 50
+#!        maxOutStandingWrite: 50
+#!    - endpoint: https://backup-1.unisphe.re:8443
+#!      credentialsSecret: backup-1-secret
+#!      skipCertificateValidation: false
+#!    - endpoint: https://primary-2.unisphe.re:8443
+#!      credentialsSecret: primary-2-secret
+#!      skipCertificateValidation: true
+#!      certSecret: no-secret
+#!    - endpoint: https://backup-2.unisphe.re:8443
+#!      credentialsSecret: backup-2-secret
+#!      skipCertificateValidation: true
+
+#! "customDriverName", if enabled, sets the driver name to the
+#! value provided to its value field with namespace prefixed to it. 
+#! e.g, namespace.csi-powermax
+customDriverName: ""
+#! "defaultFsType" is used to set the default FS type which will be used
+#! for mount volumes if FsType is not specified in the storage class
+defaultFsType: ext4
+#! "controller" allows to configure controller specific parameters
+controller:
+  #! "controller.nodeSelector" defines what nodes would be selected for pods of controller deployment
+  #! Leave as blank to use all nodes
+  nodeSelector:
+  #! "controller.tolerations" defines tolerations that would be applied to controller deployment
+  #! Leave as blank to install controller on worker nodes
+  tolerations:
+#! "node" allows to configure node specific parameters
+node:
+  #! "node.nodeSelector" defines what nodes would be selected for pods of node daemonset
+  #! Leave as blank to use all nodes
+  nodeSelector:
+  #! "node.tolerations" defines tolerations that would be applied to node daemonset
+  #! Add/Remove tolerations as per requirement
+  #! Leave as blank if you wish to not apply any tolerations
+  tolerations:
+    - key: "node.kubernetes.io/memory-pressure"
+      operator: "Exists"
+      effect: "NoExecute"
+    - key: "node.kubernetes.io/disk-pressure"
+      operator: "Exists"
+      effect: "NoExecute"
+    - key: "node.kubernetes.io/network-unavailable"
+      operator: "Exists"
+      effect: "NoExecute"
+#! "enableCHAP" determines if the driver is going to configure
+#! ISCSI node databases on the nodes with the CHAP credentials
+#! If enabled, the CHAP secret must be provided in the credentials secret
+#! and set to the key "chapsecret"
+enableCHAP: false
+#! Use of this param is depreciated; setting this to any value will have no effect.
+#! "unisphere" defines the Unisphere endpoint, with full URL, typically leveraging HTTPS.
+#! This should include the port number as well (the default is 8443)
+#! You must set this for your Unisphere instance.
+#! unisphere: https://127.0.0.1:8443
+
+#! "csireverseproxy" refers to the subchart csireverseproxy
+csireverseproxy:
+  #! Set enabled to true if you want to use proxy
+  enabled: false
+  image: dellemc/csipowermax-reverseproxy:v2.0.0
+  tlsSecret: csirevproxy-tls-secret
+  deployAsSidecar: true
+  port: 2222
+  mode: StandAlone
+#! clusterPrefix defines a prefix that is appended onto all resources created in the Array
+#! This should be unique per K8s/CSI deployment
+#!maximum length of this value is 3 characters
+clusterPrefix: CBB
+#! volumeNamePrefix defines a prefix that is prepended to volumes.
+#! THIS MUST BE ALL LOWER CASE.
+volumeNamePrefix: pmax
+#! snapNamePrefix defines a prefix that is prepended to snapshots.
+#! THIS MUST BE ALL LOWER CASE.
+snapNamePrefix: pmsn
+#! "controllerCount" defines the number of PowerMax controller nodes to deploy to
+#! the Kubernetes release
+controllerCount: 1
+#! "portGroups" defines the set of existing port groups that the driver will use.
+#! It is a comma separated list of portgroup names.
+portGroups: csi_pg1
+
+#! "skipCertificateValidation" determines if the driver is going to skip verification of
+#! TLS certificates while connecting to Unisphere RESTAPI interface
+#! If it is set to false, then a secret powermax-certs has to be created with a X.509 certificate of CA 
+#! which signed the Unisphere certificate
+skipCertificateValidation: "true"
+#! "transportProtocol" can be "FC" or "FIBRE" for fibrechannel, "ISCSI" for iSCSI, or "" for autoselection.
+transportProtocol: ""
+#! "powerMaxDebug" enables low level and http traffic logging between the CSI driver and Unisphere.
+#! Do not enable this unless asked to do so by the support team.
+powerMaxDebug: "false"
+#! nodeNameTemplate is used to provide a template for the CSI driver to use while creating the Host/IG on the array for the nodes in the cluster.
+#! It is of the format a-b-c-%foo%-xyz where foo will be replaced by host name of each node in the cluster.
+#! For e.g. - If a node in the cluster has a hostname - worker1, then the host name with the above template would be a-b-c-worker1-xyz
+nodeNameTemplate: ""
+#! modifyHostName tells the driver to change any existing host names. When nodenametemplate is set,
+#! it changes the name to the specified format else it uses driver default host name format.
+modifyHostName: "false"
+#! openshift tells the Helm chart that the installation is being done on a Red Hat OpenShift cluster
+#! Don't modify this value as this value is overridden by the install script
+openshift: false
+replication:
+  enabled: false
+  #! Change this to use any specific version of the dell-csi-replicator sidecar
+  image: dellemc/dell-csi-replicator:v1.0.0
+  #! replicationContextPrefix enables side cars to read required information from the volume context
+  replicationContextPrefix: "powermax"
+  #! replicationPrefix is used to find out if replication is enabled
+  replicationPrefix: "replication.storage.dell.com"
+powerMaxInsecure: "none"
+unisphereTimeout: "5m"
+ISCSIChroot: "/noderoot"
+images:
+  #! "images.driver" defines the container images used for the driver container.
+  driver: dellemc/csi-powermax:v2.0.0
+
+credentials:
+  username: ""
+  password: ""

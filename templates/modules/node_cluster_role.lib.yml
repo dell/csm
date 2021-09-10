@@ -1,0 +1,153 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_cluster_rules(application):
+#@ if application == "isilon":
+#@    return get_cluster_rules_isilon()
+#@ elif application == "unity":
+#@    return get_cluster_rules_unity()
+#@ elif application == "powerstore":
+#@    return get_cluster_rules_powerstore()
+#@ elif application == "powermax":
+#@    return get_cluster_rules_powermax()
+#@ elif application == "vxflexos":
+#@    return get_cluster_rules_vxflexos()
+#@ else:
+#@ assert.fail("cluster rules for application {} not found".format(application))
+#@ end
+#@ end
+
+#@ def get_cluster_rules_isilon():
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumes" ]
+  verbs: [ "create", "delete", "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumesclaims" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "events" ]
+  verbs: [ "get", "list", "watch", "create", "update", "patch" ]
+- apiGroups: [ "" ]
+  resources: [ "nodes" ]
+  verbs: [ "get", "list", "watch", "update", "patch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "storageclasses" ]
+  verbs: [ "get", "list", "watch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "security.openshift.io" ]
+  resourceNames: [ "privileged" ]
+  resources: [ "securitycontextconstraints" ]
+  verbs: [ "use" ]
+#@ end
+
+#@ def get_cluster_rules_unity():
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumes" ]
+  verbs: [ "create", "delete", "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumesclaims" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "events" ]
+  verbs: [ "get", "list", "watch", "create", "update", "patch" ]
+- apiGroups: [ "" ]
+  resources: [ "nodes" ]
+  verbs: [ "get", "list", "watch", "update", "patch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "storageclasses" ]
+  verbs: [ "get", "list", "watch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "security.openshift.io" ]
+  resourceNames: [ "privileged" ]
+  resources: [ "securitycontextconstraints" ]
+  verbs: [ "use" ]
+#@ if data.values.podmon.enabled:
+- apiGroups: [ "" ]
+  resources: [ "pods" ]
+  verbs: [ "get", "list", "watch", "update", "delete" ]
+- apiGroups: [ "coordination.k8s.io" ]
+  resources: [ "leases" ]
+  verbs: [ "get", "watch", "list", "delete", "update", "create" ]
+#@ end
+#@ end
+
+#@ def get_cluster_rules_powerstore():
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumes" ]
+  verbs: [ "create", "delete", "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumesclaims" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "events" ]
+  verbs: [ "get", "list", "watch", "create", "update", "patch" ]
+- apiGroups: [ "" ]
+  resources: [ "nodes" ]
+  verbs: [ "get", "list", "watch", "update", "patch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "storageclasses" ]
+  verbs: [ "get", "list", "watch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "security.openshift.io" ]
+  resourceNames: [ "privileged" ]
+  resources: [ "securitycontextconstraints" ]
+  verbs: [ "use" ]
+#@ end
+
+#@ def get_cluster_rules_powermax():
+- apiGroups: ["security.openshift.io"]
+  resources: ["securitycontextconstraints"]
+  resourceNames: ["privileged"]
+  verbs: ["use"]
+#@ end
+
+#@ def get_cluster_rules_vxflexos():
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumes" ]
+  verbs: [ "create", "delete", "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "persistentvolumesclaims" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "" ]
+  resources: [ "events" ]
+  verbs: [ "get", "list", "watch", "create", "update", "patch" ]
+- apiGroups: [ "" ]
+  resources: [ "nodes" ]
+  verbs: [ "get", "list", "watch", "update", "patch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "storageclasses" ]
+  verbs: [ "get", "list", "watch" ]
+- apiGroups: [ "storage.k8s.io" ]
+  resources: [ "volumeattachments" ]
+  verbs: [ "get", "list", "watch", "update" ]
+- apiGroups: [ "security.openshift.io" ]
+  resourceNames: [ "privileged" ]
+  resources: [ "securitycontextconstraints" ]
+  verbs: [ "use" ]
+#@ if data.values.podmon.enabled:
+- apiGroups: [ "" ]
+  resources: [ "pods" ]
+  verbs: [ "get", "list", "watch", "update", "delete" ]
+- apiGroups: [ "coordination.k8s.io" ]
+  resources: [ "leases" ]
+  verbs: [ "get", "watch", "list", "delete", "update", "create" ]
+#@ end
+#@ end

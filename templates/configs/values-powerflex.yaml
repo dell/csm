@@ -1,0 +1,97 @@
+#@data/values
+---
+application: vxflexos
+namespace: vxflexos
+
+#! CSI driver log level
+#! Allowed values: "error", "warn"/"warning", "info", "debug"
+#! Default value: "debug"
+logLevel: "debug"
+
+#! CSI driver log format
+#! Allowed values: "TEXT" or "JSON"
+#! Default value: "TEXT"
+logFormat: "TEXT"
+
+#! Represents number of certificate secrets, which user is going to create for ssl authentication. (vxflexos-cert-0..vxflexos-cert-n)
+#! If user does not use certificate, set to 0
+certSecretCount: 0
+
+#! "defaultFsType" is used to set the default FS type which will be used
+#! for mount volumes if FsType is not specified in the storage class
+defaultFsType: ext4
+
+#! "volumeNamePrefix" defines a string prepended to each volume created.
+volumeNamePrefix: k8s
+
+#! "controllerCount" defines the number of VxFlex controller nodes to deploy to
+#! the Kubernetes release
+controllerCount: 2
+
+#! Enable this to automatically delete all snapshots in a consistency group
+#! when a snap in the group is deleted
+enablesnapshotcgdelete: "false"
+
+#! Enable list volume operation to include snapshots (since creating a volume
+#! from a snap actually results in a new snap)
+#! It is recommend this be false unless instructed otherwise.
+enablelistvolumesnapshot: "false"
+
+#! Setting allowRWOMultiPodAccess to "true" will allow multiple pods on the same node
+#! to access the same RWO volume. This behavior conflicts with the CSI specification version 1.3
+#! NodePublishVolume descrition that requires an error to be returned in this case.
+#! However some other CSI drivers support this behavior and some customers desire this behavior.
+#! Kubernetes could make a change at their discretion that would preclude our ability to support this option.
+#! Customers use this option at their own risk.
+#! You should leave this set as "false" unless instructed to change it by Dell support.
+allowRWOMultiPodAccess: "false"
+
+#! The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image
+#! if it already exists. If you would like to always force a pull, use "Always"
+imagePullPolicy: IfNotPresent
+
+#! monitoring pod details
+#! These options control the running of the monitoring container
+#! This container gather diagnostic information in case of failure
+monitor:
+  #! enabled allows the usage of te monitoring pod to be disabled
+  enabled: false
+
+  #! hostNetwork determines if the monitor pod should run on the host network or not
+  hostNetwork: true
+
+  #! hostPID determines if the monitor pod should run in the host namespace
+  hostPID: true
+
+#! vg snapshot controller sidecar
+vgsnapshotter:
+  enabled: false
+  image: dellemc/csi-volumegroup-snapshotter:v1.0.0
+
+#! Podmon is an optional feature under development and tech preview.
+#! Enable this feature only after contact support for additional information
+podmon:
+  enabled: false
+  image: dellemc/podmon:v1.0.0
+  controller:
+    args:
+      - "--csisock=unix:/var/run/csi/csi.sock"
+      - "--labelvalue=csi-vxflexos"
+      - "--mode=controller"
+      - "--driver-config-params=/vxflexos-config-params/driver-config-params.yaml"
+  node:
+    args:
+      - "--csisock=unix:/var/lib/kubelet/plugins/vxflexos.emc.dell.com/csi_sock"
+      - "--labelvalue=csi-vxflexos"
+      - "--mode=node"
+      - "--leaderelection=false"
+      - "--driver-config-params=/vxflexos-config-params/driver-config-params.yaml"
+
+#! IT IS RECOMMENDED YOU DO NOT CHANGE THE IMAGES TO BE USED.
+images:
+  #! "driver" defines the container image, used for the driver container.
+  #! driver: dellemc/csi-vxflexos:v2.0.0
+  driver: dellemc/csi-vxflexos:v2.0.0
+
+  #! "powerflexSdc" defines the SDC image for init container.
+  powerflexSdc: dellemc/sdc:3.6

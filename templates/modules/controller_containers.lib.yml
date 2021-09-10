@@ -1,0 +1,549 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_application_containers(application):
+  #@ if application == "isilon":
+  #@    return get_containers_isilon(application)
+  #@ elif application == "unity":
+  #@    return get_containers_unity(application)
+  #@ elif application == "powerstore":
+  #@    return get_containers_powerstore(application)
+  #@ elif application == "powermax":
+  #@    return get_containers_powermax(application)
+  #@ elif application == "vxflexos":
+  #@    return get_containers_vxflexos(application)
+  #@ else:
+  #@ assert.fail("containers for application {} not found".format(application))
+  #@ end
+#@ end
+
+#! CONTAINER SPECS for application csi-isilon
+#@ def get_containers_isilon(application):
+containers:
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  - #@ driver_isilon_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-unity
+#@ def get_containers_unity(application):
+containers:
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  #@ if data.values.podmon.enabled:
+  - #@ podmon_container_spec(application)
+  #@ end
+  - #@ driver_unity_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-powerstore
+#@ def get_containers_powerstore(application):
+containers:
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  #@ if data.values.replication.enabled:
+  - #@ replication_container_spec()
+  #@ end
+  - #@ driver_powerstore_container_spec()
+#@ end
+
+#! CONTAINER SPECS for application csi-powermax
+#@ def get_containers_powermax(application):
+containers:
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  #@ if data.values.replication.enabled:
+  - #@ replication_container_spec()
+  #@ end
+  - #@ driver_powermax_container_spec()
+  #@ if data.values.csireverseproxy.enabled:
+  #@ if data.values.csireverseproxy.deployAsSidecar:
+  - #@ reverseproxy_container__spec()
+  #@ end
+  #@ end
+#@ end
+
+#! CONTAINER SPECS for application csi-vxflexos
+#@ def get_containers_vxflexos(application):
+containers:
+  - #@ resizer_container_spec()
+  - #@ attacher_container_spec(application)
+  - #@ provisioner_container_spec(application)
+  - #@ snapshotter_container_spec(application)
+  #@ if data.values.podmon.enabled:
+  - #@ podmon_container_spec(application)
+  #@ end
+  #@ if data.values.vgsnapshotter.enabled:
+  - #@ vgsnapshotter_container_spec()
+  #@ end
+  - #@ driver_vxflexos_container_spec()
+#@ end
+
+
+#! spec for resizer sidecar container
+#@ def resizer_container_spec():
+name: resizer
+image: #@ data.values.images.resizer
+args:
+  - "--csi-address=$(ADDRESS)"
+  - "--v=5"
+  - "--leader-election"
+  - '--timeout=180s'
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#! spec for attacher sidecar container
+#@ def attacher_container_spec(application):
+name: attacher
+image: #@ data.values.images.attacher
+args:
+  - "--csi-address=$(ADDRESS)"
+  - "--v=5"
+  - "--leader-election"
+  #@ if application == "powerstore":
+  - "--worker-threads=130"
+  - "--resync=10s"
+  - "--timeout=130s"
+  #@ elif application == "powermax":
+  - '--timeout=180s'
+  - '--worker-threads=6'
+  #@ end
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#!  spec for provisioner sidecar container
+#@ def provisioner_container_spec(application):
+name: provisioner
+image: #@ data.values.images.provisioner
+args:
+  - "--csi-address=$(ADDRESS)"
+  - #@ "--volume-name-prefix={}".format(data.values.volumeNamePrefix)
+  - "--volume-name-uuid-length=10"
+  #@ if application == "unity":
+  - "--worker-threads=6"
+  #@ elif application == "powermax":
+  - "--worker-threads=6"
+  #@ else:
+  - "--worker-threads=5"
+  #@ end
+  - "--v=5"
+  - "--feature-gates=Topology=true"
+  - "--leader-election=true"
+  - "--extra-create-metadata"
+  #@ if application == "isilon":
+  - "--timeout=60s"
+  #@ elif application == "powermax":
+  - "--timeout=180s"
+  - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
+  #@ elif application == "unity":
+  - "--timeout=180s"
+  - "--leader-election"
+  - #@ "--leader-election-namespace={}".format(data.values.namespace)
+  - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
+  #@ elif application == "powerstore":
+  - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
+  #@ elif application == "vxflexos":
+  - "--timeout=120s"
+  - #@ "--default-fstype={}".format(data.values.defaultFsType if data.values.defaultFsType else "ext4")
+  #@ end
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#!  spec for snapshotter sidecar container
+#@ def snapshotter_container_spec(application):
+name: snapshotter
+#!image: quay.io/k8scsi/csi-snapshotter:v1.0.0
+image: #@ data.values.images.snapshotter
+args:
+  - "--csi-address=$(ADDRESS)"
+  - "--v=5"
+  #@ if application == "unity":
+  - "--leader-election"
+  #@ else:
+  - "--leader-election=true"
+  #@ end
+  #@ if application == "isilon":
+  - "--timeout=15s"
+  #@ elif application == "unity":
+  - "--timeout=360s"
+  - #@ "--snapshot-name-prefix={}".format(data.values.snapNamePrefix)
+  - "--snapshot-name-uuid-length=10"
+  #@ elif application == "powermax":
+  - #@ "--snapshot-name-prefix={}".format(data.values.snapNamePrefix)
+  - "--snapshot-name-uuid-length=10"
+  - "--timeout=180s"
+  #@ elif application == "vxflexos":
+  - "--timeout=120s"
+  #@ end
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#! spec for podmon sidecar container
+#@ def podmon_container_spec(application):
+name: podmon
+imagePullPolicy: #@ data.values.imagePullPolicy
+image: #@ data.values.podmon.image
+args: #@ data.values.podmon.controller.args
+env:
+  - name: MY_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: MY_POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: MY_POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  #@ if application == "unity":
+  - name: unity-config
+    mountPath: /unity-config
+  #@ elif application == "vxflexos":
+  - name: vxflexos-config-params
+    mountPath: /vxflexos-config-params
+  #@ end
+#@ end
+
+#! spec for replication sidecar container
+#@ def replication_container_spec():
+name: dell-csi-replicator
+image: #@ data.values.replication.image
+imagePullPolicy: #@ data.values.imagePullPolicy
+args:
+  - "--csi-address=$(ADDRESS)"
+  - "--leader-election=true"
+  - "--worker-threads=2"
+  - "--retry-interval-start=1s"
+  - "--retry-interval-max=300s"
+  - "--timeout=10s"
+  - #@ "--context-prefix={}".format(data.values.replication.replicationContextPrefix)
+  - #@ "--prefix={}".format(data.values.replication.replicationPrefix)
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+#! spec for vgsnapshotter sidecar container
+#@ def vgsnapshotter_container_spec():
+name: vg-snapshotter
+image: #@ data.values.vgsnapshotter.image
+env:
+  - name: ADDRESS
+    value: /var/run/csi/csi.sock
+imagePullPolicy: #@ data.values.imagePullPolicy
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+#@ end
+
+
+#! spec for csi-isilon driver sidecar container
+#@ def driver_isilon_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+command: [ "/csi-isilon" ]
+args:
+  - "--leader-election"
+  - "--driver-config-params=/isilon-config-params/driver-config-params.yaml"
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_ISI_SKIP_CERTIFICATE_VALIDATION
+    value: #@ data.values.skipCertificateValidation
+  - name: X_CSI_VERBOSE
+    value: #@ str(data.values.verbose)
+  - name: X_CSI_ISI_PORT
+    value: #@ data.values.isiPort
+  - name: X_CSI_ISI_AUTOPROBE
+    value: #@ data.values.autoProbe
+  - name: X_CSI_ISI_QUOTA_ENABLED
+    value: #@ data.values.enableQuota
+  - name: X_CSI_ISI_ACCESS_ZONE
+    value: #@ data.values.isiAccessZone
+  - name: X_CSI_CUSTOM_TOPOLOGY_ENABLED
+    value: #@ data.values.enableCustomTopology
+  - name: X_CSI_ISI_PATH
+    value: #@ data.values.isiPath
+  - name: X_CSI_ISILON_NO_PROBE_ON_START
+    value: #@ data.values.noProbeOnStart
+  - name: X_CSI_NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: SSL_CERT_DIR
+    value: /certs
+  - name: X_CSI_ISI_CONFIG_PATH
+    value: /isilon-configs/config
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: isilon-config
+    mountPath: /isilon-configs
+  - name: isilon-config-params
+    mountPath: /isilon-config-params
+#@ end
+
+#! spec for csi-unity driver sidecar container
+#@ def driver_unity_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+command: [ "/csi-unity" ]
+args:
+  - "--driver-name=csi-unity.dellemc.com"
+  - "--driver-secret=/unity-secret/config"
+  - "--driver-config=/unity-config/driver-config-params.yaml"
+  - "--leader-election"
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_UNITY_AUTOPROBE
+    value: "true"
+  - name: SSL_CERT_DIR
+    value: /certs
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: unity-config
+    mountPath: /unity-config
+  - name: unity-secret
+    mountPath: /unity-secret
+#@ end
+
+#! spec for csi-powerstore driver sidecar container
+#@ def driver_powerstore_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+command: [ "/csi-powerstore" ]
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_DRIVER_NAME
+    value: csi-powerstore.dellemc.com
+  - name: X_CSI_POWERSTORE_EXTERNAL_ACCESS
+    value: #@ data.values.externalAccess
+  - name: X_CSI_POWERSTORE_CONFIG_PATH
+    value: /powerstore-config/config
+  - name: X_CSI_POWERSTORE_CONFIG_PARAMS_PATH
+    value: /powerstore-config-params/driver-config-params.yaml
+  #@ if data.values.replication.enabled:
+  - name: X_CSI_REPLICATION_CONTEXT_PREFIX
+    value: #@ data.values.replication.replicationContextPrefix if data.values.replication.replicationContextPrefix else "powerstore"
+  - name: X_CSI_REPLICATION_PREFIX
+    value: #@ data.values.replication.replicationPrefix if data.values.replication.replicationPrefix else "replication.storage.dell.com"
+  #@ end
+  - name: GOPOWERSTORE_DEBUG
+    value: "true"
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: powerstore-config
+    mountPath: /powerstore-config
+  - name: powerstore-config-params
+    mountPath: /powerstore-config-params
+#@ end
+
+#! spec for csi-powermax driver sidecar container
+#@ def driver_powermax_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+command: [ "/csi-powermax.sh" ]
+args:
+  - "--leader-election"
+env:  
+  - name: X_CSI_POWERMAX_DRIVER_NAME
+    value: #@ data.values.customDriverName if data.values.customDriverName else "csi-powermax.dellemc.com"
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  #@ val = ""
+  #@ for i in range(len(data.values.globalConfig.storageArrays)):        
+    #@ val = val + data.values.globalConfig.storageArrays[i].storageArrayId + ","    
+  #@ end
+  #! To remove additional , at the end of string
+  #@ val=val[:-1]
+  - name: X_CSI_MANAGED_ARRAYS
+    value: #@ val
+  #@ if data.values.csireverseproxy.enabled == False:
+  - name: X_CSI_POWERMAX_ENDPOINT
+    value: #@ data.values.globalConfig.managementServers[0].endpoint
+  #@ end
+  - name: X_CSI_POWERMAX_USER
+    valueFrom:
+      secretKeyRef:
+        name: #@ data.values.globalConfig.defaultCredentialsSecret
+        key: username
+  - name: X_CSI_POWERMAX_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: #@ data.values.globalConfig.defaultCredentialsSecret
+        key: password
+  - name: X_CSI_POWERMAX_VERSION
+    value: "90"
+  - name: X_CSI_POWERMAX_CONFIG_PATH
+    value: /powermax-config-params/driver-config-params.yaml
+  - name: X_CSI_POWERMAX_DEBUG
+    value: #@ data.values.powerMaxDebug
+  - name: X_CSI_POWERMAX_SKIP_CERTIFICATE_VALIDATION
+    value: #@ data.values.skipCertificateValidation
+  #@ if data.values.csireverseproxy.enabled:  
+    #@ if data.values.csireverseproxy.deployAsSidecar:
+  - name: X_CSI_POWERMAX_SIDECAR_PROXY_PORT
+    value: #@ str(data.values.csireverseproxy.port)
+    #@ else:
+  - name: X_CSI_POWERMAX_PROXY_SERVICE_NAME
+    value: #@ data.values.application + "-reverseproxy"
+    #@ end
+  #@ else:
+  - name: X_CSI_POWERMAX_PROXY_SERVICE_NAME
+    value: "none"
+  #@ end
+  - name: X_CSI_POWERMAX_PORTGROUPS
+    value: #@ data.values.portGroups
+  - name: X_CSI_K8S_CLUSTER_PREFIX
+    value: #@ data.values.clusterPrefix
+  - name: X_CSI_GRPC_MAX_THREADS
+  #@ if data.values.csireverseproxy.enabled:
+    value: "50"
+  #@ else:
+    value: "4"
+  #@ end
+  - name: X_CSI_TRANSPORT_PROTOCOL
+    value: #@ data.values.transportProtocol
+  - name: SSL_CERT_DIR
+    value: /certs
+  - name: X_CSI_IG_NODENAME_TEMPLATE
+    value: #@ data.values.nodeNameTemplate
+  - name: X_CSI_IG_MODIFY_HOSTNAME
+    value: #@ data.values.modifyHostName
+  - name: X_CSI_REPLICATION_CONTEXT_PREFIX
+    value: #@ data.values.replication.replicationContextPrefix
+  - name: X_CSI_REPLICATION_PREFIX
+    value: #@ data.values.replication.replicationPrefix
+  - name: X_CSI_UNISPHERE_TIMEOUT
+    value: #@ data.values.unisphereTimeout
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  - name: powermax-config-params
+    mountPath: /powermax-config-params
+#@ end
+
+#! spec for reverse proxy sidecar container
+#@ def reverseproxy_container__spec():
+name: reverseproxy
+image: #@ data.values.csireverseproxy.image
+imagePullPolicy: #@ data.values.imagePullPolicy
+env:
+  - name: X_CSI_REVPROXY_CONFIG_DIR
+    value: /etc/config/configmap
+  - name: X_CSI_REVPROXY_CONFIG_FILE_NAME
+    value: config.yaml
+  - name: X_CSI_REVRPOXY_IN_CLUSTER
+    value: "true"
+  - name: X_CSI_REVPROXY_TLS_CERT_DIR
+    value: /app/tls
+  - name: X_CSI_REVPROXY_WATCH_NAMESPACE
+    value: #@ data.values.namespace
+  - name: X_CSI_REVPROXY_IS_LEADER_ENABLED
+    value: "true"
+volumeMounts:
+  - name: configmap-volume
+    mountPath: /etc/config/configmap
+  - name: tls-secret
+    mountPath: /app/tls
+  - name: cert-dir
+    mountPath: /app/certs
+#@ end
+
+#! spec for csi-vxflexos driver sidecar container
+#@ def driver_vxflexos_container_spec():
+name: driver
+image: #@ data.values.images.driver
+imagePullPolicy: #@ data.values.imagePullPolicy
+command: [ "/csi-vxflexos.sh" ]
+args:
+  - "--leader-election"
+  - "--array-config=/vxflexos-config/config"
+  - "--driver-config-params=/vxflexos-config-params/driver-config-params.yaml"
+env:
+  - name: CSI_ENDPOINT
+    value: /var/run/csi/csi.sock
+  - name: X_CSI_MODE
+    value: controller
+  - name: X_CSI_DEBUG
+    value: "true"
+  - name: X_CSI_VXFLEXOS_ENABLESNAPSHOTCGDELETE
+    value: #@ data.values.enablesnapshotcgdelete
+  - name: X_CSI_VXFLEXOS_ENABLELISTVOLUMESNAPSHOT
+    value: #@ data.values.enablelistvolumesnapshot
+  - name: SSL_CERT_DIR
+    value: /certs
+volumeMounts:
+  - name: socket-dir
+    mountPath: /var/run/csi
+  - name: vxflexos-config
+    mountPath: /vxflexos-config
+  - name: vxflexos-config-params
+    mountPath: /vxflexos-config-params
+  #@ if data.values.certSecretCount >= 1:
+  - name: certs
+    mountPath: /certs
+    readOnly: true
+  #@ end
+#@ end

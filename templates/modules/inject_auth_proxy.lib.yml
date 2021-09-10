@@ -1,0 +1,252 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:yaml", "yaml")
+#@ load("@ytt:json", "json")
+#@ load("@ytt:assert", "assert")
+#@ load("@ytt:overlay", "overlay")
+#@ load("@ytt:base64", "base64")
+#@ load("@ytt:regexp", "regexp")
+
+#@ def logLevelConfig_name():
+#@ return data.values.application + "-config-params"
+#@ end
+
+#@ def get_auth_namespace():
+#@ if hasattr(data.values, "namespace"):
+#! deployment with driver so use driver's namespace
+#@ return data.values.namespace
+#@ else:
+#! standalone deployment of observability
+#@ return data.values.observability.namespace
+#@ end
+#@ end
+
+#@ def read_value(fn, content):
+#@ if fn == "":
+#@ return content
+#@ end
+#@ return data.read(fn)
+#@ end
+
+#@ def get_tokens(fn, token):
+#@ if fn == "":
+#@ return token
+#@ end
+#@ secret=data.read(fn)
+#@ return yaml.decode(secret)["data"]
+#@ end
+
+#@ def inject_secret(application, startingPortRange, arrayconfig):
+#@  if application == "vxflexos":
+#@     return inject_secret_powerflex(application, json.decode(arrayconfig), startingPortRange)
+#@  elif application == "isilon":
+#@     return inject_secret_powerscale(application, json.decode(arrayconfig), startingPortRange)
+#@  end
+#@  assert.fail("authorization does not yet support installing {} application".format(application))
+#@ end
+
+
+#@ def inject_secret_powerflex(arrayType, configList, startingPortRange):
+#@  startingPortRange = starting_port(arrayType, startingPortRange)
+#@  for i in range(len(configList)):
+#@    if not regexp.match(".*localhost+", configList[i]["endpoint"]):
+#@      configList[i]["intendedEndpoint"] = configList[i]["endpoint"]
+#@      configList[i]["endpoint"]="https://localhost:{}".format(startingPortRange)
+#@      configList[i]["password"]="-"
+#@      configList[i]["username"]="-"
+#@      configList[i]["insecure"]=data.values.karaviAuthorizationProxy.insecure
+#@      startingPortRange += 1
+#@    end
+#@  end
+#@  return json.encode(configList)
+#@ end
+
+#@ def inject_secret_powerscale(arrayType, configList, startingPortRange):
+#@  startingPortRange = starting_port(arrayType, startingPortRange)
+#@  isilonClusters = configList["isilonClusters"]
+#@  for i in range(len(isilonClusters)):
+#@    if not regexp.match(".*localhost+", isilonClusters[i]["endpoint"]):
+#@      isilonClusters[i]["intendedEndpoint"] = "https://{}:{}".format(isilonClusters[i]["endpoint"],isilonClusters[i]["endpointPort"]) 
+#@      isilonClusters[i]["mountEndpoint"]=isilonClusters[i]["endpoint"]
+#@      isilonClusters[i]["endpoint"]="localhost"
+#@      isilonClusters[i]["password"]="-"
+#@      isilonClusters[i]["endpointPort"]=startingPortRange
+#@      isilonClusters[i]["username"]="-"
+#@      isilonClusters[i]["insecure"]=data.values.karaviAuthorizationProxy.insecure
+#@      startingPortRange += 1
+#@    end
+#@  end
+#@  configList["isilonClusters"] = isilonClusters
+#@  return json.encode(configList)
+#@ end
+
+
+#@ def auth_secret(application, startingPortRange, arrayconfig):
+#@   if application == "powermax":
+#@      return auth_secret_powermax(startingPortRange)
+#@   elif application == "vxflexos":
+#@      return auth_secret_powerflex(application, json.decode(arrayconfig), startingPortRange)
+#@   elif application == "isilon":
+#@      return auth_secret_powerscale(application, json.decode(arrayconfig), startingPortRange)
+#@   end
+#@   assert.fail("authorization does not yet support installing {} application".format(application))
+#@ end
+
+
+
+#@ def auth_secret_powermax(startingPortRange):
+#@ startingPortRange = starting_port("powermax", startingPortRange)
+#@ configList = []
+#@ managementServers = data.values.globalConfig.managementServers
+#@ storageArrays = data.values.globalConfig.storageArrays
+#@ if type(storageArrays)=="string" or type(storageArrays)=="string":
+#@ managementServers = yaml.decode(data.values.globalConfig.managementServers)
+#@ storageArrays = yaml.decode(data.values.globalConfig.storageArrays)
+#@ end
+#@ for i in range(len(managementServers)):
+#@   primary = managementServers[i]
+#@   configList.append(build_secretData(managementServers[i]["endpoint"], startingPortRange, False, storageArrays[i]["storageArrayId"]))
+#@   startingPortRange += 1
+#@  end 
+#@  return json.encode(configList)
+#@ end
+
+#@ def auth_secret_powerflex(arrayType, configList, startingPortRange):
+#@  startingPortRange = starting_port(arrayType, startingPortRange)
+#@  configTemp = []
+#@  for i in range(len(configList)):
+#@    if regexp.match(".*localhost+", configList[i]["endpoint"]):
+#@       configTemp.append(build_secretData(configList[i]["intendedEndpoint"], startingPortRange, configList[i]["isDefault"], configList[i]["systemID"]))
+#@       startingPortRange = int(regexp.replace("(?s).*:([0-9]+).*", configList[i]["intendedEndpoint"], "$1")) + 1
+#@    else:
+#@      configTemp.append(build_secretData(configList[i]["endpoint"], startingPortRange, configList[i]["isDefault"], configList[i]["systemID"]))
+#@      startingPortRange += 1
+#@    end
+#@  end
+#@  return json.encode(configTemp)
+#@ end
+
+
+#@ def auth_secret_powerscale(arrayType, configList, startingPortRange):
+#@  startingPortRange = starting_port(arrayType, startingPortRange)
+#@  configTemp = []
+#@  isilonClusters = configList["isilonClusters"]
+#@  for i in range(len(isilonClusters)):
+#@    if regexp.match(".*localhost+", isilonClusters[i]["endpoint"]):
+#@        configTemp.append(build_secretData("https://{}:{}".format(isilonClusters[i]["mountEndpoint"],isilonClusters[i]["endpointPort"]), isilonClusters[i]["endpointPort"], isilonClusters[i]["isDefault"], isilonClusters[i]["clusterName"]))
+#@        startingPortRange = int(isilonClusters[i]["endpointPort"]) + 1
+#@    else:
+#@      configTemp.append(build_secretData("https://{}:{}".format(isilonClusters[i]["endpoint"],isilonClusters[i]["endpointPort"]), startingPortRange, isilonClusters[i]["isDefault"], isilonClusters[i]["clusterName"]))
+#@      startingPortRange += 1
+#@    end
+#@  end
+#@  return json.encode(configTemp)
+#@ end
+
+#@ def build_secretData(endpoint, port, isDefault, systemID):
+#@   tmpConfig = {
+#@     "password": "-", 
+#@     "username": "-",
+#@     "intendedEndpoint": endpoint,
+#@     "systemID": systemID,
+#@     "endpoint": "https://localhost:{}".format(port),     
+#@     "insecure": data.values.karaviAuthorizationProxy.insecure,
+#@     "isDefault": isDefault,
+#@    }
+#@  return tmpConfig
+#@ end
+
+#@ def starting_port(application, startingPortRange):
+#@ if application == "vxflexos":
+#@    return startingPortRange
+#@ elif application == "powermax":
+#@   return startingPortRange+200
+#@ elif application == "isilon":
+#@   return startingPortRange+400
+#@ assert.fail("authorization does not yet support installing {} application".format(application))
+#@ end
+#@ end
+
+#@ def get_auth_pluginID(application):
+#@ if application == "observability":
+#@    if hasattr(data.values, "karaviMetricsPowerflex") and data.values.karaviMetricsPowerflex.enabled:
+#@       return "powerflex"
+#@    end
+#@ end
+#@ if application == "vxflexos":
+#@    return "powerflex"
+#@ end
+#@   return application
+#@ end
+
+#@ def inject_deployment_daemonset(application, kind, endpoint,insecure, sidecar_image,startingPortRange, name):
+#@ insecureStr = "true"
+#@ if insecure==False:
+#@ insecureStr="false"
+#@ end
+#@ powerMaxNewEndpoint = "https://localhost:{}".format(starting_port(application, startingPortRange))
+  containers:
+  #@ if kind =="Deployment":
+  #@overlay/match by=overlay.subset({"name": "provisioner"}),when=1
+  - name: provisioner
+    args:
+      #@overlay/match by=overlay.subset("--extra-create-metadata"),missing_ok=True
+      #@overlay/remove
+      - (this value is ignored)
+      - --extra-create-metadata
+  #@ end
+  #@overlay/append
+  - name: karavi-authorization-proxy
+    image: #@ sidecar_image
+    imagePullPolicy: Always
+    resources: {}
+    env:
+    - name: PROXY_HOST
+      value: #@ endpoint
+    - name: INSECURE
+      value: #@ insecureStr
+    - name: PLUGIN_IDENTIFIER
+      value: #@ get_auth_pluginID(application)
+    - name: ACCESS_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: access
+          name: proxy-authz-tokens
+    - name: REFRESH_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: refresh
+          name: proxy-authz-tokens
+    volumeMounts:
+      - name: karavi-authorization-config
+        mountPath: /etc/karavi-authorization/config
+      - name: proxy-server-root-certificate
+        mountPath: /etc/karavi-authorization/root-certificates
+      #@ if data.values.authorization.logLevel and name != "powermax-reverseproxy":
+      - name: #@ logLevelConfig_name()
+        mountPath: /etc/karavi-authorization
+      #@ end 
+  #@overlay/match by=overlay.subset({"name": "driver"}),when=1
+  - name: driver
+    #@ if application == "powermax":
+    env:
+    #@overlay/append
+    - name: CSM_CSI_POWERMAX_ENDPOINT
+      value: #@ data.values.globalConfig.managementServers[0].endpoint  
+    #@overlay/match by=overlay.subset({"name": "X_CSI_POWERMAX_ENDPOINT"}),missing_ok=True
+    #@overlay/replace via=lambda left, right: right
+    - name: X_CSI_POWERMAX_ENDPOINT
+      value: #@ powerMaxNewEndpoint
+    #@ end
+    #@ if kind =="Deployment":
+    args:
+      #@ if data.values.authorization.logLevel and application != "powermax":
+      #@overlay/match by=overlay.subset("--driver-config-params=/etc/karavi-authorization/driver-config-params.yaml"),missing_ok=True
+      #@overlay/remove
+      - (this value is ignored)
+      - --driver-config-params=/etc/karavi-authorization/driver-config-params.yaml
+      #@ end
+    #@ end
+#@ end
+
+
+

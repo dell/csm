@@ -1,0 +1,82 @@
+#@data/values
+---
+application: unity
+namespace: unity
+
+#! LogLevel is used to set the logging level of the driver.
+#! Allowed values: "error", "warn"/"warning", "info", "debug"
+#! Default value: "info"
+logLevel: "info"
+
+#! "volumeNamePrefix" defines a string prepended to each volume created by the CSI driver.
+volumeNamePrefix: csivol
+
+#! Represents number of certificate secrets, which user is going to create for ssl authentication. (isilon-cert-0..isilon-cert-n)
+#! Minimum value should be 1
+certSecretCount: 1
+
+#! "snapNamePrefix" defines a string prepended to each snapshot registered by the CSI driver.
+snapNamePrefix: csi-snap
+
+#! The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image
+#! if it already exists. If you would like to always force a pull, use "Always"
+imagePullPolicy: IfNotPresent
+
+#! "defaultFsType" is used to set the default FS type which will be used
+#! for mount volumes if FsType is not specified in the storage class
+defaultFsType: ext4
+
+#! Time interval to add node info to array. Default 15 minutes. Minimum value should be 1.
+#! If your specifies 0, then time is set to default value.
+#! syncNodeInfoInterval has been deprecated and will be removed from use in values.yaml in a future release.
+#! This can be now configured from secret.json/secret.yaml.
+#! The value from secret can be loaded dynamically by the driver without requiring a re-installation and has higher precedence.
+syncNodeInfoInterval: "15"
+
+#! Flag to enable sharing of volumes across multiple pods within the same node in RWO access mode.
+#! Setting allowRWOMultiPodAccess to "true" will allow multiple pods on the same node
+#! to access the same RWO volume. This behavior conflicts with the CSI specification version 1.3
+#! NodePublishVolume descrition that requires an error to be returned in this case.
+#! However some other CSI drivers support this behavior and some customers desire this behavior.
+#! Kubernetes could make a change at their discretion that would preclude our ability to support this option.
+#! Customers use this option at their own risk.
+
+#! allowRWOMultiPodAccess has been deprecated and will be removed from use in values.yaml in a future release.
+#! This can be now configured from secret.json/secret.yaml.
+#! The value from secret can be loaded dynamically by the driver without requiring a re-installation and has higher precedence.
+allowRWOMultiPodAccess: "false"
+
+#! maxUnityVolumesPerNode - Maximum number of volumes that controller can publish to the node.
+#! Allowed values: integer
+#! Default value: 0
+#! Examples : 0 , 1
+maxUnityVolumesPerNode: 0
+
+ISCSIChroot: /noderoot
+
+nodeNamePrefix: ""
+
+#! Podmon is an optional feature under development and tech preview.
+#! Enable this feature only after contact support for additional information
+podmon:
+  enabled: false
+  image: dellemc/podmon:v1.0.0
+  controller:
+    args:
+      - "--csisock=unix:/var/run/csi/csi.sock"
+      - "--labelvalue=csi-unity"
+      - "--driverPath=csi-unity.dellemc.com"
+      - "--mode=controller"
+      - "--driver-config-params=/unity-config/driver-config-params.yaml"
+  node:
+    args:
+      - "--csisock=unix:/var/lib/kubelet/plugins/unity.emc.dell.com/csi_sock"
+      - "--labelvalue=csi-unity"
+      - "--driverPath=csi-unity.dellemc.com"
+      - "--mode=node"
+      - "--leaderelection=false"
+      - "--driver-config-params=/unity-config/driver-config-params.yaml"
+
+images:
+  #! "images.driver" defines the container images used for the driver container.
+  driver: dellemc/csi-unity:v2.0.0

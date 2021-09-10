@@ -1,0 +1,90 @@
+#@data/values
+---
+
+#@overlay/match missing_ok=True
+observability:
+  enabled: false
+  name: csm-observability
+  #! this will only be used for standalone deployment
+  namespace: csm-observability
+  standalone: false
+#@overlay/match missing_ok=True
+karaviTopology:
+  image: dellemc/csm-topology:v1.0.0
+  enabled: true
+  #! comma separated list of provisioner names (ex: csi-vxflexos.dellemc.com)
+  provisionerNames: csi-vxflexos.dellemc.com,csi-powerstore.dellemc.com
+  service:
+    type: ClusterIP
+  logLevel: INFO
+  logFormat: text
+  zipkin:
+    uri: ""
+    serviceName: karavi-topology
+    probability: 0.0  
+
+#@overlay/match missing_ok=True
+karaviMetricsPowerflex:
+  image: dellemc/csm-metrics-powerflex:v1.0.0
+  enabled: false
+  collectorAddr: otel-collector:55680
+  provisionerNames: csi-vxflexos.dellemc.com
+  sdcMetricsEnabled: "true"
+  sdcPollFrequencySeconds: 10
+  volumePollFrequencySeconds: 10
+  volumeMetricsEnabled: "true"
+  storageClassPoolMetricsEnabled: "true"
+  storageClassPoolPollFrequencySeconds: 10
+  concurrentPowerflexQueries: 10
+  endpoint: karavi-metrics-powerflex
+  service:
+    type: ClusterIP
+  logLevel: INFO
+  logFormat: text
+  #! only relevant when deploying observability as stand alone
+  driverConfig:
+    #! name of the vxflexos-config secret uploaded via /v1/configuration-files API or included in ytt -f <filename>
+    filename: ""
+    #! The access and refresh Token. If filename is provided, the content of the file be used instead of data
+    data: ""
+    #! place-holder to store config config data
+    onlyConfig: ""
+
+#@overlay/match missing_ok=True
+karaviMetricsPowerstore:
+  image: dellemc/csm-metrics-powerstore:v1.0.0
+  enabled: false
+  collectorAddr: otel-collector:55680
+  #! comma separated list of provisioner names (ex: csi-powerstore.dellemc.com)
+  provisionerNames: csi-powerstore.dellemc.com
+  #! set polling frequency to the PowerStore array to get metrics data
+  volumePollFrequencySeconds: 10
+  #! set volumeMetricsEnabled to "false" to disable collection of Volume metrics
+  volumeMetricsEnabled: "true"
+  #! set the the default max concurrent queries to powerstore
+  concurrentPowerstoreQueries: 10
+  #! set the default endpoint for powerstore service
+  endpoint: karavi-metrics-powerstore
+  service:
+    type: ClusterIP
+  logLevel: INFO
+  logFormat: text
+  zipkin:
+    uri: ""
+    serviceName: metrics-powerstore
+    probability: 0.0
+  #! only relevant when deploying observability as stand alone
+  driverConfig:
+    #! name of the vxflexos-config secret uploaded via /v1/configuration-files API or included in ytt -f <filename>
+    filename: ""
+    #! The access and refresh Token. If filename is provided, the content of the file be used instead of data
+    data: ""
+
+
+#@overlay/match missing_ok=True
+otelCollector:
+  image: otel/opentelemetry-collector:0.9.0
+  service:
+    type: ClusterIP
+  nginxProxy:
+    image: nginxinc/nginx-unprivileged:1.18

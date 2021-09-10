@@ -1,0 +1,81 @@
+#@data/values
+---
+application: isilon
+namespace: isilon
+
+#! CSI driver log level
+#! Allowed values: "error", "warn"/"warning", "info", "debug"
+#! Default value: "debug"
+logLevel: "debug"
+
+#! Represents number of certificate secrets, which user is going to create for ssl authentication. (isilon-cert-0..isilon-cert-n)
+#! Minimum value should be 1
+certSecretCount: 1
+
+#! imagePullPolicy: Policy to determine if the image should be pulled prior to starting the container.
+#! Allowed values:
+#!  Always: Always pull the image.
+#!  IfNotPresent: Only pull the image if it does not already exist on the node.
+#!  Never: Never pull the image.
+#! Default value: None
+imagePullPolicy: IfNotPresent
+
+#! Custom networks for PowerScale export
+#! Please specify list of networks which can be used for NFS I/O traffic, CIDR format should be used
+#! ex: 192.168.1.0/24
+allowedNetworks: []
+
+#! "isiPort" defines the HTTPs port number of the PowerScale OneFS API server
+isiPort: "8080"
+
+#! skipCertificateValidation: Specify whether the PowerScale OneFS API server's certificate chain and host name should be verified.
+#! This value acts as a default value for skipCertificateValidation, if not specified for a cluster config in secret
+#! Allowed values:
+#!   true: skip OneFS API server's certificate verification
+#!   false: verify OneFS API server's certificates
+#! Default value: false
+skipCertificateValidation: "true"
+
+#! The name of the access zone a volume can be created in
+isiAccessZone: "System"
+
+#! "volumeNamePrefix" defines a string prepended to each volume created by the CSI driver.
+volumeNamePrefix: k8s
+
+#! "controllerCount" defines the number of csi-powerscale controller pods to deploy to
+#! the Kubernetes release.
+controllerCount: 2
+
+#! Indicates what content of the OneFS REST API message should be logged in debug level logs
+#! Values:
+#!   0 - log full content of the HTTP request and response
+#!   1 - log without the HTTP response body
+#!   2 - log only 1st line of the HTTP request and response
+verbose: 1
+
+#! Indicates whether the provisioner should attempt to set (later unset) quota on a newly provisioned volume
+#! This requires SmartQuotas to be enabled.
+enableQuota: "true"
+
+#! Indicates whether the controller/node should probe during initialization
+noProbeOnStart: "false"
+
+#! The default base path for the volumes to be created, this will be used if a storage class does not have the IsiPath parameter specified
+#! Ensure that this path exists on PowerScale.
+isiPath: "/ifs/data/csi"
+
+#! Enable auto probe.
+autoProbe: "true"
+
+#! Specify if custom topology label <provisionerName>.dellemc.com/<powerscalefqdnorip>:<provisionerName> has to be used for making connection to backend PowerScale Array
+#! If enableCustomTopology is set to true, then do not specify allowedTopologies in storage class
+enableCustomTopology: "false"
+
+#! Specify default value for maximum number of volumes that controller can publish to the node.
+#! If value is zero CO SHALL decide how many volumes of this type can be published by the controller to the node.
+#! This limit is applicable to all the nodes in the cluster for which node label 'max-isilon-volumes-per-node' is not set.
+maxIsilonVolumesPerNode: 0
+
+images:
+  #! "images.driver" defines the container images used for the driver container.
+  driver: dellemc/csi-isilon:v2.0.0

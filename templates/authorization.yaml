@@ -1,0 +1,174 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:yaml", "yaml")
+#@ load("@ytt:json", "json")
+#@ load("@ytt:overlay", "overlay")
+#@ load("@ytt:base64", "base64")
+#@ load("inject_auth_proxy.lib.yml","inject_deployment_daemonset", "starting_port")
+
+#@ authApplication = "observability"
+#@ if hasattr(data.values, "application"):
+#@ authApplication = data.values.application
+#@ end
+
+#@ def controller_name():
+#@ return authApplication + "-controller"
+#@ end
+
+#@ def node_name():
+#@  return authApplication + "-node"
+#@ end
+
+#@ def reverseproxy_name():
+#@  return authApplication + "-reverseproxy"
+#@ end
+
+#@ def reverseproxyConfig_name():
+#@  return authApplication + "-reverseproxy-config"
+#@ end
+
+#@ if data.values.authorization.enabled:
+
+#@ injectArr = [["Deployment", controller_name()], ["DaemonSet", node_name()], ["Deployment", reverseproxy_name()]]
+#! add other modules
+#@ if hasattr(data.values, "karaviMetricsPowerflex") and data.values.karaviMetricsPowerflex.enabled:
+#@ injectArr = injectArr + [["Deployment", "karavi-metrics-powerflex"]]
+#@ end
+#@ for i in range(len(injectArr)):
+#@overlay/match missing_ok=True
+#@overlay/match by=overlay.subset({"kind": injectArr[i][0], "metadata": {"name": injectArr[i][1]}}),missing_ok=True
+---
+metadata:
+  name: #@ injectArr[i][1]
+  #@overlay/match missing_ok=True
+  annotations:
+    #@overlay/match missing_ok=True
+    com.dell.karavi-authorization-proxy: "true"
+spec:
+   template:
+    spec:
+      containers: #@ inject_deployment_daemonset(authApplication, injectArr[i][0], data.values.karaviAuthorizationProxy.proxyHost, data.values.karaviAuthorizationProxy.insecure, data.values.karaviAuthorizationProxy.imageAddr, data.values.karaviAuthorizationProxy.defaultStartingPortRange, injectArr[i][1])["containers"]
+      volumes:
+      #@overlay/match by=overlay.subset("karavi-authorization-config"),missing_ok=True
+      #@overlay/remove
+      - (this value is ignored)
+      - name: karavi-authorization-config
+        secret:
+         defaultMode: 420
+         secretName: karavi-authorization-config
+      #@overlay/match by=overlay.subset("proxy-server-root-certificate"),missing_ok=True
+      #@overlay/remove
+      - (this value is ignored)
+      - name: proxy-server-root-certificate
+        secret:
+          defaultMode: 420
+          secretName: proxy-server-root-certificate
+---
+#@ end
+
+#@ def inject_proxy_configMap_params():
+mode: #@ data.values.csireverseproxy.mode
+port: #@ str(data.values.csireverseproxy.port)
+#@ if data.values.csireverseproxy.mode == "Linked":
+linkConfig:
+  #@ startingPortRange = starting_port("powermax", data.values.karaviAuthorizationProxy.defaultStartingPortRange)
+  #@ for i in range(len(data.values.globalConfig.managementServers)):
+  #@ if i == 0:
+  primary:
+    #@ primary = data.values.globalConfig.managementServers[i]
+    url: #@ "https://localhost:{}".format(startingPortRange)
+    #@ startingPortRange += 1
+    #@ if hasattr(primary, "certSecret"):
+    skipCertificateValidation: #@ primary.skipCertificateValidation
+    certSecret: #@ primary.certSecret
+    #@ else:
+    skipCertificateValidation: true
+    certSecret: ""
+    #@ end
+    #@ if hasattr(primary, "limits"):
+    limits:
+      maxActiveRead: #@ primary.limits.maxActiveRead
+      maxActiveWrite: #@ primary.limits.maxActiveWrite
+      maxOutStandingRead: #@ primary.limits.maxOutStandingRead
+      maxOutStandingWrite: #@ primary.limits.maxOutStandingWrite
+    #@ end
+  #@ end
+  #@ if i == 1:
+  backup:
+    #@ backup = data.values.globalConfig.managementServers[i]
+    url: #@ "https://localhost:{}".format(startingPortRange)
+    #@ startingPortRange += 1
+    #@ if hasattr(backup, "certSecret"):
+    skipCertificateValidation: #@ backup.skipCertificateValidation
+    certSecret: #@ backup.certSecret
+    #@ else:
+    skipCertificateValidation: true
+    certSecret: ""
+    #@ end
+    #@ if hasattr(backup, "limits"):
+    limits:
+      maxActiveRead: #@ backup.limits.maxActiveRead
+      maxActiveWrite: #@ backup.limits.maxActiveWrite
+      maxOutStandingRead: #@ backup.limits.maxOutStandingRead
+      maxOutStandingWrite: #@ backup.limits.maxOutStandingWrite
+    #@ end
+  #@ end
+  #@ end
+#@ end
+#@ if data.values.csireverseproxy.mode == "StandAlone":
+standAloneConfig:
+  storageArrays:
+    #@ startingPortRange = starting_port("powermax", data.values.karaviAuthorizationProxy.defaultStartingPortRange)
+    #@ for i in range(len(data.values.globalConfig.storageArrays)):
+    #@ value = data.values.globalConfig.storageArrays[i]
+    - storageArrayId: #@ value.storageArrayId
+      primaryURL: #@ "https://localhost:{}".format(startingPortRange)
+      #@ startingPortRange += 1
+      #@ if hasattr(value, "backupEndpoint"):
+      backupURL: #@ value.backupEndpoint
+      #@ end
+      #@ if hasattr(data.values.globalConfig, "defaultCredentialsSecret"):
+      proxyCredentialSecrets:
+        - #@ data.values.globalConfig.defaultCredentialsSecret
+      #@ end
+    #@ end
+  managementServers:
+    #@ startingPortRange = starting_port("powermax", data.values.karaviAuthorizationProxy.defaultStartingPortRange)
+    #@ for i in range(len(data.values.globalConfig.managementServers)):
+    #@ value = data.values.globalConfig.managementServers[i]
+    - url: #@ "https://localhost:{}".format(startingPortRange)
+      #@ startingPortRange += 1
+      #@ if hasattr(value, "credentialsSecret"):
+      arrayCredentialSecret: #@ value.credentialsSecret
+      #@ elif hasattr(data.values.globalConfig, "defaultCredentialsSecret"):
+      arrayCredentialSecret: #@ data.values.globalConfig.defaultCredentialsSecret
+      #@ end
+      #@ if hasattr(value, "certSecret"):
+      skipCertificateValidation: #@ value.skipCertificateValidation
+      certSecret: #@ value.certSecret
+      #@ else:
+      skipCertificateValidation: true
+      certSecret: ""
+      #@ end
+      #@ if hasattr(value, "limits"):
+      limits:
+        maxActiveRead: #@ value.limits.maxActiveRead
+        maxActiveWrite: #@ value.limits.maxActiveWrite
+        maxOutStandingRead: #@ value.limits.maxOutStandingRead
+        maxOutStandingWrite: #@ value.limits.maxOutStandingWrite
+      #@ end
+    #@ end
+#@ end
+#@ end
+
+#@ if authApplication == "powermax":
+#@overlay/match missing_ok=True
+#@overlay/match by=overlay.subset({"kind": "ConfigMap", "metadata": {"name": reverseproxyConfig_name()}}),missing_ok=True
+---
+metadata:
+  name: #@ reverseproxyConfig_name()
+data:
+  #@overlay/match missing_ok=True
+  config.yaml: #@ yaml.encode(inject_proxy_configMap_params())
+#@ end
+
+#@  end

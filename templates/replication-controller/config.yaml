@@ -1,0 +1,21 @@
+# clusterID: unique name represents the cluster
+# Allowed Values: string
+# Default Value: None
+clusterId: ""
+
+# targets: Array of targets
+# Allowed Values:
+#   - clusterId: string
+#     address: IP address (x.x.x.x)
+#     secretRef: string
+# Default Value: None
+targets:
+
+
+
+# logLevel: level of logs verbosity
+# Allowed Values:
+#   "trace" "debug" "info" "warn" "error" "fatal" "panic"
+# Default Value: "info"
+logLevel: "INFO"
+

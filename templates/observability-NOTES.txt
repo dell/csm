@@ -1,0 +1,46 @@
+(@ load("@ytt:data", "data") @)
+(@ if data.values.karaviTopology.enabled: @)
+
+(@ if hasattr(data.values, "namespace"): @)
+(@ observabilityNamespace = data.values.namespace @)
+(@ else: @)
+(@ observabilityNamespace = data.values.observability.namespace @)
+(@ end -@)
+
+Karavi Topology
+  The Karavi Topology deployment has been successfully installed.
+(@ if data.values.karaviTopology.service.type == "NodePort": @)
+  Execute the following commands in your shell to print the URL that can be used to access the Karavi Topology service: 
+  export NODE_PORT=$(kubectl get --namespace (@= observabilityNamespace @) -o jsonpath="{.spec.ports[0].nodePort}" services karavi-topology)
+  export NODE_IP=$(kubectl get nodes --namespace (@= observabilityNamespace @) -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo https://$NODE_IP:$NODE_PORT
+(@ elif data.values.karaviTopology.service.type == "ClusterIP": @)
+  The Karavi Topology service can be accessed at the following URL from within the Kubernetes cluster: https://karavi-topology.(@= observabilityNamespace @).svc.cluster.local
+(@ end -@)
+
+(@ end -@)
+
+
+(@ if data.values.karaviMetricsPowerflex.enabled: @)
+
+Karavi Metrics for PowerFlex
+  The Karavi Metrics for PowerFlex deployment has been successfully installed.
+
+  Provisioner Names: (@= data.values.karaviMetricsPowerflex.provisionerNames @)
+  Prometheus Scrape Target: 
+    From inside the Kubernetes cluster: otel-collector:8443
+
+(@ end -@)
+
+
+(@ if data.values.karaviMetricsPowerstore.enabled: @)
+
+Karavi Metrics for PowerStore
+
+  The Karavi Metrics for PowerStore deployment has been successfully installed.
+
+  Provisioner Names: (@= data.values.karaviMetricsPowerstore.provisionerNames @)
+  Prometheus Scrape Target: 
+    From inside the Kubernetes cluster: otel-collector:8443
+
+(@ end -@)

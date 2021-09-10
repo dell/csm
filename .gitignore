@@ -1,0 +1,14 @@
+*.db
+.idea/
+dell-common-installer
+scripts/swagger.json
+vendor
+user.json
+/cmd/csm-cli/csm-cli
+/cmd/csm-cli/csm-cli.exe
+/cmd/csm-cli/csm
+.vscode
+/templates/repctl.exe
+/templates/repctl
+cockroach-data
+.cockroach

@@ -1,0 +1,31 @@
+#@data/values
+---
+
+#@overlay/match missing_ok=True
+authorization:
+  enabled: false
+  #! TODO: remove or change to true when common deployment supports Log Levels for drivers.
+  logLevel: true
+
+#@overlay/match missing_ok=True
+karaviAuthorizationProxy:
+  defaultStartingPortRange: 9000
+  proxyHost: ""
+  insecure: true
+  imageAddr: dellemc/csm-authorization-sidecar:v1.0.0
+  
+  #! either filename or data must be provided
+  rootCertificate:
+    #! name of the root certificate uploaded via /v1/configuration-files API or included in ytt -f <filename>
+    filename: ""
+    #! plaintext root certificate. If filename is provided, the content of the file will be used instead of data
+    data: ""
+  
+  #! either filename or data must be provided
+  proxyAuthzToken:
+    #! name of the proxy authz tokens uploaded via /v1/configuration-files API or included in ytt -f <filename>
+    filename: ""
+    #! The access and refresh Token. If filename is provided, the content of the file be used instead of data
+    data:
+      access: ""
+      refresh: ""

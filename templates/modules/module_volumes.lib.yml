@@ -1,0 +1,25 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:assert", "assert")
+
+#@ def get_module_volumes(module):
+  #@ if module == "powermax-reverseproxy":
+  #@    return get_volumes_reverseproxy(module)
+  #@ else:
+  #@ assert.fail("containers for module {} not found".format(module))
+  #@ end
+#@ end
+
+#! VOLUMES for module powermax-reverseproxy
+#@ def get_volumes_reverseproxy(module):
+volumes:
+  - name: configmap-volume
+    configMap:
+      name: #@ module + "-config"
+      optional: true
+  - name: tls-secret
+    secret:
+      secretName: #@ data.values.csireverseproxy.tlsSecret
+  - name: cert-dir
+    emptyDir:
+#@ end
+

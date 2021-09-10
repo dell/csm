@@ -1,0 +1,42 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:yaml", "yaml")
+#@ load("@ytt:assert", "assert")
+
+#@ def driverConfigParams(application):
+CSI_LOG_LEVEL: #@ data.values.logLevel
+#@ if application == "isilon":
+#@ elif application == "unity":
+ALLOW_RWO_MULTIPOD_ACCESS: #@ data.values.allowRWOMultiPodAccess
+MAX_UNITY_VOLUMES_PER_NODE : #@ data.values.maxUnityVolumesPerNode
+SYNC_NODE_INFO_TIME_INTERVAL: #@ data.values.syncNodeInfoInterval
+#@ if data.values.podmon.enabled:
+PODMON_CONTROLLER_LOG_LEVEL: "debug"
+PODMON_CONTROLLER_LOG_FORMAT: "TEXT"
+PODMON_NODE_LOG_LEVEL: "debug"
+PODMON_NODE_LOG_FORMAT: "TEXT"
+#@ end
+#@ elif application == "powerstore":
+CSI_LOG_FORMAT: #@ data.values.logFormat
+#@ elif application == "powermax":
+CSI_LOG_FORMAT: #@ data.values.logFormat
+#@ elif application == "vxflexos":
+CSI_LOG_FORMAT: #@ data.values.logFormat
+#@ if data.values.podmon.enabled:
+PODMON_CONTROLLER_LOG_LEVEL: "debug"
+PODMON_CONTROLLER_LOG_FORMAT: "TEXT"
+PODMON_NODE_LOG_LEVEL: "debug"
+PODMON_NODE_LOG_FORMAT: "TEXT"
+#@ end
+#@ else:
+#@ assert.fail("Configmap for application {} not found".format(application))
+#@ end
+#@ end
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  #@ "{}-config-params".format(data.values.application)
+  namespace: #@ data.values.namespace
+data:
+  driver-config-params.yaml: #@ yaml.encode(driverConfigParams(data.values.application))
+  
