@@ -79,5 +79,5 @@ jobs:
       - name: Scan Common Installer Image
         uses: Azure/container-scan@v0
         with:
-          image-name: dell-common-installer:v0.0.1
+          image-name: dell-csm-installer:v0.0.1
           severity-threshold: HIGH
