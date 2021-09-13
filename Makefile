@@ -1,7 +1,7 @@
 all: build
 
 CONTAINER_TOOL?=docker
-IMAGE?=$(IMAGE_REPO)dell-common-installer
+IMAGE?=$(IMAGE_REPO)dell-csm-installer
 DATA_COLLECTOR_IMAGE?=$(IMAGE_REPO)csm-data-collector
 BASE_IMG?=$(BASE_IMAGE)
 
