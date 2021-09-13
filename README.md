@@ -29,18 +29,15 @@ Dell EMC Container Storage Modules (CSM) is an open-source suite of Kubernetes s
 * [Maintainers](./docs/MAINTAINERS.md)
 * [Support](./docs/SUPPORT.md)
 * [Security](./docs/SECURITY.md)
-* [Supported Dell EMC CSI Drivers](#supported-dell-emc-csi-drivers)
-* [Supported Dell EMC CSM Modules](#supported-dell-emc-csm-modules)
+* [Container Storage Modules - Components](#container-storage-modules---components)
 * [About](#about)
 
-## Supported Dell EMC CSI Drivers
+## Container Storage Modules - Components
 * [CSI Driver for Dell EMC PowerFlex](https://github.com/dell/csi-powerflex)
 * [CSI Driver for Dell EMC PowerMax](https://github.com/dell/csi-powermax)
 * [CSI Driver for Dell EMC PowerScale](https://github.com/dell/csi-powerscale)
 * [CSI Driver for Dell EMC PowerStore](https://github.com/dell/csi-powerstore)
 * [CSI Driver for Dell EMC Unity](https://github.com/dell/csi-unity)
-
-## Supported Dell EMC CSM Modules
 * [Dell EMC Container Storage Modules (CSM) for Authorization](https://github.com/dell/karavi-authorization)
 * [Dell EMC Container Storage Modules (CSM) for Observability](https://github.com/dell/karavi-observability)
 * [Dell EMC Container Storage Modules (CSM) for Replication](https://github.com/dell/csm-replication)
