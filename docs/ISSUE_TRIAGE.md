@@ -194,7 +194,7 @@ This workflow starts off with a GitHub issue of type bug being created.
 1. Collaborator or maintainer creates a GitHub bug using the appropriate GitHub issue template
 2. By default a bug will be created with the `type/bug` and `needs-triage` labels
 
-The following flow chart outlines the triage process
+The following flow chart outlines the triage process for bugs.
 
 <!-- https://textik.com/#38ec14781648871c -->
 ```
@@ -228,8 +228,8 @@ The following flow chart outlines the triage process
                  |                                           |                                  |                                                        
                  |                                           | YES                              |                                                        
     +-----------------------------+         +----------------|----------------+                 |                                                        
-    | Add source repository label |         | Add comment                     |                 |                                                        
-    | label: source/*             |         | Remove needs-triage label       ------------------|                                                        
+    | Add area label              |         | Add comment                     |                 |                                                        
+    | label: area/*               |         | Remove needs-triage label       ------------------|                                                        
     +------------|----------------+         | label: triage/works-as-intended |                                                                          
                  |                          +---------------------------------+                                                                          
                  |                                                                                                                                       
@@ -254,7 +254,7 @@ This workflow starts off with a GitHub issue of type feature request being creat
 1. Collaborator or maintainer creates a GitHub feature request using the appropriate GitHub issue template
 2. By default a feature request will be created with the `type/feature-request` and `needs-triage` labels
 
-The following flow chart outlines the triage process
+The following flow chart outlines the triage process for feature requests.
 
 <!-- https://textik.com/#81e81fc717f63429 -->
 ```
@@ -288,8 +288,8 @@ The following flow chart outlines the triage process
           |         |                       +-----------------|----------------+
           |         |                                         |                 
           |         |                          +--------------|--------------+  
-          |         |                          | Add source repository label |  
-          |         |                          | label: source/*             |  
+          |         |                          | Add area label              |  
+          |         |                          | label: area/*               |  
           |         |                          +--------------|--------------+  
           |         |                                         |                 
         +-|---------|---+     +--------+       +--------------|--------------+  
