@@ -16,9 +16,9 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "csm-cli",
-	Short: "csm-cli is command line tool for csm application",
-	Long:  `csm-cli is command line tool for csm application`,
+	Use:   "csm",
+	Short: "csm is command line tool for csm application",
+	Long:  `csm is command line tool for csm application`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if cmd.Flags().NFlag() == 0 {
 			cmd.Help()
