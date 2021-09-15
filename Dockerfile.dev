@@ -3,7 +3,7 @@ FROM $BASE_IMG AS replication-builder
 
 WORKDIR /app
 
-RUN wget -O kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.39.0/kapp-linux-amd64 && chmod +x kapp
+RUN wget -O kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.40.0/kapp-linux-amd64 && chmod +x kapp
 
 COPY dell-csi-replicator dell-csi-replicator
 RUN cd dell-csi-replicator/repctl && make build \
