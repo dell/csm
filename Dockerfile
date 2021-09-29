@@ -6,7 +6,7 @@ WORKDIR /app
 RUN apt update
 RUN apt install -y build-essential wget
 
-RUN wget -O kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.39.0/kapp-linux-amd64 && chmod +x kapp
+RUN wget -O kapp https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.40.0/kapp-linux-amd64 && chmod +x kapp
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4-208
 
