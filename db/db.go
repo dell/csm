@@ -133,7 +133,7 @@ func PopulateInventory(db InventoryDatabaseInterface, storageArrayTypeStore stor
 	// add modules
 	addModule(db, &model.ModuleType{
 		Name:    model.ModuleTypePodMon,
-		Version: "1.0.0",
+		Version: "1.0.1",
 	})
 	addModule(db, &model.ModuleType{
 		Name:       model.ModuleTypeObservability,
