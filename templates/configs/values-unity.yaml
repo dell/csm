@@ -60,7 +60,7 @@ nodeNamePrefix: ""
 #! Enable this feature only after contact support for additional information
 podmon:
   enabled: false
-  image: dellemc/podmon:v1.0.0
+  image: dellemc/podmon:v1.0.1
   controller:
     args:
       - "--csisock=unix:/var/run/csi/csi.sock"
