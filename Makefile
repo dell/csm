@@ -67,7 +67,7 @@ win-install-local-db:
 	mv -f cockroach-v21.1.8.windows-6.2-amd64/ .cockroach
 
 unix-install-local-db:
-	wget https://binaries.cockroachdb.com/cockroach-v21.1.8.linux-amd64.tgz -O temp.tgz
+	wget https://binaries.cockroachdb.com/cockroach-v21.1.8.linux-amd64.tgz -O temp.tgz --no-check-certificate
 	tar zxvf temp.tgz
 	rm -rf temp.tgz
 	mv -f cockroach-v21.1.8.linux-amd64/ .cockroach
