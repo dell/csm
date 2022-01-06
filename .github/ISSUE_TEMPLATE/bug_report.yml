@@ -54,8 +54,6 @@ body:
       placeholder: Authorization v1.1.0    
     validations:
       required: true
-    validations:
-      required: false
   - type: input
     id: co
     attributes:
