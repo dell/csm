@@ -27,6 +27,7 @@ body:
     attributes:
       label: Additional Environment Information
       description: Provide additional environment information such as a listing of pods, PVs, PVCs, VolumeAttachments, Events, etc.
+      render: shell
     validations:
       required: true  
   - type: textarea
@@ -49,8 +50,11 @@ body:
       label: CSI Driver(s)
       description: Please list the CSI drivers and versions that are applicable to this bug.
       placeholder: |
-        1. CSI Driver for PowerFlex v2.1
-        2. CSI Driver for PowerScale v2.1
+        CSI Driver for PowerFlex v2.1
+        CSI Driver for PowerScale v2.1
+        CSI Driver for PowerMax v2.1
+        CSI Driver for PowerStore v2.1
+        CSI Driver for Unity XT v2.1
     validations:
       required: true
   - type: textarea
@@ -59,11 +63,11 @@ body:
       label: Container Storage Modules Enabled
       description: Please list the Container Storage Modules that are enabled along with the image versions.
       placeholder: |
-        1. Resiliency (Podmon) v1.1.0
-        2. Replication v1.1.0
-        3. Authorization v1.1.0 
-        4. Observability v1.1.0
-        5. Volume Group Snapshotter v4.2.0
+        Resiliency (Podmon) v1.1.0
+        Replication v1.1.0
+        Authorization v1.1.0 
+        Observability v1.1.0
+        Volume Group Snapshotter v4.2.0
     validations:
       required: true
   - type: input
