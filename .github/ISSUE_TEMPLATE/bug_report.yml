@@ -50,7 +50,7 @@ body:
     id: module
     attributes:
       label: Container Storage Module
-      description: If applicable, please indicate the Container Storage Module that is applicable to this bug.
+      description: If applicable, please indicate the Container Storage Module that is relevant for this bug.
       placeholder: Authorization v1.1.0    
     validations:
       required: true
