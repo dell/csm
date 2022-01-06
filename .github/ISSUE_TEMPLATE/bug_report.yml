@@ -28,16 +28,12 @@ body:
       description: A clear and concise description of what you expected to happen.
     validations:
       required: true
-  - type: dropdown
+  - type: input
     id: version
     attributes:
       label: Version
-      description: "What version of CSM are you running?"
-      options:
-        - v1.0.0
-        - v1.0.1
-        - v1.1.0
-        - Not Sure      
+      description: "What version of CSM are you running? Specify N/A if you are not sure."
+      placeholder: "v1.1.0"   
     validations:
       required: true
   - type: textarea
@@ -51,11 +47,21 @@ body:
     validations:
       required: false
   - type: input
+    id: module
+    attributes:
+      label: Container Storage Module
+      description: If applicable, please indicate the Container Storage Module that is applicable to this bug.
+      placeholder: Authorization v1.1.0    
+    validations:
+      required: true
+    validations:
+      required: false
+  - type: input
     id: co
     attributes:
       label: Container Orchestrator
-      description: "Which container orchestrator is being used? Please provide the version as well."
-      placeholder: "Kubernetes 1.2.3"
+      description: Which container orchestrator is being used? Please provide the version as well.
+      placeholder: Kubernetes 1.2.3
     validations:
       required: true  
   - type: input
