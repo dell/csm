@@ -15,6 +15,14 @@ body:
     validations:
       required: true
   - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Upload logs to this bug report or provide relevant log output here. Please be sure to remove all sensitive data such as IP addresses, host names, credentials, etc.
+      render: shell
+    validations:
+      required: false  
+  - type: textarea
     id: steps
     attributes:
       label: Steps to Reproduce
@@ -28,14 +36,6 @@ body:
       description: A clear and concise description of what you expected to happen.
     validations:
       required: true
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: "What version of CSM are you running? Specify N/A if you are not sure."
-      placeholder: "v1.1.0"   
-    validations:
-      required: true
   - type: textarea
     id: driver
     attributes:
@@ -45,12 +45,12 @@ body:
         1. CSI Driver for PowerFlex v2.1
         2. CSI Driver for PowerScale v2.1
     validations:
-      required: false
+      required: true
   - type: input
     id: module
     attributes:
       label: Container Storage Module
-      description: If applicable, please indicate the Container Storage Module that is relevant for this bug.
+      description: Please list the Container Storage Module that is applicable to this bug. Specify N/A if you are not sure.
       placeholder: Authorization v1.1.0    
     validations:
       required: true
@@ -71,12 +71,4 @@ body:
       description: "Which operating system is being used? Please provide the version as well."
       placeholder: "RHEL 7.6"
     validations:
-      required: true  
-  - type: textarea
-    id: logs
-    attributes:
-      label: Logs
-      description: Upload logs to this bug report or provide relevant log output here.
-      render: shell
-    validations:
-      required: false  
+      required: true
