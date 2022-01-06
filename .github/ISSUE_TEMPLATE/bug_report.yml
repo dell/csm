@@ -1,4 +1,4 @@
-name: Bug report
+name: Beta - Bug report
 description: Create a report to help us improve
 title: "[BUG]: "
 labels: ["type/bug", "needs-triage"]
@@ -21,7 +21,14 @@ body:
       description: Upload logs to this bug report or provide relevant log output here. Please be sure to remove all sensitive data such as IP addresses, host names, credentials, etc.
       render: shell
     validations:
-      required: false  
+      required: false
+  - type: textarea
+    id: info
+    attributes:
+      label: Additional Environment Information
+      description: Provide additional environment information such as a listing of pods, PVs, PVCs, VolumeAttachments, Events, etc.
+    validations:
+      required: true  
   - type: textarea
     id: steps
     attributes:
@@ -46,12 +53,17 @@ body:
         2. CSI Driver for PowerScale v2.1
     validations:
       required: true
-  - type: input
+  - type: textarea
     id: module
     attributes:
-      label: Container Storage Module
-      description: Please list the Container Storage Module that is applicable to this bug. Specify N/A if you are not sure.
-      placeholder: Authorization v1.1.0    
+      label: Container Storage Modules Enabled
+      description: Please list the Container Storage Modules that are enabled along with the image versions.
+      placeholder: |
+        1. Resiliency (Podmon) v1.1.0
+        2. Replication v1.1.0
+        3. Authorization v1.1.0 
+        4. Observability v1.1.0
+        5. Volume Group Snapshotter v4.2.0
     validations:
       required: true
   - type: input
