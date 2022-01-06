@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for taking the time to create a Container Storage Modules (CSM) bug report. To better help us investigate this bug, please provide the required information below.
+        Thank you for taking the time to create a Container Storage Modules (CSM) bug report. To better help us investigate this bug, please provide the information below.
   - type: textarea
     id: bug-description
     attributes:
@@ -69,6 +69,8 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Upload logs to this bug report or provide relevant log output here.
-      description: Provide relevant log output.
+      label: Logs
+      description: Upload logs to this bug report or provide relevant log output here.
       render: shell
+    validations:
+      required: false  
