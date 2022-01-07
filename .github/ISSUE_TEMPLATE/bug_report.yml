@@ -29,7 +29,7 @@ body:
       description: Provide additional environment information such as a listing of pods, PVs, PVCs, VolumeAttachments, Events, etc.
       render: shell
     validations:
-      required: true  
+      required: false  
   - type: textarea
     id: steps
     attributes:
