@@ -1,0 +1,101 @@
+name: Bug report
+description: Create a report to help us improve
+title: "[BUG]: "
+labels: ["type/bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to create a Container Storage Modules (CSM) bug report. To better help us investigate this bug, please provide the information below.
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Logs
+      description: Copy/paste any relevant log output here or Upload log files by dragging and dropping the files into the text area. Please be sure to remove all sensitive data such as IP addresses, host names, credentials, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Upload any relevant screenshots here by dragging and dropping the files into the text area.
+    validations:
+      required: false      
+  - type: textarea
+    id: info
+    attributes:
+      label: Additional Environment Information
+      description: Provide additional environment information such as a listing of pods, PVs, PVCs, VolumeAttachments, Events, etc.
+    validations:
+      required: false  
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: What steps can taken to reproduce this bug?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: driver
+    attributes:
+      label: CSM Driver(s)
+      description: Please list the CSI drivers and versions that are applicable to this bug.
+      placeholder: |
+        CSI Driver for PowerFlex v2.1
+        CSI Driver for PowerScale v2.1
+        CSI Driver for PowerMax v2.1
+        CSI Driver for PowerStore v2.1
+        CSI Driver for Unity XT v2.1
+    validations:
+      required: true
+  - type: input
+    id: install
+    attributes:
+      label: Installation Type
+      description: What installation type was used? Operator or Helm? Please provide the version as well.
+      placeholder: Operator v1.6.1
+    validations:
+      required: false    
+  - type: textarea
+    id: module
+    attributes:
+      label: Container Storage Modules Enabled
+      description: Please list the Container Storage Modules that are enabled along with the image versions.
+      placeholder: |
+        Resiliency (Podmon) v1.1.0
+        Replication v1.1.0
+        Authorization v1.1.0 
+        Observability v1.1.0
+        Volume Group Snapshotter v4.2.0
+    validations:
+      required: false
+  - type: input
+    id: co
+    attributes:
+      label: Container Orchestrator
+      description: Which container orchestrator is being used? Please provide the version as well.
+      placeholder: Kubernetes 1.23.1
+    validations:
+      required: true  
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: Which operating system is being used? Please provide the version as well.
+      placeholder: RHEL 7.6
+    validations:
+      required: true
