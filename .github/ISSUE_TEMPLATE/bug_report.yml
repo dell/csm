@@ -1,4 +1,4 @@
-name: Beta - Bug report
+name: Bug report
 description: Create a report to help us improve
 title: "[BUG]: "
 labels: ["type/bug", "needs-triage"]
@@ -15,19 +15,24 @@ body:
     validations:
       required: true
   - type: textarea
-    id: logs
+    id: files
     attributes:
       label: Logs
-      description: Upload logs to this bug report or provide relevant log output here. Please be sure to remove all sensitive data such as IP addresses, host names, credentials, etc.
-      render: shell
+      description: Copy/paste any relevant log output here or Upload log files by dragging and dropping the files into the text area. Please be sure to remove all sensitive data such as IP addresses, host names, credentials, etc.
     validations:
-      required: false
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Upload any relevant screenshots here by dragging and dropping the files into the text area.
+    validations:
+      required: false      
   - type: textarea
     id: info
     attributes:
       label: Additional Environment Information
       description: Provide additional environment information such as a listing of pods, PVs, PVCs, VolumeAttachments, Events, etc.
-      render: shell
     validations:
       required: false  
   - type: textarea
@@ -47,7 +52,7 @@ body:
   - type: textarea
     id: driver
     attributes:
-      label: CSI Driver(s)
+      label: CSM Driver(s)
       description: Please list the CSI drivers and versions that are applicable to this bug.
       placeholder: |
         CSI Driver for PowerFlex v2.1
@@ -57,6 +62,14 @@ body:
         CSI Driver for Unity XT v2.1
     validations:
       required: true
+  - type: input
+    id: install
+    attributes:
+      label: Installation Type
+      description: What installation type was used? Operator or Helm? Please provide the version as well.
+      placeholder: Operator v1.6.1
+    validations:
+      required: false    
   - type: textarea
     id: module
     attributes:
@@ -69,20 +82,20 @@ body:
         Observability v1.1.0
         Volume Group Snapshotter v4.2.0
     validations:
-      required: true
+      required: false
   - type: input
     id: co
     attributes:
       label: Container Orchestrator
       description: Which container orchestrator is being used? Please provide the version as well.
-      placeholder: Kubernetes 1.2.3
+      placeholder: Kubernetes 1.23.1
     validations:
       required: true  
   - type: input
     id: os
     attributes:
       label: Operating System
-      description: "Which operating system is being used? Please provide the version as well."
-      placeholder: "RHEL 7.6"
+      description: Which operating system is being used? Please provide the version as well.
+      placeholder: RHEL 7.6
     validations:
       required: true
