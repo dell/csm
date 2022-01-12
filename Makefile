@@ -25,7 +25,7 @@ docs:
 
 image: build
 ifeq ($(BASE_IMG),)
-	$(CONTAINER_TOOL) build --build-arg BASE_IMG="ubuntu:20.10" -t "$(IMAGE):$(VERSION)" .
+	$(CONTAINER_TOOL) build --build-arg BASE_IMG="ubuntu:latest" -t "$(IMAGE):$(VERSION)" .
 else
 	$(CONTAINER_TOOL) build --build-arg BASE_IMG="$(BASE_IMG)" -t "$(IMAGE):$(VERSION)" .
 endif
