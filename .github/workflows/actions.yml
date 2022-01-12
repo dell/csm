@@ -59,7 +59,7 @@ jobs:
     name: Image Scanner
     runs-on: ubuntu-latest
     env:
-      BASE_IMG : ubuntu-latest
+      BASE_IMG : ubuntu:latest
     steps:
       - name: Set up Go 1.16+
         uses: actions/setup-go@v2
