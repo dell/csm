@@ -7,7 +7,7 @@ on:
 jobs:
   code-check:
     name: Check Go formatting, linting, vetting
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
           directories: ./...
   sanitize:
     name: Check for forbidden words
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
           args: /github/workspace
   test:
     name: Run Go unit tests and check package coverage
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
           skip-list: "github.com/dell/csm-deployment/handler"
   go_security_scan:
     name: Go security
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -57,7 +57,7 @@ jobs:
           options: -ri
   image_security_scan:
     name: Image Scanner
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.16+
         uses: actions/setup-go@v2
