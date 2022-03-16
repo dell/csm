@@ -3,7 +3,7 @@
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bugs](#bugs)
+    - [Bug Fixes](#bug-fixes)
 
 # v1.2.0
 
@@ -37,7 +37,7 @@
 - Standalone Helm install for the CSI Unity driver. ([#92](https://github.com/dell/csm/issues/92))
 - Support evacuation of pods during NoExecute taint on node. ([#87](https://github.com/dell/csm/issues/87))
 
-### Bugs 
+### Bug Fixes 
 
 - Documentation in values.yaml related to toleration for running on master node is incorrect - CSI driver for Unity-XT. ([#216](https://github.com/dell/csm/issues/216))
 - Volume Health Monitoring section is missing under driver install using Operator. ([#212](https://github.com/dell/csm/issues/212))
