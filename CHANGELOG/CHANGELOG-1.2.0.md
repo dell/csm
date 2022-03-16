@@ -9,13 +9,13 @@
 
 ## Changelog since v1.1.0 
 
-## Changes by Kind 
+### Changes by Kind 
 
-### Deprecation
+#### Deprecation
 
 - A deprecation note has been added to the [documentation](https://dell.github.io/csm-docs/docs/deployment/csminstaller/) for the CSM Installer, which will be removed in CSM v1.4.0.
 
-### Features 
+#### Features 
 
 - Update the replication sidecar image version to 1.2.0 in CSI drivers for PowerScale, PowerMax, and PowerStore. ([#220](https://github.com/dell/csm/issues/220))
 - NFSv4 POSIX and ACL support in Dell CSI driver for PowerStore. ([#191](https://github.com/dell/csm/issues/191))
@@ -37,7 +37,7 @@
 - Standalone Helm install for the CSI Unity driver. ([#92](https://github.com/dell/csm/issues/92))
 - Support evacuation of pods during NoExecute taint on node. ([#87](https://github.com/dell/csm/issues/87))
 
-### Bug Fixes 
+#### Bug Fixes 
 
 - Documentation in values.yaml related to toleration for running on master node is incorrect - CSI driver for Unity-XT. ([#216](https://github.com/dell/csm/issues/216))
 - Volume Health Monitoring section is missing under driver install using Operator. ([#212](https://github.com/dell/csm/issues/212))
