@@ -17,7 +17,6 @@
 
 #### Features 
 
-- Update the replication sidecar image version to 1.2.0 in CSI drivers for PowerScale, PowerMax, and PowerStore. ([#220](https://github.com/dell/csm/issues/220))
 - NFSv4 POSIX and ACL support in Dell CSI driver for PowerStore. ([#191](https://github.com/dell/csm/issues/191))
 - Update to the latest UBIM image for CSM. ([#183](https://github.com/dell/csm/issues/183))
 - Update to the latest Kubernetes CSI Sidecar Container versions for Dell CSI drivers. ([#182](https://github.com/dell/csm/issues/182))
