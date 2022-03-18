@@ -17,9 +17,10 @@
 
 #### Features 
 
+- CSM Resiliency test enhancements for node affinity. ([#225](https://github.com/dell/csm/issues/225))
 - NFSv4 POSIX and ACL support in Dell CSI driver for PowerStore. ([#191](https://github.com/dell/csm/issues/191))
 - Update to the latest UBIM image for CSM. ([#183](https://github.com/dell/csm/issues/183))
-- Update to the latest Kubernetes CSI Sidecar Container versions for Dell CSI drivers. ([#182](https://github.com/dell/csm/issues/182))
+- Update to the latest Kubernetes CSI Sidecar Container versions for Dell CSI drivers . ([#182](https://github.com/dell/csm/issues/182))
 - Add support for new access modes in CSI Spec 1.5 for PowerMax. ([#175](https://github.com/dell/csm/issues/175))
 - Add support for Volume Health Monitoring for PowerMax. ([#174](https://github.com/dell/csm/issues/174))
 - Add FSGroupPolicy Support in Dell CSI Drivers for PowerScale and PowerStore. ([#167](https://github.com/dell/csm/issues/167))
@@ -38,6 +39,9 @@
 
 #### Bug Fixes 
 
+- Remove trivy scan from build to avoid podman build failures. ([#224](https://github.com/dell/csm/issues/224))
+- Removing dirty bit flag from CSI PowerMax 2.2.0 image . ([#222](https://github.com/dell/csm/issues/222))
+- Incorrect path for privatemount directory for unity NFS.. ([#219](https://github.com/dell/csm/issues/219))
 - Documentation in values.yaml related to toleration for running on master node is incorrect - CSI driver for Unity-XT. ([#216](https://github.com/dell/csm/issues/216))
 - Volume Health Monitoring section is missing under driver install using Operator. ([#212](https://github.com/dell/csm/issues/212))
 - error while creating RO volume from snapshot with different isiPaths. ([#211](https://github.com/dell/csm/issues/211))
@@ -68,3 +72,5 @@
 - Issues while using PowerFlex secret for Observability. ([#137](https://github.com/dell/csm/issues/137))
 - Replication  Metro mode is not supported  . ([#135](https://github.com/dell/csm/issues/135))
 - Documentation improvement recommendations for PowerScale. ([#127](https://github.com/dell/csm/issues/127))
+- Driver logs show dirty tag in version. ([#126](https://github.com/dell/csm/issues/126))
+- Unit test for csm-metrics-powerstore fails periodically. ([#113](https://github.com/dell/csm/issues/113))
