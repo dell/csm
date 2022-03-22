@@ -78,3 +78,7 @@
 - Documentation improvement recommendations for PowerScale. ([#127](https://github.com/dell/csm/issues/127))
 - Driver logs show dirty tag in version. ([#126](https://github.com/dell/csm/issues/126))
 - Unit test for csm-metrics-powerstore fails periodically. ([#113](https://github.com/dell/csm/issues/113))
+
+#### Known Issues
+
+- CSM Resiliency: Occasional failure unmounting Unity volume for raw block devices via iSCSI ([#237](https://github.com/dell/csm/issues/237))
