@@ -70,7 +70,7 @@
 - CSM Authorization sidecar install fails if k8s worker nodes are not in ~/.ssh/known_hosts. ([#147](https://github.com/dell/csm/issues/147))
 - Container is terminated but Pod is stuck in terminating. ([#146](https://github.com/dell/csm/issues/146))
 - Dell CSI Operator listed two times after upgrade (1.2.0 + 1.5.0). ([#144](https://github.com/dell/csm/issues/144))
-- Failing to create replicated volumes  with Integration tests. ([#143](https://github.com/dell/csm/issues/143))
+- Failing to create replicated volumes with Integration tests. ([#143](https://github.com/dell/csm/issues/143))
 - CSI-PowerScale installation fails when reverse DNS lookup is unavailable. ([#142](https://github.com/dell/csm/issues/142))
 - Integration tests for replication is failing with Unsupported replication type. ([#138](https://github.com/dell/csm/issues/138))
 - Issues while using PowerFlex secret for Observability. ([#137](https://github.com/dell/csm/issues/137))
