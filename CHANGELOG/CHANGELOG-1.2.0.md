@@ -1,9 +1,25 @@
+- [v1.2.1](#v121)
+  - [Changelog since v1.2.0](#changelog-since-v120)
+  - [Changes by Kind](#changes-by-kind)
+    - [Bug Fixes](#bug-fixes)
 - [v1.2.0](#v120)
   - [Changelog since v1.1.0](#changelog-since-v110)
-  - [Changes by Kind](#changes-by-kind)
+  - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bug Fixes](#bug-fixes)
+    - [Bug Fixes](#bug-fixes-1)
+
+# v1.2.1
+
+## Changelog since v1.2.0 
+
+### Changes by Kind 
+
+#### Bug Fixes 
+
+- VGS fails to delete all snaps after a group is deleted. ([#292](https://github.com/dell/csm/issues/292))
+- PowerStore Grafana dashboard does not populate correctly. ([#279](https://github.com/dell/csm/issues/279))
+- Grafana installation script - Prometheus address is incorrect. ([#278](https://github.com/dell/csm/issues/278))
 
 # v1.2.0
 
