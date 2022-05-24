@@ -20,6 +20,7 @@
 - VGS fails to delete all snaps after a group is deleted. ([#292](https://github.com/dell/csm/issues/292))
 - PowerStore Grafana dashboard does not populate correctly. ([#279](https://github.com/dell/csm/issues/279))
 - Grafana installation script - Prometheus address is incorrect. ([#278](https://github.com/dell/csm/issues/278))
+- Observability data values are incorrect. ([#288](https://github.com/dell/csm/issues/288))
 
 # v1.2.0
 
