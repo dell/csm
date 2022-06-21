@@ -58,7 +58,7 @@
 - Copyright (c) 2015, Dave Cheney <dave@cheney.net>. All rights reserved.
 - [BSD 2-Clause "Simplified" License](https://github.com/pkg/errors/blob/master/LICENSE)
 
-### [errors](http://github.com/hashicorp/golang-lru)
+### [golang-lru](http://github.com/hashicorp/golang-lru)
 - [Mozilla Public License 2.0](https://github.com/hashicorp/golang-lru/blob/master/LICENSE)
 
 ### [go-scp](https://github.com/bramvdbogaerde/go-scp)
