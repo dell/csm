@@ -64,6 +64,6 @@
 ### [go-scp](https://github.com/bramvdbogaerde/go-scp)
 - [Mozilla Public License 2.0](https://github.com/bramvdbogaerde/go-scp/blob/master/LICENSE.txt)
 
-### [go-scp](https://github.com/davecgh/go-spew)
+### [go-spew](https://github.com/davecgh/go-spew)
 - Copyright (c) 2012-2016 Dave Collins <dave@davec.name>
 - [ISC License](https://github.com/davecgh/go-spew/blob/master/LICENSE)
