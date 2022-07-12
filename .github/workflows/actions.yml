@@ -84,3 +84,5 @@ jobs:
         with:
           image-name: dell-csm-installer:v0.0.1
           severity-threshold: HIGH
+        env:
+          DOCKLE_HOST: "unix:///var/run/docker.sock"
