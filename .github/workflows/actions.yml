@@ -79,6 +79,8 @@ jobs:
         with:
           image-name: csm-data-collector:v0.0.1
           severity-threshold: HIGH
+        env:
+          DOCKLE_HOST: "unix:///var/run/docker.sock"
       - name: Scan Common Installer Image
         uses: Azure/container-scan@v0
         with:
