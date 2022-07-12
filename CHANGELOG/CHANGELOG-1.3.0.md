@@ -71,3 +71,6 @@
 - Driver installation fails on K8 versions > 1.23.0 using helm. ([#247](https://github.com/dell/csm/issues/247))
 - Ext4 filesystem is consuming extra reserved space from the total available size. ([#245](https://github.com/dell/csm/issues/245))
 - Resiliency: Occasional failure unmounting Unity volume for raw block devices via iSCSI. ([#237](https://github.com/dell/csm/issues/237))
+- CSM Authorization proxy server install fails due to missing container-selinux ([#313](https://github.com/dell/csm/issues/313))
+- Permissions on CSM Authorization karavictl and k3s binaries are incorrect ([#277](https://github.com/dell/csm/issues/277))
+- CSM Authorization OPA policies fail if there are hosts or DNS entries for "localhost" that don't resolve to 127.0.0.1 ([#321](https://github.com/dell/csm/issues/321))
