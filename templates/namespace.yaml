@@ -1,7 +1,0 @@
-#@ load("@ytt:data", "data")
-
-#! Namespace for applications
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: #@ data.values.namespace
