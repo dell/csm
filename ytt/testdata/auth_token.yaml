@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-data:
-  access: YWNjZXNzVG9rZW5TYW1wbGVUZXN0aW5n #  base64 encoding for accessTokenSampleTesting
-  refresh: cmVmcmVzaFRva2VuU2FtcGxlVGVzdGluZw== # base64 encoding for refreshTokenSampleTesting
-metadata:
-  name: proxy-authz-tokens
-  
