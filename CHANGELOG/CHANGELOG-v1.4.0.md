@@ -9,7 +9,6 @@
 - Application Mobility clone application in single command. ([#457](https://github.com/dell/csm/issues/457))
 - CLI for Application Mobility. ([#456](https://github.com/dell/csm/issues/456))
 - Tech preview for Application Mobility. ([#449](https://github.com/dell/csm/issues/449))
-- File Replication Support For Unity. ([#381](https://github.com/dell/csm/issues/381))
 - Support PowerStore iSCSI volumes with VMware TKG. ([#363](https://github.com/dell/csm/issues/363))
 - Documentation improvement allowing ease of access. ([#357](https://github.com/dell/csm/issues/357))
 - CSM 1.4 Release specific changes. ([#350](https://github.com/dell/csm/issues/350))
