@@ -6,8 +6,6 @@
 
 ### Features 
 
-- Application Mobility clone application in single command. ([#457](https://github.com/dell/csm/issues/457))
-- CLI for Application Mobility. ([#456](https://github.com/dell/csm/issues/456))
 - Tech preview for Application Mobility. ([#449](https://github.com/dell/csm/issues/449))
 - Support PowerStore iSCSI volumes with VMware TKG. ([#363](https://github.com/dell/csm/issues/363))
 - Documentation improvement allowing ease of access. ([#357](https://github.com/dell/csm/issues/357))
@@ -16,7 +14,6 @@
 - CSM Observability modules stick with otel controller 0.42.0 or later. ([#454](https://github.com/dell/csm/issues/454))
 - Set PV/PVC's namespace when using Observability Module. ([#453](https://github.com/dell/csm/issues/453))
 - Support PowerScale in CSM Observability. ([#452](https://github.com/dell/csm/issues/452))
-- Include systemd vulnerablity in CSM Resiliency's allowed list. ([#438](https://github.com/dell/csm/issues/438))
 - PowerPath support for CSI PowerMax. ([#436](https://github.com/dell/csm/issues/436))
 - Implementation: enable authorization for csm observability powerscale. ([#413](https://github.com/dell/csm/issues/413))
 - Juniper support for Powermax. ([#389](https://github.com/dell/csm/issues/389))
