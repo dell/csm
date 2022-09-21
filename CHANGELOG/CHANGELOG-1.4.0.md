@@ -6,11 +6,7 @@
 
 ### Features 
 
-- Security improvements for gofsutil. ([#375](https://github.com/dell/csm/issues/375))
-- CSI driver for PowerStore handles small requests for filesystems <3GB. ([#365](https://github.com/dell/csm/issues/365))
-- Support PowerStore iSCSI volumes with VMware TKG. ([#363](https://github.com/dell/csm/issues/363))
 - Documentation enhancements. ([#357](https://github.com/dell/csm/issues/357))
-- Standalone helm chart for csi-powerstore. ([#355](https://github.com/dell/csm/issues/355))
 - CSM 1.4 Release specific changes. ([#350](https://github.com/dell/csm/issues/350))
 - Update Dell CSI Driver storage class sample files to include note regarding defaultFSType value. ([#242](https://github.com/dell/csm/issues/242))
 - Update deprecated StorageClass parameter `fsType` with `csi.storage.k8s.io/fstype`. ([#188](https://github.com/dell/csm/issues/188))
@@ -23,19 +19,23 @@
 - PowerPath support for CSI PowerMax. ([#436](https://github.com/dell/csm/issues/436))
 - Add installationID in csidriver annotation for PowerFlex CSI. ([#434](https://github.com/dell/csm/issues/434))
 - Juniper support for Powermax. ([#389](https://github.com/dell/csm/issues/389))
+- Security improvements for gofsutil. ([#375](https://github.com/dell/csm/issues/375))
 - CSM Authorization insecure related entities are renamed to skipCertificateValidation. ([#368](https://github.com/dell/csm/issues/368))
+- CSI driver for PowerStore handles small requests for filesystems <3GB. ([#365](https://github.com/dell/csm/issues/365))
+- Support PowerStore iSCSI volumes with VMware TKG. ([#363](https://github.com/dell/csm/issues/363))
 - CSI-Powerscale to add client to only root clients when RO volume created from snapshot and RootClientEnabled. ([#362](https://github.com/dell/csm/issues/362))
 - Add support for FsGroupPolicy in Unity XT driver. ([#361](https://github.com/dell/csm/issues/361))
+- Standalone helm chart for csi-powerstore. ([#355](https://github.com/dell/csm/issues/355))
 
 ### Bugs 
 
-- Filesystem is not deleted from PowerStore albeit the reclaimPolicy is set to delete when externalAccess is enabled. ([#418](https://github.com/dell/csm/issues/418))
 - Authorization: Failing to install k3s in the RPM deployment. ([#461](https://github.com/dell/csm/issues/461))
 - Discrepancy  in auto srdf when creating volumes in multiple namespace. ([#440](https://github.com/dell/csm/issues/440))
 - The offline installer didn't pull the driver image due to incorrect tag (2.3.0 <> v2.3.0).. ([#435](https://github.com/dell/csm/issues/435))
 - Observability Topology: nil pointer error. ([#430](https://github.com/dell/csm/issues/430))
 - PowerMax : Failed to find srdf group number for remote volume. ([#420](https://github.com/dell/csm/issues/420))
 - PowerScale volumes unable to be created with Helm deployment of CSM Authorization. ([#419](https://github.com/dell/csm/issues/419))
+- Filesystem is not deleted from PowerStore albeit the reclaimPolicy is set to delete when externalAccess is enabled. ([#418](https://github.com/dell/csm/issues/418))
 - Authorization CLI documentation does not mention --array-insecure flag when creating or updating storage systems. ([#416](https://github.com/dell/csm/issues/416))
 - Authorization: Add documentation for backing up and restoring redis data. ([#410](https://github.com/dell/csm/issues/410))
 - CSM Authorization doesn't recognize storage with capital letters. ([#398](https://github.com/dell/csm/issues/398))
