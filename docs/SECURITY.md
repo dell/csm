@@ -18,7 +18,4 @@ In addition to this, there are various security checks that get executed against
 
 ## Reporting a Vulnerability
 
-Have you discovered a security vulnerability in this project?
-We ask you to alert the maintainers by sending an email, describing the issue, impact, and fix - if applicable.
-
-You can reach the CSM maintainers at karavi@dell.com.
+Please report a vulnerability by opening an Issue in this repository.
