@@ -1,11 +1,17 @@
 <!--
-Copyright (c) 2020 Dell Inc., or its subsidiaries. All Rights Reserved.
+Copyright (c) 2021-2022 Dell Inc., or its subsidiaries. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-
+   
     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 -->
 
 # How to Contribute
@@ -28,15 +34,16 @@ Become one of the contributors to this project! We thrive to build a welcoming a
 
 You can contribute to this project in several ways. Here are some examples:
 
-* Contribute to the CSM documentation and codebase.
+* Contribute to the documentation and codebase.
 * Report and triage bugs.
-* Feature requests
+* Create feature requests
+* Fix bugs and implement features
 * Write technical documentation and blog posts, for users and contributors.
 * Help others by answering questions about this project.
 
 ## Submitting issues
 
-All issues related to CSM, regardless of the service/repository the issue belongs to (see table above), should be submitted [here](https://github.com/dell/csm/issues). Issues will be triaged and labels will be used to indicate the type of issue. This section outlines the types of issues that can be submitted.  
+All issues related to CSM, regardless of the repository the issue belongs to, should be submitted [here](https://github.com/dell/csm/issues). Issues will be triaged and labels will be used to indicate the type of issue. This section outlines the types of issues that can be submitted.  
 
 ### Report bugs
 
@@ -89,7 +96,17 @@ When you're ready to contribute, it's time to create a pull request.
 
 ## Branching
 
-* [Branching Strategy for CSM](BRANCHING.md)
+CSM follows a scaled trunk branching strategy where short-lived branches are created off of the main branch. When coding is complete, the branch is merged back into main after being approved in a pull request code review.
+
+### Steps for branching and contributing
+
+1. Fork the repository.
+2. Create a branch off of the main branch.
+3. Make your changes and commit them to your branch.
+4. If other code changes have merged into the upstream main branch, perform a rebase of those changes into your branch.
+5. Open a [pull request](https://github.com/dell/csm/pulls) between your branch and the upstream main branch.
+6. Once your pull request has merged, your branch can be deleted.
+
 
 ## Signing your commits
 
@@ -178,7 +195,7 @@ All submissions, including submissions by project members, require review. We us
 
 A pull request must satisfy following for it to be merged:
 
-* A pull request will require at least 2 maintainer approvals.
+* A pull request will require at least 2 maintainer approvals, one of which must come from a code owner.
 * Maintainers must perform a review to ensure the changes adhere to guidelines laid out in this document.
 * If any commits are made after the PR has been approved, the PR approval will automatically be removed and the above process must happen again.
 
