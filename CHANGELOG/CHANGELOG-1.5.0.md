@@ -6,7 +6,11 @@
 
 ### Features 
 
-- CSM Operator Supports Install of Authorization Proxy Server. ([#511](https://github.com/dell/csm/issues/511))
+- Automated deployment of SDCs for PowerFlex on RHEL. ([#554](https://github.com/dell/csm/issues/554))
+- Update to the latest UBI/UBI Minimal images for CSM. ([#545](https://github.com/dell/csm/issues/545))
+- SLES SP4 Support for CSI PowerFlex driver in CSM. ([#539](https://github.com/dell/csm/issues/539))
+- CSI-PowerScale: Add an option to the CSI driver force the client list to be updated even if there are unresolvable host. ([#534](https://github.com/dell/csm/issues/534))
+- CSM PowerFlex : QoS parameters for throttling performance and bandwidth of a CSI driver. ([#533](https://github.com/dell/csm/issues/533))
 - CSI-PowerScale: Add support for Standalone Helm charts. ([#506](https://github.com/dell/csm/issues/506))
 - CSI Powermax Reverseproxy Mandate. ([#495](https://github.com/dell/csm/issues/495))
 - Standardize csi drivers helm installation. ([#494](https://github.com/dell/csm/issues/494))
@@ -14,23 +18,29 @@
 - Support storage capacity tracking in CSI PowerStore driver. ([#483](https://github.com/dell/csm/issues/483))
 - Add support for OE 3.2 in CSI PowerStore. ([#482](https://github.com/dell/csm/issues/482))
 - CSM support for Openshift 4.11. ([#480](https://github.com/dell/csm/issues/480))
+- CSM support for Kubernetes 1.25. ([#478](https://github.com/dell/csm/issues/478))
 - Include k3s-selinux package as part of CSM Authorization RPM install. ([#409](https://github.com/dell/csm/issues/409))
+- Scheduled Backups for Application Mobility. ([#551](https://github.com/dell/csm/issues/551))
+- CSM Operator Supports Install of Authorization Proxy Server. ([#511](https://github.com/dell/csm/issues/511))
 - Ignore volumeless pods with Resiliency label. ([#493](https://github.com/dell/csm/issues/493))
 - CSM Operator: Support install of Observability. ([#488](https://github.com/dell/csm/issues/488))
+- CSM support for PowerFlex 4.0. ([#476](https://github.com/dell/csm/issues/476))
 - Qualify SELinux enablement. ([#394](https://github.com/dell/csm/issues/394))
 
 ### Bugs 
 
+- Replication : Could not add volume in protected SG. ([#552](https://github.com/dell/csm/issues/552))
 - Resolve dependabot reported alerts. ([#540](https://github.com/dell/csm/issues/540))
 - ServiceTag is not set in PV volume attributes. ([#538](https://github.com/dell/csm/issues/538))
 - CSI PowerScale documentation misses the privileges to user to use CSM replication. ([#516](https://github.com/dell/csm/issues/516))
 - PVC fails to resize with the message spec.capacity[storage]: Invalid value: "0": must be greater than zero. ([#507](https://github.com/dell/csm/issues/507))
 - Secrets getting regenerated for CSM drivers installed via dell-csi-operator. ([#485](https://github.com/dell/csm/issues/485))
 - Documentation Update for Character Count Limits of 64. ([#451](https://github.com/dell/csm/issues/451))
+- vSphere : delete volume is not successful. ([#544](https://github.com/dell/csm/issues/544))
 - Node publish is failing with incorrect WWN. ([#542](https://github.com/dell/csm/issues/542))
 - PowerMax builds are failing with gomodules error. ([#537](https://github.com/dell/csm/issues/537))
 - PowerScale Replication - RESUME doesn't work. ([#535](https://github.com/dell/csm/issues/535))
-- karavictl role update can't find existing role in helm deployment. ([#530](https://github.com/dell/csm/issues/530))
+- CSM Authorization karavictl role update can't find existing role in helm deployment. ([#530](https://github.com/dell/csm/issues/530))
 - CSI-Powerflex doesn't have correct rbac in the Operator. ([#529](https://github.com/dell/csm/issues/529))
 - Dynamic values for Director ID and Port ID in gopowermax is not available.. ([#525](https://github.com/dell/csm/issues/525))
 - PowerScale Replication - Unplanned failover doesn't work. ([#522](https://github.com/dell/csm/issues/522))
