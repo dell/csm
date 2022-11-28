@@ -1186,3 +1186,9 @@ Version: v1.2.0
 Copyright: N/A  
 License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/replication/v1.2.0/LICENSE)  
 * * *
+
+Package: govmax  
+Version: N/A  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/thecodeteam/govmax/blob/master/LICENSE)  
+* * *
