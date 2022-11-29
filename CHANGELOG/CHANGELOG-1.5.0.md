@@ -67,5 +67,4 @@
 - CSI-Powerstore: Update the upgrade procedure. ([#484](https://github.com/dell/csm/issues/484))
 - step_error: command not found in karavi-observability-install.sh. ([#479](https://github.com/dell/csm/issues/479))
 - "repctl cluster inject --use-sa" doesn't work for Kubernetes 1.24 and above. ([#463](https://github.com/dell/csm/issues/463))
-- Update CSM Observability release note with github issue link and support matrix. ([#455](https://github.com/dell/csm/issues/455))
 - Documentation Update for Character Count Limits of 64. ([#451](https://github.com/dell/csm/issues/451))
