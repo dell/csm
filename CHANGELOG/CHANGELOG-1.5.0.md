@@ -33,7 +33,6 @@
 
 ### Bugs 
 
-- Broken link in CSM docs. ([#431](https://github.com/dell/csm/issues/431))
 - impossible to install karavi-authorization rpm cause of invalid cross-device link. ([#164](https://github.com/dell/csm/issues/164))
 - Unmount is failing during node unpublish/unstage calls and volumes are not removed. ([#562](https://github.com/dell/csm/issues/562))
 - Deleting metro volume is failing. ([#561](https://github.com/dell/csm/issues/561))
@@ -69,3 +68,4 @@
 - step_error: command not found in karavi-observability-install.sh. ([#479](https://github.com/dell/csm/issues/479))
 - "repctl cluster inject --use-sa" doesn't work for Kubernetes 1.24 and above. ([#463](https://github.com/dell/csm/issues/463))
 - Documentation Update for Character Count Limits of 64. ([#451](https://github.com/dell/csm/issues/451))
+- Broken link in CSM docs. ([#431](https://github.com/dell/csm/issues/431))
