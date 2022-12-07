@@ -15,6 +15,7 @@
 - CSI-PowerScale: Add an option to the CSI driver force the client list to be updated even if there are unresolvable host. ([#534](https://github.com/dell/csm/issues/534))
 - CSM PowerFlex : QoS parameters for throttling performance and bandwidth of a CSI driver. ([#533](https://github.com/dell/csm/issues/533))
 - FC connectivity with virtualized environment. ([#528](https://github.com/dell/csm/issues/528))
+- gopowerstore support for Terraform PowerStore provider. ([#520](https://github.com/dell/csm/issues/520))
 - CSM Operator Supports Install of Authorization Proxy Server. ([#511](https://github.com/dell/csm/issues/511))
 - PowerFlex Read Only Block support. ([#509](https://github.com/dell/csm/issues/509))
 - CSI-PowerScale: Add support for Standalone Helm charts. ([#506](https://github.com/dell/csm/issues/506))
@@ -33,7 +34,7 @@
 
 ### Bugs 
 
-- impossible to install karavi-authorization rpm cause of invalid cross-device link. ([#164](https://github.com/dell/csm/issues/164))
+- Remove csireverseproxy check in template. ([#570](https://github.com/dell/csm/issues/570))
 - Unmount is failing during node unpublish/unstage calls and volumes are not removed. ([#562](https://github.com/dell/csm/issues/562))
 - Deleting metro volume is failing. ([#561](https://github.com/dell/csm/issues/561))
 - Verify script is missing latest Openshift version. ([#560](https://github.com/dell/csm/issues/560))
@@ -69,3 +70,4 @@
 - "repctl cluster inject --use-sa" doesn't work for Kubernetes 1.24 and above. ([#463](https://github.com/dell/csm/issues/463))
 - Documentation Update for Character Count Limits of 64. ([#451](https://github.com/dell/csm/issues/451))
 - Broken link in CSM docs. ([#431](https://github.com/dell/csm/issues/431))
+- impossible to install karavi-authorization rpm cause of invalid cross-device link. ([#164](https://github.com/dell/csm/issues/164))
