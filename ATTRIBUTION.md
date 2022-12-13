@@ -1139,8 +1139,8 @@ Copyright: Copyright (c) 2013 Fatih Arslan
 License: [MIT license](https://github.com/fatih/color/blob/v1.13.0/LICENSE.md)  
 * * *
 
-Package: govmax
-Version: master
-Copyright: N/A
-License: [Apache-2.0](https://github.com/thecodeteam/govmax/blob/master/LICENSE)
+Package: govmax  
+Version: master  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/thecodeteam/govmax/blob/master/LICENSE)  
 * * *
