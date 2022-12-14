@@ -1,13 +1,12 @@
 # v1.5.0 
 
-## Changelog since v1.4.0 
+## Changelog since v1.5.0 
 
 ## Changes by Kind 
 
 ### Features 
 
 - CSM 1.5 release specific changes. ([#491](https://github.com/dell/csm/issues/491))
-- gopowermax support for Terraform PowerMax provider. ([#441](https://github.com/dell/csm/issues/441))
 - Automated deployment of SDCs for PowerFlex on RHEL. ([#554](https://github.com/dell/csm/issues/554))
 - Scheduled Backups for Application Mobility. ([#551](https://github.com/dell/csm/issues/551))
 - Update to the latest UBI/UBI Minimal images for CSM. ([#545](https://github.com/dell/csm/issues/545))
