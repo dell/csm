@@ -1,6 +1,6 @@
 # v1.6.0 
 
-## Changelog since v1.5.0 
+## Changelog since v1.5.1 
 
 ## Changes by Kind 
 
@@ -10,6 +10,7 @@
 - RKE 1.4.1 support. ([#670](https://github.com/dell/csm/issues/670))
 - Update Go version to 1.20 for CSM 1.6. ([#658](https://github.com/dell/csm/issues/658))
 - Volume cloning of Protected PVCs. ([#646](https://github.com/dell/csm/issues/646))
+- Restrict the version of TLS to v1.2 for all requests to CSM authorization proxy server. ([#642](https://github.com/dell/csm/issues/642))
 - Cert-csi - Test suite for validating Dell CSI Drivers. ([#628](https://github.com/dell/csm/issues/628))
 - CSI PowerFlex - Replication Support. ([#618](https://github.com/dell/csm/issues/618))
 - CSM Operator: Add install support for CSI PowerStore driver. ([#613](https://github.com/dell/csm/issues/613))
@@ -32,14 +33,18 @@
 
 ### Bugs 
 
-- PowerScale Replication: Failback action failing on different environment. ([#677](https://github.com/dell/csm/issues/677))
+- dellctl crashes on a "backup get" when a trailing "/" is added to the namespace. ([#691](https://github.com/dell/csm/issues/691))
+- CSI PowerStore: can't find IP in X_CSI_POWERSTORE_EXTERNAL_ACCESS for NFS provisioning. ([#689](https://github.com/dell/csm/issues/689))
+- CSI Powermax fails to create RDF group with free RDF number. ([#688](https://github.com/dell/csm/issues/688))
 - Replication : Creating extra snapshot for idempotent clone operation. ([#657](https://github.com/dell/csm/issues/657))
-- CSM Authorization quota of zero should allow infinite use for PowerFlex and PowerMax. ([#654](https://github.com/dell/csm/issues/654))
 - Update the optional parameters within angular brackets in upgrade operator page. ([#648](https://github.com/dell/csm/issues/648))
 - gobrick code owner file is containing errors. ([#568](https://github.com/dell/csm/issues/568))
 - PVC fails to resize with the message spec.capacity[storage]: Invalid value: "0": must be greater than zero. ([#507](https://github.com/dell/csm/issues/507))
+- vCenter usersname to be updated in secrets.yaml. ([#686](https://github.com/dell/csm/issues/686))
+- PowerScale Replication: Failback action failing on different environment. ([#677](https://github.com/dell/csm/issues/677))
 - Powerstore Multiple iSCSI network support for CSI driver. ([#668](https://github.com/dell/csm/issues/668))
 - Deletion of target volume is failing with multiple snapshots. ([#667](https://github.com/dell/csm/issues/667))
+- CSM Authorization quota of zero should allow infinite use for PowerFlex and PowerMax. ([#654](https://github.com/dell/csm/issues/654))
 - PowerMax Sample file is wrongly displaying SRDF group auto creation as false. ([#641](https://github.com/dell/csm/issues/641))
 - Observability - Improve Grafana dashboards for PowerFlex/PowerStore. ([#640](https://github.com/dell/csm/issues/640))
 - CSM Authorization CRD in the CSM Operator doesn't read custom configurations. ([#633](https://github.com/dell/csm/issues/633))
