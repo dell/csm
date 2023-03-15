@@ -60,3 +60,8 @@
 - vSphere : Can not create VM host object. ([#592](https://github.com/dell/csm/issues/592))
 - PowerScale Replication: Artifacts are not properly cleaned after deletion. ([#523](https://github.com/dell/csm/issues/523))
 - PVC fails to resize with the message spec.capacity[storage]: Invalid value: "0": must be greater than zero. ([#507](https://github.com/dell/csm/issues/507))
+
+#### Known Issues
+
+- PowerFlex driver deployment via CSM Operator should work without having the user to create ConfigMap([#713](https://github.com/dell/csm/issues/713))
+- Powerflex driver specific parameters mentioned in the samples are not configurable when deployed via CSM Operator ([#714](https://github.com/dell/csm/issues/714))
