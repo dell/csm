@@ -6,8 +6,10 @@
 
 ### Features 
 
+- To enable backward compatibility for MKE-3.5.x and K8s 1.21. ([#699](https://github.com/dell/csm/issues/699))
 - SLES SP4 Support for CSI Unity XT driver. ([#695](https://github.com/dell/csm/issues/695))
 - MKE 3.6.0 support. ([#672](https://github.com/dell/csm/issues/672))
+- Ubuntu 22.04 qualification for CSI Powerscale. ([#671](https://github.com/dell/csm/issues/671))
 - RKE 1.4.1 support. ([#670](https://github.com/dell/csm/issues/670))
 - CSM Operator: Add install support for CSI PowerStore driver. ([#613](https://github.com/dell/csm/issues/613))
 - CSM support for Kubernetes 1.26. ([#597](https://github.com/dell/csm/issues/597))
@@ -17,6 +19,8 @@
 - User friendly name to the PowerFlex. ([#181](https://github.com/dell/csm/issues/181))
 - Cleanup powerpath dead paths. ([#669](https://github.com/dell/csm/issues/669))
 - Update Go version to 1.20 for CSM 1.6. ([#658](https://github.com/dell/csm/issues/658))
+- "access denied by server" while mounting due to NFS refresh on PowerScale. ([#655](https://github.com/dell/csm/issues/655))
+- Support restoring of snapshots of metro volumes. ([#652](https://github.com/dell/csm/issues/652))
 - Volume cloning of Protected PVCs. ([#646](https://github.com/dell/csm/issues/646))
 - Restrict the version of TLS to v1.2 for all requests to CSM authorization proxy server. ([#642](https://github.com/dell/csm/issues/642))
 - Cert-csi - Test suite for validating Dell CSI Drivers. ([#628](https://github.com/dell/csm/issues/628))
@@ -35,6 +39,8 @@
 ### Bugs 
 
 - gobrick code owner file is containing errors. ([#568](https://github.com/dell/csm/issues/568))
+- Multiple bad links in documentation FAQ page and incorrect statements. ([#715](https://github.com/dell/csm/issues/715))
+- PowerFlex driver deployment via CSM Operator should work without having the user to create ConfigMap. ([#713](https://github.com/dell/csm/issues/713))
 - Migration failed when there are empty MV SG's on source array. ([#705](https://github.com/dell/csm/issues/705))
 - Gopowermax unit test Pipeline fails to run tests. ([#701](https://github.com/dell/csm/issues/701))
 - Broken link in Container Storage Modules / Deployment / CSM Operator / CSM Modules / Replication. ([#693](https://github.com/dell/csm/issues/693))
