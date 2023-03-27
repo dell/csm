@@ -1298,9 +1298,3 @@ Version: v1.22.2
 Copyright: Copyright (c) 2016 Jeremy Saenz &amp; Contributors  
 License: [MIT license](https://github.com/urfave/cli/blob/v1.22.2/LICENSE)  
 * * *
-  
-Package: sigs.k8s.io/controller-runtime  
-Version: v0.11.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.11.0/LICENSE)  
-* * *
