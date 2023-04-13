@@ -1,6 +1,35 @@
+- [v1.6.1](#v161)
+  - [Changelog since v1.6.0](#changelog-since-v160)
+  - [Changes by Kind](#changes-by-kind)
+    - [Bugs](#bugs)
+- [v1.6.0](#v160)
+  - [Changelog since v1.5.1](#changelog-since-v151)
+  - [Known Issues](#known-issues)
+    - [PowerScale Replication: Incorrect quota set on the target PV/directory](#powerscale-replication-incorrect-quota-set-on-the-target-pvdirectory)
+  - [Changes by Kind](#changes-by-kind-1)
+    - [Deprecation](#deprecation)
+    - [Features](#features)
+    - [Bugs](#bugs-1)
+
+# v1.6.1 
+
+## Changelog since v1.6.0 
+
+## Changes by Kind 
+
+### Bugs 
+
+- PowerScale Replication: Incorrect quota set on the target PV/directory. ([#753](https://github.com/dell/csm/issues/753))
+
 # v1.6.0 
 
 ## Changelog since v1.5.1 
+
+## Known Issues
+
+### PowerScale Replication: Incorrect quota set on the target PV/directory
+
+QuotaScan is not happening correctly causing the SYNCIQ job to fail which is required to create the target PV successfully. In addition, the quota limit size is not being correctly set on the target directories during replication. If a failover is performed in this state, application workloads will encounter an error writing data to the new source volumes (former targets).
 
 ## Changes by Kind 
 
