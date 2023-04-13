@@ -1,13 +1,21 @@
 - [v1.3.0](#v130)
   - [Changelog since v1.2.1](#changelog-since-v121)
+  - [Known Issues](#known-issues)
+    - [PowerScale Replication: Incorrect quota set on the target PV/directory when Quota enabled](#powerscale-replication-incorrect-quota-set-on-the-target-pvdirectory-when-quota-is-enabled)
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bug Fixes](#bug-fixes)
+    - [Bugs](#bugs)
 
 # v1.3.0
 
 ## Changelog since v1.2.1 
+
+## Known Issues
+
+### PowerScale Replication: Incorrect quota set on the target PV/directory when Quota is enabled
+
+QuotaScan is not happening correctly causing the SYNCIQ job to fail which is required to create the target PV successfully. In addition, the quota limit size is not being correctly set on the target directories during replication. If a failover is performed in this state, application workloads will encounter an error writing data to the new source volumes (former targets).
 
 ### Changes by Kind 
 
@@ -41,7 +49,7 @@
 - Add support for latest PowerStore array. ([#176](https://github.com/dell/csm/issues/176))
 - Monitor CSI Driver node pods failure in CSM for Resiliency so that pods are not scheduled on that node. ([#145](https://github.com/dell/csm/issues/145))
 
-#### Bug Fixes 
+#### Bugs 
 
 - Default nodeSelector/tolerations are not working on k8 1.24 master nodes. ([#319](https://github.com/dell/csm/issues/319))
 - Authorization doesn't provide a CLI to list RoleBindings. ([#314](https://github.com/dell/csm/issues/314))
