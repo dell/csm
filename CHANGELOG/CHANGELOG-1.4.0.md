@@ -1,6 +1,20 @@
+- [v1.4.0](#v140)
+  - [Changelog since v1.3.1](#changelog-since-v130)
+  - [Known Issues](#known-issues)
+    - [PowerScale Replication: Incorrect quota set on the target PV/directory when Quota enabled](#powerscale-replication-incorrect-quota-set-on-the-target-pvdirectory-when-quota-is-enabled)
+  - [Changes by Kind](#changes-by-kind)
+    - [Features](#features)
+    - [Bugs](#bugs)
+
 # v1.4.0 
 
 ## Changelog since v1.3.0 
+
+## Known Issues
+
+### PowerScale Replication: Incorrect quota set on the target PV/directory when Quota is enabled
+
+QuotaScan is not happening correctly causing the SYNCIQ job to fail which is required to create the target PV successfully. In addition, the quota limit size is not being correctly set on the target directories during replication. If a failover is performed in this state, application workloads will encounter an error writing data to the new source volumes (former targets).
 
 ## Changes by Kind 
 
