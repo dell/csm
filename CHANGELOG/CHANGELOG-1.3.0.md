@@ -1,11 +1,46 @@
-- [v1.3.0](#v130)
-  - [Changelog since v1.2.1](#changelog-since-v121)
+- [v1.3.1](#v131)
+  - [Changelog since v1.3.0](#changelog-since-v130)
   - [Known Issues](#known-issues)
     - [PowerScale Replication: Incorrect quota set on the target PV/directory when Quota enabled](#powerscale-replication-incorrect-quota-set-on-the-target-pvdirectory-when-quota-is-enabled)
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
     - [Features](#features)
     - [Bugs](#bugs)
+
+- [v1.3.0](#v130)
+  - [Changelog since v1.2.1](#changelog-since-v121)
+  - [Known Issues](#known-issues-1)
+    - [PowerScale Replication: Incorrect quota set on the target PV/directory when Quota enabled](#powerscale-replication-incorrect-quota-set-on-the-target-pvdirectory-when-quota-is-enabled-1)
+  - [Changes by Kind](#changes-by-kind-1)
+    - [Deprecation](#deprecation-1)
+    - [Features](#features-1)
+    - [Bugs](#bugs-1)
+
+# v1.3.1
+
+## Changelog since v1.3.0 
+
+## Known Issues
+
+### PowerScale Replication: Incorrect quota set on the target PV/directory when Quota is enabled
+
+QuotaScan is not happening correctly causing the SYNCIQ job to fail which is required to create the target PV successfully. In addition, the quota limit size is not being correctly set on the target directories during replication. If a failover is performed in this state, application workloads will encounter an error writing data to the new source volumes (former targets).
+
+### Changes by Kind 
+
+#### Deprecation
+
+- A deprecation note has been added to the [documentation](https://dell.github.io/csm-docs/docs/deployment/csminstaller/) for the CSM Installer, which will be removed in CSM v1.4.0.
+
+#### Features 
+
+- Concurrency enhancements for replicated volumes. ([#550](https://github.com/dell/csm/issues/550))
+- Support Volume Expansion of protected PVC with v2.3 driver. ([#553](https://github.com/dell/csm/issues/553))
+- Release activities for CSM 1.3.1. ([#590](https://github.com/dell/csm/issues/590))
+
+#### Bugs 
+
+- Volume Attach failed on Node, WWN mismatch. ([#548](https://github.com/dell/csm/issues/548))
 
 # v1.3.0
 
