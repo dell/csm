@@ -6,6 +6,9 @@
 
 ### Features 
 
+- CSI PowerMax: Support PowerMax v10.0.1. ([#760](https://github.com/dell/csm/issues/760))
+- Remove linked proxy for PowerMax. ([#757](https://github.com/dell/csm/issues/757))
+- CSM Operator: Add install support for CSI Unity XT driver. ([#756](https://github.com/dell/csm/issues/756))
 - PowerFlex Replication: Volumes Not Deleted on Target Array. ([#754](https://github.com/dell/csm/issues/754))
 - CSM Authorization karavictl requires an admin token. ([#725](https://github.com/dell/csm/issues/725))
 - PowerStore Replication: Volumes Not Deleted on Target Array. ([#665](https://github.com/dell/csm/issues/665))
