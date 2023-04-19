@@ -5,7 +5,7 @@
 - [v1.6.0](#v160)
   - [Changelog since v1.5.1](#changelog-since-v151)
   - [Known Issues](#known-issues)
-    - [PowerScale Replication: Incorrect quota set on the target PV/directory when Quota enabled](#powerscale-replication-incorrect-quota-set-on-the-target-pvdirectory-when-quota-is-enabled)
+    - [PowerScale Replication: Incorrect quota set on the target PV/directory when Quota is enabled](#powerscale-replication-incorrect-quota-set-on-the-target-pvdirectory-when-quota-is-enabled)
   - [Changes by Kind](#changes-by-kind-1)
     - [Features](#features)
     - [Bugs](#bugs-1)
