@@ -1,6 +1,6 @@
 # v1.7.0 
 
-## Changelog since v1.6.0 
+## Changelog since v1.6.1 
 
 ## Changes by Kind 
 
@@ -17,6 +17,9 @@
 
 - vsphere : Volume provision is failing using hostgroup having multiple host id's. ([#746](https://github.com/dell/csm/issues/746))
 - Getting permission denied error when accessing ROX PVC on PoweFlex in OpenShift. ([#745](https://github.com/dell/csm/issues/745))
+- CSM Operator module unit tests should meet quality criteria. ([#776](https://github.com/dell/csm/issues/776))
+- Authorization RPM installation should use nogpgcheck for k3s-selinux package. ([#772](https://github.com/dell/csm/issues/772))
+- karavictl generate token should output valid yaml. ([#767](https://github.com/dell/csm/issues/767))
 - Troubleshooting document is missing iscsi related information for PowerMax. ([#750](https://github.com/dell/csm/issues/750))
 - CSI-PowerStore: Unable to run e2e test. ([#741](https://github.com/dell/csm/issues/741))
 - CSM for Resiliency openshift test required to pass ssh options in scp command. ([#737](https://github.com/dell/csm/issues/737))
