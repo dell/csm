@@ -19,3 +19,5 @@ limitations under the License.
 For all your support needs or to follow the latest ongoing discussions and updates, join our Slack group. Click [Here](http://del.ly/Slack_request) to request your invite.
 
 You can also interact with us on [GitHub](https://github.com/dell/csm) by creating a [GitHub Issue](https://github.com/dell/csm/issues).
+
+Please click [here](https://www.dell.com/support/kbdoc/en-us/000188046) for additional support options.
