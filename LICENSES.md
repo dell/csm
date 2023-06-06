@@ -500,11 +500,24 @@ License: [Apache-2.0](https://github.com/uber/jaeger-client-go/blob/v2.30.0/LICE
 * * *
   
 Package: sigs.k8s.io/yaml  
-Version: v0.4.stable.1  
-Copyright: N/A  
-License: []()  
+Version: v1.3.0  
+Copyright: Copyright (c) 2014 Sam Ghods
+Copyright (c) 2012 The Go Authors. All rights reserved.  
+License: [MIT license,BSD-3-Clause](https://github.com/kubernetes-sigs/yaml/blob/v1.3.0/LICENSE)  
 * * *
   
+Package: k8s.io/kubectl  
+Version: v1.25.6  
+Copyright: N/A
+License: [Apache-2.0](https://github.com/kubernetes/kubernetes/blob/v1.25.6/LICENSE)  
+* * *
+
+Package: github.com/k3s-io/k3s-selinux  
+Version: v0.4.stable.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/k3s-io/k3s-selinux/blob/v0.4.stable.1/LICENSE)  
+* * *
+
 Package: github.com/dell/gocsi  
 Version: v1.7.0  
 Copyright: N/A  
