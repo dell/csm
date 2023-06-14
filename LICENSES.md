@@ -561,10 +561,10 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/go-logr/logr/blob/v1.2.0/LICENSE)  
 * * *
   
-Package: sigs.k8s.io/yaml  
+Package: github.com/k3s-io/k3s-selinux  
 Version: v0.4.stable.1  
 Copyright: N/A  
-License: []()  
+License: [Apache-2.0](https://github.com/k3s-io/k3s-selinux/blob/v0.4.stable.1/LICENSE)  
 * * *
   
 Package: golang.org/x/sync  
@@ -726,9 +726,9 @@ License: [Apache-2.0](https://github.com/golang/mock/blob/v1.6.0/LICENSE)
 * * *
   
 Package: sigs.k8s.io/kustomize/kustomize/v3  
-Version: v1.25.6  
+Version: v3.10.0  
 Copyright: N/A  
-License: []()  
+License: [Apache-2.0](https://github.com/kubernetes-sigs/kustomize/blob/kustomize/v3.10.0/LICENSE)  
 * * *
   
 Package: k8s.io/apimachinery  
@@ -1363,4 +1363,10 @@ Package: golang.org/x/mod
 Version: v0.8.0  
 Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
 License: [BSD-3-Clause](https://github.com/golang/mod/blob/v0.8.0/LICENSE)  
+* * *
+
+Package: github.com/kubernetes/kubernetes  
+Version: v1.25.6  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/kubernetes/blob/v1.25.6/LICENSE)  
 * * *
