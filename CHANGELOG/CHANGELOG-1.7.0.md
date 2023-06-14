@@ -1,9 +1,3 @@
-- [v1.7.0](#v170)
-  - [Changelog since v1.6.1](#changelog-since-v161)
-  - [Changes by Kind](#changes-by-kind)
-    - [Features](#features)
-    - [Bugs](#bugs)
-
 # v1.7.0 
 
 ## Changelog since v1.6.1 
@@ -13,7 +7,6 @@
 ### Features 
 
 - Replication Support for PowerFlex driver in CSM Operator. ([#821](https://github.com/dell/csm/issues/821))
-- Documentation Enhancement for Replication. ([#818](https://github.com/dell/csm/issues/818))
 - Add upgrade support of csi-powerstore driver in CSM-Operator. ([#805](https://github.com/dell/csm/issues/805))
 - Unity CSI quals and cert for K3s on Debian OS. ([#798](https://github.com/dell/csm/issues/798))
 - Validation of authSecret field for Powerstore driver in csm-operator. ([#784](https://github.com/dell/csm/issues/784))
@@ -26,9 +19,13 @@
 - CSM 1.7 release specific changes. ([#743](https://github.com/dell/csm/issues/743))
 - Allow user to set Quota limit parameters from the PVC request in CSI PowerScale. ([#742](https://github.com/dell/csm/issues/742))
 - CSM Installation Wizard support for CSI PowerScale and PowerFlex and Unity drivers and modules through Helm. ([#698](https://github.com/dell/csm/issues/698))
+- Add Function to Delete SDC and Change Performance Profile. ([#850](https://github.com/dell/csm/issues/850))
 - Update to the latest UBI/UBI Micro images for CSM. ([#843](https://github.com/dell/csm/issues/843))
 - PowerMax Support AWS EKS. ([#825](https://github.com/dell/csm/issues/825))
 - Powermax : Automate creation of reverse proxy certs. ([#819](https://github.com/dell/csm/issues/819))
+- Documentation Enhancement for Replication. ([#818](https://github.com/dell/csm/issues/818))
+- repctl destroy rcg. ([#817](https://github.com/dell/csm/issues/817))
+- Add Support For PowerFlex Gateway Installer Functions. ([#814](https://github.com/dell/csm/issues/814))
 - CSI Powermax - Volumes Not Deleted on Target Array. ([#801](https://github.com/dell/csm/issues/801))
 - CSI-PowerMax - Support to mount Block Read-Only PVC. ([#792](https://github.com/dell/csm/issues/792))
 - CSM Authorization encryption for secrets in K3S. ([#774](https://github.com/dell/csm/issues/774))
@@ -47,7 +44,6 @@
 - PowerFlex parses comments when constructing MDM key. ([#835](https://github.com/dell/csm/issues/835))
 - Dellctl should populate all the sidecars and images for the latest release. ([#834](https://github.com/dell/csm/issues/834))
 - Standalone binary of cert-csi reports a dependency error. ([#827](https://github.com/dell/csm/issues/827))
-- Vsphere creds for vsphere secrets is expected when vsphere enable is set to false. ([#799](https://github.com/dell/csm/issues/799))
 - Getting permission denied error when accessing ROX PVC on PoweFlex in OpenShift. ([#745](https://github.com/dell/csm/issues/745))
 - CSM-operator: vSphere host id is missing in node manifest. ([#846](https://github.com/dell/csm/issues/846))
 - CSI-PowerMax Unit test are failing.. ([#844](https://github.com/dell/csm/issues/844))
@@ -58,14 +54,17 @@
 - Authorization should have sample CRD for every supported version in csm-operator. ([#826](https://github.com/dell/csm/issues/826))
 - Storage Capacity Tracking not working in CSI-PowerStore when installed using CSM Operator. ([#823](https://github.com/dell/csm/issues/823))
 - CSM Operator object goes into failed state when deployments are getting scaled down/up. ([#816](https://github.com/dell/csm/issues/816))
+- PowerStore CSM Replication Module installation error. ([#815](https://github.com/dell/csm/issues/815))
 - CHAP is set to true in the CSI-PowerStore sample file in CSI Operator. ([#812](https://github.com/dell/csm/issues/812))
 - CSM Doc improvements for CSI PowerFlex deployment. ([#810](https://github.com/dell/csm/issues/810))
 - Remove busybox from Authorization RPM. ([#809](https://github.com/dell/csm/issues/809))
 - CSI PowerMax attribute name is mismatched. ([#808](https://github.com/dell/csm/issues/808))
 - csm-doc: Update trouble shooting about VM option to resolve mount issue. ([#802](https://github.com/dell/csm/issues/802))
 - Improve CSM Operator Authorization documentation. ([#800](https://github.com/dell/csm/issues/800))
+- Vsphere creds for vsphere secrets is expected when vsphere enable is set to false. ([#799](https://github.com/dell/csm/issues/799))
 - Volume creation is failing with host limits code. ([#797](https://github.com/dell/csm/issues/797))
 - csi-install.sh script for csi-powerstore fails with replication CRD even though replication is disabled. ([#795](https://github.com/dell/csm/issues/795))
+- Operator install doc inconsistent in test-isilon vs isilon namespace. ([#793](https://github.com/dell/csm/issues/793))
 - CSI Driver name. ([#789](https://github.com/dell/csm/issues/789))
 - Replication install using Operator does not work. ([#788](https://github.com/dell/csm/issues/788))
 - CSM Authorization doesn't write the status code on error for csi-powerscale. ([#787](https://github.com/dell/csm/issues/787))
