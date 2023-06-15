@@ -1,9 +1,3 @@
-- [v1.7.0](#v170)
-  - [Changelog since v1.6.1](#changelog-since-v161)
-  - [Changes by Kind](#changes-by-kind)
-    - [Features](#features)
-    - [Bugs](#bugs)
-
 # v1.7.0 
 
 ## Changelog since v1.6.1 
@@ -51,6 +45,7 @@
 - Dellctl should populate all the sidecars and images for the latest release. ([#834](https://github.com/dell/csm/issues/834))
 - Standalone binary of cert-csi reports a dependency error. ([#827](https://github.com/dell/csm/issues/827))
 - Getting permission denied error when accessing ROX PVC on PoweFlex in OpenShift. ([#745](https://github.com/dell/csm/issues/745))
+- Known Issues in GitHub releases should be in Troubleshooting section of docs. ([#855](https://github.com/dell/csm/issues/855))
 - CSM-operator: vSphere host id is missing in node manifest. ([#846](https://github.com/dell/csm/issues/846))
 - CSI-PowerMax Unit test are failing.. ([#844](https://github.com/dell/csm/issues/844))
 - Volume migration from Replication to non-replication is failing. ([#841](https://github.com/dell/csm/issues/841))
