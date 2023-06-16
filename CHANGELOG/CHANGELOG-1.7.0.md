@@ -6,7 +6,13 @@
 
 # v1.7.0 
 
-## Changelog since v1.6.1 
+## Changelog since v1.6.1
+
+## Known Issues
+
+### CSI Unity XT driver does not verify iSCSI initiators on the array correctly when iSCSI initiator names are not in lowercase 
+
+After any node reboot, the CSI Unity XT driver pod on that rebooted node goes into a failed state as driver fails to find the iSCSI initiator on the array. The work around is to rename host iSCSI initiators to lowercase and reboot the respective worker node. The CSI Unity XT driver pod will spin off successfully. Example: Rename "iqn.2000-11.com.DEMOWORKERNODE01:1a234b56cd78" to "iqn.2000-11.com.demoworkernode01:1a234b56cd78" in lowercase. 
 
 ## Changes by Kind 
 
