@@ -14,6 +14,10 @@
 
 After any node reboot, the CSI Unity XT driver pod on that rebooted node goes into a failed state as driver fails to find the iSCSI initiator on the array. The work around is to rename host iSCSI initiators to lowercase and reboot the respective worker node. The CSI Unity XT driver pod will spin off successfully. Example: Rename "iqn.2000-11.com.DEMOWORKERNODE01:1a234b56cd78" to "iqn.2000-11.com.demoworkernode01:1a234b56cd78" in lowercase. 
 
+### CSI Powerstore driver node pods enter CrashLoopBackOff state and provisioning fails. 
+
+When driver node pods enter CrashLoopBackOff and PVC remains in pending state with one of the following events:<br /> 1. failed to provision volume with StorageClass `<storage-class-name>`: error generating accessibility requirements: no available topology found <br /> 2. waiting for a volume to be created, either by external provisioner "csi-powerstore.dellemc.com" or manually created by system administrator. <br />The workaround is check whether all array details present in the secret file are valid and  remove any invalid entries if present. Redeploy the driver. 
+
 ## Changes by Kind 
 
 ### Features 
