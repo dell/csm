@@ -20,7 +20,11 @@ After any node reboot, the CSI Unity XT driver pod on that rebooted node goes in
 
 ### CSI Powerstore driver node pods enter CrashLoopBackOff state and provisioning fails
 
-When driver node pods enter CrashLoopBackOff and PVC remains in pending state with one of the following events:<br /> 1. failed to provision volume with StorageClass `<storage-class-name>`: error generating accessibility requirements: no available topology found <br /> 2. waiting for a volume to be created, either by external provisioner "csi-powerstore.dellemc.com" or manually created by system administrator. <br />The workaround is check whether all array details present in the secret file are valid and  remove any invalid entries if present. Redeploy the driver. 
+When driver node pods enter CrashLoopBackOff and PVC remains in pending state with one of the following events:
+  1. failed to provision volume with StorageClass `<storage-class-name>`: error generating accessibility requirements: no available topology found
+  2. waiting for a volume to be created, either by external provisioner "csi-powerstore.dellemc.com" or manually created by system administrator. 
+
+The workaround is to check whether all array details present in the secret file are valid and remove any invalid entries if present. Redeploy the driver.
 
 ## Changes by Kind 
 
