@@ -1,41 +1,11 @@
-- [v1.7.0](#v170)
-  - [Changelog since v1.6.1](#changelog-since-v161)
-  - [Known Issues](#known-issues)
-    - [CSI Unity XT driver does not verify iSCSI initiators on the array correctly when iSCSI initiator names are not in lowercase](#csi-unity-xt-driver-does-not-verify-iscsi-initiators-on-the-array-correctly-when-iscsi-initiator-names-are-not-in-lowercase) 
-    - [CSI Powerstore driver node pods enter CrashLoopBackOff state and provisioning fails](#csi-powerstore-driver-node-pods-enter-crashloopbackoff-state-and-provisioning-fails)
-  - [Changes by Kind](#changes-by-kind)
-    - [Deprecation](#deprecation) 
-    - [Features](#features)
-    - [Bugs](#bugs)
-
 # v1.7.0 
 
-## Changelog since v1.6.1 
-
-## Known Issues
-
-### CSI Unity XT driver does not verify iSCSI initiators on the array correctly when iSCSI initiator names are not in lowercase 
-
-After any node reboot, the CSI Unity XT driver pod on that rebooted node goes into a failed state as driver fails to find the iSCSI initiator on the array. The work around is to rename host iSCSI initiators to lowercase and reboot the respective worker node. The CSI Unity XT driver pod will spin off successfully. Example: Rename "iqn.2000-11.com.DEMOWORKERNODE01:1a234b56cd78" to "iqn.2000-11.com.demoworkernode01:1a234b56cd78" in lowercase. 
-
-### CSI Powerstore driver node pods enter CrashLoopBackOff state and provisioning fails
-
-When driver node pods enter CrashLoopBackOff and PVC remains in pending state with one of the following events:
-  1. failed to provision volume with StorageClass `<storage-class-name>`: error generating accessibility requirements: no available topology found
-  2. waiting for a volume to be created, either by external provisioner "csi-powerstore.dellemc.com" or manually created by system administrator. 
-
-The workaround is to check whether all array details present in the secret file are valid and remove any invalid entries if present. Redeploy the driver.
+## Changelog since v1.7.0 
 
 ## Changes by Kind 
 
-#### Deprecation
-
-- CSM for PowerMax linked Proxy mode for [CSI reverse proxy is no longer actively maintained or supported](https://dell.github.io/csm-docs/csm-docs/docs/csidriver/release/powermax/). It will be deprecated in CSM 1.9. It is highly recommended that you use stand alone mode going forward.
-
 ### Features 
 
-- CSI Unity XT: Support Unisphere 5.3.0 array. ([#842](https://github.com/dell/csm/issues/842))
-- Storage Capacity Tracking for Powerscale. ([#824](https://github.com/dell/csm/issues/824))
 - Replication Support for PowerFlex driver in CSM Operator. ([#821](https://github.com/dell/csm/issues/821))
 - Add upgrade support of csi-powerstore driver in CSM-Operator. ([#805](https://github.com/dell/csm/issues/805))
 - Unity CSI quals and cert for K3s on Debian OS. ([#798](https://github.com/dell/csm/issues/798))
@@ -46,7 +16,9 @@ The workaround is to check whether all array details present in the secret file 
 - Allow user to set Quota limit parameters from the PVC request in CSI PowerScale. ([#742](https://github.com/dell/csm/issues/742))
 - Add Function to Delete SDC and Change Performance Profile. ([#850](https://github.com/dell/csm/issues/850))
 - Update to the latest UBI/UBI Micro images for CSM. ([#843](https://github.com/dell/csm/issues/843))
+- CSI Unity XT: Support Unisphere 5.3.0 array. ([#842](https://github.com/dell/csm/issues/842))
 - PowerMax Support AWS EKS. ([#825](https://github.com/dell/csm/issues/825))
+- Storage Capacity Tracking for Powerscale. ([#824](https://github.com/dell/csm/issues/824))
 - Powermax : Automate creation of reverse proxy certs. ([#819](https://github.com/dell/csm/issues/819))
 - Documentation Enhancement for Replication. ([#818](https://github.com/dell/csm/issues/818))
 - Destroy RCG support in repctl. ([#817](https://github.com/dell/csm/issues/817))
@@ -63,6 +35,7 @@ The workaround is to check whether all array details present in the secret file 
 - Deprecation of CSI Operator. ([#751](https://github.com/dell/csm/issues/751))
 - Add support for host groups for vSphere environment. ([#746](https://github.com/dell/csm/issues/746))
 - Migrate image registry from k8s.gcr.io to  registry.k8s.io. ([#744](https://github.com/dell/csm/issues/744))
+- CSM Operator: Support install of Resiliency module. ([#739](https://github.com/dell/csm/issues/739))
 - CSI PowerStore - Add support for PowerStore Medusa (v3.5) array. ([#735](https://github.com/dell/csm/issues/735))
 - CSI PowerMax QoS parameters for throttling performance and bandwidth. ([#726](https://github.com/dell/csm/issues/726))
 - CSM Authorization karavictl requires an admin token. ([#725](https://github.com/dell/csm/issues/725))
@@ -71,8 +44,8 @@ The workaround is to check whether all array details present in the secret file 
 
 ### Bugs 
 
-- Unsupported configurations in support matrix. ([#863](https://github.com/dell/csm/issues/863))
 - CSI-Powerflex offline installation is failing during the driver image pull. ([#868](https://github.com/dell/csm/issues/868))
+- Unsupported configurations in support matrix. ([#863](https://github.com/dell/csm/issues/863))
 - Known Issues in GitHub releases should be in Troubleshooting section of docs. ([#855](https://github.com/dell/csm/issues/855))
 - Fix csm-operator e2e replication and observability tests. ([#853](https://github.com/dell/csm/issues/853))
 - CSM-operator: vSphere host id is missing in node manifest. ([#846](https://github.com/dell/csm/issues/846))
