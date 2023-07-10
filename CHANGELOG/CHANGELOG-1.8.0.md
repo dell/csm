@@ -6,6 +6,8 @@
 
 ### Features 
 
+- Enhancing Unity XT driver to handle API requests after the sessionIdleTimeOut in STIG mode. ([#891](https://github.com/dell/csm/issues/891))
+- CSM 1.8 release specific changes. ([#885](https://github.com/dell/csm/issues/885))
 - Configurable Volume Attributes use recommended naming convention <prefix>/<name>. ([#879](https://github.com/dell/csm/issues/879))
 - Implement Volume Limits. ([#878](https://github.com/dell/csm/issues/878))
 - CSM for PowerMax file support. ([#861](https://github.com/dell/csm/issues/861))
@@ -14,3 +16,5 @@
 ### Bugs 
 
 - CSI driver does not verify iSCSI initiators on the array correctly. ([#849](https://github.com/dell/csm/issues/849))
+- Missing nodeSelector and tolerations entry in sample file. ([#890](https://github.com/dell/csm/issues/890))
+- Unit tests failing for CSI-PowerMax. ([#887](https://github.com/dell/csm/issues/887))
