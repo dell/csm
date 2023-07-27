@@ -1,77 +1,21 @@
 OpenSource Licenses for Container Storage Modules  
 =  
-Package: github.com/go-openapi/strfmt  
-Version: v0.21.3  
+Package: github.com/fatih/color  
+Version: v1.13.0  
+Copyright: Copyright (c) 2013 Fatih Arslan\u003c/p\u003e\n\u003cp dir=\"auto\"\u003ePermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\u003c/p\u003e\n\u003c/article\u003e","renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"fatih","repoName":"color","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/fatih/color/branches":{"post":"Y8k8Ydz49JflFmJgKnzIidQYl70ytUFfzOPHi48K94BxIxdzB6YMIr1Jw83eHRvnAzpqMI1riFxqEvR6vRf56Q"}}},"title":"color/LICENSE.md at v1.13.0 · fatih/color","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/fatih/color/blob/v1.13.0/LICENSE.md)  
+* * *
+  
+Package: github.com/cucumber/godog  
+Version: v0.12.1  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-openapi/strfmt/blob/v0.21.3/LICENSE)  
+License: [MIT license](https://github.com/cucumber/godog/blob/v0.12.1/LICENSE)  
 * * *
   
-Package: github.com/spf13/cobra  
-Version: v0.0.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/spf13/cobra/blob/v0.0.1/LICENSE.txt)  
-* * *
-  
-Package: github.com/lestrrat-go/jwx  
-Version: v1.2.17  
-Copyright: Copyright (c) 2015 lestrrat  
-License: [MIT license](https://github.com/lestrrat-go/jwx/blob/v1.2.17/LICENSE)  
-* * *
-  
-Package: github.com/fsnotify/fsnotify  
-Version: v1.5.3  
-Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.  
-Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.5.3/LICENSE)  
-* * *
-  
-Package: github.com/dell/gocsi  
-Version: v1.7.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/gocsi/blob/v1.7.0/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/volumeGroupSnapshot  
-Version: v1.2.3-0.20230517135918-9920e636bff1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
-* * *
-  
-Package: github.com/dell/gopowerstore  
-Version: v1.12.0  
-Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/gopowerstore/blob/v1.12.0/LICENSE)  
-* * *
-  
-Package: github.com/stretchr/testify  
-Version: v1.7.1  
-Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.  
-License: [MIT license](https://github.com/stretchr/testify/blob/v1.7.1/LICENSE)  
-* * *
-  
-Package: sigs.k8s.io/yaml  
-Version: v1.2.0  
-Copyright: Copyright (c) 2014 Sam Ghods  
-Copyright (c) 2012 The Go Authors. All rights reserved.  
-License: [MIT license,BSD-3-Clause](https://github.com/kubernetes-sigs/yaml/blob/v1.2.0/LICENSE)  
-* * *
-  
-Package: golang.org/x/net  
-Version: v0.7.0  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/net/blob/v0.7.0/LICENSE)  
-* * *
-  
-Package: github.com/kubernetes-csi/external-snapshotter/client/v4  
-Version: v4.2.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-csi/external-snapshotter/blob/client/v4.2.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/sdk  
-Version: v1.3.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/sdk/v1.3.0/LICENSE)  
+Package: golang.org/x/mod  
+Version: v0.8.0  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/mod/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/mod/security/dependabot","repoSecurityAndAnalysisPath":"/golang/mod/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/mod/blob/v0.8.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fmod%2Fblob%2Fv0.8.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/mod/discussions/new","newIssuePath":"/golang/mod/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/mod/blob/v0.8.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/mod/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"mod","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/mod/branches":{"post":"VqnsgcYn_V7B9lvZ60q3OMT60PdRPt4j6OXGYa_YVE1v3bA2Eva5dTuVhP2USVoTP2c7ami8GYcRBDcTHDJd-g"}}},"title":"mod/LICENSE at v0.8.0 · golang/mod","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/mod/blob/v0.8.0/LICENSE)  
 * * *
   
 Package: k8s.io/apimachinery  
@@ -81,129 +25,39 @@ License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.23.4/LI
 * * *
   
 Package: k8s.io/client-go  
-Version: v0.23.4  
+Version: v0.23.3  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.23.4/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.23.3/LICENSE)  
 * * *
   
-Package: k8s.io/apimachinery  
-Version: v0.24.0  
+Package: github.com/bramvdbogaerde/go-scp  
+Version: v0.0.0-20201229172121-7a6c0268fa67  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.24.0/LICENSE)  
+License: [Mozilla General Public License 2.0](https://github.com/bramvdbogaerde/go-scp/blob/7a6c0268fa67/LICENSE.txt)  
 * * *
   
-Package: github.com/sirupsen/logrus  
-Version: v1.9.0  
-Copyright: Copyright (c) 2014 Simon Eskildsen  
-License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.9.0/LICENSE)  
+Package: github.com/stretchr/testify  
+Version: v1.8.2  
+Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/stretchr/testify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/stretchr/testify/security/dependabot","repoSecurityAndAnalysisPath":"/stretchr/testify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/stretchr/testify/blob/v1.8.2/LICENSE?raw=true","headerInfo":{"blobSize":"1.08 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4b0421c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fstretchr%2Ftestify%2Fblob%2Fv1.8.2%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/stretchr/testify/discussions/new","newIssuePath":"/stretchr/testify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/stretchr/testify/blob/v1.8.2/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/stretchr/testify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"stretchr","repoName":"testify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/stretchr/testify/branches":{"post":"P5jIi7De8ZAWZurgdRmJLWhJ4LWuw5ggLiw_hYGNmXmXCrBUMXwizK7k_MDfXQQD4TMh5Phqo-YAWBWtPBU-Vw"}}},"title":"testify/LICENSE at v1.8.2 · stretchr/testify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/stretchr/testify/blob/v1.8.2/LICENSE)  
 * * *
   
-Package: github.com/dell/goscaleio  
-Version: v1.10.0  
+Package: k8s.io/api  
+Version: v0.26.4  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/goscaleio/blob/v1.10.0/LICENSE)  
-* * *
-  
-Package: github.com/go-logr/logr  
-Version: v0.4.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-logr/logr/blob/v0.4.0/LICENSE)  
-* * *
-  
-Package: github.com/pkg/errors  
-Version: v0.9.1  
-Copyright: Copyright (c) 2015, Dave Cheney <dave@cheney.net>  
-License: [BSD-2-Clause](https://github.com/pkg/errors/blob/v0.9.1/LICENSE)  
-* * *
-  
-Package: golang.org/x/net  
-Version: v0.8.0  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/net/blob/v0.8.0/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.26.4/LICENSE)  
 * * *
   
 Package: github.com/dell/dell-csi-extensions/volumeGroupSnapshot  
-Version: v1.2.3  
+Version: v1.2.3-0.20230517135918-9920e636bff1  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/volumeGroupSnapshot/v1.2.3/LICENSE)  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
 * * *
   
-Package: github.com/go-openapi/strfmt  
-Version: v0.21.2  
+Package: github.com/akutz/gournal  
+Version: v0.5.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-openapi/strfmt/blob/v0.21.2/LICENSE)  
-* * *
-  
-Package: github.com/dustin/go-humanize  
-Version: v1.0.0  
-Copyright: Copyright (c) 2005-2008  Dustin Sallings <dustin@spy.net>  
-License: [MIT license](https://github.com/dustin/go-humanize/blob/v1.0.0/LICENSE)  
-* * *
-  
-Package: github.com/sirupsen/logrus  
-Version: v1.6.0  
-Copyright: Copyright (c) 2014 Simon Eskildsen  
-License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.6.0/LICENSE)  
-* * *
-  
-Package: github.com/fatih/color  
-Version: v1.13.0  
-Copyright: Copyright (c) 2013 Fatih Arslan</p>  
-License: [MIT license](https://github.com/fatih/color/blob/v1.13.0/LICENSE.md)  
-* * *
-  
-Package: github.com/dell/goisilon  
-Version: v1.12.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/goisilon/blob/v1.12.0/LICENSE)  
-* * *
-  
-Package: github.com/onsi/gomega  
-Version: v1.3.0  
-Copyright: Copyright (c) 2013-2014 Onsi Fakhouri  
-License: [MIT license](https://github.com/onsi/gomega/blob/v1.3.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/exporters/zipkin  
-Version: v1.3.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/zipkin/v1.3.0/LICENSE)  
-* * *
-  
-Package: k8s.io/apimachinery  
-Version: v0.23.3  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.23.3/LICENSE)  
-* * *
-  
-Package: k8s.io/apiextensions-apiserver  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apiextensions-apiserver/blob/v0.26.0/LICENSE)  
-* * *
-  
-Package: gopkg.in/yaml.v2  
-Version: v2.4.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-yaml/yaml/blob/v2.4.0/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.25.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.25.2/LICENSE)  
-* * *
-  
-Package: golang.org/x/crypto  
-Version: v0.0.0-20220525230936-793ad666bf5e  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/crypto/blob/793ad666bf5e/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/replication  
-Version: v1.4.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/replication/v1.4.0/LICENSE)  
+License: [Apache-2.0](https://github.com/akutz/gournal/blob/v0.5.0/LICENSE)  
 * * *
   
 Package: k8s.io/apimachinery  
@@ -212,178 +66,10 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.20.2/LICENSE)  
 * * *
   
-Package: github.com/akutz/memconn  
-Version: v0.1.0  
+Package: k8s.io/klog/v2  
+Version: v2.9.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/akutz/memconn/blob/v0.1.0/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.20.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.20.2/LICENSE)  
-* * *
-  
-Package: go.uber.org/zap  
-Version: v1.21.0  
-Copyright: Copyright (c) 2016-2017 Uber Technologies, Inc.  
-License: [MIT license](https://github.com/uber-go/zap/blob/v1.21.0/LICENSE.txt)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/podmon  
-Version: v1.1.3  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/podmon/v1.1.3/LICENSE)  
-* * *
-  
-Package: golang.org/x/sync  
-Version: v0.0.0-20190423024810-112230192c58  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/sync/blob/112230192c58/LICENSE)  
-* * *
-  
-Package: sigs.k8s.io/controller-tools  
-Version: v0.9.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-tools/blob/v0.9.2/LICENSE)  
-* * *
-  
-Package: github.com/kubernetes-csi/csi-lib-utils  
-Version: v0.7.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-csi/csi-lib-utils/blob/v0.7.0/LICENSE)  
-* * *
-  
-Package: github.com/kubernetes-csi/csi-lib-utils  
-Version: v0.9.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-csi/csi-lib-utils/blob/v0.9.1/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/common  
-Version: v1.1.2-0.20230330153121-7ee6c5ed22ea  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/7ee6c5ed22ea/LICENSE)  
-* * *
-  
-Package: k8s.io/apimachinery  
-Version: v0.26.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.26.2/LICENSE)  
-* * *
-  
-Package: github.com/rifflock/lfshook  
-Version: v0.0.0-20180920164130-b9218ef580f5  
-Copyright: Copyright (c) 2015 Michael Riffle  
-License: [MIT license](https://github.com/rifflock/lfshook/blob/b9218ef580f5/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.26.0/LICENSE)  
-* * *
-  
-Package: github.com/alicebob/miniredis/v2  
-Version: v2.17.0  
-Copyright: Copyright (c) 2014 Harmen  
-License: [MIT license](https://github.com/alicebob/miniredis/blob/v2.17.0/LICENSE)  
-* * *
-  
-Package: google.golang.org/protobuf  
-Version: v1.28.1  
-Copyright: Copyright (c) 2018 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/protocolbuffers/protobuf-go/blob/v1.28.1/LICENSE)  
-* * *
-  
-Package: k8s.io/cri-api  
-Version: v0.21.6  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/cri-api/blob/v0.21.6/LICENSE)  
-* * *
-  
-Package: github.com/container-storage-interface/spec  
-Version: v1.5.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/container-storage-interface/spec/blob/v1.5.0/LICENSE)  
-* * *
-  
-Package: github.com/gorilla/mux  
-Version: v1.7.3  
-Copyright: Copyright (c) 2012-2018 The Gorilla Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/gorilla/mux/blob/v1.7.3/LICENSE)  
-* * *
-  
-Package: github.com/x-cray/logrus-prefixed-formatter  
-Version: v0.5.2  
-Copyright: Copyright (c) 2017 Denis Parchenko  
-License: [MIT license](https://github.com/x-cray/logrus-prefixed-formatter/blob/v0.5.2/LICENSE)  
-* * *
-  
-Package: golang.org/x/net  
-Version: v0.10.0  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/net/blob/v0.10.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/trace  
-Version: v1.7.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/trace/v1.7.0/LICENSE)  
-* * *
-  
-Package: github.com/sirupsen/logrus  
-Version: v1.9.1  
-Copyright: Copyright (c) 2014 Simon Eskildsen  
-License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.9.1/LICENSE)  
-* * *
-  
-Package: github.com/mattn/go-sqlite3  
-Version: v1.14.14  
-Copyright: Copyright (c) 2014 Yasuhiro Matsumoto  
-License: [MIT license](https://github.com/mattn/go-sqlite3/blob/v1.14.14/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.20.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.20.0/LICENSE)  
-* * *
-  
-Package: github.com/apparentlymart/go-cidr  
-Version: v1.1.0  
-Copyright: Copyright (c) 2015 Martin Atkins  
-License: [MIT license](https://github.com/apparentlymart/go-cidr/blob/v1.1.0/LICENSE)  
-* * *
-  
-Package: github.com/sirupsen/logrus  
-Version: v1.4.2  
-Copyright: Copyright (c) 2014 Simon Eskildsen  
-License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.4.2/LICENSE)  
-* * *
-  
-Package: github.com/coreos/go-systemd/v22  
-Version: v22.5.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/coreos/go-systemd/blob/v22.5.0/LICENSE)  
-* * *
-  
-Package: github.com/onsi/gomega  
-Version: v1.23.0  
-Copyright: Copyright (c) 2013-2014 Onsi Fakhouri  
-License: [MIT license](https://github.com/onsi/gomega/blob/v1.23.0/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.23.3  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.23.3/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.23.3  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.23.3/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/klog/blob/v2.9.0/LICENSE)  
 * * *
   
 Package: go.opentelemetry.io/otel/exporters/zipkin  
@@ -392,16 +78,376 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/zipkin/v1.7.0/LICENSE)  
 * * *
   
-Package: github.com/bombsimon/logrusr/v4  
-Version: v4.0.0  
-Copyright: Copyright (c) 2020 Simon Sawert  
-License: [MIT license](https://github.com/bombsimon/logrusr/blob/v4.0.0/LICENSE)  
+Package: github.com/rifflock/lfshook  
+Version: v0.0.0-20180920164130-b9218ef580f5  
+Copyright: Copyright (c) 2015 Michael Riffle","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in","all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN","THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/rifflock/lfshook/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/rifflock/lfshook/security/dependabot","repoSecurityAndAnalysisPath":"/rifflock/lfshook/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/rifflock/lfshook/blob/b9218ef580f5/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"eb9d321","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Frifflock%2Flfshook%2Fblob%2Fb9218ef580f5%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/rifflock/lfshook/discussions/new","newIssuePath":"/rifflock/lfshook/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/rifflock/lfshook/blob/b9218ef580f5/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/rifflock/lfshook/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"rifflock","repoName":"lfshook","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/rifflock/lfshook/branches":{"post":"uN5HOZRxtkGkavBblpTiIS01ijlCOBvai6DVleezr2Jl8qetahYIF8mb26kSYDMTo9Bbb91JyjS1ZR-Gt5Rlyg"}}},"title":"lfshook/LICENSE at b9218ef580f59a2e72dad1aa33d660150445d05a · rifflock/lfshook","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/rifflock/lfshook/blob/b9218ef580f5/LICENSE)  
+* * *
+  
+Package: github.com/dell/dell-csi-extensions/replication  
+Version: v1.4.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/replication/v1.4.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/dell-csi-extensions/volumeGroupSnapshot  
+Version: v1.2.3  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/volumeGroupSnapshot/v1.2.3/LICENSE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.27.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.27.2/LICENSE)  
+* * *
+  
+Package: github.com/dell/gopowerstore  
+Version: v1.12.0  
+Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/gopowerstore/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/gopowerstore/security/dependabot","repoSecurityAndAnalysisPath":"/dell/gopowerstore/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/gopowerstore/blob/v1.12.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6256045","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgopowerstore%2Fblob%2Fv1.12.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"202","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/gopowerstore/discussions/new","newIssuePath":"/dell/gopowerstore/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/gopowerstore/blob/v1.12.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/gopowerstore/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"gopowerstore","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/gopowerstore/branches":{"post":"0RAqIvmyKmq06gAyXxK7ZTYMI3j4XpMz6-YZzml-FHmXgNzWYV01aj39BYrvPNgRHxjk8X_fHrQWAtqa-_1CEQ"}}},"title":"gopowerstore/LICENSE at v1.12.0 · dell/gopowerstore","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/gopowerstore/blob/v1.12.0/LICENSE)  
+* * *
+  
+Package: github.com/golang/mock  
+Version: v1.3.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/golang/mock/blob/v1.3.1/LICENSE)  
+* * *
+  
+Package: k8s.io/apiextensions-apiserver  
+Version: v0.26.4  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apiextensions-apiserver/blob/v0.26.4/LICENSE)  
+* * *
+  
+Package: google.golang.org/grpc  
+Version: v1.42.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.42.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/gocsi  
+Version: v1.6.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/gocsi/blob/v1.6.0/LICENSE)  
+* * *
+  
+Package: google.golang.org/grpc  
+Version: v1.55.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.55.0/LICENSE)  
+* * *
+  
+Package: github.com/fsnotify/fsnotify  
+Version: v1.5.1  
+Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.","Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/fsnotify/fsnotify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/fsnotify/fsnotify/security/dependabot","repoSecurityAndAnalysisPath":"/fsnotify/fsnotify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/fsnotify/fsnotify/blob/v1.5.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.51 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"e180c8f","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Ffsnotify%2Ffsnotify%2Fblob%2Fv1.5.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"28","truncatedSloc":"25"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/fsnotify/fsnotify/discussions/new","newIssuePath":"/fsnotify/fsnotify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/fsnotify/fsnotify/blob/v1.5.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/fsnotify/fsnotify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"fsnotify","repoName":"fsnotify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/fsnotify/fsnotify/branches":{"post":"f6qzix0NNSltGchxGPF9njE9TCZuGtReyZKVTMySYRAaEC0Z-YFmsXczVUPqlYwtM4PukefC0je1IR_NXkpAcA"}}},"title":"fsnotify/LICENSE at v1.5.1 · fsnotify/fsnotify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.5.1/LICENSE)  
+* * *
+  
+Package: github.com/sirupsen/logrus  
+Version: v1.8.1  
+Copyright: Copyright (c) 2014 Simon Eskildsen","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in","all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN","THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/sirupsen/logrus/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/sirupsen/logrus/security/dependabot","repoSecurityAndAnalysisPath":"/sirupsen/logrus/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/sirupsen/logrus/blob/v1.8.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"f090cb4","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fsirupsen%2Flogrus%2Fblob%2Fv1.8.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/sirupsen/logrus/discussions/new","newIssuePath":"/sirupsen/logrus/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/sirupsen/logrus/blob/v1.8.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/sirupsen/logrus/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"sirupsen","repoName":"logrus","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/sirupsen/logrus/branches":{"post":"hSD8LZs-KQPUgff6XUjsU651SJ7_sQg2HDo7RC27ASuGX8eQJ9NnkvYzrPuAg71_wcidtxRNZn0EvdVQDNEdXA"}}},"title":"logrus/LICENSE at v1.8.1 · sirupsen/logrus","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.8.1/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.24.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.24.0/LICENSE)  
+* * *
+  
+Package: gopkg.in/yaml.v3  
+Version: v3.0.1  
+Copyright: Copyright (c) 2006-2010 Kirill Simonov","Copyright (c) 2006-2011 Kirill Simonov","","Permission is hereby granted, free of charge, to any person obtaining a copy of","this software and associated documentation files (the \"Software\"), to deal in","the Software without restriction, including without limitation the rights to","use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies","of the Software, and to permit persons to whom the Software is furnished to do","so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE.","","### Apache License ###","","All the remaining project files are covered by the Apache license:","","Copyright (c) 2011-2019 Canonical Ltd","","Licensed under the Apache License, Version 2.0 (the \"License\");","you may not use this file except in compliance with the License.","You may obtain a copy of the License at","","    http://www.apache.org/licenses/LICENSE-2.0","","Unless required by applicable law or agreed to in writing, software","distributed under the License is distributed on an \"AS IS\" BASIS,","WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","See the License for the specific language governing permissions and","limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/go-yaml/yaml/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/go-yaml/yaml/security/dependabot","repoSecurityAndAnalysisPath":"/go-yaml/yaml/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/go-yaml/yaml/blob/v3.0.1/LICENSE?raw=true","headerInfo":{"blobSize":"2.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"2683e4b","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgo-yaml%2Fyaml%2Fblob%2Fv3.0.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"50","truncatedSloc":"36"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/go-yaml/yaml/discussions/new","newIssuePath":"/go-yaml/yaml/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/go-yaml/yaml/blob/v3.0.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/go-yaml/yaml/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"go-yaml","repoName":"yaml","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/go-yaml/yaml/branches":{"post":"LFQstNyNJI_oz5XrKAuUAulh0lNLzTyTmQItyuxECRR_QZUYSCYtPdWjF4yY3YfUzEsidkcVMUVl_inGfaHkxQ"}}},"title":"yaml/LICENSE at v3.0.1 · go-yaml/yaml","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0,MIT license](https://github.com/go-yaml/yaml/blob/v3.0.1/LICENSE)  
 * * *
   
 Package: k8s.io/apimachinery  
+Version: v0.26.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.26.1/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel/exporters/zipkin  
+Version: v1.3.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/zipkin/v1.3.0/LICENSE)  
+* * *
+  
+Package: golang.org/x/crypto  
+Version: v0.0.0-20220525230936-793ad666bf5e  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/crypto/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/crypto/security/dependabot","repoSecurityAndAnalysisPath":"/golang/crypto/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/crypto/blob/793ad666bf5e/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fcrypto%2Fblob%2F793ad666bf5e%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/crypto/discussions/new","newIssuePath":"/golang/crypto/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/crypto/blob/793ad666bf5e/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/crypto/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"crypto","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/crypto/branches":{"post":"HnPPfWkROIVaM-kxoMSGT57eTw22_BBlAxBktUMlCrZEEwJtR6v0aaqGoEQk2n3vDESgwK4zdl4PVLu5qtXG6w"}}},"title":"crypto/LICENSE at 793ad666bf5ec61392092b27061be9618e4e219b · golang/crypto","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/crypto/blob/793ad666bf5e/LICENSE)  
+* * *
+  
+Package: k8s.io/cri-api  
+Version: v0.21.6  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/cri-api/blob/v0.21.6/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.20.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.20.0/LICENSE)  
+* * *
+  
+Package: github.com/gorilla/mux  
+Version: v1.7.3  
+Copyright: Copyright (c) 2012-2018 The Gorilla Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","\t * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","\t * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","\t * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/gorilla/mux/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/gorilla/mux/security/dependabot","repoSecurityAndAnalysisPath":"/gorilla/mux/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/gorilla/mux/blob/v1.7.3/LICENSE?raw=true","headerInfo":{"blobSize":"1.45 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6903df6","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgorilla%2Fmux%2Fblob%2Fv1.7.3%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/gorilla/mux/discussions/new","newIssuePath":"/gorilla/mux/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/gorilla/mux/blob/v1.7.3/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/gorilla/mux/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"gorilla","repoName":"mux","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/gorilla/mux/branches":{"post":"8C8WhQyg7giNOi_5UUeYuq8MLert_4bRqFr0EP5yJjdCaOp1hfI_Zz1vxlEtuQq4eQBhtgN6qVBHwObZ6xMJ_g"}}},"title":"mux/LICENSE at v1.7.3 · gorilla/mux","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/gorilla/mux/blob/v1.7.3/LICENSE)  
+* * *
+  
+Package: github.com/stretchr/testify  
+Version: v1.8.4  
+Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/stretchr/testify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/stretchr/testify/security/dependabot","repoSecurityAndAnalysisPath":"/stretchr/testify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/stretchr/testify/blob/v1.8.4/LICENSE?raw=true","headerInfo":{"blobSize":"1.08 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4b0421c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fstretchr%2Ftestify%2Fblob%2Fv1.8.4%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/stretchr/testify/discussions/new","newIssuePath":"/stretchr/testify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/stretchr/testify/blob/v1.8.4/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/stretchr/testify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"stretchr","repoName":"testify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/stretchr/testify/branches":{"post":"ZnIK13p-DOYj4Vn2gh00wlTFTnVupKeLkJ0E9NY6buVxGOZxQ5nlqWDFEaIvfiQsJT8KGpyez25lfKxdFn5eBg"}}},"title":"testify/LICENSE at v1.8.4 · stretchr/testify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/stretchr/testify/blob/v1.8.4/LICENSE)  
+* * *
+  
+Package: go.uber.org/zap  
+Version: v1.21.0  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: github.com/spf13/viper  
+Version: v1.8.1  
+Copyright: Copyright (c) 2014 Steve Francia","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/spf13/viper/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/spf13/viper/security/dependabot","repoSecurityAndAnalysisPath":"/spf13/viper/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/spf13/viper/blob/v1.8.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4527efb","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fspf13%2Fviper%2Fblob%2Fv1.8.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/spf13/viper/discussions/new","newIssuePath":"/spf13/viper/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/spf13/viper/blob/v1.8.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/spf13/viper/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":4,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"spf13","repoName":"viper","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/spf13/viper/branches":{"post":"wlrKw26Hf1arP6xIEszGzvpvuZg79ao6Adxifez1BL3DjGjpMLiarbdXFMm2tKJaFpgG2ibf539t7wIHCUhbkg"}}},"title":"viper/LICENSE at v1.8.1 · spf13/viper","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/spf13/viper/blob/v1.8.1/LICENSE)  
+* * *
+  
+Package: github.com/kubernetes-csi/csi-lib-utils  
+Version: v0.13.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-csi/csi-lib-utils/blob/v0.13.0/LICENSE)  
+* * *
+  
+Package: k8s.io/apimachinery  
+Version: v0.26.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.26.2/LICENSE)  
+* * *
+  
+Package: github.com/sirupsen/logrus  
+Version: v1.6.0  
+Copyright: Copyright (c) 2014 Simon Eskildsen","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in","all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN","THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/sirupsen/logrus/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/sirupsen/logrus/security/dependabot","repoSecurityAndAnalysisPath":"/sirupsen/logrus/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/sirupsen/logrus/blob/v1.6.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"f090cb4","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fsirupsen%2Flogrus%2Fblob%2Fv1.6.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/sirupsen/logrus/discussions/new","newIssuePath":"/sirupsen/logrus/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/sirupsen/logrus/blob/v1.6.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/sirupsen/logrus/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"sirupsen","repoName":"logrus","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/sirupsen/logrus/branches":{"post":"GHo2k4fylUt98aVNFpJF25nf4M-HBLu1TRZ6_JxBZTxZQIIqIVq9__p_9TzShoY50Nsj8t5ih6GyIjKsWbawkA"}}},"title":"logrus/LICENSE at v1.6.0 · sirupsen/logrus","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.6.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/gobrick  
+Version: v1.8.0  
+Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/gobrick/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/gobrick/security/dependabot","repoSecurityAndAnalysisPath":"/dell/gobrick/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/gobrick/blob/v1.8.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6256045","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgobrick%2Fblob%2Fv1.8.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"202","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/gobrick/discussions/new","newIssuePath":"/dell/gobrick/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/gobrick/blob/v1.8.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/gobrick/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"gobrick","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/gobrick/branches":{"post":"fKz9V7UobJKpqFroDzdBhlC0wwCnm2XM8o6MR_xH-dvDUpnrh5vPGFCI_NAVJuINNXuHDzNMYWSPC2cgT0utSA"}}},"title":"gobrick/LICENSE at v1.8.0 · dell/gobrick","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/gobrick/blob/v1.8.0/LICENSE)  
+* * *
+  
+Package: github.com/spf13/viper  
+Version: v1.12.0  
+Copyright: Copyright (c) 2014 Steve Francia","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/spf13/viper/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/spf13/viper/security/dependabot","repoSecurityAndAnalysisPath":"/spf13/viper/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/spf13/viper/blob/v1.12.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4527efb","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fspf13%2Fviper%2Fblob%2Fv1.12.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/spf13/viper/discussions/new","newIssuePath":"/spf13/viper/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/spf13/viper/blob/v1.12.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/spf13/viper/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":4,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"spf13","repoName":"viper","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/spf13/viper/branches":{"post":"LO7KZDefOWyDjq6sGAUe05GFYBvD9KJR2IOZeSGnVcClWWEweta5z-jzU77TrQNhe11E9POiBcAoy7E75dUmFQ"}}},"title":"viper/LICENSE at v1.12.0 · spf13/viper","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/spf13/viper/blob/v1.12.0/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc  
+Version: v0.30.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/otlp/otlpmetric/otlpmetricgrpc/v0.30.0/LICENSE)  
+* * *
+  
+Package: github.com/fsnotify/fsnotify  
+Version: v1.5.3  
+Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.","Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/fsnotify/fsnotify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/fsnotify/fsnotify/security/dependabot","repoSecurityAndAnalysisPath":"/fsnotify/fsnotify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/fsnotify/fsnotify/blob/v1.5.3/LICENSE?raw=true","headerInfo":{"blobSize":"1.51 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"e180c8f","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Ffsnotify%2Ffsnotify%2Fblob%2Fv1.5.3%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"28","truncatedSloc":"25"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/fsnotify/fsnotify/discussions/new","newIssuePath":"/fsnotify/fsnotify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/fsnotify/fsnotify/blob/v1.5.3/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/fsnotify/fsnotify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"fsnotify","repoName":"fsnotify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/fsnotify/fsnotify/branches":{"post":"k-PZM6QvLUlieXLNKHHCou7ULW2oDDLDcGKgabW79F9gUoqjeGd9Z3aiWYUOOiABvjcmQA677cQ_i1Hqqfs_QQ"}}},"title":"fsnotify/LICENSE at v1.5.3 · fsnotify/fsnotify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.5.3/LICENSE)  
+* * *
+  
+Package: github.com/dell/gopowerstore  
+Version: v1.11.0  
+Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/gopowerstore/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/gopowerstore/security/dependabot","repoSecurityAndAnalysisPath":"/dell/gopowerstore/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/gopowerstore/blob/v1.11.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6256045","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgopowerstore%2Fblob%2Fv1.11.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"202","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/gopowerstore/discussions/new","newIssuePath":"/dell/gopowerstore/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/gopowerstore/blob/v1.11.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/gopowerstore/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"gopowerstore","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/gopowerstore/branches":{"post":"PESuugKzDVKi1mo-i-h2bJ1hpXKztIoCue4BxY_Di7Sa5IKg6ocf6Y-Yq8DGNWYS9Dw5dCQw-mPcSAduFOKv6A"}}},"title":"gopowerstore/LICENSE at v1.11.0 · dell/gopowerstore","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/gopowerstore/blob/v1.11.0/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel/sdk  
+Version: v1.3.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/sdk/v1.3.0/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.26.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.26.2/LICENSE)  
+* * *
+  
+Package: github.com/lithammer/fuzzysearch  
+Version: v1.1.2  
+Copyright: Copyright (c) 2018 Peter Lithammer","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/lithammer/fuzzysearch/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/lithammer/fuzzysearch/security/dependabot","repoSecurityAndAnalysisPath":"/lithammer/fuzzysearch/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/lithammer/fuzzysearch/blob/v1.1.2/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"dee3d1d","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Flithammer%2Ffuzzysearch%2Fblob%2Fv1.1.2%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/lithammer/fuzzysearch/discussions/new","newIssuePath":"/lithammer/fuzzysearch/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/lithammer/fuzzysearch/blob/v1.1.2/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/lithammer/fuzzysearch/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"lithammer","repoName":"fuzzysearch","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/lithammer/fuzzysearch/branches":{"post":"cZXlQ7RS80ee_5gZAzE9cXDpkP1jRd3zNmyXgcZP9iJwVU0LSA8D6RkoFAypOgHUrpjj237H6CLpwjCPb6UTwA"}}},"title":"fuzzysearch/LICENSE at v1.1.2 · lithammer/fuzzysearch","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/lithammer/fuzzysearch/blob/v1.1.2/LICENSE)  
+* * *
+  
+Package: gopkg.in/yaml.v2  
+Version: v2.3.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/go-yaml/yaml/blob/v2.3.0/LICENSE)  
+* * *
+  
+Package: github.com/sirupsen/logrus  
+Version: v1.9.3  
+Copyright: Copyright (c) 2014 Simon Eskildsen","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in","all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN","THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/sirupsen/logrus/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/sirupsen/logrus/security/dependabot","repoSecurityAndAnalysisPath":"/sirupsen/logrus/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/sirupsen/logrus/blob/v1.9.3/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"f090cb4","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fsirupsen%2Flogrus%2Fblob%2Fv1.9.3%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/sirupsen/logrus/discussions/new","newIssuePath":"/sirupsen/logrus/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/sirupsen/logrus/blob/v1.9.3/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/sirupsen/logrus/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"sirupsen","repoName":"logrus","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/sirupsen/logrus/branches":{"post":"1eOA1n9NcgR_eJlhKguyY0ESdGfqEnWy0Lyg4QKkFiiZqhs9UKEZhuvvloqyombwdOhQEynBiR1sV-Pdzmg_ig"}}},"title":"logrus/LICENSE at v1.9.3 · sirupsen/logrus","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.9.3/LICENSE)  
+* * *
+  
+Package: github.com/stretchr/testify  
+Version: v1.7.1  
+Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/stretchr/testify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/stretchr/testify/security/dependabot","repoSecurityAndAnalysisPath":"/stretchr/testify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/stretchr/testify/blob/v1.7.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.08 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4b0421c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fstretchr%2Ftestify%2Fblob%2Fv1.7.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/stretchr/testify/discussions/new","newIssuePath":"/stretchr/testify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/stretchr/testify/blob/v1.7.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/stretchr/testify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"stretchr","repoName":"testify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/stretchr/testify/branches":{"post":"I6kIlhqdPpgI2XZjEcq0cy0mjIGb6Z_8V0WaG9KjmcLAYYqkwqF5EmgJ82nDq9x4y75HA-gVF5T2Bk_87B8LOA"}}},"title":"testify/LICENSE at v1.7.1 · stretchr/testify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/stretchr/testify/blob/v1.7.1/LICENSE)  
+* * *
+  
+Package: github.com/urfave/cli  
+Version: v1.22.2  
+Copyright: Copyright (c) 2016 Jeremy Saenz \u0026 Contributors","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/urfave/cli/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/urfave/cli/security/dependabot","repoSecurityAndAnalysisPath":"/urfave/cli/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/urfave/cli/blob/v1.22.2/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"42a597e","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Furfave%2Fcli%2Fblob%2Fv1.22.2%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/urfave/cli/discussions/new","newIssuePath":"/urfave/cli/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/urfave/cli/blob/v1.22.2/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/urfave/cli/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"urfave","repoName":"cli","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/urfave/cli/branches":{"post":"CKUd99O5hh5Qnvpiz3CcEY6zQCqHOvSgThjxnIqSNl8pizDV0h42pAvbZqkKJCkzSw_G0B8NeuN6tndskA3E7g"}}},"title":"cli/LICENSE at v1.22.2 · urfave/cli","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/urfave/cli/blob/v1.22.2/LICENSE)  
+* * *
+  
+Package: github.com/dell/gofsutil  
+Version: v1.12.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/gofsutil/blob/v1.12.0/LICENSE)  
+* * *
+  
+Package: gopkg.in/yaml.v2  
+Version: v2.4.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/go-yaml/yaml/blob/v2.4.0/LICENSE)  
+* * *
+  
+Package: github.com/mattn/go-sqlite3  
+Version: v1.14.14  
+Copyright: Copyright (c) 2014 Yasuhiro Matsumoto","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/mattn/go-sqlite3/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/mattn/go-sqlite3/security/dependabot","repoSecurityAndAnalysisPath":"/mattn/go-sqlite3/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/mattn/go-sqlite3/blob/v1.14.14/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"ca458bb","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fmattn%2Fgo-sqlite3%2Fblob%2Fv1.14.14%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/mattn/go-sqlite3/discussions/new","newIssuePath":"/mattn/go-sqlite3/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/mattn/go-sqlite3/blob/v1.14.14/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/mattn/go-sqlite3/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":"/mattn/.github/blob/149ad2b7a174f7cf638195c629c91d95b19b8d9d/FUNDING.yml","repoOwner":"mattn","repoName":"go-sqlite3","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/mattn/go-sqlite3/branches":{"post":"2Qe63wf0p5t0g7H8atuq02VjHUALOEcejcoTXj4ErOiALZkQerrzKyzT7lBwcn_9p_x7x3tLAg28r4o0bus5yw"}}},"title":"go-sqlite3/LICENSE at v1.14.14 · mattn/go-sqlite3","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/mattn/go-sqlite3/blob/v1.14.14/LICENSE)  
+* * *
+  
+Package: go.uber.org/atomic  
+Version: v1.7.0  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: sigs.k8s.io/yaml  
+Version: v1.3.0  
+Copyright: Copyright (c) 2014 Sam Ghods","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE.","","","Copyright (c) 2012 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/kubernetes-sigs/yaml/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/kubernetes-sigs/yaml/security/dependabot","repoSecurityAndAnalysisPath":"/kubernetes-sigs/yaml/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/kubernetes-sigs/yaml/blob/v1.3.0/LICENSE?raw=true","headerInfo":{"blobSize":"2.5 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"7805d36","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fkubernetes-sigs%2Fyaml%2Fblob%2Fv1.3.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"50","truncatedSloc":"41"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/kubernetes-sigs/yaml/discussions/new","newIssuePath":"/kubernetes-sigs/yaml/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/kubernetes-sigs/yaml/blob/v1.3.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/kubernetes-sigs/yaml/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"kubernetes-sigs","repoName":"yaml","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/kubernetes-sigs/yaml/branches":{"post":"pCYBkfpFuSOb2b-it1yYNqaHgdOHDUL-c1RSLum0AvWvNMJWL4vUJXYRJ04ZezQ01rxaWb2n3PNlZSLO611dvQ"}}},"title":"yaml/LICENSE at v1.3.0 · kubernetes-sigs/yaml","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license,BSD-3-Clause](https://github.com/kubernetes-sigs/yaml/blob/v1.3.0/LICENSE)  
+* * *
+  
+Package: github.com/fatih/color  
+Version: v1.15.0  
+Copyright: Copyright (c) 2013 Fatih Arslan\u003c/p\u003e\n\u003cp dir=\"auto\"\u003ePermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\u003c/p\u003e\n\u003c/article\u003e","renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"fatih","repoName":"color","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/fatih/color/branches":{"post":"B31eo4_7M-FobyfaQbXicuibAMQdVt3xOtGjP4dmx9HrqQkcBit-orXUpJi4nOU-DKglP54g3yF6fdPHsRzhTg"}}},"title":"color/LICENSE.md at v1.15.0 · fatih/color","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/fatih/color/blob/v1.15.0/LICENSE.md)  
+* * *
+  
+Package: github.com/cucumber/messages-go/v10  
+Version: v10.0.3  
+Copyright: N/A  
+License: [MIT license](https://github.com/cucumber/messages-go/blob/v10.0.3/LICENSE)  
+* * *
+  
+Package: github.com/dell/goiscsi  
+Version: v1.7.0  
+Copyright: Copyright © 2019 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/goiscsi/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/goiscsi/security/dependabot","repoSecurityAndAnalysisPath":"/dell/goiscsi/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/goiscsi/blob/v1.7.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"23636b9","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgoiscsi%2Fblob%2Fv1.7.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"201","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/goiscsi/discussions/new","newIssuePath":"/dell/goiscsi/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/goiscsi/blob/v1.7.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/goiscsi/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"goiscsi","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/goiscsi/branches":{"post":"sfxoIAOQ003J8JfGZldgPExrPZfMY6KK3_TVx8kp6t41brAyH7uZ62Tpu3R6aIK7JpAupwVk4K5Mmv7LbrZ6OQ"}}},"title":"goiscsi/LICENSE at v1.7.0 · dell/goiscsi","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/goiscsi/blob/v1.7.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/csi-metadata-retriever  
+Version: v1.4.0  
+Copyright: Copyright © 2022 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/csi-metadata-retriever/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/csi-metadata-retriever/security/dependabot","repoSecurityAndAnalysisPath":"/dell/csi-metadata-retriever/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/csi-metadata-retriever/blob/v1.4.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"e3513cc","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fcsi-metadata-retriever%2Fblob%2Fv1.4.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"201","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/csi-metadata-retriever/discussions/new","newIssuePath":"/dell/csi-metadata-retriever/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/csi-metadata-retriever/blob/v1.4.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/csi-metadata-retriever/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"csi-metadata-retriever","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/csi-metadata-retriever/branches":{"post":"eiUa1AOB_fvssWZ8MY1_t5SV7e5I_hFnRvjGypXvIp7-WuPDQVnYrZ18963paY-tlce0DUveYFp7ftkhfe1Cuw"}}},"title":"csi-metadata-retriever/LICENSE at v1.4.0 · dell/csi-metadata-retriever","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/csi-metadata-retriever/blob/v1.4.0/LICENSE)  
+* * *
+  
+Package: sigs.k8s.io/controller-tools  
+Version: v0.9.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-tools/blob/v0.9.2/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
 Version: v0.26.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.26.0/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.26.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/gonvme  
+Version: v1.4.0  
+Copyright: Copyright © 2022 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/gonvme/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/gonvme/security/dependabot","repoSecurityAndAnalysisPath":"/dell/gonvme/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/gonvme/blob/v1.4.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"d476e7c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgonvme%2Fblob%2Fv1.4.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"201","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/gonvme/discussions/new","newIssuePath":"/dell/gonvme/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/gonvme/blob/v1.4.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/gonvme/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"gonvme","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/gonvme/branches":{"post":"-8vTKnScltdPh6DAakd_GCXpbZJgLA1q6r5fhXSHG6JI94-OF2qXYI8Ji5W1SzNOn0GyNoaeIjDmDvrjPf-1cg"}}},"title":"gonvme/LICENSE at v1.4.0 · dell/gonvme","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/gonvme/blob/v1.4.0/LICENSE)  
+* * *
+  
+Package: github.com/onsi/ginkgo  
+Version: v1.4.0  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: go.opentelemetry.io/otel/metric  
+Version: v0.30.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/metric/v0.30.0/LICENSE)  
+* * *
+  
+Package: sigs.k8s.io/controller-runtime  
+Version: v0.14.6  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.14.6/LICENSE)  
+* * *
+  
+Package: github.com/dell/dell-csi-extensions/volumeGroupSnapshot  
+Version: v1.2.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/volumeGroupSnapshot/v1.2.0/LICENSE)  
+* * *
+  
+Package: github.com/x-cray/logrus-prefixed-formatter  
+Version: v0.5.2  
+Copyright: Copyright (c) 2017 Denis Parchenko","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/x-cray/logrus-prefixed-formatter/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/x-cray/logrus-prefixed-formatter/security/dependabot","repoSecurityAndAnalysisPath":"/x-cray/logrus-prefixed-formatter/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/x-cray/logrus-prefixed-formatter/blob/v0.5.2/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"b41cb23","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fx-cray%2Flogrus-prefixed-formatter%2Fblob%2Fv0.5.2%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/x-cray/logrus-prefixed-formatter/discussions/new","newIssuePath":"/x-cray/logrus-prefixed-formatter/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/x-cray/logrus-prefixed-formatter/blob/v0.5.2/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/x-cray/logrus-prefixed-formatter/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"x-cray","repoName":"logrus-prefixed-formatter","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/x-cray/logrus-prefixed-formatter/branches":{"post":"RXWE-NzQyAM16P4vTFwVlKN9KV-zYZlC0NXXAoL8IAEoCX3lTE0yaF3pQF5MUsn7KDsTDCB3EQzC2HJtEPg6kQ"}}},"title":"logrus-prefixed-formatter/LICENSE at v0.5.2 · x-cray/logrus-prefixed-formatter","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/x-cray/logrus-prefixed-formatter/blob/v0.5.2/LICENSE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.26.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.26.0/LICENSE)  
+* * *
+  
+Package: github.com/spf13/viper  
+Version: v1.10.1  
+Copyright: Copyright (c) 2014 Steve Francia","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/spf13/viper/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/spf13/viper/security/dependabot","repoSecurityAndAnalysisPath":"/spf13/viper/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/spf13/viper/blob/v1.10.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4527efb","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fspf13%2Fviper%2Fblob%2Fv1.10.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/spf13/viper/discussions/new","newIssuePath":"/spf13/viper/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/spf13/viper/blob/v1.10.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/spf13/viper/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":4,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"spf13","repoName":"viper","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/spf13/viper/branches":{"post":"dgKIkJnl0G1GZUaaszV-x4IPZnmQlNTVKEGibYDFXdJ9FOmcdlWvM_a5tT9BkjDYxbYn9hvJXvgGjVyuPFZH2g"}}},"title":"viper/LICENSE at v1.10.1 · spf13/viper","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/spf13/viper/blob/v1.10.1/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.26.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.26.1/LICENSE)  
+* * *
+  
+Package: github.com/opentracing/opentracing-go  
+Version: v1.2.0  
+Copyright: Copyright 2016 The OpenTracing Authors","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/opentracing/opentracing-go/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/opentracing/opentracing-go/security/dependabot","repoSecurityAndAnalysisPath":"/opentracing/opentracing-go/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/opentracing/opentracing-go/blob/v1.2.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"f002734","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fopentracing%2Fopentracing-go%2Fblob%2Fv1.2.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"201","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/opentracing/opentracing-go/discussions/new","newIssuePath":"/opentracing/opentracing-go/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/opentracing/opentracing-go/blob/v1.2.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/opentracing/opentracing-go/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"opentracing","repoName":"opentracing-go","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/opentracing/opentracing-go/branches":{"post":"gXOaSz1XxWAm5KrsOw1AVflFNqj9nlJgOv_bHFblzf-ph4Dxf_C3GoLOBI5X6Bs7a2lz9Vo7hyYJc5G97blcJw"}}},"title":"opentracing-go/LICENSE at v1.2.0 · opentracing/opentracing-go","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/opentracing/opentracing-go/blob/v1.2.0/LICENSE)  
+* * *
+  
+Package: k8s.io/apimachinery  
+Version: v0.23.3  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.23.3/LICENSE)  
+* * *
+  
+Package: k8s.io/apimachinery  
+Version: v0.24.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.24.0/LICENSE)  
+* * *
+  
+Package: github.com/google/docsy  
+Version: v0.4.1-0.20220725215923-c09d2feff8b2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/google/docsy/blob/c09d2feff8b2/LICENSE)  
 * * *
   
 Package: github.com/dell/csm-replication  
@@ -410,64 +456,16 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/dell/csm-replication/blob/cdaa8cb5358a/LICENSE)  
 * * *
   
-Package: github.com/Showmax/go-fqdn  
-Version: v1.0.0  
+Package: github.com/spf13/viper  
+Version: v1.7.0  
+Copyright: Copyright (c) 2014 Steve Francia","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/spf13/viper/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/spf13/viper/security/dependabot","repoSecurityAndAnalysisPath":"/spf13/viper/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/spf13/viper/blob/v1.7.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4527efb","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fspf13%2Fviper%2Fblob%2Fv1.7.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/spf13/viper/discussions/new","newIssuePath":"/spf13/viper/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/spf13/viper/blob/v1.7.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/spf13/viper/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":4,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"spf13","repoName":"viper","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/spf13/viper/branches":{"post":"eHgQYvnxh9R_Q7yHxTHINK9oaajjG7ACcKtTqM9lyvDdelRU4PvQqlDklJFv3d4MMpaS5b_srFc9kC8z-dxEuQ"}}},"title":"viper/LICENSE at v1.7.0 · spf13/viper","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/spf13/viper/blob/v1.7.0/LICENSE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.20.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/Showmax/go-fqdn/blob/v1.0.0/LICENSE)  
-* * *
-  
-Package: github.com/jinzhu/copier  
-Version: v0.2.4  
-Copyright: Copyright (c) 2015 Jinzhu  
-License: [MIT license](https://github.com/jinzhu/copier/blob/v0.2.4/License)  
-* * *
-  
-Package: github.com/cucumber/godog  
-Version: v0.12.6  
-Copyright: N/A  
-License: [MIT license](https://github.com/cucumber/godog/blob/v0.12.6/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/migration  
-Version: v1.1.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/migration/v1.1.1/LICENSE)  
-* * *
-  
-Package: github.com/sirupsen/logrus  
-Version: v1.8.1  
-Copyright: Copyright (c) 2014 Simon Eskildsen  
-License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.8.1/LICENSE)  
-* * *
-  
-Package: github.com/jarcoal/httpmock  
-Version: v1.2.0  
-Copyright: Copyright (c) 2014 Jared Morse  
-License: [MIT license](https://github.com/jarcoal/httpmock/blob/v1.2.0/LICENSE)  
-* * *
-  
-Package: k8s.io/apimachinery  
-Version: v0.26.4  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.26.4/LICENSE)  
-* * *
-  
-Package: github.com/stretchr/testify  
-Version: v1.8.0  
-Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.  
-License: [MIT license](https://github.com/stretchr/testify/blob/v1.8.0/LICENSE)  
-* * *
-  
-Package: github.com/dell/gonvme  
-Version: v1.4.0  
-Copyright: Copyright © 2022 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/gonvme/blob/v1.4.0/LICENSE)  
-* * *
-  
-Package: github.com/uber/jaeger-lib  
-Version: v2.4.1+incompatible  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/uber/jaeger-lib/blob/v2.4.1/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.20.0/LICENSE)  
 * * *
   
 Package: sigs.k8s.io/controller-runtime  
@@ -476,101 +474,82 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.10.0/LICENSE)  
 * * *
   
-Package: k8s.io/apimachinery  
-Version: v0.25.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.25.2/LICENSE)  
-* * *
-  
-Package: go.uber.org/atomic  
-Version: v1.7.0  
-Copyright: Copyright (c) 2016 Uber Technologies, Inc.  
-License: [MIT license](https://github.com/uber-go/atomic/blob/v1.7.0/LICENSE.txt)  
-* * *
-  
-Package: github.com/joho/godotenv  
-Version: v1.4.0  
-Copyright: Copyright (c) 2013 John Barton  
-License: [MIT license](https://github.com/joho/godotenv/blob/v1.4.0/LICENCE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.25.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.25.2/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.23.4  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.23.4/LICENSE)  
-* * *
-  
-Package: sigs.k8s.io/controller-runtime  
-Version: v0.11.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.11.0/LICENSE)  
-* * *
-  
-Package: github.com/fsnotify/fsnotify  
-Version: v1.4.9  
-Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.  
-Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.4.9/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.27.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.27.2/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.23.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.23.0/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.22.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.22.2/LICENSE)  
-* * *
-  
-Package: google.golang.org/grpc  
-Version: v1.43.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.43.0/LICENSE)  
-* * *
-  
-Package: github.com/onsi/ginkgo  
-Version: v1.16.4  
-Copyright: Copyright (c) 2013-2014 Onsi Fakhouri  
-License: [MIT license](https://github.com/onsi/ginkgo/blob/v1.16.4/LICENSE)  
-* * *
-  
-Package: golang.org/x/term  
-Version: v0.5.0  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/term/blob/v0.5.0/LICENSE)  
-* * *
-  
 Package: github.com/go-logr/logr  
-Version: v1.2.0  
+Version: v1.2.4  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-logr/logr/blob/v1.2.0/LICENSE)  
+License: [Apache-2.0](https://github.com/go-logr/logr/blob/v1.2.4/LICENSE)  
 * * *
   
-Package: github.com/k3s-io/k3s-selinux  
-Version: v0.4.stable.1  
+Package: github.com/coreos/go-systemd/v22  
+Version: v22.5.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/k3s-io/k3s-selinux/blob/v0.4.stable.1/LICENSE)  
+License: [Apache-2.0](https://github.com/coreos/go-systemd/blob/v22.5.0/LICENSE)  
 * * *
   
-Package: golang.org/x/sync  
-Version: v0.1.0  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/sync/blob/v0.1.0/LICENSE)  
+Package: google.golang.org/protobuf  
+Version: v1.30.0  
+Copyright: Copyright (c) 2018 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/protocolbuffers/protobuf-go/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/protocolbuffers/protobuf-go/security/dependabot","repoSecurityAndAnalysisPath":"/protocolbuffers/protobuf-go/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/protocolbuffers/protobuf-go/blob/v1.30.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"49ea0f9","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fprotocolbuffers%2Fprotobuf-go%2Fblob%2Fv1.30.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/protocolbuffers/protobuf-go/discussions/new","newIssuePath":"/protocolbuffers/protobuf-go/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/protocolbuffers/protobuf-go/blob/v1.30.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/protocolbuffers/protobuf-go/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"protocolbuffers","repoName":"protobuf-go","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/protocolbuffers/protobuf-go/branches":{"post":"AgED33PgeErbFETbJ4nG65hy_S4Hld6KT0QqmlQwv64e9vEdewr5GdjnPxehigwgIUk5lc6eqQkq-ELci0wIGg"}}},"title":"protobuf-go/LICENSE at v1.30.0 · protocolbuffers/protobuf-go","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/protocolbuffers/protobuf-go/blob/v1.30.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/goscaleio  
+Version: v1.10.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/goscaleio/blob/v1.10.0/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.22.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.22.1/LICENSE)  
+* * *
+  
+Package: k8s.io/kubernetes  
+Version: v1.22.16  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/kubernetes/blob/v1.22.16/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel  
+Version: v1.7.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/v1.7.0/LICENSE)  
+* * *
+  
+Package: k8s.io/klog/v2  
+Version: v2.30.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/klog/blob/v2.30.0/LICENSE)  
+* * *
+  
+Package: github.com/gofrs/flock  
+Version: v0.8.1  
+Copyright: Copyright (c) 2015-2020, Tim Heckman","All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are met:","","* Redistributions of source code must retain the above copyright notice, this","  list of conditions and the following disclaimer.","","* Redistributions in binary form must reproduce the above copyright notice,","  this list of conditions and the following disclaimer in the documentation","  and/or other materials provided with the distribution.","","* Neither the name of gofrs nor the names of its contributors may be used","  to endorse or promote products derived from this software without","  specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"","AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE","IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE","DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE","FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL","DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR","SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER","CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,","OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/gofrs/flock/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/gofrs/flock/security/dependabot","repoSecurityAndAnalysisPath":"/gofrs/flock/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/gofrs/flock/blob/v0.8.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"8b8ff36","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgofrs%2Fflock%2Fblob%2Fv0.8.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"22"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/gofrs/flock/discussions/new","newIssuePath":"/gofrs/flock/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/gofrs/flock/blob/v0.8.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/gofrs/flock/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"gofrs","repoName":"flock","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/gofrs/flock/branches":{"post":"6yHGglKCDzQDc7X71UEvgzJwaRRyGRm95q1dyPJXo7o7ahAwm5q-6X3j9ur946Ccc2Ca-XmTsFgtCUohtvBIZQ"}}},"title":"flock/LICENSE at v0.8.1 · gofrs/flock","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/gofrs/flock/blob/v0.8.1/LICENSE)  
+* * *
+  
+Package: github.com/vmware/govmomi  
+Version: v0.29.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/vmware/govmomi/blob/v0.29.0/LICENSE.txt)  
+* * *
+  
+Package: github.com/sirupsen/logrus  
+Version: v1.4.2  
+Copyright: Copyright (c) 2014 Simon Eskildsen","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in","all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN","THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/sirupsen/logrus/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/sirupsen/logrus/security/dependabot","repoSecurityAndAnalysisPath":"/sirupsen/logrus/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/sirupsen/logrus/blob/v1.4.2/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"f090cb4","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fsirupsen%2Flogrus%2Fblob%2Fv1.4.2%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/sirupsen/logrus/discussions/new","newIssuePath":"/sirupsen/logrus/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/sirupsen/logrus/blob/v1.4.2/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/sirupsen/logrus/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"sirupsen","repoName":"logrus","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/sirupsen/logrus/branches":{"post":"wA5Vcu44H8OPisGATFjsuqW1oJu1J-R0VE8HUkN_yS8bDTk9W3SfkMWOMP-69rcaGwoplqdXl7hb2GYOtresiA"}}},"title":"logrus/LICENSE at v1.4.2 · sirupsen/logrus","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.4.2/LICENSE)  
+* * *
+  
+Package: github.com/onsi/gomega  
+Version: v1.15.0  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: k8s.io/apiextensions-apiserver  
+Version: v0.26.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apiextensions-apiserver/blob/v0.26.0/LICENSE)  
 * * *
   
 Package: k8s.io/metrics  
@@ -579,46 +558,382 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/kubernetes/metrics/blob/v0.26.0/LICENSE)  
 * * *
   
+Package: github.com/akutz/memconn  
+Version: v0.1.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/akutz/memconn/blob/v0.1.0/LICENSE)  
+* * *
+  
+Package: github.com/jinzhu/copier  
+Version: v0.2.4  
+Copyright: Copyright (c) 2015 Jinzhu","","Permission is hereby granted, free of charge, to any person obtaining a copy of","this software and associated documentation files (the \"Software\"), to deal in","the Software without restriction, including without limitation the rights to","use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of","the Software, and to permit persons to whom the Software is furnished to do so,","subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS","FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR","COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER","IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN","CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/jinzhu/copier/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/jinzhu/copier/security/dependabot","repoSecurityAndAnalysisPath":"/jinzhu/copier/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"License","displayUrl":"https://github.com/jinzhu/copier/blob/v0.2.4/License?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"e2dc538","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fjinzhu%2Fcopier%2Fblob%2Fv0.2.4%2FLicense","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"20","truncatedSloc":"16"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":null,"large":false,"loggedIn":false,"newDiscussionPath":"/jinzhu/copier/discussions/new","newIssuePath":"/jinzhu/copier/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/jinzhu/copier/blob/v0.2.4/License","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/jinzhu/copier/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":"/jinzhu/.github/blob/714ea45b1527aa7565305d5be08238326b65b645/.github/FUNDING.yml","repoOwner":"jinzhu","repoName":"copier","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/jinzhu/copier/branches":{"post":"pIOSMYPczRFrYWex3LhErk-yqgLImon3cnW2J9XJetbB3btNh4rMlUinF47g7oaFeOnHkP3HTQTSf1JGtankDA"}}},"title":"copier/License at v0.2.4 · jinzhu/copier","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/jinzhu/copier/blob/v0.2.4/License)  
+* * *
+  
+Package: github.com/kubernetes-csi/external-snapshotter/client/v6  
+Version: v6.0.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-csi/external-snapshotter/blob/client/v6.0.1/LICENSE)  
+* * *
+  
+Package: github.com/go-logr/logr  
+Version: v0.4.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/go-logr/logr/blob/v0.4.0/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel/exporters/otlp/otlpmetric  
+Version: v0.30.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/otlp/otlpmetric/v0.30.0/LICENSE)  
+* * *
+  
+Package: github.com/go-yaml/yaml  
+Version: v2.1.0+incompatible  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/go-yaml/yaml/blob/v2.1.0/LICENSE)  
+* * *
+  
+Package: github.com/akutz/gosync  
+Version: v0.1.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/akutz/gosync/blob/v0.1.0/LICENSE)  
+* * *
+  
+Package: github.com/apparentlymart/go-cidr  
+Version: v1.1.0  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: golang.org/x/net  
+Version: v0.7.0  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/net/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/net/security/dependabot","repoSecurityAndAnalysisPath":"/golang/net/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/net/blob/v0.7.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fnet%2Fblob%2Fv0.7.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/net/discussions/new","newIssuePath":"/golang/net/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/net/blob/v0.7.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/net/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"net","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/net/branches":{"post":"5fT0xt0NCR4qb8jekSLzbbyPoisRR_QQX7Ziw9TcP3d6SYChAvoSfIVwSSz7SznJT84ZEcBSNgf3jhqWYX46Eg"}}},"title":"net/LICENSE at v0.7.0 · golang/net","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/net/blob/v0.7.0/LICENSE)  
+* * *
+  
+Package: github.com/spf13/cobra  
+Version: v0.0.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/spf13/cobra/blob/v0.0.1/LICENSE.txt)  
+* * *
+  
+Package: golang.org/x/net  
+Version: v0.8.0  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/net/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/net/security/dependabot","repoSecurityAndAnalysisPath":"/golang/net/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/net/blob/v0.8.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fnet%2Fblob%2Fv0.8.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/net/discussions/new","newIssuePath":"/golang/net/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/net/blob/v0.8.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/net/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"net","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/net/branches":{"post":"5YDLLHF4Ym5jH8pkcXZYw3pzmi3Dt-PGf6dH1QDLcQTU-mRjzKmZ4eFq9sqTvgi-uOUGcN118HgdIvs8Msnmmw"}}},"title":"net/LICENSE at v0.8.0 · golang/net","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/net/blob/v0.8.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/csi-volumegroup-snapshotter  
+Version: v1.0.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/csi-volumegroup-snapshotter/blob/v1.0.1/LICENSE)  
+* * *
+  
+Package: github.com/spf13/viper  
+Version: v1.7.1  
+Copyright: Copyright (c) 2014 Steve Francia","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/spf13/viper/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/spf13/viper/security/dependabot","repoSecurityAndAnalysisPath":"/spf13/viper/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/spf13/viper/blob/v1.7.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4527efb","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fspf13%2Fviper%2Fblob%2Fv1.7.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/spf13/viper/discussions/new","newIssuePath":"/spf13/viper/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/spf13/viper/blob/v1.7.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/spf13/viper/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":4,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"spf13","repoName":"viper","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/spf13/viper/branches":{"post":"KuWVtv3NBUYxkMBRtNaWG382trvWAKOLRdiamZb3PMxIyC97SwS8L_xp6iG1u7dBAkYhzTTYu2UWaOOuGbtPUA"}}},"title":"viper/LICENSE at v1.7.1 · spf13/viper","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/spf13/viper/blob/v1.7.1/LICENSE)  
+* * *
+  
+Package: github.com/dell/dell-csi-extensions/podmon  
+Version: v1.1.3-0.20230517135918-9920e636bff1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
+* * *
+  
+Package: github.com/golang/protobuf  
+Version: v1.5.2  
+Copyright: Copyright 2010 The Go Authors.  All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","    * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","    * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","    * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/protobuf/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/protobuf/security/dependabot","repoSecurityAndAnalysisPath":"/golang/protobuf/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/protobuf/blob/v1.5.2/LICENSE?raw=true","headerInfo":{"blobSize":"1.45 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"0f64693","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fprotobuf%2Fblob%2Fv1.5.2%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"28","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/protobuf/discussions/new","newIssuePath":"/golang/protobuf/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/protobuf/blob/v1.5.2/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/protobuf/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"protobuf","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/protobuf/branches":{"post":"t3VgAUpE4v14Z5kCH_1hQzdltQWhDCtq_PNAV2BR8YBw3WojKD2ufmCBzAYMuDY8yliUiVOfHcv6AEkKSfJmnA"}}},"title":"protobuf/LICENSE at v1.5.2 · golang/protobuf","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/protobuf/blob/v1.5.2/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.20.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.20.2/LICENSE)  
+* * *
+  
+Package: github.com/onsi/gomega  
+Version: v1.3.0  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: github.com/lithammer/fuzzysearch  
+Version: v1.1.8  
+Copyright: Copyright (c) 2018 Peter Lithammer","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/lithammer/fuzzysearch/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/lithammer/fuzzysearch/security/dependabot","repoSecurityAndAnalysisPath":"/lithammer/fuzzysearch/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/lithammer/fuzzysearch/blob/v1.1.8/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"dee3d1d","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Flithammer%2Ffuzzysearch%2Fblob%2Fv1.1.8%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/lithammer/fuzzysearch/discussions/new","newIssuePath":"/lithammer/fuzzysearch/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/lithammer/fuzzysearch/blob/v1.1.8/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/lithammer/fuzzysearch/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"lithammer","repoName":"fuzzysearch","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/lithammer/fuzzysearch/branches":{"post":"MWOUAoL1-utZrm-hOcjVJ3KDLvcG_3sp_Iim1q3QACm-s9V_o9hhYz8gZexVTJ73JywgUtrjg9wiwaWuTTo2lQ"}}},"title":"fuzzysearch/LICENSE at v1.1.8 · lithammer/fuzzysearch","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/lithammer/fuzzysearch/blob/v1.1.8/LICENSE)  
+* * *
+  
+Package: github.com/dell/gopowermax/v2  
+Version: v2.3.0  
+Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/gopowermax/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/gopowermax/security/dependabot","repoSecurityAndAnalysisPath":"/dell/gopowermax/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/gopowermax/blob/v2.3.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6256045","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgopowermax%2Fblob%2Fv2.3.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"202","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/gopowermax/discussions/new","newIssuePath":"/dell/gopowermax/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/gopowermax/blob/v2.3.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/gopowermax/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"gopowermax","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/gopowermax/branches":{"post":"GDYfNgxMwZGp-lGTpbZZx_7qwIqjiJGDAYUo3mh6dUt-kAxYJuJNA2EoiB5KZRIIJxfJ6AvrKYa-RN82qZnhQw"}}},"title":"gopowermax/LICENSE at v2.3.0 · dell/gopowermax","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/gopowermax/blob/v2.3.0/LICENSE)  
+* * *
+  
+Package: github.com/kubernetes-csi/csi-lib-utils  
+Version: v0.9.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-csi/csi-lib-utils/blob/v0.9.1/LICENSE)  
+* * *
+  
+Package: github.com/Showmax/go-fqdn  
+Version: v1.0.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/Showmax/go-fqdn/blob/v1.0.0/LICENSE)  
+* * *
+  
+Package: github.com/kubernetes-csi/external-snapshotter/client/v4  
+Version: v4.2.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-csi/external-snapshotter/blob/client/v4.2.0/LICENSE)  
+* * *
+  
+Package: github.com/cucumber/godog  
+Version: v0.12.6  
+Copyright: N/A  
+License: [MIT license](https://github.com/cucumber/godog/blob/v0.12.6/LICENSE)  
+* * *
+  
+Package: gonum.org/v1/plot  
+Version: v0.12.0  
+Copyright: N/A  
+License: [BSD-3-Clause](https://github.com/gonum/plot/blob/v0.12.0/LICENSE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.22.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.22.2/LICENSE)  
+* * *
+  
+Package: github.com/onsi/ginkgo  
+Version: v1.16.5  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: github.com/spf13/pflag  
+Version: v1.0.5  
+Copyright: Copyright (c) 2012 Alex Ogier. All rights reserved.","Copyright (c) 2012 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/spf13/pflag/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/spf13/pflag/security/dependabot","repoSecurityAndAnalysisPath":"/spf13/pflag/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/spf13/pflag/blob/v1.0.5/LICENSE?raw=true","headerInfo":{"blobSize":"1.5 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"63ed1cf","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fspf13%2Fpflag%2Fblob%2Fv1.0.5%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"28","truncatedSloc":"25"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/spf13/pflag/discussions/new","newIssuePath":"/spf13/pflag/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/spf13/pflag/blob/v1.0.5/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/spf13/pflag/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"spf13","repoName":"pflag","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/spf13/pflag/branches":{"post":"P6fUpnOpHbh9OPPqac1I_oEh6VEmbgyjegc6WP4cPSJ3G6eRQdP-sqqS1sOGet8fKUzGaoFvu1os-zslUBHWnA"}}},"title":"pflag/LICENSE at v1.0.5 · spf13/pflag","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/spf13/pflag/blob/v1.0.5/LICENSE)  
+* * *
+  
+Package: golang.org/x/sys  
+Version: v0.0.0-20220520151302-bc2c85ada10a  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/sys/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/sys/security/dependabot","repoSecurityAndAnalysisPath":"/golang/sys/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/sys/blob/bc2c85ada10a/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fsys%2Fblob%2Fbc2c85ada10a%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/sys/discussions/new","newIssuePath":"/golang/sys/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/sys/blob/bc2c85ada10a/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/sys/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"sys","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/sys/branches":{"post":"diXIl9zd_gRnUb6Un6HtZmpChzuHY0xCRzsFk4RTMmO_m1ozGpvRgERoUW_DlWJpF_P2ObCCmvunezE4-niffA"}}},"title":"sys/LICENSE at bc2c85ada10aa9b6aa9607e9ac9ad0761b95cf1d · golang/sys","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/sys/blob/bc2c85ada10a/LICENSE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.23.3  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.23.3/LICENSE)  
+* * *
+  
+Package: github.com/sirupsen/logrus  
+Version: v1.9.1  
+Copyright: Copyright (c) 2014 Simon Eskildsen","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in","all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN","THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/sirupsen/logrus/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/sirupsen/logrus/security/dependabot","repoSecurityAndAnalysisPath":"/sirupsen/logrus/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/sirupsen/logrus/blob/v1.9.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"f090cb4","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fsirupsen%2Flogrus%2Fblob%2Fv1.9.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/sirupsen/logrus/discussions/new","newIssuePath":"/sirupsen/logrus/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/sirupsen/logrus/blob/v1.9.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/sirupsen/logrus/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"sirupsen","repoName":"logrus","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/sirupsen/logrus/branches":{"post":"c3e5L5MaHTTd1IArsbmcmeCit9uuco-9NOoBW3Nzpdy6UodA_IEoq3ukzOUN7LSqNcpf8XZMhet6vyFiyUaNpQ"}}},"title":"logrus/LICENSE at v1.9.1 · sirupsen/logrus","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.9.1/LICENSE)  
+* * *
+  
+Package: k8s.io/apimachinery  
+Version: v0.26.4  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.26.4/LICENSE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.23.4  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.23.4/LICENSE)  
+* * *
+  
+Package: k8s.io/apimachinery  
+Version: v0.20.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.20.0/LICENSE)  
+* * *
+  
 Package: github.com/dell/dell-csi-extensions/common  
 Version: v1.1.2  
 Copyright: N/A  
 License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/common/v1.1.2/LICENSE)  
 * * *
   
-Package: github.com/cucumber/godog  
-Version: v0.12.1  
+Package: github.com/google/uuid  
+Version: v1.3.0  
+Copyright: Copyright (c) 2009,2014 Google Inc. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/google/uuid/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/google/uuid/security/dependabot","repoSecurityAndAnalysisPath":"/google/uuid/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/google/uuid/blob/v1.3.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.45 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"5dc6826","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgoogle%2Fuuid%2Fblob%2Fv1.3.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/google/uuid/discussions/new","newIssuePath":"/google/uuid/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/google/uuid/blob/v1.3.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/google/uuid/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"google","repoName":"uuid","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/google/uuid/branches":{"post":"bw6XJuYrXeRXJWHczVeBXycwiMQnR4J1IsPwaJ_SsL7keSwOcCWyPzn6jFfZBw7m4XnX54ytjLnWZNi_l1zDUQ"}}},"title":"uuid/LICENSE at v1.3.0 · google/uuid","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/google/uuid/blob/v1.3.0/LICENSE)  
+* * *
+  
+Package: github.com/onsi/gomega  
+Version: v1.23.0  
 Copyright: N/A  
-License: [MIT license](https://github.com/cucumber/godog/blob/v0.12.1/LICENSE)  
+License: []()  
 * * *
   
-Package: github.com/golang/protobuf  
-Version: v1.5.2  
-Copyright: Copyright 2010 The Go Authors.  All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/protobuf/blob/v1.5.2/LICENSE)  
+Package: github.com/dell/gounity  
+Version: v1.14.1-0.20230719100046-57750a8fe30b  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/gounity/blob/57750a8fe30b/LICENSE)  
 * * *
   
-Package: github.com/fsnotify/fsnotify  
-Version: v1.6.0  
-Copyright: Copyright © 2012 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.6.0/LICENSE)  
+Package: google.golang.org/grpc  
+Version: v1.43.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.43.0/LICENSE)  
+* * *
+  
+Package: k8s.io/apimachinery  
+Version: v0.22.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.22.1/LICENSE)  
+* * *
+  
+Package: k8s.io/apimachinery  
+Version: v0.26.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.26.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/gocsi  
+Version: v1.7.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/gocsi/blob/v1.7.0/LICENSE)  
+* * *
+  
+Package: github.com/kubernetes-csi/csi-lib-utils  
+Version: v0.7.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-csi/csi-lib-utils/blob/v0.7.0/LICENSE)  
+* * *
+  
+Package: github.com/go-openapi/strfmt  
+Version: v0.21.3  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/go-openapi/strfmt/blob/v0.21.3/LICENSE)  
+* * *
+  
+Package: k8s.io/cli-runtime  
+Version: v0.26.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/cli-runtime/blob/v0.26.0/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.27.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.27.2/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel/sdk  
+Version: v1.7.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/sdk/v1.7.0/LICENSE)  
+* * *
+  
+Package: github.com/spf13/viper  
+Version: v1.15.0  
+Copyright: Copyright (c) 2014 Steve Francia","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/spf13/viper/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/spf13/viper/security/dependabot","repoSecurityAndAnalysisPath":"/spf13/viper/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/spf13/viper/blob/v1.15.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4527efb","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fspf13%2Fviper%2Fblob%2Fv1.15.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/spf13/viper/discussions/new","newIssuePath":"/spf13/viper/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/spf13/viper/blob/v1.15.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/spf13/viper/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":4,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"spf13","repoName":"viper","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/spf13/viper/branches":{"post":"lrSQkxsyLLQc6CKXG9jyGiAlgtQgj4wnDp0NeH-_-57qzlq0tCIUoUTRn97E2MKK5i6jSbrUHX6hMIsPYkP9tw"}}},"title":"viper/LICENSE at v1.15.0 · spf13/viper","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/spf13/viper/blob/v1.15.0/LICENSE)  
 * * *
   
 Package: github.com/stretchr/testify  
 Version: v1.8.1  
-Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.  
+Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/stretchr/testify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/stretchr/testify/security/dependabot","repoSecurityAndAnalysisPath":"/stretchr/testify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/stretchr/testify/blob/v1.8.1/LICENSE?raw=true","headerInfo":{"blobSize":"1.08 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4b0421c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fstretchr%2Ftestify%2Fblob%2Fv1.8.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/stretchr/testify/discussions/new","newIssuePath":"/stretchr/testify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/stretchr/testify/blob/v1.8.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/stretchr/testify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"stretchr","repoName":"testify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/stretchr/testify/branches":{"post":"Zbx6hAhlUV01KSByS7-4cPW9Druu6t9FpH8FNw_sfhxc6U1OWX1i6q56xgIHmA23MUeoBzkvXgVMDk6f84uN6A"}}},"title":"testify/LICENSE at v1.8.1 · stretchr/testify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
 License: [MIT license](https://github.com/stretchr/testify/blob/v1.8.1/LICENSE)  
 * * *
   
-Package: github.com/cucumber/godog  
-Version: v0.10.0  
-Copyright: N/A  
-License: [MIT license](https://github.com/cucumber/godog/blob/v0.10.0/LICENSE)  
+Package: github.com/dell/gopowermax/v2  
+Version: v2.2.0  
+Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/gopowermax/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/gopowermax/security/dependabot","repoSecurityAndAnalysisPath":"/dell/gopowermax/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/gopowermax/blob/v2.2.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6256045","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgopowermax%2Fblob%2Fv2.2.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"202","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/gopowermax/discussions/new","newIssuePath":"/dell/gopowermax/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/gopowermax/blob/v2.2.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/gopowermax/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"gopowermax","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/gopowermax/branches":{"post":"0fQJvZ_vh3RcCUnFuGvZjd1dxWB_gZiGWmTqFNzxkN8TgXJV0q0UViHJ_RrNh2CwySBTan927Y_khQHUJfQQ2Q"}}},"title":"gopowermax/LICENSE at v2.2.0 · dell/gopowermax","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/gopowermax/blob/v2.2.0/LICENSE)  
 * * *
   
-Package: github.com/dell/csi-metadata-retriever  
+Package: github.com/stretchr/testify  
+Version: v1.7.0  
+Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/stretchr/testify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/stretchr/testify/security/dependabot","repoSecurityAndAnalysisPath":"/stretchr/testify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/stretchr/testify/blob/v1.7.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.08 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4b0421c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fstretchr%2Ftestify%2Fblob%2Fv1.7.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/stretchr/testify/discussions/new","newIssuePath":"/stretchr/testify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/stretchr/testify/blob/v1.7.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/stretchr/testify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"stretchr","repoName":"testify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/stretchr/testify/branches":{"post":"RdbnPr282T8vdBxB6zN9eGqaRVqt5v6tARjoCHXwc-IUFv2k3jtCJMUGyGC7_Fq_K94ZxtZU9FCnw4UpomAwmA"}}},"title":"testify/LICENSE at v1.7.0 · stretchr/testify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/stretchr/testify/blob/v1.7.0/LICENSE)  
+* * *
+  
+Package: golang.org/x/net  
+Version: v0.10.0  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/net/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/net/security/dependabot","repoSecurityAndAnalysisPath":"/golang/net/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/net/blob/v0.10.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fnet%2Fblob%2Fv0.10.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/net/discussions/new","newIssuePath":"/golang/net/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/net/blob/v0.10.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/net/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"net","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/net/branches":{"post":"IkZkHHRLWf1RJ81UVLRmk-WFr6jCCuPQyu2pjEixPIYqyxY5pemEWPIDlnX2oc_3sPfRkVLhFtWLHN0c5TJnUQ"}}},"title":"net/LICENSE at v0.10.0 · golang/net","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/net/blob/v0.10.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/goscaleio  
+Version: v1.11.1-0.20230724113841-f10386ad0bb4  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/goscaleio/blob/f10386ad0bb4/LICENSE)  
+* * *
+  
+Package: github.com/joho/godotenv  
 Version: v1.4.0  
-Copyright: Copyright © 2022 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/csi-metadata-retriever/blob/v1.4.0/LICENSE)  
+Copyright: Copyright (c) 2013 John Barton","","MIT License","","Permission is hereby granted, free of charge, to any person obtaining","a copy of this software and associated documentation files (the","\"Software\"), to deal in the Software without restriction, including","without limitation the rights to use, copy, modify, merge, publish,","distribute, sublicense, and/or sell copies of the Software, and to","permit persons to whom the Software is furnished to do so, subject to","the following conditions:","","The above copyright notice and this permission notice shall be","included in all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,","EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF","MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND","NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE","LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION","OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION","WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/joho/godotenv/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/joho/godotenv/security/dependabot","repoSecurityAndAnalysisPath":"/joho/godotenv/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENCE","displayUrl":"https://github.com/joho/godotenv/blob/v1.4.0/LICENCE?raw=true","headerInfo":{"blobSize":"1.04 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"e7ddd51","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fjoho%2Fgodotenv%2Fblob%2Fv1.4.0%2FLICENCE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"23","truncatedSloc":"18"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":null,"large":false,"loggedIn":false,"newDiscussionPath":"/joho/godotenv/discussions/new","newIssuePath":"/joho/godotenv/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/joho/godotenv/blob/v1.4.0/LICENCE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/joho/godotenv/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"joho","repoName":"godotenv","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/joho/godotenv/branches":{"post":"1ExYh7_cAMDtfHaI3EIYNwK5T0VoEp7-MMr3Cs5_4Dg8LuZ4kKXcbZWshdwe97OfH37vbJuiyiqj4y8-M2aLTw"}}},"title":"godotenv/LICENCE at v1.4.0 · joho/godotenv","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/joho/godotenv/blob/v1.4.0/LICENCE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.22.1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.22.1/LICENSE)  
+* * *
+  
+Package: sigs.k8s.io/kustomize/kustomize/v3  
+Version: v1.26.6  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: github.com/go-logr/logr  
+Version: v1.2.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/go-logr/logr/blob/v1.2.0/LICENSE)  
+* * *
+  
+Package: github.com/cheggaaa/pb/v3  
+Version: v3.0.2  
+Copyright: Copyright (c) 2012-2015, Sergey Cherepanov","All rights reserved.","","Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:","","* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.","","* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.","","* Neither the name of the author nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/cheggaaa/pb/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/cheggaaa/pb/security/dependabot","repoSecurityAndAnalysisPath":"/cheggaaa/pb/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/cheggaaa/pb/blob/v3.0.2/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"5119703","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fcheggaaa%2Fpb%2Fblob%2Fv3.0.2%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"12","truncatedSloc":"7"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/cheggaaa/pb/discussions/new","newIssuePath":"/cheggaaa/pb/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/cheggaaa/pb/blob/v3.0.2/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/cheggaaa/pb/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"cheggaaa","repoName":"pb","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/cheggaaa/pb/branches":{"post":"sn5g-9L_9lzKEGLJGE-YVGhK-CZrUSE5tPLoyYnV0DkW5d72f2uLHSUuXMa7BOj6X__Jv-G9-lR6Rsh8w5Wcsw"}}},"title":"pb/LICENSE at v3.0.2 · cheggaaa/pb","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/cheggaaa/pb/blob/v3.0.2/LICENSE)  
+* * *
+  
+Package: github.com/akutz/goof  
+Version: v0.1.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/akutz/goof/blob/v0.1.2/LICENSE)  
+* * *
+  
+Package: github.com/dell/dell-csi-extensions/replication  
+Version: v1.3.1-0.20230517135918-9920e636bff1  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
+* * *
+  
+Package: github.com/golang/mock  
+Version: v1.6.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/golang/mock/blob/v1.6.0/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel/trace  
+Version: v1.3.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/trace/v1.3.0/LICENSE)  
+* * *
+  
+Package: k8s.io/api  
+Version: v0.26.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.26.2/LICENSE)  
+* * *
+  
+Package: helm.sh/helm/v3  
+Version: v3.11.1  
+Copyright: Copyright 2016 The Kubernetes Authors All Rights Reserved","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/helm/helm/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/helm/helm/security/dependabot","repoSecurityAndAnalysisPath":"/helm/helm/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/helm/helm/blob/v3.11.1/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"21c57fa","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fhelm%2Fhelm%2Fblob%2Fv3.11.1%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"202","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/helm/helm/discussions/new","newIssuePath":"/helm/helm/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/helm/helm/blob/v3.11.1/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/helm/helm/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"helm","repoName":"helm","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/helm/helm/branches":{"post":"2B7G074xK-G_n_Sa94IQJ_U5stK8RYePV2Xodkk3DKxP4unKZrjIQAdaL_KS5ctho5gRbFJBA1srHMAL7M9Ogw"}}},"title":"helm/LICENSE at v3.11.1 · helm/helm","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/helm/helm/blob/v3.11.1/LICENSE)  
 * * *
   
 Package: github.com/grpc-ecosystem/go-grpc-middleware  
@@ -633,362 +948,22 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/etcd-io/etcd/blob/client/v3.5.0/LICENSE)  
 * * *
   
-Package: google.golang.org/grpc  
-Version: v1.52.0  
+Package: github.com/dell/goisilon  
+Version: v1.11.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.52.0/LICENSE)  
+License: [Apache-2.0](https://github.com/dell/goisilon/blob/v1.11.0/LICENSE)  
 * * *
   
-Package: gopkg.in/yaml.v3  
-Version: v3.0.1  
-Copyright: Copyright (c) 2006-2010 Kirill Simonov  
-Copyright (c) 2006-2011 Kirill Simonov  
-Copyright (c) 2011-2019 Canonical Ltd  
-License: [MIT license,Apache-2.0](https://github.com/go-yaml/yaml/blob/v3.0.1/LICENSE)  
-* * *
-  
-Package: github.com/onsi/gomega  
-Version: v1.15.0  
-Copyright: Copyright (c) 2013-2014 Onsi Fakhouri  
-License: [MIT license](https://github.com/onsi/gomega/blob/v1.15.0/LICENSE)  
-* * *
-  
-Package: golang.org/x/sync  
-Version: v0.2.0  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/sync/blob/v0.2.0/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.26.4  
+Package: github.com/dell/dell-csi-extensions/migration  
+Version: v1.1.1  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.26.4/LICENSE)  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/migration/v1.1.1/LICENSE)  
 * * *
   
-Package: github.com/akutz/gournal  
-Version: v0.5.0  
+Package: github.com/Jeffail/gabs  
+Version: v1.4.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/akutz/gournal/blob/v0.5.0/LICENSE)  
-* * *
-  
-Package: github.com/spf13/viper  
-Version: v1.12.0  
-Copyright: Copyright (c) 2014 Steve Francia  
-License: [MIT license](https://github.com/spf13/viper/blob/v1.12.0/LICENSE)  
-* * *
-  
-Package: github.com/uber/jaeger-client-go  
-Version: v2.30.0+incompatible  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/uber/jaeger-client-go/blob/v2.30.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/trace  
-Version: v1.3.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/trace/v1.3.0/LICENSE)  
-* * *
-  
-Package: golang.org/x/sync  
-Version: v0.0.0-20220923202941-7f9b1623fab7  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/sync/blob/7f9b1623fab7/LICENSE)  
-* * *
-  
-Package: github.com/spf13/viper  
-Version: v1.10.1  
-Copyright: Copyright (c) 2014 Steve Francia  
-License: [MIT license](https://github.com/spf13/viper/blob/v1.10.1/LICENSE)  
-* * *
-  
-Package: k8s.io/klog/v2  
-Version: v2.9.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/klog/blob/v2.9.0/LICENSE)  
-* * *
-  
-Package: github.com/julienschmidt/httprouter  
-Version: v1.3.0  
-Copyright: Copyright (c) 2013, Julien Schmidt  
-License: [BSD-3-Clause](https://github.com/julienschmidt/httprouter/blob/v1.3.0/LICENSE)  
-* * *
-  
-Package: github.com/container-storage-interface/spec  
-Version: v1.7.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/container-storage-interface/spec/blob/v1.7.0/LICENSE)  
-* * *
-  
-Package: github.com/golang/mock  
-Version: v1.6.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/golang/mock/blob/v1.6.0/LICENSE)  
-* * *
-  
-Package: sigs.k8s.io/kustomize/kustomize/v3  
-Version: v3.10.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-sigs/kustomize/blob/kustomize/v3.10.0/LICENSE)  
-* * *
-  
-Package: k8s.io/apimachinery  
-Version: v0.22.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.22.2/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.26.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.26.2/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.23.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.23.0/LICENSE)  
-* * *
-  
-Package: github.com/dell/gocsi  
-Version: v1.6.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/gocsi/blob/v1.6.0/LICENSE)  
-* * *
-  
-Package: github.com/google/docsy  
-Version: v0.4.1-0.20220725215923-c09d2feff8b2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/google/docsy/blob/c09d2feff8b2/LICENSE)  
-* * *
-  
-Package: k8s.io/cli-runtime  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/cli-runtime/blob/v0.26.0/LICENSE)  
-* * *
-  
-Package: github.com/spf13/viper  
-Version: v1.7.1  
-Copyright: Copyright (c) 2014 Steve Francia  
-License: [MIT license](https://github.com/spf13/viper/blob/v1.7.1/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.22.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.22.2/LICENSE)  
-* * *
-  
-Package: github.com/kubernetes-csi/csi-lib-utils  
-Version: v0.13.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-csi/csi-lib-utils/blob/v0.13.0/LICENSE)  
-* * *
-  
-Package: sigs.k8s.io/controller-runtime  
-Version: v0.11.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.11.1/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/replication  
-Version: v1.3.1-0.20230517135918-9920e636bff1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
-* * *
-  
-Package: google.golang.org/grpc  
-Version: v1.46.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.46.0/LICENSE)  
-* * *
-  
-Package: github.com/vmware/govmomi  
-Version: v0.29.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/vmware/govmomi/blob/v0.29.0/LICENSE.txt)  
-* * *
-  
-Package: github.com/dell/gounity  
-Version: v1.14.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/gounity/blob/v1.14.0/LICENSE)  
-* * *
-  
-Package: github.com/mitchellh/go-homedir  
-Version: v1.1.0  
-Copyright: Copyright (c) 2013 Mitchell Hashimoto  
-License: [MIT license](https://github.com/mitchellh/go-homedir/blob/v1.1.0/LICENSE)  
-* * *
-  
-Package: sigs.k8s.io/yaml  
-Version: v1.3.0  
-Copyright: Copyright (c) 2014 Sam Ghods  
-Copyright (c) 2012 The Go Authors. All rights reserved.  
-License: [MIT license,BSD-3-Clause](https://github.com/kubernetes-sigs/yaml/blob/v1.3.0/LICENSE)  
-* * *
-  
-Package: github.com/urfave/cli  
-Version: v1.22.2  
-Copyright: Copyright (c) 2016 Jeremy Saenz &amp; Contributors  
-License: [MIT license](https://github.com/urfave/cli/blob/v1.22.2/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/common  
-Version: v1.1.2-0.20230517135918-9920e636bff1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.27.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.27.2/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/metric  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/metric/v0.26.0/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.26.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.26.2/LICENSE)  
-* * *
-  
-Package: gonum.org/v1/plot  
-Version: v0.12.0  
-Copyright: N/A  
-License: [BSD-3-Clause](https://github.com/gonum/plot/blob/v0.12.0/LICENSE)  
-* * *
-  
-Package: github.com/spf13/viper  
-Version: v1.7.0  
-Copyright: Copyright (c) 2014 Steve Francia  
-License: [MIT license](https://github.com/spf13/viper/blob/v1.7.0/LICENSE)  
-* * *
-  
-Package: github.com/fsnotify/fsnotify  
-Version: v1.5.4  
-Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.  
-Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.5.4/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.22.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.22.1/LICENSE)  
-* * *
-  
-Package: github.com/spf13/viper  
-Version: v1.15.0  
-Copyright: Copyright (c) 2014 Steve Francia  
-License: [MIT license](https://github.com/spf13/viper/blob/v1.15.0/LICENSE)  
-* * *
-  
-Package: github.com/dell/gopowermax/v2  
-Version: v2.3.0  
-Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/gopowermax/blob/v2.3.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc  
-Version: v0.28.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.28.0/LICENSE)  
-* * *
-  
-Package: github.com/gofrs/flock  
-Version: v0.8.1  
-Copyright: Copyright (c) 2015-2020, Tim Heckman  
-License: [BSD-3-Clause](https://github.com/gofrs/flock/blob/v0.8.1/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/podmon  
-Version: v1.1.3-0.20230517135918-9920e636bff1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
-* * *
-  
-Package: google.golang.org/grpc  
-Version: v1.46.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.46.2/LICENSE)  
-* * *
-  
-Package: github.com/orlangure/gnomock  
-Version: v0.22.0  
-Copyright: Copyright (c) 2020 Yury Fedorov  
-License: [MIT license](https://github.com/orlangure/gnomock/blob/v0.22.0/LICENSE)  
-* * *
-  
-Package: github.com/valyala/fastjson  
-Version: v1.6.3  
-Copyright: Copyright (c) 2018 Aliaksandr Valialkin  
-License: [MIT license](https://github.com/valyala/fastjson/blob/v1.6.3/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp  
-Version: v0.28.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.28.0/LICENSE)  
-* * *
-  
-Package: k8s.io/apiextensions-apiserver  
-Version: v0.26.4  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apiextensions-apiserver/blob/v0.26.4/LICENSE)  
-* * *
-  
-Package: github.com/dell/csi-volumegroup-snapshotter  
-Version: v1.0.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/csi-volumegroup-snapshotter/blob/v1.0.1/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/exporters/prometheus  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/prometheus/v0.26.0/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/volumeGroupSnapshot  
-Version: v1.2.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/volumeGroupSnapshot/v1.2.0/LICENSE)  
-* * *
-  
-Package: github.com/golang/protobuf  
-Version: v1.5.3  
-Copyright: Copyright 2010 The Go Authors.  All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/protobuf/blob/v1.5.3/LICENSE)  
-* * *
-  
-Package: gopkg.in/yaml.v2  
-Version: v2.3.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-yaml/yaml/blob/v2.3.0/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.20.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.20.0/LICENSE)  
-* * *
-  
-Package: github.com/gorilla/mux  
-Version: v1.8.0  
-Copyright: Copyright (c) 2012-2018 The Gorilla Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/gorilla/mux/blob/v1.8.0/LICENSE)  
-* * *
-  
-Package: github.com/opentracing/opentracing-go  
-Version: v1.2.0  
-Copyright: Copyright 2016 The OpenTracing Authors  
-License: [Apache-2.0](https://github.com/opentracing/opentracing-go/blob/v1.2.0/LICENSE)  
+License: []()  
 * * *
   
 Package: go.opentelemetry.io/otel  
@@ -997,312 +972,166 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/v1.3.0/LICENSE)  
 * * *
   
-Package: go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc  
-Version: v0.30.0  
+Package: github.com/bombsimon/logrusr/v4  
+Version: v4.0.0  
+Copyright: Copyright (c) 2020 Simon Sawert","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/bombsimon/logrusr/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/bombsimon/logrusr/security/dependabot","repoSecurityAndAnalysisPath":"/bombsimon/logrusr/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/bombsimon/logrusr/blob/v4.0.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.04 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"ba46c0c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fbombsimon%2Flogrusr%2Fblob%2Fv4.0.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/bombsimon/logrusr/discussions/new","newIssuePath":"/bombsimon/logrusr/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/bombsimon/logrusr/blob/v4.0.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/bombsimon/logrusr/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"bombsimon","repoName":"logrusr","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/bombsimon/logrusr/branches":{"post":"dRZqnR-toDxl8wd8qtpk-XTIBm4O6TjGo3aDm_bXYncXefBxdelTsbwa92yn9Dw7GcPhf8eogRXUOzw30f-AZg"}}},"title":"logrusr/LICENSE at v4.0.0 · bombsimon/logrusr","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/bombsimon/logrusr/blob/v4.0.0/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.23.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/otlp/otlpmetric/otlpmetricgrpc/v0.30.0/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.23.0/LICENSE)  
 * * *
   
-Package: go.opentelemetry.io/otel/sdk  
-Version: v1.7.0  
+Package: github.com/cucumber/godog  
+Version: v0.10.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/sdk/v1.7.0/LICENSE)  
+License: [MIT license](https://github.com/cucumber/godog/blob/v0.10.0/LICENSE)  
 * * *
   
-Package: google.golang.org/grpc  
-Version: v1.42.0  
+Package: github.com/dell/dell-csi-extensions/common  
+Version: v1.1.2-0.20230517135918-9920e636bff1  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.42.0/LICENSE)  
-* * *
-  
-Package: github.com/cheggaaa/pb/v3  
-Version: v3.0.2  
-Copyright: Copyright (c) 2012-2015, Sergey Cherepanov  
-License: [BSD-3-Clause](https://github.com/cheggaaa/pb/blob/v3.0.2/LICENSE)  
-* * *
-  
-Package: github.com/stretchr/testify  
-Version: v1.7.0  
-Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.  
-License: [MIT license](https://github.com/stretchr/testify/blob/v1.7.0/LICENSE)  
-* * *
-  
-Package: github.com/fsnotify/fsnotify  
-Version: v1.5.1  
-Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.  
-Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.5.1/LICENSE)  
-* * *
-  
-Package: github.com/akutz/gosync  
-Version: v0.1.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/akutz/gosync/blob/v0.1.0/LICENSE)  
-* * *
-  
-Package: golang.org/x/sys  
-Version: v0.0.0-20220520151302-bc2c85ada10a  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/sys/blob/bc2c85ada10a/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/exporters/otlp/otlpmetric  
-Version: v0.30.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/exporters/otlp/otlpmetric/v0.30.0/LICENSE)  
-* * *
-  
-Package: k8s.io/api  
-Version: v0.22.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.22.1/LICENSE)  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/9920e636bff1/LICENSE)  
 * * *
   
 Package: k8s.io/apimachinery  
-Version: v0.22.1  
+Version: v0.22.2  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.22.1/LICENSE)  
-* * *
-  
-Package: github.com/hashicorp/golang-lru  
-Version: v0.5.4  
-Copyright: N/A  
-License: [Mozilla General Public License 2.0](https://github.com/hashicorp/golang-lru/blob/v0.5.4/LICENSE)  
-* * *
-  
-Package: github.com/lithammer/fuzzysearch  
-Version: v1.1.2  
-Copyright: Copyright (c) 2018 Peter Lithammer  
-License: [MIT license](https://github.com/lithammer/fuzzysearch/blob/v1.1.2/LICENSE)  
-* * *
-  
-Package: k8s.io/klog/v2  
-Version: v2.30.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/klog/blob/v2.30.0/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.22.2/LICENSE)  
 * * *
   
 Package: sigs.k8s.io/controller-runtime  
-Version: v0.13.0  
+Version: v0.11.1  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.13.0/LICENSE)  
-* * *
-  
-Package: github.com/bramvdbogaerde/go-scp  
-Version: v0.0.0-20201229172121-7a6c0268fa67  
-Copyright: N/A  
-License: [Mozilla General Public License 2.0](https://github.com/bramvdbogaerde/go-scp/blob/7a6c0268fa67/LICENSE.txt)  
-* * *
-  
-Package: github.com/spf13/viper  
-Version: v1.8.1  
-Copyright: Copyright (c) 2014 Steve Francia  
-License: [MIT license](https://github.com/spf13/viper/blob/v1.8.1/LICENSE)  
-* * *
-  
-Package: github.com/dell/gobrick  
-Version: v1.8.0  
-Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/gobrick/blob/v1.8.0/LICENSE)  
-* * *
-  
-Package: github.com/spf13/pflag  
-Version: v1.0.5  
-Copyright: Copyright (c) 2012 Alex Ogier. All rights reserved.  
-Copyright (c) 2012 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/spf13/pflag/blob/v1.0.5/LICENSE)  
-* * *
-  
-Package: github.com/Jeffail/gabs  
-Version: v1.4.0  
-Copyright: Copyright (c) 2014 Ashley Jeffs  
-License: [MIT license](https://github.com/Jeffail/gabs/blob/v1.4.0/LICENSE)  
-* * *
-  
-Package: github.com/kubernetes-csi/external-snapshotter/client/v6  
-Version: v6.0.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-csi/external-snapshotter/blob/client/v6.0.1/LICENSE)  
-* * *
-  
-Package: github.com/fatih/color  
-Version: v1.15.0  
-Copyright: Copyright (c) 2013 Fatih Arslan</p>  
-License: [MIT license](https://github.com/fatih/color/blob/v1.15.0/LICENSE.md)  
-* * *
-  
-Package: github.com/akutz/goof  
-Version: v0.1.2  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/akutz/goof/blob/v0.1.2/LICENSE)  
-* * *
-  
-Package: github.com/dell/gofsutil  
-Version: v1.12.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/gofsutil/blob/v1.12.0/LICENSE)  
-* * *
-  
-Package: k8s.io/apimachinery  
-Version: v0.20.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.20.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel  
-Version: v1.7.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/v1.7.0/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.11.1/LICENSE)  
 * * *
   
 Package: k8s.io/api  
-Version: v0.26.4  
+Version: v0.23.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.26.4/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes/api/blob/v0.23.0/LICENSE)  
 * * *
   
-Package: github.com/go-yaml/yaml  
-Version: v2.1.0+incompatible  
+Package: sigs.k8s.io/controller-runtime  
+Version: v0.11.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-yaml/yaml/blob/v2.1.0/LICENSE)  
+License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.11.0/LICENSE)  
 * * *
   
-Package: github.com/stretchr/testify  
-Version: v1.8.2  
-Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.  
-License: [MIT license](https://github.com/stretchr/testify/blob/v1.8.2/LICENSE)  
+Package: github.com/pkg/errors  
+Version: v0.9.1  
+Copyright: N/A  
+License: []()  
+* * *
+  
+Package: github.com/dell/dell-csi-extensions/podmon  
+Version: v1.1.3  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/podmon/v1.1.3/LICENSE)  
+* * *
+  
+Package: github.com/container-storage-interface/spec  
+Version: v1.7.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/container-storage-interface/spec/blob/v1.7.0/LICENSE)  
+* * *
+  
+Package: github.com/fsnotify/fsnotify  
+Version: v1.6.0  
+Copyright: Copyright © 2012 The Go Authors. All rights reserved.","Copyright © fsnotify Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without modification,","are permitted provided that the following conditions are met:","","* Redistributions of source code must retain the above copyright notice, this","  list of conditions and the following disclaimer.","* Redistributions in binary form must reproduce the above copyright notice, this","  list of conditions and the following disclaimer in the documentation and/or","  other materials provided with the distribution.","* Neither the name of Google Inc. nor the names of its contributors may be used","  to endorse or promote products derived from this software without specific","  prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND","ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED","WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE","DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR","ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES","(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;","LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON","ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS","SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/fsnotify/fsnotify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/fsnotify/fsnotify/security/dependabot","repoSecurityAndAnalysisPath":"/fsnotify/fsnotify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/fsnotify/fsnotify/blob/v1.6.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.5 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"fb03ade","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Ffsnotify%2Ffsnotify%2Fblob%2Fv1.6.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"25","truncatedSloc":"22"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/fsnotify/fsnotify/discussions/new","newIssuePath":"/fsnotify/fsnotify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/fsnotify/fsnotify/blob/v1.6.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/fsnotify/fsnotify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"fsnotify","repoName":"fsnotify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/fsnotify/fsnotify/branches":{"post":"Efe3EV0uPUdlXA8J3YbO7K3tYYSbBCqE3-Ewi7YF5lBI__lBexFkkxtHRAQQ0-iwHBCtGc_eX-nTkMotFN0vhw"}}},"title":"fsnotify/LICENSE at v1.6.0 · fsnotify/fsnotify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.6.0/LICENSE)  
 * * *
   
 Package: github.com/onsi/ginkgo  
-Version: v1.4.0  
-Copyright: Copyright (c) 2013-2014 Onsi Fakhouri  
-License: [MIT license](https://github.com/onsi/ginkgo/blob/v1.4.0/LICENSE)  
+Version: v1.16.4  
+Copyright: N/A  
+License: []()  
 * * *
   
-Package: github.com/dell/goscaleio  
-Version: v1.11.0  
+Package: github.com/dell/dell-csi-extensions/common  
+Version: v1.1.2-0.20230330153121-7ee6c5ed22ea  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/goscaleio/blob/v1.11.0/LICENSE)  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/7ee6c5ed22ea/LICENSE)  
 * * *
   
-Package: go.opentelemetry.io/otel/sdk/export/metric  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/sdk/export/metric/v0.26.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/sdk/metric  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/sdk/metric/v0.26.0/LICENSE)  
+Package: github.com/dell/gobrick  
+Version: v1.7.0  
+Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.","","   Licensed under the Apache License, Version 2.0 (the \"License\");","   you may not use this file except in compliance with the License.","   You may obtain a copy of the License at","","       http://www.apache.org/licenses/LICENSE-2.0","","   Unless required by applicable law or agreed to in writing, software","   distributed under the License is distributed on an \"AS IS\" BASIS,","   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.","   See the License for the specific language governing permissions and","   limitations under the License."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/dell/gobrick/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/dell/gobrick/security/dependabot","repoSecurityAndAnalysisPath":"/dell/gobrick/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/dell/gobrick/blob/v1.7.0/LICENSE?raw=true","headerInfo":{"blobSize":"11.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6256045","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fdell%2Fgobrick%2Fblob%2Fv1.7.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"202","truncatedSloc":"169"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/dell/gobrick/discussions/new","newIssuePath":"/dell/gobrick/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/dell/gobrick/blob/v1.7.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/dell/gobrick/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"dell","repoName":"gobrick","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/dell/gobrick/branches":{"post":"nre886bCNFbYrxAGip8sEpKbWcLGvi7dnfTIouZQo-eIOEr7DbXFKQD1Ao9VCgqluBDX2UfOrBCvBiHkFxTAGQ"}}},"title":"gobrick/LICENSE at v1.7.0 · dell/gobrick","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [Apache-2.0](https://github.com/dell/gobrick/blob/v1.7.0/LICENSE)  
 * * *
   
 Package: github.com/go-chi/chi  
 Version: v1.5.4  
-Copyright: Copyright (c) 2015-present Peter Kieltyka (https://github.com/pkieltyka), Google Inc.  
+Copyright: Copyright (c) 2015-present Peter Kieltyka (https://github.com/pkieltyka), Google Inc.","","MIT License","","Permission is hereby granted, free of charge, to any person obtaining a copy of","this software and associated documentation files (the \"Software\"), to deal in","the Software without restriction, including without limitation the rights to","use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of","the Software, and to permit persons to whom the Software is furnished to do so,","subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS","FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR","COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER","IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN","CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/go-chi/chi/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/go-chi/chi/security/dependabot","repoSecurityAndAnalysisPath":"/go-chi/chi/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/go-chi/chi/blob/v1.5.4/LICENSE?raw=true","headerInfo":{"blobSize":"1.1 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"d99f02f","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgo-chi%2Fchi%2Fblob%2Fv1.5.4%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"20","truncatedSloc":"16"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/go-chi/chi/discussions/new","newIssuePath":"/go-chi/chi/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/go-chi/chi/blob/v1.5.4/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/go-chi/chi/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"go-chi","repoName":"chi","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/go-chi/chi/branches":{"post":"TXiy28hCYFAEjsOLVJ3LMmqFtQOP3Jb5CrGlU1WgOqTrUKCI6W2cDvnPZ9Dc2-iA9bWWOq_zlU2gvR2XBbgGxA"}}},"title":"chi/LICENSE at v1.5.4 · go-chi/chi","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
 License: [MIT license](https://github.com/go-chi/chi/blob/v1.5.4/LICENSE)  
 * * *
   
-Package: github.com/cucumber/messages-go/v10  
-Version: v10.0.3  
+Package: golang.org/x/sync  
+Version: v0.2.0  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/sync/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/sync/security/dependabot","repoSecurityAndAnalysisPath":"/golang/sync/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/sync/blob/v0.2.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fsync%2Fblob%2Fv0.2.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/sync/discussions/new","newIssuePath":"/golang/sync/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/sync/blob/v0.2.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/sync/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"sync","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/sync/branches":{"post":"_bWrsQZmRgdZLrq6WtnYJgUkHkvNZoRuJ6I9z_bDDFpLoYKTcJEm1rwcebiKz6uRKA71trRfCYg0lwoyKD88kg"}}},"title":"sync/LICENSE at v0.2.0 · golang/sync","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/sync/blob/v0.2.0/LICENSE)  
+* * *
+  
+Package: github.com/gorilla/mux  
+Version: v1.8.0  
+Copyright: Copyright (c) 2012-2018 The Gorilla Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","\t * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","\t * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","\t * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/gorilla/mux/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/gorilla/mux/security/dependabot","repoSecurityAndAnalysisPath":"/gorilla/mux/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/gorilla/mux/blob/v1.8.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.45 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6903df6","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgorilla%2Fmux%2Fblob%2Fv1.8.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/gorilla/mux/discussions/new","newIssuePath":"/gorilla/mux/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/gorilla/mux/blob/v1.8.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/gorilla/mux/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"gorilla","repoName":"mux","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/gorilla/mux/branches":{"post":"3erESbZx_OHDBlrHYFlMTjKXo8Z5qkz0s8EaWDUb72x9S6aqAsgPos97E4AGLimxAgAMJIKeJ-DTwoSQzfH8-g"}}},"title":"mux/LICENSE at v1.8.0 · gorilla/mux","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/gorilla/mux/blob/v1.8.0/LICENSE)  
+* * *
+  
+Package: github.com/stretchr/testify  
+Version: v1.8.0  
+Copyright: Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors.","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/stretchr/testify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/stretchr/testify/security/dependabot","repoSecurityAndAnalysisPath":"/stretchr/testify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/stretchr/testify/blob/v1.8.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.08 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"4b0421c","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fstretchr%2Ftestify%2Fblob%2Fv1.8.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/stretchr/testify/discussions/new","newIssuePath":"/stretchr/testify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/stretchr/testify/blob/v1.8.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/stretchr/testify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"stretchr","repoName":"testify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/stretchr/testify/branches":{"post":"IhqdvQF24TbH-LQENSi3Scztmp5HE3ttTJ_-vHCsuA7DBztHl3GeJgYJQjHj8k-oGtv-LdymCjR0MulePbJeTg"}}},"title":"testify/LICENSE at v1.8.0 · stretchr/testify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/stretchr/testify/blob/v1.8.0/LICENSE)  
+* * *
+  
+Package: github.com/uber/jaeger-lib  
+Version: v2.4.1+incompatible  
 Copyright: N/A  
-License: [MIT license](https://github.com/cucumber/messages-go/blob/v10.0.3/LICENSE)  
+License: [Apache-2.0](https://github.com/uber/jaeger-lib/blob/v2.4.1/LICENSE)  
 * * *
   
-Package: k8s.io/kubernetes  
-Version: v1.22.16  
+Package: github.com/fsnotify/fsnotify  
+Version: v1.5.4  
+Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.","Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/fsnotify/fsnotify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/fsnotify/fsnotify/security/dependabot","repoSecurityAndAnalysisPath":"/fsnotify/fsnotify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/fsnotify/fsnotify/blob/v1.5.4/LICENSE?raw=true","headerInfo":{"blobSize":"1.51 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"e180c8f","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Ffsnotify%2Ffsnotify%2Fblob%2Fv1.5.4%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"28","truncatedSloc":"25"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/fsnotify/fsnotify/discussions/new","newIssuePath":"/fsnotify/fsnotify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/fsnotify/fsnotify/blob/v1.5.4/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/fsnotify/fsnotify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"fsnotify","repoName":"fsnotify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/fsnotify/fsnotify/branches":{"post":"mZ9tgF6IVtzpbE9L6t6BQyquYV8TsPpJ_ocwCNAIcBtsB1_9BAXFaJg4fFLYt3Vybm-s646M38qimmzGPm3olw"}}},"title":"fsnotify/LICENSE at v1.5.4 · fsnotify/fsnotify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.5.4/LICENSE)  
+* * *
+  
+Package: github.com/uber/jaeger-client-go  
+Version: v2.30.0+incompatible  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/kubernetes/blob/v1.22.16/LICENSE)  
+License: [Apache-2.0](https://github.com/uber/jaeger-client-go/blob/v2.30.0/LICENSE)  
 * * *
   
-Package: github.com/dell/gopowerstore  
-Version: v1.11.0  
-Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/gopowerstore/blob/v1.11.0/LICENSE)  
-* * *
-  
-Package: helm.sh/helm/v3  
-Version: v3.11.1  
-Copyright: Copyright 2016 The Kubernetes Authors All Rights Reserved  
-License: [Apache-2.0](https://github.com/helm/helm/blob/v3.11.1/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.26.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.26.0/LICENSE)  
-* * *
-  
-Package: github.com/spf13/cobra  
-Version: v1.3.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/spf13/cobra/blob/v1.3.0/LICENSE.txt)  
-* * *
-  
-Package: sigs.k8s.io/controller-runtime  
-Version: v0.14.6  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.14.6/LICENSE)  
-* * *
-  
-Package: github.com/dell/dell-csi-extensions/common  
-Version: v1.0.1-0.20220531081201-ea223a47fae4  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/ea223a47fae4/LICENSE)  
-* * *
-  
-Package: github.com/dell/goiscsi  
-Version: v1.7.0  
-Copyright: Copyright © 2019 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/goiscsi/blob/v1.7.0/LICENSE)  
-* * *
-  
-Package: github.com/google/uuid  
-Version: v1.3.0  
-Copyright: Copyright (c) 2009,2014 Google Inc. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/google/uuid/blob/v1.3.0/LICENSE)  
-* * *
-  
-Package: go.opentelemetry.io/otel/metric  
-Version: v0.30.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/metric/v0.30.0/LICENSE)  
-* * *
-  
-Package: github.com/go-logr/logr  
-Version: v1.2.4  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/go-logr/logr/blob/v1.2.4/LICENSE)  
-* * *
-  
-Package: github.com/lithammer/fuzzysearch  
-Version: v1.1.8  
-Copyright: Copyright (c) 2018 Peter Lithammer  
-License: [MIT license](https://github.com/lithammer/fuzzysearch/blob/v1.1.8/LICENSE)  
-* * *
-  
-Package: k8s.io/client-go  
-Version: v0.24.0  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.24.0/LICENSE)  
-* * *
-  
-Package: github.com/dell/gopowermax/v2  
-Version: v2.2.0  
-Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/gopowermax/blob/v2.2.0/LICENSE)  
+Package: github.com/jarcoal/httpmock  
+Version: v1.2.0  
+Copyright: Copyright (c) 2014 Jared Morse","","Permission is hereby granted, free of charge, to any person obtaining a copy of","this software and associated documentation files (the \"Software\"), to deal in","the Software without restriction, including without limitation the rights to","use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of","the Software, and to permit persons to whom the Software is furnished to do so,","subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS","FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR","COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER","IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN","CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/jarcoal/httpmock/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/jarcoal/httpmock/security/dependabot","repoSecurityAndAnalysisPath":"/jarcoal/httpmock/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/jarcoal/httpmock/blob/v1.2.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.05 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"438fbf5","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fjarcoal%2Fhttpmock%2Fblob%2Fv1.2.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"20","truncatedSloc":"16"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/jarcoal/httpmock/discussions/new","newIssuePath":"/jarcoal/httpmock/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/jarcoal/httpmock/blob/v1.2.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/jarcoal/httpmock/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"jarcoal","repoName":"httpmock","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/jarcoal/httpmock/branches":{"post":"6OXHL4lxAqKxAKMNxbHW-egdnp0AOGG20oBUjZoYea6skAR6CkAnQPIQVNyyNdKrak6AHw2x3LnPJgXTDqTKZA"}}},"title":"httpmock/LICENSE at v1.2.0 · jarcoal/httpmock","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/jarcoal/httpmock/blob/v1.2.0/LICENSE)  
 * * *
   
 Package: google.golang.org/grpc  
-Version: v1.55.0  
+Version: v1.46.0  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.55.0/LICENSE)  
+License: [Apache-2.0](https://github.com/grpc/grpc-go/blob/v1.46.0/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.26.4  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.26.4/LICENSE)  
+* * *
+  
+Package: k8s.io/client-go  
+Version: v0.22.2  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.22.2/LICENSE)  
 * * *
   
 Package: github.com/dell/goisilon  
-Version: v1.11.0  
+Version: v1.12.1-0.20230719063931-794906406597  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/dell/goisilon/blob/v1.11.0/LICENSE)  
+License: [Apache-2.0](https://github.com/dell/goisilon/blob/794906406597/LICENSE)  
 * * *
   
 Package: github.com/kubernetes-csi/csi-lib-utils  
@@ -1311,28 +1140,34 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/kubernetes-csi/csi-lib-utils/blob/v0.11.0/LICENSE)  
 * * *
   
+Package: golang.org/x/sync  
+Version: v0.1.0  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/sync/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/sync/security/dependabot","repoSecurityAndAnalysisPath":"/golang/sync/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/sync/blob/v0.1.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fsync%2Fblob%2Fv0.1.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/sync/discussions/new","newIssuePath":"/golang/sync/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/sync/blob/v0.1.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/sync/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"sync","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/sync/branches":{"post":"gtgbqE8ruEy59T4hNJVSvksCwHVqxFLN7aN9eyGm-CJHya21Cm1YmVBFsMOtuocNXyilr9O2V_FjNi_1ROrKoA"}}},"title":"sync/LICENSE at v0.1.0 · golang/sync","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/sync/blob/v0.1.0/LICENSE)  
+* * *
+  
+Package: golang.org/x/sync  
+Version: v0.0.0-20190423024810-112230192c58  
+Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/sync/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/sync/security/dependabot","repoSecurityAndAnalysisPath":"/golang/sync/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/sync/blob/112230192c58/LICENSE?raw=true","headerInfo":{"blobSize":"1.44 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"6a66aea","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fsync%2Fblob%2F112230192c58%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"27","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/sync/discussions/new","newIssuePath":"/golang/sync/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/sync/blob/112230192c58/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/sync/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"sync","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/sync/branches":{"post":"51KDOFN9pnWqTZQGX6XUdERvEKcIrivuVG94GaCiKz_d8CLUpbLE6ZcFbeEMZM7fJKRMQZEVdKetzfbCvcjVIg"}}},"title":"sync/LICENSE at 112230192c580c3556b8cee6403af37a4fc5f28c · golang/sync","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/sync/blob/112230192c58/LICENSE)  
+* * *
+  
+Package: go.opentelemetry.io/otel/trace  
+Version: v1.7.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/trace/v1.7.0/LICENSE)  
+* * *
+  
+Package: sigs.k8s.io/controller-runtime  
+Version: v0.13.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes-sigs/controller-runtime/blob/v0.13.0/LICENSE)  
+* * *
+  
 Package: k8s.io/apimachinery  
 Version: v0.27.2  
 Copyright: N/A  
 License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.27.2/LICENSE)  
-* * *
-  
-Package: github.com/golang/mock  
-Version: v1.3.1  
-Copyright: N/A  
-License: [Apache-2.0](https://github.com/golang/mock/blob/v1.3.1/LICENSE)  
-* * *
-  
-Package: google.golang.org/protobuf  
-Version: v1.30.0  
-Copyright: Copyright (c) 2018 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/protocolbuffers/protobuf-go/blob/v1.30.0/LICENSE)  
-* * *
-  
-Package: github.com/go-redis/redis  
-Version: v6.15.9+incompatible  
-Copyright: Copyright (c) 2013 The github.com/go-redis/redis Authors.  
-License: [BSD-2-Clause](https://github.com/go-redis/redis/blob/v6.15.9/LICENSE)  
 * * *
   
 Package: go.opentelemetry.io/otel/sdk/metric  
@@ -1341,10 +1176,34 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/open-telemetry/opentelemetry-go/blob/sdk/metric/v0.30.0/LICENSE)  
 * * *
   
-Package: github.com/dell/gobrick  
-Version: v1.7.0  
-Copyright: Copyright © 2020 Dell Inc. or its subsidiaries. All Rights Reserved.  
-License: [Apache-2.0](https://github.com/dell/gobrick/blob/v1.7.0/LICENSE)  
+Package: k8s.io/client-go  
+Version: v0.23.4  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/kubernetes/client-go/blob/v0.23.4/LICENSE)  
+* * *
+  
+Package: github.com/container-storage-interface/spec  
+Version: v1.5.0  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/container-storage-interface/spec/blob/v1.5.0/LICENSE)  
+* * *
+  
+Package: github.com/fsnotify/fsnotify  
+Version: v1.4.9  
+Copyright: Copyright (c) 2012 The Go Authors. All rights reserved.","Copyright (c) 2012-2019 fsnotify Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/fsnotify/fsnotify/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/fsnotify/fsnotify/security/dependabot","repoSecurityAndAnalysisPath":"/fsnotify/fsnotify/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/fsnotify/fsnotify/blob/v1.4.9/LICENSE?raw=true","headerInfo":{"blobSize":"1.51 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"e180c8f","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Ffsnotify%2Ffsnotify%2Fblob%2Fv1.4.9%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"28","truncatedSloc":"25"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/fsnotify/fsnotify/discussions/new","newIssuePath":"/fsnotify/fsnotify/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/fsnotify/fsnotify/blob/v1.4.9/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/fsnotify/fsnotify/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"fsnotify","repoName":"fsnotify","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/fsnotify/fsnotify/branches":{"post":"htEOP0Y_EOr8fwchBLsHJ7YQZb9_58FkaJErVgflNI9Y9-QiayjzFtHVu1j9bDas4thdR-0mHkpwVc715nO0FQ"}}},"title":"fsnotify/LICENSE at v1.4.9 · fsnotify/fsnotify","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/fsnotify/fsnotify/blob/v1.4.9/LICENSE)  
+* * *
+  
+Package: sigs.k8s.io/yaml  
+Version: v1.2.0  
+Copyright: Copyright (c) 2014 Sam Ghods","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in all","copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE","SOFTWARE.","","","Copyright (c) 2012 The Go Authors. All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","   * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","   * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","   * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/kubernetes-sigs/yaml/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/kubernetes-sigs/yaml/security/dependabot","repoSecurityAndAnalysisPath":"/kubernetes-sigs/yaml/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/kubernetes-sigs/yaml/blob/v1.2.0/LICENSE?raw=true","headerInfo":{"blobSize":"2.5 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"7805d36","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fkubernetes-sigs%2Fyaml%2Fblob%2Fv1.2.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"50","truncatedSloc":"41"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/kubernetes-sigs/yaml/discussions/new","newIssuePath":"/kubernetes-sigs/yaml/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/kubernetes-sigs/yaml/blob/v1.2.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/kubernetes-sigs/yaml/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"kubernetes-sigs","repoName":"yaml","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/kubernetes-sigs/yaml/branches":{"post":"jBHYuKdy429Z-dZA5l5TOXAMw7bfdG7JBlZXrCn1UocevW1aV8j79Zlprn5eHZ9U4_8GWxnznGIxw2e2kHj8IQ"}}},"title":"yaml/LICENSE at v1.2.0 · kubernetes-sigs/yaml","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license,BSD-3-Clause](https://github.com/kubernetes-sigs/yaml/blob/v1.2.0/LICENSE)  
+* * *
+  
+Package: github.com/dell/dell-csi-extensions/common  
+Version: v1.0.1-0.20220531081201-ea223a47fae4  
+Copyright: N/A  
+License: [Apache-2.0](https://github.com/dell/dell-csi-extensions/blob/ea223a47fae4/LICENSE)  
 * * *
   
 Package: k8s.io/apimachinery  
@@ -1353,20 +1212,20 @@ Copyright: N/A
 License: [Apache-2.0](https://github.com/kubernetes/apimachinery/blob/v0.23.0/LICENSE)  
 * * *
   
-Package: github.com/onsi/ginkgo  
-Version: v1.16.5  
-Copyright: Copyright (c) 2013-2014 Onsi Fakhouri  
-License: [MIT license](https://github.com/onsi/ginkgo/blob/v1.16.5/LICENSE)  
+Package: github.com/golang/protobuf  
+Version: v1.5.3  
+Copyright: Copyright 2010 The Go Authors.  All rights reserved.","","Redistribution and use in source and binary forms, with or without","modification, are permitted provided that the following conditions are","met:","","    * Redistributions of source code must retain the above copyright","notice, this list of conditions and the following disclaimer.","    * Redistributions in binary form must reproduce the above","copyright notice, this list of conditions and the following disclaimer","in the documentation and/or other materials provided with the","distribution.","    * Neither the name of Google Inc. nor the names of its","contributors may be used to endorse or promote products derived from","this software without specific prior written permission.","","THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS","\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT","LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR","A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT","OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,","SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT","LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,","DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY","THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT","(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE","OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/golang/protobuf/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/golang/protobuf/security/dependabot","repoSecurityAndAnalysisPath":"/golang/protobuf/settings/security_analysis","repoOwnerIsOrg":true,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/golang/protobuf/blob/v1.5.3/LICENSE?raw=true","headerInfo":{"blobSize":"1.45 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"0f64693","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fgolang%2Fprotobuf%2Fblob%2Fv1.5.3%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"28","truncatedSloc":"24"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/golang/protobuf/discussions/new","newIssuePath":"/golang/protobuf/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/golang/protobuf/blob/v1.5.3/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/golang/protobuf/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"golang","repoName":"protobuf","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/golang/protobuf/branches":{"post":"akTXfH_nawQa2R0-PZJAh9mY2FZxaAZV6l1QcckfckDJemU_cR0I-h_YSSOJ6ueL6djLrOZbqIYeEiFQKWKbVQ"}}},"title":"protobuf/LICENSE at v1.5.3 · golang/protobuf","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [BSD-3-Clause](https://github.com/golang/protobuf/blob/v1.5.3/LICENSE)  
 * * *
   
-Package: golang.org/x/mod  
-Version: v0.8.0  
-Copyright: Copyright (c) 2009 The Go Authors. All rights reserved.  
-License: [BSD-3-Clause](https://github.com/golang/mod/blob/v0.8.0/LICENSE)  
+Package: github.com/sirupsen/logrus  
+Version: v1.9.0  
+Copyright: Copyright (c) 2014 Simon Eskildsen","","Permission is hereby granted, free of charge, to any person obtaining a copy","of this software and associated documentation files (the \"Software\"), to deal","in the Software without restriction, including without limitation the rights","to use, copy, modify, merge, publish, distribute, sublicense, and/or sell","copies of the Software, and to permit persons to whom the Software is","furnished to do so, subject to the following conditions:","","The above copyright notice and this permission notice shall be included in","all copies or substantial portions of the Software.","","THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR","IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,","FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE","AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER","LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,","OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN","THE SOFTWARE."],"stylingDirectives":[[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/sirupsen/logrus/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/sirupsen/logrus/security/dependabot","repoSecurityAndAnalysisPath":"/sirupsen/logrus/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"LICENSE","displayUrl":"https://github.com/sirupsen/logrus/blob/v1.9.0/LICENSE?raw=true","headerInfo":{"blobSize":"1.06 KB","deleteInfo":{"deletePath":null,"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":null,"gitLfsPath":null,"onBranch":false,"shortPath":"f090cb4","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fsirupsen%2Flogrus%2Fblob%2Fv1.9.0%2FLICENSE","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"21","truncatedSloc":"17"},"mode":"file"},"image":false,"isCodeownersFile":null,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":"Text","large":false,"loggedIn":false,"newDiscussionPath":"/sirupsen/logrus/discussions/new","newIssuePath":"/sirupsen/logrus/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/sirupsen/logrus/blob/v1.9.0/LICENSE","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/sirupsen/logrus/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"sirupsen","repoName":"logrus","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timedOut":false,"notAnalyzed":true,"symbols":[]}},"copilotUserAccess":null,"csrf_tokens":{"/sirupsen/logrus/branches":{"post":"39P6IH9lenaTljpWo3CqVhCEQXamGgFAbpU3EnkOnplQC1hwj89h7juHGiqvXWDDckKkHZXJfCYku-RGsGourA"}}},"title":"logrus/LICENSE at v1.9.0 · sirupsen/logrus","locale":"en","appPayload":{"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-848bb9a5da17.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-4b57095adfc5.js","githubDevUrl":null,"enabled_features":{"virtualize_file_tree":true,"react_repos_overview":false,"code_nav_ui_events":false,"ref_selector_v2":false,"codeview_codemirror_next_editors":false,"blob_firefox_separate_characters":true,"column_symbol_auto_select":true,"copilot_conversational_ux":false,"copilot_conversational_ux_symbols":false,"copilot_popover_file_editor_header":false}}}</script>  
+License: [MIT license](https://github.com/sirupsen/logrus/blob/v1.9.0/LICENSE)  
 * * *
-
-Package: github.com/kubernetes/kubernetes  
-Version: v1.25.6  
+  
+Package: github.com/go-openapi/strfmt  
+Version: v0.21.2  
 Copyright: N/A  
-License: [Apache-2.0](https://github.com/kubernetes/kubernetes/blob/v1.25.6/LICENSE)  
+License: [Apache-2.0](https://github.com/go-openapi/strfmt/blob/v0.21.2/LICENSE)  
 * * *
