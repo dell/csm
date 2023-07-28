@@ -1,6 +1,7 @@
 - [v1.7.1](#v171)
   - [Changelog since v1.7.0](#changelog-since-v170)
   - [Changes by Kind](#changes-by-kind)
+  - [Features](#features)
     
 - [v1.7.0](#v170)
   - [Changelog since v1.6.1](#changelog-since-v161)
