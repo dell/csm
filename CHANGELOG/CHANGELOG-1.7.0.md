@@ -1,3 +1,8 @@
+- [v1.7.1](#v171)
+  - [Changelog since v1.7.0](#changelog-since-v170)
+  - [Changes by Kind](#changes-by-kind)
+    - [Features](#features)
+    
 - [v1.7.0](#v170)
   - [Changelog since v1.6.1](#changelog-since-v161)
   - [Known Issues](#known-issues)
@@ -7,6 +12,16 @@
     - [Deprecation](#deprecation) 
     - [Features](#features)
     - [Bugs](#bugs)
+
+# v1.7.1
+
+## Changelog since v1.7.0
+
+## Changes by Kind
+
+### Features 
+- Posting the image with latest go version.
+- CSM 1.7.1 release specific changes. ([#911](https://github.com/dell/csm/issues/911))
 
 # v1.7.0 
 
