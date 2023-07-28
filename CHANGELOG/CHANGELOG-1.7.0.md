@@ -18,6 +18,8 @@
 
 ## Changes by Kind
 
+### Features 
+- Posting the image with latest go version.
 - CSM 1.7.1 release specific changes. ([#911](https://github.com/dell/csm/issues/911))
 
 # v1.7.0 
