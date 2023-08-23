@@ -21,11 +21,10 @@
 ### Features 
 
 - Add support for Offline Install of CSM Operator in non OLM environment. ([#939](https://github.com/dell/csm/issues/939))
-- set up golangci-lint for all CSM repositories. ([#926](https://github.com/dell/csm/issues/926))
+- Set up golangci-lint for all CSM repositories. ([#926](https://github.com/dell/csm/issues/926))
 - Use ubi9 micro as base image. ([#922](https://github.com/dell/csm/issues/922))
 - Add support for CSI Spec 1.6. ([#905](https://github.com/dell/csm/issues/905))
 - Enhancing Unity XT driver to handle API requests after the sessionIdleTimeOut in STIG mode. ([#891](https://github.com/dell/csm/issues/891))
-- CSM 1.8 release specific changes. ([#885](https://github.com/dell/csm/issues/885))
 - Make standalone helm chart available from helm repository : https://dell.github.io/dell/helm-charts. ([#877](https://github.com/dell/csm/issues/877))
 - CSI 1.5 spec support -StorageCapacityTracking. ([#876](https://github.com/dell/csm/issues/876))
 - CSM for PowerMax file support. ([#861](https://github.com/dell/csm/issues/861))
@@ -38,16 +37,20 @@
 
 ### Bugs 
 
-- cert-csi  help message use wrong name of "csi-cert". ([#938](https://github.com/dell/csm/issues/938))
-- Change in the error message when the volume is not present. ([#936](https://github.com/dell/csm/issues/936))
-- PowerStore Replication - Delete RG request hangs. ([#928](https://github.com/dell/csm/issues/928))
-- Generating report from multiple databases and test runs failure. ([#921](https://github.com/dell/csm/issues/921))
 - Remove refs to deprecated io/ioutil. ([#916](https://github.com/dell/csm/issues/916))
-- Unit tests failing for CSI-PowerMax in in NodeGetInfo scenario.. ([#915](https://github.com/dell/csm/issues/915))
 - Space is not reflecting right on Unity. ([#902](https://github.com/dell/csm/issues/902))
 - Unity XT: Volume Mount Hangs. ([#901](https://github.com/dell/csm/issues/901))
 - CSI driver does not verify iSCSI initiators on the array correctly. ([#849](https://github.com/dell/csm/issues/849))
+- Powerscale CSI driver RO PVC-from-snapshot wrong zone. ([#487](https://github.com/dell/csm/issues/487))
+- Powermax : Static provisioning is failing for NFS volume. ([#951](https://github.com/dell/csm/issues/951))
+- CSM Operator manual installation missing volumeSnapshot CRDs as a prerequisite. ([#944](https://github.com/dell/csm/issues/944))
+- [BUG][cert-csi] : cert-csi  help message use wrong name of "csi-cert". ([#938](https://github.com/dell/csm/issues/938))
+- [BUG][cert-csi] : volume-group-snapshot test is observed panic when using "--namespace" parameter. ([#931](https://github.com/dell/csm/issues/931))
+- [BUG][cert-csi] :  "--attr" of ephemeral-volume performance test doesn't support properties file. ([#930](https://github.com/dell/csm/issues/930))
+- PowerStore Replication - Delete RG request hangs. ([#928](https://github.com/dell/csm/issues/928))
 - VolumeHealthMetricSuite test failure. ([#923](https://github.com/dell/csm/issues/923))
+- [BUG][cert-csi] :  Generating report from multiple databases and test runs failure. ([#921](https://github.com/dell/csm/issues/921))
+- Cert Manager should display tooltip about the pre-requisite.. ([#907](https://github.com/dell/csm/issues/907))
 - Unable to pull podmon image from local repository for offline install. ([#898](https://github.com/dell/csm/issues/898))
 - Documentation - Authorization. ([#895](https://github.com/dell/csm/issues/895))
 - Missing nodeSelector and tolerations entry in sample file. ([#890](https://github.com/dell/csm/issues/890))
