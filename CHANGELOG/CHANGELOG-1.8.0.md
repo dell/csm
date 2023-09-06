@@ -20,6 +20,7 @@
 
 ### Features 
 
+- PowerScale 9.5.0.4 support. ([#950](https://github.com/dell/csm/issues/950))
 - K8S 1.28 support in CSM 1.8. ([#947](https://github.com/dell/csm/issues/947))
 - Add support for Offline Install of CSM Operator in non OLM environment. ([#939](https://github.com/dell/csm/issues/939))
 - Use ubi9 micro as base image. ([#922](https://github.com/dell/csm/issues/922))
@@ -37,8 +38,6 @@
 
 ### Bugs 
 
-- Remove refs to deprecated io/ioutil. ([#916](https://github.com/dell/csm/issues/916))
-- Unity XT: Volume Mount Hangs. ([#901](https://github.com/dell/csm/issues/901))
 - Powerscale CSI driver RO PVC-from-snapshot wrong zone. ([#487](https://github.com/dell/csm/issues/487))
 - CSM Operator manual installation missing volumeSnapshot CRDs as a prerequisite. ([#944](https://github.com/dell/csm/issues/944))
 - cert-csi help message uses wrong name of "csi-cert". ([#938](https://github.com/dell/csm/issues/938))
@@ -48,9 +47,7 @@
 - VolumeHealthMetricSuite test failure. ([#923](https://github.com/dell/csm/issues/923))
 - Generating report from multiple databases and test runs failure. ([#921](https://github.com/dell/csm/issues/921))
 - Update Cert-csi documentation for driver certification. ([#914](https://github.com/dell/csm/issues/914))
-- Cert Manager should display tooltip about the pre-requisite.. ([#907](https://github.com/dell/csm/issues/907))
-- Space is not reflecting right on Unity. ([#902](https://github.com/dell/csm/issues/902))
 - Unable to pull podmon image from local repository for offline install. ([#898](https://github.com/dell/csm/issues/898))
-- Documentation - Authorization. ([#895](https://github.com/dell/csm/issues/895))
+- Update CSM Authorization karavictl CLI flag descriptions. ([#895](https://github.com/dell/csm/issues/895))
 - CSI driver does not verify iSCSI initiators on the array correctly. ([#849](https://github.com/dell/csm/issues/849))
 - Common section for Volume Snapshot Requirements. ([#811](https://github.com/dell/csm/issues/811))
