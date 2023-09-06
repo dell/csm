@@ -14,7 +14,7 @@
 
 ## Changelog since v1.7.1 
 
-## Known Issues 
+## Known Issues
 
 ### CSI PowerStore: Not able to create ephemeral pods in OpenShift 4.13
 
