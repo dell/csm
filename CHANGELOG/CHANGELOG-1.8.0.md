@@ -43,6 +43,7 @@ The workaround for this issue is to disable root squashing by setting allowRoot:
 - CSI 1.5 spec support -StorageCapacityTracking. ([#876](https://github.com/dell/csm/issues/876))
 - CSM for PowerMax file support. ([#861](https://github.com/dell/csm/issues/861))
 - CSI-PowerFlex 4.0 NFS support. ([#763](https://github.com/dell/csm/issues/763))
+- SDC 3.6.1 support. ([#885](https://github.com/dell/csm/issues/885))
 - CSM support for Openshift 4.13. ([#724](https://github.com/dell/csm/issues/724))
 - CSI Unity XT Driver: Add upgrade support to the CSM Operator. ([#955](https://github.com/dell/csm/issues/955))
 - Google Anthos 1.15 support  for PowerMax. ([#937](https://github.com/dell/csm/issues/937))
