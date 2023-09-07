@@ -32,6 +32,7 @@ The workaround for this issue is to disable root squashing by setting allowRoot:
 
 ### Deprecation 
 
+- The Dell CSI Operator is no longer actively maintained or supported. It will be deprecated in CSM 1.9. It is highly recommended that you use [CSM Operator](https://dell.github.io/csm-docs/docs/deployment/csmoperator/) going forward.
 ### Features 
 
 - K8S 1.28 support in CSM 1.8. ([#947](https://github.com/dell/csm/issues/947))
