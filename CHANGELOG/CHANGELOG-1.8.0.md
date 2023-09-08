@@ -16,9 +16,9 @@
 
 ## Known Issues
 
-### CSI PowerStore: Not able to create ephemeral pods in OpenShift 4.13
+### CSI PowerFlex, CSI PowerStore, CSI Unity XT: Not able to create ephemeral pods in OpenShift 4.13
 
-Ephemeral pod is not being created in OpenShift 4.13 and is failing with the error "error when creating pod: the pod uses an inline volume provided by CSIDriver csi-powerstore.dellemc.com, and the namespace has a pod security enforcement level that is lower than privileged."
+Ephemeral pod is not being created in OpenShift 4.13 and is failing with the error "error when creating pod: the pod uses an inline volume provided by CSIDriver csi-powerstore.dellemc.com, and the namespace has a pod security enforcement level that is lower than privileged." This is seen in CSI PowerFlex, CSI PowerStore and CSI Unity XT drivers.
 
 This issue occurs because OpenShift 4.13 introduced the CSI Volume Admission plugin to restrict the use of a CSI driver capable of provisioning CSI ephemeral volumes during pod admission (https://docs.openshift.com/container-platform/4.13/storage/container_storage_interface/ephemeral-storage-csi-inline.html). Therefore, an additional label "security.openshift.io/csi-ephemeral-volume-profile" needs to be added to the CSIDriver object to support inline ephemeral volumes.
 
@@ -27,12 +27,6 @@ This issue occurs because OpenShift 4.13 introduced the CSI Volume Admission plu
 In OpenShift 4.13, the root user is not allowed to perform write operations on NFS shares, when root squashing is enabled.
 
 The workaround for this issue is to disable root squashing by setting allowRoot: "true" in the NFS storage class.
-
-### CSI Unity XT: Not able to create ephemeral pods in OpenShift 4.13
-
-Ephemeral pod is not being created in OpenShift 4.13 and is failing with the error "error when creating pod: the pod uses an inline volume provided by CSIDriver csi-unity.dellemc.com, and the namespace has a pod security enforcement level that is lower than privileged."
-
-This issue occurs because OpenShift 4.13 introduced the CSI Volume Admission plugin to restrict the use of a CSI driver capable of provisioning CSI ephemeral volumes during pod admission (https://docs.openshift.com/container-platform/4.13/storage/container_storage_interface/ephemeral-storage-csi-inline.html). Therefore, an additional label "security.openshift.io/csi-ephemeral-volume-profile" needs to be added to the CSIDriver object to support inline ephemeral volumes.
 
 ### CSI Drivers: Volume limit for pending PVCs is not obeyed if the volume limit is exhausted and the CSI Driver restarts
 
