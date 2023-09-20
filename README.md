@@ -49,7 +49,8 @@ For documentation, please visit [Container Storage Modules documentation](https:
 * [CSI Driver for Dell PowerScale](https://github.com/dell/csi-powerscale)
 * [CSI Driver for Dell PowerStore](https://github.com/dell/csi-powerstore)
 * [CSI Driver for Dell Unity](https://github.com/dell/csi-unity)
-
+* [COSI Driver](https://github.com/dell/cosi)
+  
 ## About
 
 Dell Container Storage Modules (CSM) is 100% open source and community-driven. All components are available
