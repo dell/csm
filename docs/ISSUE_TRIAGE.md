@@ -266,10 +266,20 @@ The following flow chart outlines the triage process
           |         |                                         |                                                                  
           |         |                         +---------------|--------------+                                                                                                    
           |         |                         | label: type/feature          |                                                   
-        +-|---------|---+       +--------+    | Remove needs-triage label    |                                                   
-        |  Close issue  |       |  Done  ------ Remove type/feature-request  |                                                   
-        |               |       |        |    | milestone?                   |                                                   
-        +---------------+       +--------+    +------------------------------+           
+        +-|---------|---+                     | Remove needs-triage label    |                                                   
+        |  Close issue  |                     | Remove type/feature-request  |                                                   
+        |               |                     | milestone?                   |                                                   
+        +---------------+                     +------------------------------+
+                                                              |
++-------------------------------------+      YES    +---------------------+
+|  Add details to issue               ---------------  Signal Community?  |
+|  label: help wanted                 |             |                     |
+|  label: beginner friendly (optional)|             +---------------------+                            
++---|---------------------------------+                       | NO 
+    |                                                         |
++------+                                                      |
+| Done | ------------------------------------------------------                                        
++------+                 
 ```
 If the author does not respond to a request for more information within the timespan of a week, close the issue with a kind note stating that the author can request for the issue to be reopened when the necessary information is provided.
 
