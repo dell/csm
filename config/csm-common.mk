@@ -1,1 +1,1 @@
-DEFAULT_BASEIMAGE="registry.access.redhat.com/ubi8-micro@sha256:2c15d47056a573b30e608c4df43d20f79b064a8c10cb8b0c020912edf00c2399"
+DEFAULT_BASEIMAGE="registry.access.redhat.com/ubi9/ubi-micro@sha256:b7d8fd2840e92e8adc68414e13d859763ef33c3d4c4e27f910e939c00d642c29"
