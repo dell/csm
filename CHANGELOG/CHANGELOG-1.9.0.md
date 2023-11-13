@@ -18,6 +18,10 @@
 
 ### Deprecation 
 
+- The Dell CSI Operator is no longer actively maintained or supported. It will be deprecated in CSM 1.9. It is highly recommended that you use [CSM Operator](https://dell.github.io/csm-docs/docs/deployment/csmoperator/) going forward.
+- CSM for PowerMax linked Proxy mode for [CSI reverse proxy is no longer actively maintained or supported](https://dell.github.io/csm-docs/csm-docs/docs/csidriver/release/powermax/). It will be deprecated in CSM 1.9. It is highly recommended that you use stand alone mode going forward.
+- The CSM Authorization RPM will be deprecated in a future release. It is highly recommended that you use CSM Authorization Helm deployment or CSM Operator going forward.
+
 ### Features 
 
 - Update to the latest UBI Micro image for CSM. ([#1031](https://github.com/dell/csm/issues/1031))
