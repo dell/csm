@@ -36,7 +36,6 @@ GitHub labels help organize and categorize GitHub issues.  The main categories o
 
 - type/*: describes the type of the issue
 - triage/*: describes the result of an issue triage
-- release-found/*: associates an issue with a specific release version
 - area/*: the repository the issue is associated with
 - Additional labels are applied to indicate when an issue needs triage and asking the community for help.
 
@@ -53,7 +52,6 @@ GitHub labels help organize and categorize GitHub issues.  The main categories o
 | triage/needs-investigation | Applied to an issue as part of triage indicating more investigation is required to reproduce and understand. Indicates that the issue cannot be easily reproduced and notifies contributors/maintainers that more investigation is required by anyone willing to contribute. |
 | help wanted | Request for help from the community. |
 | beginner friendly | The issue is suitable for a beginner to work on. |
-| release-found/* | For each each released version of the GitHub repository, a release-found label is created. This allows the label to be added to issues in order to indicate what release the issue was found in. |
 | area/* | Used to associate the issue with a specific repository. |
 
 ## Find issues that need triage
@@ -139,7 +137,7 @@ If it's not perfectly clear that it's an actual bug, quickly try to reproduce it
 **It does not work as intended/by design:**
 1. Update the issue with additional details if needed
 2. Remove the `needs-triage` label.
-3. Assign the appropriate `release-found/*` label.  The bug report must provide this information so the appropriate `release-found/*` label can be added.  If this information is not provided, add the `triage/needs-information` label along with a polite comment.
+4. Assign the appropriate milestone
 
 ### Feature requests
 
@@ -169,9 +167,11 @@ Even if you don't have the time or knowledge to investigate an issue we highly r
 Part of issue triage should also be triaging of external PRs. Main goal should be to make sure PRs from external contributors have an owner/reviewer and are not forgotten.
 
 1. Check new external PRs which do not have a reviewer.
-1. Check if there is a link to an existing issue.
+1. Maintainers need to ensure the pull request aligns with a GitHub bug or feature
 1. If not and you know which issue it is solving, add the link yourself, otherwise ask the author to link the issue or create one.
+1. Maintainers need to ensure the contribution is relevant and aligns with the product roadmap and priorities
 1. Assign a reviewer based on who was handling the linked issue or what code or feature does the PR touches (look at who was the last to make changes there if all else fails).
+1. Work with the contributor to guide them and help ensure our quality standards are met and that all GitHub checks pass. 
 
 ## GitHub Issue Management Workflow
 
@@ -184,7 +184,7 @@ This workflow starts off with a GitHub issue of type bug being created.
 1. Collaborator or maintainer creates a GitHub bug using the appropriate GitHub issue template
 2. By default the bug is assigned the type/bug and needs-triage labels
 
-```                                                                                                                                                     
+```                                                                                                                                                                                                                                                                                                              
                                                +--------------------------+                                                                              
                                                | New bug issue opened/more|                                                                              
                                                | information added        |                                                                              
@@ -198,7 +198,7 @@ This workflow starts off with a GitHub issue of type bug being created.
                                  |                           | YES                                                                                       
                                  |                           |                                                                                           
    +--------------------------+  |                +---------------------+ YES +---------------------------------------+                                  
-   |label:                    |  |                |  Dupicate Issue?    ------- Comment `Duplicate of #<issue number>`                                   
+   |label:                    |  |                |  Duplicate Issue?   ------- Comment `Duplicate of #<issue number>`                                   
    |triage/needs-investigation|  | NO             |                     |     | Remove needs-triage label             |                                  
    +------|-------------------+  |                +----------|----------+     | label: triage/duplicate               |                                  
           |                      |                           | NO             +-----------------|---------------------+                                  
@@ -208,14 +208,14 @@ This workflow starts off with a GitHub issue of type bug being created.
           |-------                    |         +------------|------------+                     |                                                        
                  +--------------------+                      | YES                              |                                                        
                                                              |                       +----------|----------+                                             
-    +-------------------------+                 +------------|------------+          |  Close Issue        |                                             
-    | Add release-found label |------------------  Works as intended?     |          |                     |                                             
-    | label: release-found/*  |        NO       |                         |          +----------|----------+                                             
-    +------------|------------+                 +------------|------------+                     |                                                        
+                                                +------------|------------+          |  Close Issue        |                                             
+                 |-------------------------------  Works as intended?     |          |                     |                                             
+                 |                     NO       |                         |          +----------|----------+                                             
+                 |                              +------------|------------+                     |                                                        
                  |                                           |                                  |                                                        
                  |                                           | YES                              |                                                        
                  |                          +----------------|----------------+                 |                                                        
-   +--------------------------+             | Add comment                     |                 |                                                        
+   +-------------|------------+             | Add comment                     |                 |                                                        
    |   Add area label         |             | Remove needs-triage label       ------------------|                                                        
    |   label: area/*          |             | label: triage/works-as-intended |                                                                          
    +-------------|------------+             +---------------------------------+                                                                          
@@ -226,10 +226,9 @@ This workflow starts off with a GitHub issue of type bug being created.
                  |                             |NO                                          |                                                            
                  |                             |                         +------------------|------------------+                                         
     +------------|-------------+          +----|----------------+ YES    |  Add details to issue               |                                         
-    |                          ------------  Signal Community?  ----------  label: help wanted                 |                                         
-    |Remove needs-triage label |          |                     |        |  label: beginner friendly (optional)|                                         
-    +--------------------------+          +---------------------+        +-------------------------------------+                                          
-                                                                                                                                                                                       
+    |Remove needs-triage label ------------  Signal Community?  ----------  label: help wanted                 |                                         
+    |Assign milestone          |          |                     |        |  label: beginner friendly (optional)|                                         
+    +--------------------------+          +---------------------+        +-------------------------------------+                                                                                                                                                                                                                                                                                                  
 ```
 If the author does not respond to a request for more information within the timespan of a week, close the issue with a kind note stating that the author can request for the issue to be reopened when the necessary information is provided.
 
@@ -269,10 +268,20 @@ The following flow chart outlines the triage process
           |         |                                         |                                                                  
           |         |                         +---------------|--------------+                                                                                                    
           |         |                         | label: type/feature          |                                                   
-        +-|---------|---+       +--------+    | Remove needs-triage label    |                                                   
-        |  Close issue  |       |  Done  ------ Remove type/feature-request  |                                                   
-        |               |       |        |    | milestone?                   |                                                   
-        +---------------+       +--------+    +------------------------------+           
+        +-|---------|---+                     | Remove needs-triage label    |                                                   
+        |  Close issue  |                     | Remove type/feature-request  |                                                   
+        |               |                     | milestone?                   |                                                   
+        +---------------+                     +------------------------------+
+                                                              |
++-------------------------------------+      YES    +---------------------+
+|  Add details to issue               ---------------  Signal Community?  |
+|  label: help wanted                 |             |                     |
+|  label: beginner friendly (optional)|             +---------------------+                            
++---|---------------------------------+                       | NO 
+    |                                                         |
++------+                                                      |
+| Done | ------------------------------------------------------                                        
++------+                 
 ```
 If the author does not respond to a request for more information within the timespan of a week, close the issue with a kind note stating that the author can request for the issue to be reopened when the necessary information is provided.
 
