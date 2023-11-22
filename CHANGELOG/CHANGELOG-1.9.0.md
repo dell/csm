@@ -18,10 +18,6 @@
 
 ### Deprecation 
 
-- The Dell CSI Operator is no longer actively maintained or supported. Dell CSI Operator has been replaced with [Dell CSM Operator](https://dell.github.io/csm-docs/docs/deployment/csmoperator/). If you are currently using Dell CSI Operator, refer to the [operator migration documentation](https://dell.github.io/csm-docs/docs/csidriver/installation/operator/operator_migration/) to migrate from Dell CSI Operator to Dell CSM Operator.
-- CSM for PowerMax linked Proxy mode for [CSI reverse proxy is no longer actively maintained or supported](https://dell.github.io/csm-docs/csm-docs/docs/csidriver/release/powermax/). It will be deprecated in CSM 1.9. It is highly recommended that you use stand alone mode going forward.
-- The CSM Authorization RPM will be deprecated in a future release. It is highly recommended that you use CSM Authorization Helm deployment or CSM Operator going forward.
-
 ### Features 
 
 - Update to the latest UBI Micro image for CSM. ([#1031](https://github.com/dell/csm/issues/1031))
@@ -29,18 +25,19 @@
 - Dell CSI to Dell CSM Operator Migration Process. ([#996](https://github.com/dell/csm/issues/996))
 - Remove linked proxy mode for PowerMax. ([#991](https://github.com/dell/csm/issues/991))
 - Add support for CSI Spec 1.6. ([#905](https://github.com/dell/csm/issues/905))
+- Helm Chart Enhancement - Container Images Configurable in values.yaml. ([#851](https://github.com/dell/csm/issues/851))
 
 ### Bugs 
 
-- Comment out duplicate entries in the sample secret.yaml file. ([#1030](https://github.com/dell/csm/issues/1030))
 - Provide more detail about what cert-csi is doing. ([#1027](https://github.com/dell/csm/issues/1027))
 - CSM Installation wizard is issuing the warnings that are false positives. ([#1022](https://github.com/dell/csm/issues/1022))
-- SDC Rename. ([#1020](https://github.com/dell/csm/issues/1020))
 - Run each metrics gatherer in a separate goroutine. ([#1007](https://github.com/dell/csm/issues/1007))
 - Too many login sessions in gopowerstore client causes unexpected session termination in UI. ([#1006](https://github.com/dell/csm/issues/1006))
 - Allow volume prefix to be set via CSM operator. ([#989](https://github.com/dell/csm/issues/989))
 - storageCapacity can be set in unsupported CSI Powermax with CSM Operator. ([#983](https://github.com/dell/csm/issues/983))
 - Not able to take volumesnapshots. ([#975](https://github.com/dell/csm/issues/975))
+- Comment out duplicate entries in the sample secret.yaml file. ([#1030](https://github.com/dell/csm/issues/1030))
+- SDC Rename. ([#1020](https://github.com/dell/csm/issues/1020))
 - Missing error check for os.Stat call during volume publish. ([#1014](https://github.com/dell/csm/issues/1014))
 - cert-csi invalid path in go.mod prevents installation. ([#1010](https://github.com/dell/csm/issues/1010))
 - Cert-CSI from release v1.2.0 downloads wrong version v0.8.1. ([#1009](https://github.com/dell/csm/issues/1009))
