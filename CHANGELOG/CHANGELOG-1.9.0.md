@@ -14,6 +14,8 @@
 
 ## Known Issues 
 
+- For CSM PowerMax, automatic SRDF group creation is failing with "Unable to get Remote Port on SAN for Auto SRDF" on PowerMax 10.1 arrays. As a workaround, create the SRDF Group and add it to the storage class.
+
 ## Changes by Kind 
 
 ### Deprecation 
