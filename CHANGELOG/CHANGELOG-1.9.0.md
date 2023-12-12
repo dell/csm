@@ -14,9 +14,15 @@
 
 ## Known Issues 
 
+- For CSM PowerMax, automatic SRDF group creation is failing with "Unable to get Remote Port on SAN for Auto SRDF" on PowerMax 10.1 arrays. As a workaround, create the SRDF Group and add it to the storage class.
+
 ## Changes by Kind 
 
 ### Deprecation 
+
+- The Dell CSI Operator is no longer actively maintained or supported. Dell CSI Operator has been replaced with [Dell CSM Operator](https://dell.github.io/csm-docs/docs/deployment/csmoperator/). If you are currently using Dell CSI Operator, refer to the [operator migration documentation](https://dell.github.io/csm-docs/docs/csidriver/installation/operator/operator_migration/) to migrate from Dell CSI Operator to Dell CSM Operator.
+- CSM for PowerMax linked Proxy mode for [CSI reverse proxy is no longer actively maintained or supported](https://dell.github.io/csm-docs/docs/csidriver/release/powermax/). It will be deprecated in CSM 1.9. It is highly recommended that you use stand alone mode going forward.
+- The CSM Authorization RPM will be deprecated in a future release. It is highly recommended that you use CSM Authorization [Helm deployment](https://dell.github.io/csm-docs/docs/authorization/deployment/helm/) or [CSM Operator](https://dell.github.io/csm-docs/docs/authorization/deployment/operator/) going forward.
 
 ### Features 
 
