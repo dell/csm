@@ -26,8 +26,9 @@
 
 ### Features 
 
+- Support For PowerFlex 4.5. ([#1067](https://github.com/dell/csm/issues/1067))
 - Support for Openshift 4.14. ([#1066](https://github.com/dell/csm/issues/1066))
-- K8s 1.28 support. ([#947](https://github.com/dell/csm/issues/947))
+- Support for Kubernetes 1.28. ([#947](https://github.com/dell/csm/issues/947))
 - CSM PowerMax: Support PowerMax v10.1. ([#1062](https://github.com/dell/csm/issues/1062))
 - Update to the latest UBI Micro image for CSM. ([#1031](https://github.com/dell/csm/issues/1031))
 - Dell CSI to Dell CSM Operator Migration Process. ([#996](https://github.com/dell/csm/issues/996))
@@ -37,16 +38,19 @@
 
 ### Bugs 
 
-- Github actions has to be updated for PowerMax. ([#1064](https://github.com/dell/csm/issues/1064))
+- Documentation links are broken in few places. ([#1072](https://github.com/dell/csm/issues/1072))
+- Symmetrix APIs are not getting refreshed. ([#1070](https://github.com/dell/csm/issues/1070))
 - CSM Doc page - Update link to PowerStore for Resiliency card. ([#1065](https://github.com/dell/csm/issues/1065))
 - Golint is not installing with go get command. ([#1061](https://github.com/dell/csm/issues/1061))
 - cert-csi - cannot configure image locations. ([#1059](https://github.com/dell/csm/issues/1059))
 - CSI Health monitor for Node missing for CSM PowerFlex in Operator samples. ([#1058](https://github.com/dell/csm/issues/1058))
+- CSI Driver - issue with creation volume from 1 of the worker nodes. ([#1057](https://github.com/dell/csm/issues/1057))
 - Missing runtime dependencies reference in PowerMax README file.. ([#1056](https://github.com/dell/csm/issues/1056))
 - The PowerFlex Dockerfile is incorrectly labeling the version as 2.7.0 for the 2.8.0 version.. ([#1054](https://github.com/dell/csm/issues/1054))
 - make gosec is erroring out - Repos PowerMax,PowerStore,PowerScale (gosec is installed). ([#1053](https://github.com/dell/csm/issues/1053))
 - make docker command is failing with error. ([#1051](https://github.com/dell/csm/issues/1051))
 - NFS Export gets deleted when one pod is deleted from the multiple pods consuming the same PowerFlex RWX NFS volume. ([#1050](https://github.com/dell/csm/issues/1050))
+- Is cert-csi expansion expected to successfully run with enableQuota: false on PowerScale?. ([#1046](https://github.com/dell/csm/issues/1046))
 - Document instructions update: Either Multi-Path or the Power-Path software should be enabled for PowerMax. ([#1037](https://github.com/dell/csm/issues/1037))
 - Comment out duplicate entries in the sample secret.yaml file. ([#1030](https://github.com/dell/csm/issues/1030))
 - Provide more detail about what cert-csi is doing. ([#1027](https://github.com/dell/csm/issues/1027))
@@ -64,5 +68,6 @@
 - Allow volume prefix to be set via CSM operator. ([#989](https://github.com/dell/csm/issues/989))
 - CSM Operator fails to install CSM Replication on the remote cluster. ([#988](https://github.com/dell/csm/issues/988))
 - storageCapacity can be set in unsupported CSI Powermax with CSM Operator. ([#983](https://github.com/dell/csm/issues/983))
+- Update resources limits for controller-manager to fix OOMKilled error. ([#982](https://github.com/dell/csm/issues/982))
 - Not able to take volumesnapshots. ([#975](https://github.com/dell/csm/issues/975))
 - Gopowerscale unit test fails. ([#771](https://github.com/dell/csm/issues/771))
