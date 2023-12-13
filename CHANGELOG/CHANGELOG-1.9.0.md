@@ -14,25 +14,19 @@
 
 ## Known Issues 
 
-- For CSM PowerMax, automatic SRDF group creation is failing with "Unable to get Remote Port on SAN for Auto SRDF" on PowerMax 10.1 arrays. As a workaround, create the SRDF Group and add it to the storage class.
-
 ## Changes by Kind 
 
 ### Deprecation 
-
-- The Dell CSI Operator is no longer actively maintained or supported. Dell CSI Operator has been replaced with [Dell CSM Operator](https://dell.github.io/csm-docs/docs/deployment/csmoperator/). If you are currently using Dell CSI Operator, refer to the [operator migration documentation](https://dell.github.io/csm-docs/docs/csidriver/installation/operator/operator_migration/) to migrate from Dell CSI Operator to Dell CSM Operator.
-- CSM for PowerMax linked Proxy mode for [CSI reverse proxy is no longer actively maintained or supported](https://dell.github.io/csm-docs/docs/csidriver/release/powermax/). It will be deprecated in CSM 1.9. It is highly recommended that you use stand alone mode going forward.
-- The CSM Authorization RPM will be deprecated in a future release. It is highly recommended that you use CSM Authorization [Helm deployment](https://dell.github.io/csm-docs/docs/authorization/deployment/helm/) or [CSM Operator](https://dell.github.io/csm-docs/docs/authorization/deployment/operator/) going forward.
 
 ### Features 
 
 - Support For PowerFlex 4.5. ([#1067](https://github.com/dell/csm/issues/1067))
 - Support for Openshift 4.14. ([#1066](https://github.com/dell/csm/issues/1066))
-- Support for Kubernetes 1.28. ([#947](https://github.com/dell/csm/issues/947))
 - CSM PowerMax: Support PowerMax v10.1. ([#1062](https://github.com/dell/csm/issues/1062))
 - Update to the latest UBI Micro image for CSM. ([#1031](https://github.com/dell/csm/issues/1031))
 - Dell CSI to Dell CSM Operator Migration Process. ([#996](https://github.com/dell/csm/issues/996))
 - Remove linked proxy mode for PowerMax. ([#991](https://github.com/dell/csm/issues/991))
+- Support for Kubernetes 1.28. ([#947](https://github.com/dell/csm/issues/947))
 - Add support for CSI Spec 1.6. ([#905](https://github.com/dell/csm/issues/905))
 - Helm Chart Enhancement - Container Images Configurable in values.yaml. ([#851](https://github.com/dell/csm/issues/851))
 
