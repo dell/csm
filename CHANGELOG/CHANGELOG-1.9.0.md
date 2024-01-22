@@ -1,12 +1,26 @@
 <!--toc-->
-- [v1.9.0](#v190)
-  - [Changelog since v1.8.0](#changelog-since-v180)
+- [v1.9.1](#v191)
+  - [Changelog since v1.9.0](#changelog-since-v190)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
+    - [Bugs](#bugs)
+- [v1.9.0](#v190)
+  - [Changelog since v1.8.0](#changelog-since-v180)
+  - [Known Issues](#known-issues-1)
+  - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bugs](#bugs)
+    - [Bugs](#bugs-1)
  
+# v1.9.1
+
+## Changelog since v1.9.0
+
+## Known Issues
+
+## Changes by Kind
+
+### Bugs
 
 # v1.9.0 
 
