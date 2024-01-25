@@ -1,12 +1,11 @@
 <!--toc-->
 - [v1.9.1](#v191)
   - [Changelog since v1.9.0](#changelog-since-v190)
-  - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Bugs](#bugs)
 - [v1.9.0](#v190)
   - [Changelog since v1.8.0](#changelog-since-v180)
-  - [Known Issues](#known-issues-1)
+  - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation)
     - [Features](#features)
@@ -16,11 +15,15 @@
 
 ## Changelog since v1.9.0
 
-## Known Issues
-
 ## Changes by Kind
 
 ### Bugs
+
+- Multi Controller defect - sidecars timeout. ([#1110](https://github.com/dell/csm/issues/1110))
+- Volumes failing to mount when customer using NVMeTCP on Powerstore. ([#1108](https://github.com/dell/csm/issues/1108))
+- PowerFlex driver fails to start on RKE. ([#1086](https://github.com/dell/csm/issues/1086))
+- Version in Label section of PowerScale v2.9.0 driver is incorrect. ([#1114](https://github.com/dell/csm/issues/1114))
+- Operator delete is not cleaning up resources. ([#1117](https://github.com/dell/csm/issues/1117))
 
 # v1.9.0 
 
