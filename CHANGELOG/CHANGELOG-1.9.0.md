@@ -15,6 +15,8 @@
 ## Known Issues 
 
 - For CSM PowerMax, automatic SRDF group creation is failing with "Unable to get Remote Port on SAN for Auto SRDF" on PowerMax 10.1 arrays. As a workaround, create the SRDF Group and add it to the storage class.
+- If two separate networks are configured for ISCSI and NVMeTCP, the driver may encounter difficulty identifying the second network (e.g., NVMeTCP). The workaround involves creating a single network on the array to serve both ISCSI and NVMeTCP purposes. ([#1108](https://github.com/dell/csm/issues/1108))
+- Standby controller pod is in crashloopbackoff state. Scale down the replica count of the controller pod’s deployment to 1 using ```kubectl scale deployment <deployment_name> --replicas=1 -n <driver_namespace>```. ([#1110](https://github.com/dell/csm/issues/1110))
 
 ## Changes by Kind 
 
