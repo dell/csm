@@ -24,6 +24,7 @@
 - Version in Label section of PowerScale v2.9.0 driver is incorrect. ([#1114](https://github.com/dell/csm/issues/1114))
 - Operator crashes when deployed from OpenShift with OLM. ([#1117](https://github.com/dell/csm/issues/1117))
 - Skip Certificate Validation is not propagated to Authorization module in CSM Operator. ([#1120](https://github.com/dell/csm/issues/1120))
+- CSM Operator does not calculate status correctly when module is deployed with driver. ([#1122](https://github.com/dell/csm/issues/1122))
 
 # v1.9.0 
 
