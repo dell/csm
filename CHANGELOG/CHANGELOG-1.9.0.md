@@ -1,12 +1,30 @@
 <!--toc-->
+- [v1.9.1](#v191)
+  - [Changelog since v1.9.0](#changelog-since-v190)
+  - [Changes by Kind](#changes-by-kind)
+    - [Bugs](#bugs)
 - [v1.9.0](#v190)
   - [Changelog since v1.8.0](#changelog-since-v180)
   - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind)
+  - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bugs](#bugs)
+    - [Bugs](#bugs-1)
  
+# v1.9.1
+
+## Changelog since v1.9.0
+
+## Changes by Kind
+
+### Bugs
+
+- Multi Controller defect - sidecars timeout. ([#1110](https://github.com/dell/csm/issues/1110))
+- Volumes failing to mount when customer using NVMeTCP on Powerstore. ([#1108](https://github.com/dell/csm/issues/1108))
+- Version in Label section of PowerScale v2.9.0 driver is incorrect. ([#1114](https://github.com/dell/csm/issues/1114))
+- Operator crashes when deployed from OpenShift with OLM. ([#1117](https://github.com/dell/csm/issues/1117))
+- Skip Certificate Validation is not propagated to Authorization module in CSM Operator. ([#1120](https://github.com/dell/csm/issues/1120))
+- CSM Operator does not calculate status correctly when module is deployed with driver. ([#1122](https://github.com/dell/csm/issues/1122))
 
 # v1.9.0 
 
@@ -15,6 +33,8 @@
 ## Known Issues 
 
 - For CSM PowerMax, automatic SRDF group creation is failing with "Unable to get Remote Port on SAN for Auto SRDF" on PowerMax 10.1 arrays. As a workaround, create the SRDF Group and add it to the storage class.
+- If two separate networks are configured for ISCSI and NVMeTCP, the driver may encounter difficulty identifying the second network (e.g., NVMeTCP). The workaround involves creating a single network on the array to serve both ISCSI and NVMeTCP purposes. ([#1108](https://github.com/dell/csm/issues/1108))
+- Standby controller pod is in crashloopbackoff state. Scale down the replica count of the controller pod’s deployment to 1 using ```kubectl scale deployment <deployment_name> --replicas=1 -n <driver_namespace>```. ([#1110](https://github.com/dell/csm/issues/1110))
 
 ## Changes by Kind 
 
