@@ -1,12 +1,29 @@
 <!--toc-->
+- [v1.9.1](#v191)
+  - [Changelog since v1.9.0](#changelog-since-v190)
+  - [Changes by Kind](#changes-by-kind)
+    - [Bugs](#bugs)
 - [v1.9.0](#v190)
   - [Changelog since v1.8.0](#changelog-since-v180)
   - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind)
+  - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bugs](#bugs)
+    - [Bugs](#bugs-1)
  
+# v1.9.1
+
+## Changelog since v1.9.0
+
+## Changes by Kind
+
+### Bugs
+
+- Multi Controller defect - sidecars timeout. ([#1110](https://github.com/dell/csm/issues/1110))
+- Volumes failing to mount when customer using NVMeTCP on Powerstore. ([#1108](https://github.com/dell/csm/issues/1108))
+- Operator crashes when deployed from OpenShift with OLM. ([#1117](https://github.com/dell/csm/issues/1117))
+- Skip Certificate Validation is not propagated to Authorization module in CSM Operator. ([#1120](https://github.com/dell/csm/issues/1120))
+- CSM Operator does not calculate status correctly when module is deployed with driver. ([#1122](https://github.com/dell/csm/issues/1122))
 
 # v1.9.0 
 
