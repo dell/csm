@@ -33,8 +33,8 @@
 
 ## Known Issues 
 
-- For CSM Operator released in CSM v1.9.1, a plain driver install (no modules) will always be marked as failed in the CSM status even when it succeeds. This is fixed in CSM 1.9.2 (csm-operator v1.4.2). As a workaround, the driver deployment is still usable as long as all the pods are running/healthy.
-- For CSM Operator released in CSM v1.9.1, a standalone install of application-mobility (not as a module under the driver CSM) will always be marked as failed in the CSM status, even when it succeeds. This is because the operator is looking for the wrong daemonset label to confirm the deployment. This is fixed in CSM 1.9.2 (csm-operator v1.4.2). As a workaround, the module is still usable as long as all the pods are running/healthy.
+- For CSM Operator released in CSM v1.9.1, a plain driver install (no modules) will always be marked as failed in the CSM status even when it succeeds. As a workaround, the driver deployment is still usable as long as all the pods are running/healthy.
+- For CSM Operator released in CSM v1.9.1, a standalone install of application-mobility (not as a module under the driver CSM) will always be marked as failed in the CSM status, even when it succeeds. This is because the operator is looking for the wrong daemonset label to confirm the deployment. As a workaround, the module is still usable as long as all the pods are running/healthy.
 
 ## Changes by Kind
 
