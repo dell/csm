@@ -1,6 +1,11 @@
 <!--toc-->
+- [v1.9.2](#v192)
+  - [Changelog since v1.9.1](#changelog-since-v191)
+  - [Changes by Kind](#changes-by-kind)
+    - [Bugs](#bugs)
 - [v1.9.1](#v191)
   - [Changelog since v1.9.0](#changelog-since-v190)
+  - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Bugs](#bugs)
 - [v1.9.0](#v190)
@@ -11,9 +16,25 @@
     - [Features](#features)
     - [Bugs](#bugs-1)
  
+# v1.9.2
+
+## Changelog since v1.9.1
+
+## Changes by Kind
+
+### Bugs
+
+- CSM Operator does not calculate status correctly when a driver is deployed by itself. ([#1130](https://github.com/dell/csm/issues/1130))
+- CSM Operator does not calculate status correctly when a application-mobility is deployed by itself. ([#1133](https://github.com/dell/csm/issues/1133))
+
 # v1.9.1
 
 ## Changelog since v1.9.0
+
+## Known Issues 
+
+- For CSM Operator released in CSM v1.9.1, a plain driver install (no modules) will always be marked as failed in the CSM status even when it succeeds. This is fixed in CSM 1.9.2 (csm-operator v1.4.2). As a workaround, the driver deployment is still usable as long as all the pods are running/healthy.
+- For CSM Operator released in CSM v1.9.1, a standalone install of application-mobility (not as a module under the driver CSM) will always be marked as failed in the CSM status, even when it succeeds. This is because the operator is looking for the wrong daemonset label to confirm the deployment. This is fixed in CSM 1.9.2 (csm-operator v1.4.2). As a workaround, the module is still usable as long as all the pods are running/healthy.
 
 ## Changes by Kind
 
