@@ -6,16 +6,16 @@
     - [Bugs](#bugs)
 - [v1.9.1](#v191)
   - [Changelog since v1.9.0](#changelog-since-v190)
-  - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind)
-    - [Bugs](#bugs)
+  - [Known Issues](#known-issues-1)
+  - [Changes by Kind](#changes-by-kind-1)
+    - [Bugs](#bugs-1)
 - [v1.9.0](#v190)
   - [Changelog since v1.8.0](#changelog-since-v180)
-  - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind-1)
+  - [Known Issues](#known-issues-2)
+  - [Changes by Kind](#changes-by-kind-2)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bugs](#bugs-1)
+    - [Bugs](#bugs-2)
  
 # v1.9.2
 
