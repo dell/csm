@@ -20,12 +20,20 @@
 
 ## Changelog since v1.9.1
 
+## Known Issues
+
+- The status field of a CSM may in limited cases display Failed for a successful deployment. As a workaround, the deployment is still usable as long as all pods are running/healthy.
+
 ## Changes by Kind
 
 ### Bugs
 
 - CSM Operator does not calculate status correctly when a driver is deployed by itself. ([#1130](https://github.com/dell/csm/issues/1130))
-- CSM Operator does not calculate status correctly when a application-mobility is deployed by itself. ([#1133](https://github.com/dell/csm/issues/1133))
+- CSM Operator does not calculate status correctly when application-mobility is deployed by itself. ([#1133](https://github.com/dell/csm/issues/1133))
+- CSM Operator intermittently does not calculate status correctly when deploying a driver. ([#1137](https://github.com/dell/csm/issues/1137))
+- CSM Operator does not calculate status correctly when deploying the authorization proxy server. ([#1143](https://github.com/dell/csm/issues/1143))
+- CSM Operator does not calculate status correctly when deploying observability with csi-powerscale. ([#1146](https://github.com/dell/csm/issues/1146))
+- CSM Operator labels csm objects with CSMVersion 1.8.0, an old version. ([#1147](https://github.com/dell/csm/issues/1147))
 
 # v1.9.1
 
@@ -35,6 +43,11 @@
 
 - For CSM Operator released in CSM v1.9.1, a plain driver install (no modules) will always be marked as failed in the CSM status even when it succeeds. As a workaround, the driver deployment is still usable as long as all the pods are running/healthy.
 - For CSM Operator released in CSM v1.9.1, a standalone install of application-mobility (not as a module under the driver CSM) will always be marked as failed in the CSM status, even when it succeeds. This is because the operator is looking for the wrong daemonset label to confirm the deployment. As a workaround, the module is still usable as long as all the pods are running/healthy.
+- For CSM-Operator released in CSM v1.9.1, a driver install will rarely (~2% of the time) have a csm object stuck in a failed state for over an hour even though the deployment succeeds. This is due to a race condition in the status update logic. As a workaround, the driver is still usable as long as all the pods are running/healthy.
+- For CSM Operator released in CSM v1.9.1, the authorization proxy server csm object status will always be failed, even when it succeeds. This is because the operator is looking for a daemonset status when the authorization proxy server deployment does not have a daemonset. As a workaround, the module is still usable as long as all the pods are running/healthy.
+- For CSM Operator released in CSM v1.9.1, an install of csi-powerscale with observability will always be marked as failed in the csm object status, even when it succeeds. This is because the operator is looking for a legacy name of isilon in the status check. As a workaround, the module is still usable as long as all the pods are running/healthy.
+- For csm objects created by the CSM Operator, the CSMVersion label value is v1.8.0 when it should be v1.9.1. As a workaround, the CSM version can be double-checked by checking the operator version -- v1.4.1 operator corresponds to CSM v1.9.1.
+- The status field of a CSM may in limited cases display Failed for a successful deployment. As a workaround, the deployment is still usable as long as all pods are running/healthy.
 
 ## Changes by Kind
 
@@ -53,6 +66,9 @@
 ## Known Issues 
 
 - For CSM PowerMax, automatic SRDF group creation is failing with "Unable to get Remote Port on SAN for Auto SRDF" on PowerMax 10.1 arrays. As a workaround, create the SRDF Group and add it to the storage class.
+- For CSM-Operator released in CSM v1.9.0, a driver install will rarely (~2% of the time) have a csm object stuck in a failed state for over an hour even though the deployment succeeds. This is due to a race condition in the status update logic.
+- For csm objects created by the CSM Operator, the CSMVersion label value is v1.8.0 when it should be v1.9.0. As a workaround, the CSM version can be double-checked by checking the operator version -- v1.4.0 operator corresponds to CSM v1.9.0.
+- The status field of a CSM may in limited cases display Failed for a successful deployment. As a workaround, the deployment is still usable as long as all pods are running/healthy.
   
 ## Changes by Kind 
 
