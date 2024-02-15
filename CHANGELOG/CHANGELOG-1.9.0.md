@@ -1,6 +1,7 @@
 <!--toc-->
 - [v1.9.2](#v192)
   - [Changelog since v1.9.1](#changelog-since-v191)
+  - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Bugs](#bugs)
 - [v1.9.1](#v191)
