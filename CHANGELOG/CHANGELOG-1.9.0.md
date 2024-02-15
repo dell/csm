@@ -24,6 +24,7 @@
 ## Known Issues
 
 - The status field of a csm object as deployed by CSM Operator may, in limited cases, display a "Failed" status for a successful deployment. As a workaround, the deployment is still usable as long as all pods are running/healthy.
+- The status calculation done for the csm object associated with the Authorization Proxy Server when deployed with CSM Operator assumes that the proxy server will be deployed in the "authorization" namespace. If a different namespace is used, the status will stay in the failed state, even though the deployment is healthy. As a workaround, we recommend using the "authorization" namespace for the proxy server. If this is not possible, the health of the deployment can be verified by checking the status of all the pods rather than by checking the status field.
 
 ## Changes by Kind
 
