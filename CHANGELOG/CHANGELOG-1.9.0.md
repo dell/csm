@@ -29,6 +29,7 @@
 
 ### Bugs
 
+- CSM Operator doesn't apply fSGroupPolicy value to CSIDriver Object. ([#1103](https://github.com/dell/csm/issues/1103))
 - CSM Operator does not calculate status correctly when a driver is deployed by itself. ([#1130](https://github.com/dell/csm/issues/1130))
 - CSM Operator does not calculate status correctly when application-mobility is deployed by itself. ([#1133](https://github.com/dell/csm/issues/1133))
 - CSM Operator intermittently does not calculate status correctly when deploying a driver. ([#1137](https://github.com/dell/csm/issues/1137))
