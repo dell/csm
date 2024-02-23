@@ -1,9 +1,15 @@
 <!--toc-->
+- [v1.9.3](#v193)
+  - [Changelog since v1.9.2](#changelog-since-v192)
+  - [Known Issues](#known-issues-3)
+  - [Changes by Kind](#changes-by-kind-3)
+    - [Features](#features-1)
+    - [Bugs](#bugs-3)
 - [v1.9.2](#v192)
   - [Changelog since v1.9.1](#changelog-since-v191)
-  - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind)
-    - [Bugs](#bugs)
+  - [Known Issues](#known-issues-2)
+  - [Changes by Kind](#changes-by-kind-2)
+    - [Bugs](#bugs-2)
 - [v1.9.1](#v191)
   - [Changelog since v1.9.0](#changelog-since-v190)
   - [Known Issues](#known-issues-1)
@@ -11,20 +17,41 @@
     - [Bugs](#bugs-1)
 - [v1.9.0](#v190)
   - [Changelog since v1.8.0](#changelog-since-v180)
-  - [Known Issues](#known-issues-2)
-  - [Changes by Kind](#changes-by-kind-2)
+  - [Known Issues](#known-issues-0)
+  - [Changes by Kind](#changes-by-kind-0)
     - [Deprecation](#deprecation)
-    - [Features](#features)
-    - [Bugs](#bugs-2)
+    - [Features](#features-0)
+    - [Bugs](#bugs-0)
  
+# v1.9.3
+
+## Changelog since v1.9.2
+
+## Known Issues
+
+- The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
+- When CSM Operator creates a deployment that includes secrets (e.g., application-mobility, observability, cert-manager, velero), these secrets are not deleted on uninstall and will be left behind. For example, the `karavi-topology-tls`, `otel-collector-tls`, and `cert-manager-webhook-ca` secrets will not be deleted. This should not cause any issues on the system, but all secrets present on the cluster can be found with `kubectl get secrets -A`, and any unwanted secrets can be deleted with `kubectl delete secret -n <secret-namespace> <secret-name>`
+
+## Changes by Kind
+
+### Features 
+
+- Automatically create certificates when deploying observability with csm-operator. ([#1158](https://github.com/dell/csm/issues/1158))
+
+### Bugs
+- CSM object stays in success state when all CSI Powerflex pods are failing due to bad secret credentials. ([#1156](https://github.com/dell/csm/issues/1156))
+- If Authorization Proxy Server is installed in an alternate namespace by CSM Operator, the deployment fails. ([#1157](https://github.com/dell/csm/issues/1157))
+- CSM status is not always accurate when Observability deployed by CSM Operator without all components enabled. ([#1159](https://github.com/dell/csm/issues/1159))
+
 # v1.9.2
 
 ## Changelog since v1.9.1
 
 ## Known Issues
 
-- The status field of a csm object as deployed by CSM Operator may, in limited cases, display a "Failed" status for a successful deployment. As a workaround, the deployment is still usable as long as all pods are running/healthy.
+- The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
 - The status calculation done for the csm object associated with the Authorization Proxy Server when deployed with CSM Operator assumes that the proxy server will be deployed in the "authorization" namespace. If a different namespace is used, the status will stay in the failed state, even though the deployment is healthy. As a workaround, we recommend using the "authorization" namespace for the proxy server. If this is not possible, the health of the deployment can be verified by checking the status of all the pods rather than by checking the status field.
+- When CSM Operator creates a deployment that includes secrets (e.g., application-mobility, observability, cert-manager, velero), these secrets are not deleted on uninstall and will be left behind. For example, the `karavi-topology-tls`, `otel-collector-tls`, and `cert-manager-webhook-ca` secrets will not be deleted. This should not cause any issues on the system, but all secrets present on the cluster can be found with `kubectl get secrets -A`, and any unwanted secrets can be deleted with `kubectl delete secret -n <secret-namespace> <secret-name>`
 
 ## Changes by Kind
 
@@ -50,7 +77,7 @@
 - For CSM Operator released in CSM v1.9.1, the authorization proxy server csm object status will always be failed, even when it succeeds. This is because the operator is looking for a daemonset status when the authorization proxy server deployment does not have a daemonset. As a workaround, the module is still usable as long as all the pods are running/healthy.
 - For CSM Operator released in CSM v1.9.1, an install of csi-powerscale with observability will always be marked as failed in the csm object status, even when it succeeds. This is because the operator is looking for a legacy name of isilon in the status check. As a workaround, the module is still usable as long as all the pods are running/healthy.
 - For csm objects created by the CSM Operator, the CSMVersion label value is v1.8.0 when it should be v1.9.1. As a workaround, the CSM version can be double-checked by checking the operator version -- v1.4.1 operator corresponds to CSM v1.9.1.
-- The status field of a csm object as deployed by CSM Operator may, in limited cases, display a "Failed" status for a successful deployment. As a workaround, the deployment is still usable as long as all pods are running/healthy.
+- The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
 
 ## Changes by Kind
 
@@ -71,7 +98,8 @@
 - For CSM PowerMax, automatic SRDF group creation is failing with "Unable to get Remote Port on SAN for Auto SRDF" on PowerMax 10.1 arrays. As a workaround, create the SRDF Group and add it to the storage class.
 - For CSM Operator released in CSM v1.9.0, a driver install will rarely (~2% of the time) have a csm object stuck in a failed state for over an hour even though the deployment succeeds. This is due to a race condition in the status update logic.
 - For csm objects created by the CSM Operator, the CSMVersion label value is v1.8.0 when it should be v1.9.0. As a workaround, the CSM version can be double-checked by checking the operator version -- v1.4.0 operator corresponds to CSM v1.9.0.
-- The status field of a csm object as deployed by CSM Operator may, in limited cases, display a "Failed" status for a successful deployment. As a workaround, the deployment is still usable as long as all pods are running/healthy.
+- The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
+- When CSM Operator creates a deployment that includes secrets (e.g., application-mobility, observability, cert-manager, velero), these secrets are not deleted on uninstall and will be left behind. For example, the `karavi-topology-tls`, `otel-collector-tls`, and `cert-manager-webhook-ca` secrets will not be deleted. This should not cause any issues on the system, but all secrets present on the cluster can be found with `kubectl get secrets -A`, and any unwanted secrets can be deleted with `kubectl delete secret -n <secret-namespace> <secret-name>`
   
 ## Changes by Kind 
 
