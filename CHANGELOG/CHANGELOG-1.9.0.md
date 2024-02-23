@@ -41,7 +41,7 @@
 ### Bugs
 - CSM object stays in success state when all CSI Powerflex pods are failing due to bad secret credentials. ([#1156](https://github.com/dell/csm/issues/1156))
 - If Authorization Proxy Server is installed in an alternate namespace by CSM Operator, the deployment fails. ([#1157](https://github.com/dell/csm/issues/1157))
-- CSM status is not always accurate when Observability deployed by CSM Operator without all components enabled. ([#1159](https://github.com/dell/csm/issues/1159))
+- CSM status is not always accurate when Observability is deployed by CSM Operator without all components enabled. ([#1159](https://github.com/dell/csm/issues/1159))
 
 # v1.9.2
 
