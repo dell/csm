@@ -43,6 +43,7 @@
 - If Authorization Proxy Server is installed in an alternate namespace by CSM Operator, the deployment fails. ([#1157](https://github.com/dell/csm/issues/1157))
 - CSM status is not always accurate when Observability is deployed by CSM Operator without all components enabled. ([#1159](https://github.com/dell/csm/issues/1159))
 - CSI driver changes to facilitate SDC brownfield deployments. ([#1152](https://github.com/dell/csm/issues/1152))
+- CSM object occasionally stays failed state when app-mobility is successfully deployed with csm-operator. ([#1171](https://github.com/dell/csm/issues/1171))
 
 # v1.9.2
 
