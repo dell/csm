@@ -53,7 +53,7 @@
 - The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
 - The status calculation done for the csm object associated with the Authorization Proxy Server when deployed with CSM Operator assumes that the proxy server will be deployed in the "authorization" namespace. If a different namespace is used, the status will stay in the failed state, even though the deployment is healthy. As a workaround, we recommend using the "authorization" namespace for the proxy server. If this is not possible, the health of the deployment can be verified by checking the status of all the pods rather than by checking the status field.
 - When CSM Operator creates a deployment that includes secrets (e.g., application-mobility, observability, cert-manager, velero), these secrets are not deleted on uninstall and will be left behind. For example, the `karavi-topology-tls`, `otel-collector-tls`, and `cert-manager-webhook-ca` secrets will not be deleted. This should not cause any issues on the system, but all secrets present on the cluster can be found with `kubectl get secrets -A`, and any unwanted secrets can be deleted with `kubectl delete secret -n <secret-namespace> <secret-name>`
-- When PowerFlex CSI driver is deployed on a host that has SDC already installed or on a host that does not suppport automatic SDC installation (non CoreOS, non RHEL), the SDC container is unable to detect existing scini driver. As a result, the powerflex-node pod is stuck in `Init:CrashLoopBackOff` state.
+- When PowerFlex CSI driver is deployed on a host that has SDC already installed or on a host that does not support automatic SDC installation (non CoreOS, non RHEL), the SDC container is unable to detect existing scini driver. As a result, the powerflex-node pod is stuck in `Init:CrashLoopBackOff` state.
 
 ## Changes by Kind
 
@@ -80,7 +80,7 @@
 - For CSM Operator released in CSM v1.9.1, an install of csi-powerscale with observability will always be marked as failed in the csm object status, even when it succeeds. This is because the operator is looking for a legacy name of isilon in the status check. As a workaround, the module is still usable as long as all the pods are running/healthy.
 - For csm objects created by the CSM Operator, the CSMVersion label value is v1.8.0 when it should be v1.9.1. As a workaround, the CSM version can be double-checked by checking the operator version -- v1.4.1 operator corresponds to CSM v1.9.1.
 - The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
-- When PowerFlex CSI driver is deployed on a host that has SDC already installed or on a host that does not suppport automatic SDC installation (non CoreOS, non RHEL), the SDC container is unable to detect existing scini driver. As a result, the powerflex-node pod is stuck in `Init:CrashLoopBackOff` state.
+- When PowerFlex CSI driver is deployed on a host that has SDC already installed or on a host that does not support automatic SDC installation (non CoreOS, non RHEL), the SDC container is unable to detect existing scini driver. As a result, the powerflex-node pod is stuck in `Init:CrashLoopBackOff` state.
 
 ## Changes by Kind
 
@@ -103,7 +103,7 @@
 - For csm objects created by the CSM Operator, the CSMVersion label value is v1.8.0 when it should be v1.9.0. As a workaround, the CSM version can be double-checked by checking the operator version -- v1.4.0 operator corresponds to CSM v1.9.0.
 - The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
 - When CSM Operator creates a deployment that includes secrets (e.g., application-mobility, observability, cert-manager, velero), these secrets are not deleted on uninstall and will be left behind. For example, the `karavi-topology-tls`, `otel-collector-tls`, and `cert-manager-webhook-ca` secrets will not be deleted. This should not cause any issues on the system, but all secrets present on the cluster can be found with `kubectl get secrets -A`, and any unwanted secrets can be deleted with `kubectl delete secret -n <secret-namespace> <secret-name>`
-- When PowerFlex CSI driver is deployed on a host that has SDC already installed or on a host that does not suppport automatic SDC installation (non CoreOS, non RHEL), the SDC container is unable to detect existing scini driver. As a result, the powerflex-node pod is stuck in `Init:CrashLoopBackOff` state.
+- When PowerFlex CSI driver is deployed on a host that has SDC already installed or on a host that does not support automatic SDC installation (non CoreOS, non RHEL), the SDC container is unable to detect existing scini driver. As a result, the powerflex-node pod is stuck in `Init:CrashLoopBackOff` state.
   
 ## Changes by Kind 
 
