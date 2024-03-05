@@ -1,6 +1,6 @@
 <!--toc-->
 - [v1.10.0](#v1100)
-  - [Changelog since v1.9.2](#changelog-since-v192)
+  - [Changelog since v1.9.3](#changelog-since-v193)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
@@ -10,7 +10,7 @@
 
 # v1.10.0 
 
-## Changelog since v1.9.2 
+## Changelog since v1.9.3 
 
 ## Known Issues 
 
@@ -30,6 +30,8 @@
 - PowerScale : Driver failing to re-authenticate if session cookies are expired. ([#1134](https://github.com/dell/csm/issues/1134))
 - Inactive Tutorials button. ([#1121](https://github.com/dell/csm/issues/1121))
 - The csm-isilon-controller keeps getting panic and is restarting. ([#1104](https://github.com/dell/csm/issues/1104))
+- PowerMax : Metro: Failed to find Remote Symm WWN. ([#1175](https://github.com/dell/csm/issues/1175))
+- Kubelet Configuration Directory setting should not have a comment about default value being None. ([#1174](https://github.com/dell/csm/issues/1174))
 - Documentation : Multipath related instructions are missing in Powerstore prerequisites. ([#1142](https://github.com/dell/csm/issues/1142))
 - Cert-csi tests are not reporting the passed testcases in K8S E2E tests. ([#1140](https://github.com/dell/csm/issues/1140))
 - CSI Powermax: Driver fails to restore snapshot to Metro Volumes. ([#1115](https://github.com/dell/csm/issues/1115))
