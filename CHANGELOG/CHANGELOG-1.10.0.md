@@ -27,14 +27,16 @@
 
 ### Bugs 
 
-- PowerScale : Driver failing to re-authenticate if session cookies are expired. ([#1134](https://github.com/dell/csm/issues/1134))
-- Inactive Tutorials button. ([#1121](https://github.com/dell/csm/issues/1121))
-- The csm-isilon-controller keeps getting panic and is restarting. ([#1104](https://github.com/dell/csm/issues/1104))
+- Resource quota bypass. ([#1163](https://github.com/dell/csm/issues/1163))
+- Operator known issue for offline bundle sidecar images should have examples for all platforms. ([#1180](https://github.com/dell/csm/issues/1180))
 - PowerMax : Metro: Failed to find Remote Symm WWN. ([#1175](https://github.com/dell/csm/issues/1175))
 - Kubelet Configuration Directory setting should not have a comment about default value being None. ([#1174](https://github.com/dell/csm/issues/1174))
 - Documentation : Multipath related instructions are missing in Powerstore prerequisites. ([#1142](https://github.com/dell/csm/issues/1142))
 - Cert-csi tests are not reporting the passed testcases in K8S E2E tests. ([#1140](https://github.com/dell/csm/issues/1140))
+- PowerScale : Driver failing to re-authenticate if session cookies are expired. ([#1134](https://github.com/dell/csm/issues/1134))
+- Inactive Tutorials button. ([#1121](https://github.com/dell/csm/issues/1121))
 - CSI Powermax: Driver fails to restore snapshot to Metro Volumes. ([#1115](https://github.com/dell/csm/issues/1115))
+- The csm-isilon-controller keeps getting panic and is restarting. ([#1104](https://github.com/dell/csm/issues/1104))
 - the `nasName` parameter in the powerflex secret is now mandatory. ([#1101](https://github.com/dell/csm/issues/1101))
 - Powerstore sanity tests are not working. ([#1097](https://github.com/dell/csm/issues/1097))
 - CSM Operator offline install powerflex csi driver sidecar trying to pull from registry.k8s.io. ([#1094](https://github.com/dell/csm/issues/1094))
