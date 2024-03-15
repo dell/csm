@@ -1,0 +1,47 @@
+name: Community Qualification Intake Form
+description: Intake form for a community qualified configuration
+title: "[Qualification]: "
+labels: ["type/qualification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to qualify a configuration for Container Storage Modules (CSM). Please provide the details of your qualification so we can add it to the list of community qualified configurations.
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: Which operating system is being used? Please provide the version as well.
+    validations:
+      required: true
+  - type: input
+    id: co
+    attributes:
+      label: Container Orchestrator
+      description: Which container orchestrator is being used? Please provide the version as well.
+    validations:
+      required: true  
+  - type: input
+    id: storage
+    attributes:
+      label: Storage Platform
+      description: Which storage platform is being used? Please provide the version as well.
+    validations:
+      required: true      
+  - type: dropdown
+    id: protocol
+    attributes:
+      label: Protocol
+      description: What protocol is being used? Please provide the version as well.
+      options:
+        - iSCSI
+      default: 0
+    validations:
+      required: true            
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste relevant log output from cert-csi. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+      required: true
