@@ -25,7 +25,7 @@
   - [Known Issues](#known-issues-4)
   - [Changes by Kind](#changes-by-kind-4)
     - [Deprecation](#deprecation)
-    - [Features](#features-2)
+    - [Features](#features-1)
     - [Bugs](#bugs-4)
  
 # v1.9.4
