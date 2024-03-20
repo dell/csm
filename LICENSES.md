@@ -1,4 +1,4 @@
-OpenSource Licenses for Container Storage Modules  
+Open Source Licenses for Container Storage Modules  
 =  
 Package: github.com/dell/gopowermax/v2  
 Version: v2.6.0  
