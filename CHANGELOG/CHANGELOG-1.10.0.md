@@ -13,7 +13,6 @@
 ## Changelog since v1.9.3 
 
 ## Known Issues 
-- Resource quotas may not work properly with the CSI PowerFlex driver. PowerFlex is only able to assign storage in 8Gi chunks, so if a create volume call is made with a size not divisible by 8Gi, CSI-PowerFlex will round up to the next 8Gi boundary when it provisions storage -- however, the resource quota will not record this size but rather the original size in the create request. This means that, for example, if a 10Gi resource quota is set, and a user provisions 10 1Gi PVCs, 80Gi of storage will actually be allocated, which is well over the amount specified in the resource quota. For now, users should only provision volumes in 8Gi-divisible chunks if they want to use resource quotas.
 
 ## Changes by Kind 
 
@@ -21,17 +20,17 @@
 
 ### Features 
 
-- CSM 1.10 release specific changes. ([#1091](https://github.com/dell/csm/issues/1091))
 - Fixing the linting, formatting and vetting issues. ([#926](https://github.com/dell/csm/issues/926))
 - Support PowerStore v3.6. ([#1129](https://github.com/dell/csm/issues/1129))
 - Sample YAML for storage class creation missing in CSM Operator documentation. ([#1105](https://github.com/dell/csm/issues/1105))
 
 ### Bugs 
 
-- Resource quota bypass. ([#1163](https://github.com/dell/csm/issues/1163))
+- Driver install should not be part of Operator installation. ([#1186](https://github.com/dell/csm/issues/1186))
 - Operator known issue for offline bundle sidecar images should have examples for all platforms. ([#1180](https://github.com/dell/csm/issues/1180))
 - PowerMax : Metro: Failed to find Remote Symm WWN. ([#1175](https://github.com/dell/csm/issues/1175))
 - Kubelet Configuration Directory setting should not have a comment about default value being None. ([#1174](https://github.com/dell/csm/issues/1174))
+- Resource quota bypass. ([#1163](https://github.com/dell/csm/issues/1163))
 - Documentation : Multipath related instructions are missing in Powerstore prerequisites. ([#1142](https://github.com/dell/csm/issues/1142))
 - Cert-csi tests are not reporting the passed testcases in K8S E2E tests. ([#1140](https://github.com/dell/csm/issues/1140))
 - PowerScale : Driver failing to re-authenticate if session cookies are expired. ([#1134](https://github.com/dell/csm/issues/1134))
