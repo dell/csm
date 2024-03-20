@@ -28,6 +28,7 @@
 
 ### Bugs 
 
+- Driver install should not be part of Operator installation. ([#1186](https://github.com/dell/csm/issues/1186))
 - Resource quota bypass. ([#1163](https://github.com/dell/csm/issues/1163))
 - Operator known issue for offline bundle sidecar images should have examples for all platforms. ([#1180](https://github.com/dell/csm/issues/1180))
 - PowerMax : Metro: Failed to find Remote Symm WWN. ([#1175](https://github.com/dell/csm/issues/1175))
