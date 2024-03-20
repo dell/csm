@@ -1,28 +1,48 @@
 <!--toc-->
-- [v1.9.3](#v193)
-  - [Changelog since v1.9.2](#changelog-since-v192)
+- [v1.9.4](#v194)
+  - [Changelog since v1.9.3](#changelog-since-v193)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
-    - [Features](#features)
     - [Bugs](#bugs)
-- [v1.9.2](#v192)
-  - [Changelog since v1.9.1](#changelog-since-v191)
+- [v1.9.3](#v193)
+  - [Changelog since v1.9.2](#changelog-since-v192)
   - [Known Issues](#known-issues-1)
   - [Changes by Kind](#changes-by-kind-1)
+    - [Features](#features-1)
     - [Bugs](#bugs-1)
-- [v1.9.1](#v191)
-  - [Changelog since v1.9.0](#changelog-since-v190)
+- [v1.9.2](#v192)
+  - [Changelog since v1.9.1](#changelog-since-v191)
   - [Known Issues](#known-issues-2)
   - [Changes by Kind](#changes-by-kind-2)
     - [Bugs](#bugs-2)
-- [v1.9.0](#v190)
-  - [Changelog since v1.8.0](#changelog-since-v180)
+- [v1.9.1](#v191)
+  - [Changelog since v1.9.0](#changelog-since-v190)
   - [Known Issues](#known-issues-3)
   - [Changes by Kind](#changes-by-kind-3)
+    - [Bugs](#bugs-3)
+- [v1.9.0](#v190)
+  - [Changelog since v1.8.0](#changelog-since-v180)
+  - [Known Issues](#known-issues-4)
+  - [Changes by Kind](#changes-by-kind-4)
     - [Deprecation](#deprecation)
     - [Features](#features-1)
-    - [Bugs](#bugs-3)
+    - [Bugs](#bugs-4)
  
+# v1.9.4
+
+## Changelog since v1.9.3
+
+## Known Issues
+
+- The status field of a csm object as deployed by CSM Operator may, in limited cases, display an incorrect status for a deployment. As a workaround, the health of the deployment can be determined by checking the health of the pods.
+- When CSM Operator creates a deployment that includes secrets (e.g., application-mobility, observability, cert-manager, velero), these secrets are not deleted on uninstall and will be left behind. For example, the `karavi-topology-tls`, `otel-collector-tls`, and `cert-manager-webhook-ca` secrets will not be deleted. This should not cause any issues on the system, but all secrets present on the cluster can be found with `kubectl get secrets -A`, and any unwanted secrets can be deleted with `kubectl delete secret -n <secret-namespace> <secret-name>`
+
+## Changes by Kind
+
+### Bugs
+- Change the Apex Connectivity Client access to the kube-proxy port to only connections within the client pod. ([#1189](https://github.com/dell/csm/issues/1189))
+- Change Apex Connectivity Client access to secrets to only the secrets it needs to manage. ([#1190](https://github.com/dell/csm/issues/1190))
+
 # v1.9.3
 
 ## Changelog since v1.9.2
