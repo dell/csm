@@ -1,12 +1,29 @@
 <!--toc-->
-- [v1.10.0](#v1100)
-  - [Changelog since v1.9.3](#changelog-since-v193)
+- [v1.10.1](#v1101)
+  - [Changelog since v1.10.0](#changelog-since-v1100)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
+    - [Bugs](#bugs)
+- [v1.10.0](#v1100)
+  - [Changelog since v1.9.3](#changelog-since-v193)
+  - [Known Issues](#known-issues-1)
+  - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bugs](#bugs)
+    - [Bugs](#bugs-1)
  
+# v1.10.1
+
+## Changelog since v1.10.0
+
+## Known Issues
+- Resource quotas may not work properly with the CSI PowerFlex driver. PowerFlex is only able to assign storage in 8Gi chunks, so if a create volume call is made with a size not divisible by 8Gi, CSI-PowerFlex will round up to the next 8Gi boundary when it provisions storage -- however, the resource quota will not record this size but rather the original size in the create request. This means that, for example, if a 10Gi resource quota is set, and a user provisions 10 1Gi PVCs, 80Gi of storage will actually be allocated, which is well over the amount specified in the resource quota. For now, users should only provision volumes in 8Gi-divisible chunks if they want to use resource quotas.
+- CSM Operator does not support dynamic namespaces for Authorization. Despite successful installation in a namespace other than "authorization", errors may arise during volume creation. Use the default namespace “authorization” for installing Authorization using CSM Operator.
+
+## Changes by Kind
+
+### Bugs
+- Helm deployment of PowerFlex driver is failing ([#1210](https://github.com/dell/csm/issues/1210))
 
 # v1.10.0 
 
