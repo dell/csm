@@ -25,7 +25,7 @@ Dell Container Storage Modules (CSM) is an open-source suite of Kubernetes stora
 For documentation, please visit [Container Storage Modules documentation](https://dell.github.io/csm-docs/).
 
 ## Note:
-Please be advised the Dell CSM Operator will undergo planned maintenance on Thursday, 4/18/2024 from 2:00 pm to 11:00 pm (UTC) (approximately 9 hours). During this period, the following Dell CSM Operator versions will be unavailable for new installations and upgrades:
+Please be advised the Dell CSM Operator will undergo planned maintenance on Thursday, 4/18/2024 from 2:00 pm to 04:00 am (UTC) (approximately 14 hours). During this period, the following Dell CSM Operator versions will be unavailable for new installations and upgrades:
 - 1.3.0
 - 1.4.0
 - 1.4.2
