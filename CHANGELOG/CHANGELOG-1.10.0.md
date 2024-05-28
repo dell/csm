@@ -1,17 +1,33 @@
 <!--toc-->
+
+- [v1.10.2](#v1102)
+  - [Changelog since v1.10.1](#changelog-since-v1101)
+  - [Changes by Kind](#changes-by-kind)
+    - [Features](#features)
 - [v1.10.1](#v1101)
   - [Changelog since v1.10.0](#changelog-since-v1100)
   - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind)
+  - [Changes by Kind](#changes-by-kind-1)
     - [Bugs](#bugs)
 - [v1.10.0](#v1100)
   - [Changelog since v1.9.3](#changelog-since-v193)
-  - [Known Issues](#known-issues-1)
-  - [Changes by Kind](#changes-by-kind-1)
+  - [Known Issues](#known-issues-)
+  - [Changes by Kind](#changes-by-kind-)
     - [Deprecation](#deprecation)
-    - [Features](#features)
-    - [Bugs](#bugs-1)
- 
+    - [Features](#features-)
+    - [Bugs](#bugs-)
+
+# v1.10.2
+
+## Changelog since v1.10.1
+
+## Changes by Kind
+
+### Features
+
+- Support for Openshift 4.15 ([#1284](https://github.com/dell/csm/issues/1284))
+- Remove checks in code for non-supported installs of CSM ([#1285](https://github.com/dell/csm/issues/1285))
+
 # v1.10.1
 
 ## Changelog since v1.10.0
