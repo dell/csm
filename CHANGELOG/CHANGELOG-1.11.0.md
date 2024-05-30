@@ -1,6 +1,6 @@
 <!--toc-->
 - [v1.11.0](#v1110)
-  - [Changelog since v1.10.1](#changelog-since-v1101)
+  - [Changelog since v1.10.2](#changelog-since-v1102)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
@@ -10,7 +10,7 @@
 
 # v1.11.0 
 
-## Changelog since v1.10.1 
+## Changelog since v1.10.2 
 
 ## Known Issues 
 
@@ -24,11 +24,16 @@
 
 ### Bugs 
 
+- CSI node pod crash after replacing OCP ingress certificate or restarting kubectl service. ([#1310](https://github.com/dell/csm/issues/1310))
+- Create volume even if the size is smaller than possible. ([#1305](https://github.com/dell/csm/issues/1305))
+- Missing operator migration page and invalid YAML file version in CSM Docs.. ([#1301](https://github.com/dell/csm/issues/1301))
+- csm replication - volume prefix in target cluster is ignored. ([#1295](https://github.com/dell/csm/issues/1295))
 - CSM docs is having dead links. ([#1289](https://github.com/dell/csm/issues/1289))
 - CSM Documentation needs to be updated with custom topology labels with respect to Zone and Region. ([#1282](https://github.com/dell/csm/issues/1282))
-- TLS illegal parameter error when upgrading CSI PowerFlex v2.9.1 to v2.10.0. ([#1278](https://github.com/dell/csm/issues/1278))
 - Issue while Configuring Authorization module with Powermax CSI Driver using Operator. ([#1220](https://github.com/dell/csm/issues/1220))
-- Discrepancy in their secret. ([#1215](https://github.com/dell/csm/issues/1215))
+- Offline installation documentation appears to be out of date. ([#1307](https://github.com/dell/csm/issues/1307))
+- Powerflex snapshots are created as ReadWrite snapshots.. ([#1302](https://github.com/dell/csm/issues/1302))
+- Images of application mobility velero plugin and controller is not setting the correct image to the latest. ([#1299](https://github.com/dell/csm/issues/1299))
 - Fix linter errors in csm-operator. ([#1291](https://github.com/dell/csm/issues/1291))
 - Documentation - RWOP mode has been GAd and it does not need alpha gates anymore. ([#1287](https://github.com/dell/csm/issues/1287))
 - unable to install the UNITY driver in NAT Env. ([#1279](https://github.com/dell/csm/issues/1279))
@@ -40,6 +45,7 @@
 - Cannot configure export IP for CSI-Unity. ([#1222](https://github.com/dell/csm/issues/1222))
 - Add the helm-charts-version parameter to the install command for all drivers in csm-docs. ([#1218](https://github.com/dell/csm/issues/1218))
 - Incorrect Error message in Resiliency Podmon in controllerCleanupPod() func. ([#1216](https://github.com/dell/csm/issues/1216))
+- Discrepancy in their secret. ([#1215](https://github.com/dell/csm/issues/1215))
 - Doc hyper links in driver Readme is broken. ([#1209](https://github.com/dell/csm/issues/1209))
 - Snapshot ingestion procedure for CSI Unity Driver misising. ([#1206](https://github.com/dell/csm/issues/1206))
 - Operator doesn't support non-authorization namespace. ([#1205](https://github.com/dell/csm/issues/1205))
