@@ -20,21 +20,25 @@
 
 ### Features 
 
+- NVMe TCP support for PowerMax. ([#1308](https://github.com/dell/csm/issues/1308))
 - CSM Resiliency support for PowerMax. ([#1082](https://github.com/dell/csm/issues/1082))
 
 ### Bugs 
 
-- CSI node pod crash after replacing OCP ingress certificate or restarting kubectl service. ([#1310](https://github.com/dell/csm/issues/1310))
-- Create volume even if the size is smaller than possible. ([#1305](https://github.com/dell/csm/issues/1305))
-- Missing operator migration page and invalid YAML file version in CSM Docs.. ([#1301](https://github.com/dell/csm/issues/1301))
-- csm replication - volume prefix in target cluster is ignored. ([#1295](https://github.com/dell/csm/issues/1295))
-- CSM docs is having dead links. ([#1289](https://github.com/dell/csm/issues/1289))
-- CSM Documentation needs to be updated with custom topology labels with respect to Zone and Region. ([#1282](https://github.com/dell/csm/issues/1282))
+- Helm chart is not issuing a warning when installing complex Kubernetes version like Mirantis and alpha/beta versions of Kubernetes.. ([#1325](https://github.com/dell/csm/issues/1325))
+- Sample file for PowerFlex SDC CR is not updated correctly in the main. ([#1319](https://github.com/dell/csm/issues/1319))
+- Link for Dell PowerFlex Deployment Guide is missing in the operator document. ([#1318](https://github.com/dell/csm/issues/1318))
+- PowerScale CSI - Creating PVC from csi snapshot is failing. ([#1316](https://github.com/dell/csm/issues/1316))
+- csm replication - repctl cluster inject --use-sa not working. ([#1294](https://github.com/dell/csm/issues/1294))
 - Issue while Configuring Authorization module with Powermax CSI Driver using Operator. ([#1220](https://github.com/dell/csm/issues/1220))
+- CSI node pod crash after replacing OCP ingress certificate or restarting kubectl service. ([#1310](https://github.com/dell/csm/issues/1310))
 - Offline installation documentation appears to be out of date. ([#1307](https://github.com/dell/csm/issues/1307))
-- Powerflex snapshots are created as ReadWrite snapshots.. ([#1302](https://github.com/dell/csm/issues/1302))
+- Create volume even if the size is smaller than possible. ([#1305](https://github.com/dell/csm/issues/1305))
+- Powerflex snapshots are created as ReadWrite snapshots. ([#1302](https://github.com/dell/csm/issues/1302))
+- Missing operator migration page and invalid YAML file version in CSM Docs. ([#1301](https://github.com/dell/csm/issues/1301))
 - Images of application mobility velero plugin and controller is not setting the correct image to the latest. ([#1299](https://github.com/dell/csm/issues/1299))
 - Fix linter errors in csm-operator. ([#1291](https://github.com/dell/csm/issues/1291))
+- CSM docs is having dead links. ([#1289](https://github.com/dell/csm/issues/1289))
 - Documentation - RWOP mode has been GAd and it does not need alpha gates anymore. ([#1287](https://github.com/dell/csm/issues/1287))
 - unable to install the UNITY driver in NAT Env. ([#1279](https://github.com/dell/csm/issues/1279))
 - Installation Wizard creates a 0Byte file when selecting Operator for the installation type. ([#1275](https://github.com/dell/csm/issues/1275))
