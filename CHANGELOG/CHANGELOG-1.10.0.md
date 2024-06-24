@@ -2,15 +2,16 @@
 
 - [v1.10.2](#v1102)
   - [Changelog since v1.10.1](#changelog-since-v1101)
+  - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Features](#features)
 - [v1.10.1](#v1101)
   - [Changelog since v1.10.0](#changelog-since-v1100)
-  - [Known Issues](#known-issues)
+  - [Known Issues](#known-issues-1)
   - [Changes by Kind](#changes-by-kind-1)
     - [Bugs](#bugs)
-- [v1.10.0](#v1100)
-  - [Changelog since v1.9.3](#changelog-since-v193)
+- [v1.10.0](#v1100-)
+  - [Changelog since v1.9.3](#changelog-since-v193-)
   - [Known Issues](#known-issues-)
   - [Changes by Kind](#changes-by-kind-)
     - [Deprecation](#deprecation)
@@ -20,6 +21,9 @@
 # v1.10.2
 
 ## Changelog since v1.10.1
+
+## Known Issues
+- With CSI PowerStore, when a PV/PVC is deleted in Kubernetes, it triggers the deletion of the underlying volume and snapshot on the array as a default behaviour. This results in a situation where the VolumeSnapshot and VolumeSnapshotContent will still show "readyToUse: true", but leaves them unusable as it is no longer backed by underlying storage snapshot. This will not allow the creation of a PVC from snapshot and this could also lead to a data loss situations. The workaround is use of **retain** policy on the various PV, VolumeSnapshot and VolumeSnapshotContent that you wish to use for cloning.
 
 ## Changes by Kind
 
@@ -35,6 +39,7 @@
 ## Known Issues
 - Resource quotas may not work properly with the CSI PowerFlex driver. PowerFlex is only able to assign storage in 8Gi chunks, so if a create volume call is made with a size not divisible by 8Gi, CSI-PowerFlex will round up to the next 8Gi boundary when it provisions storage -- however, the resource quota will not record this size but rather the original size in the create request. This means that, for example, if a 10Gi resource quota is set, and a user provisions 10 1Gi PVCs, 80Gi of storage will actually be allocated, which is well over the amount specified in the resource quota. For now, users should only provision volumes in 8Gi-divisible chunks if they want to use resource quotas.
 - CSM Operator does not support dynamic namespaces for Authorization. Despite successful installation in a namespace other than "authorization", errors may arise during volume creation. Use the default namespace “authorization” for installing Authorization using CSM Operator.
+- With CSI PowerStore, when a PV/PVC is deleted in Kubernetes, it triggers the deletion of the underlying volume and snapshot on the array as a default behaviour. This results in a situation where the VolumeSnapshot and VolumeSnapshotContent will still show "readyToUse: true", but leaves them unusable as it is no longer backed by underlying storage snapshot. This will not allow the creation of a PVC from snapshot and this could also lead to a data loss situations. The workaround is use of **retain** policy on the various PV, VolumeSnapshot and VolumeSnapshotContent that you wish to use for cloning.
 
 ## Changes by Kind
 
@@ -49,6 +54,7 @@
 - Resource quotas may not work properly with the CSI PowerFlex driver. PowerFlex is only able to assign storage in 8Gi chunks, so if a create volume call is made with a size not divisible by 8Gi, CSI-PowerFlex will round up to the next 8Gi boundary when it provisions storage -- however, the resource quota will not record this size but rather the original size in the create request. This means that, for example, if a 10Gi resource quota is set, and a user provisions 10 1Gi PVCs, 80Gi of storage will actually be allocated, which is well over the amount specified in the resource quota. For now, users should only provision volumes in 8Gi-divisible chunks if they want to use resource quotas.
 - CSM Operator does not support dynamic namespaces for Authorization. Despite successful installation in a namespace other than "authorization", errors may arise during volume creation. Use the default namespace “authorization” for installing Authorization using CSM Operator.
 - Helm install of CSM for PowerFlex v1.10.0 is failing due to a duplicate `mountPath: /host_opt_emc_path` being added to volumeMounts charts/csi-vxflexos/templates/node.yaml. Error message is `Error: INSTALLATION FAILED: 1 error occurred: DaemonSet.apps "vxflexos-node" is invalid: spec.template.spec.initContainers[0].volumeMounts[4].mountPath: Invalid value: "/host_opt_emc_path": must be unique`. The issue can be resolved by removing the duplicate entry in [https://github.com/dell/helm-charts/blob/main/charts/csi-vxflexos/templates/node.yaml](https://github.com/dell/helm-charts/blob/main/charts/csi-vxflexos/templates/node.yaml).
+- With CSI PowerStore, when a PV/PVC is deleted in Kubernetes, it triggers the deletion of the underlying volume and snapshot on the array as a default behaviour. This results in a situation where the VolumeSnapshot and VolumeSnapshotContent will still show "readyToUse: true", but leaves them unusable as it is no longer backed by underlying storage snapshot. This will not allow the creation of a PVC from snapshot and this could also lead to a data loss situations. The workaround is use of **retain** policy on the various PV, VolumeSnapshot and VolumeSnapshotContent that you wish to use for cloning.
 
 ## Changes by Kind 
 
