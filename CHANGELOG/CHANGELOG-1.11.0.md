@@ -25,13 +25,15 @@
 
 ### Bugs 
 
-- CSI Unity node pods are failing when empty allowedNetworks is passed in the values.yaml. ([#1335](https://github.com/dell/csm/issues/1335))
 - Helm chart is not issuing a warning when installing complex Kubernetes version like Mirantis and alpha/beta versions of Kubernetes. ([#1325](https://github.com/dell/csm/issues/1325))
-- Sample file for PowerFlex SDC CR is not updated correctly in the main. ([#1319](https://github.com/dell/csm/issues/1319))
 - csm replication - repctl cluster inject --use-sa not working. ([#1294](https://github.com/dell/csm/issues/1294))
 - Issue while Configuring Authorization module with Powermax CSI Driver using Operator. ([#1220](https://github.com/dell/csm/issues/1220))
+- Helm install of PowerScale does not support snapshots. ([#1340](https://github.com/dell/csm/issues/1340))
+- Data loss (DL) when deleting PVC but leaves unusable volumesnapshot and volumesnapshotcontent. ([#1338](https://github.com/dell/csm/issues/1338))
 - CSM Replication repctl not supporting static build on OpenSUSE. ([#1330](https://github.com/dell/csm/issues/1330))
+- Sample file for PowerFlex SDC CR is not updated correctly in the main. ([#1319](https://github.com/dell/csm/issues/1319))
 - Link for Dell PowerFlex Deployment Guide is missing in the operator document. ([#1318](https://github.com/dell/csm/issues/1318))
+- CSM PowerStore - Remove the RESTAPI code that is not needed. ([#1317](https://github.com/dell/csm/issues/1317))
 - PowerScale CSI - Creating PVC from csi snapshot is failing. ([#1316](https://github.com/dell/csm/issues/1316))
 - CSI node pod crash after replacing OCP ingress certificate or restarting kubectl service. ([#1310](https://github.com/dell/csm/issues/1310))
 - Offline installation documentation appears to be out of date. ([#1307](https://github.com/dell/csm/issues/1307))
