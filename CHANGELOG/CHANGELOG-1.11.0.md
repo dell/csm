@@ -20,20 +20,27 @@
 
 ### Features 
 
+- Add Support for OpenShift Container Platform (OCP) 4.16. ([#1359](https://github.com/dell/csm/issues/1359))
 - NVMe TCP support for PowerMax. ([#1308](https://github.com/dell/csm/issues/1308))
+- Support for PowerFlex 4.6. ([#1358](https://github.com/dell/csm/issues/1358))
 - CSM Resiliency support for PowerMax. ([#1082](https://github.com/dell/csm/issues/1082))
 
 ### Bugs 
 
-- Helm chart is not issuing a warning when installing complex Kubernetes version like Mirantis and alpha/beta versions of Kubernetes. ([#1325](https://github.com/dell/csm/issues/1325))
-- csm replication - repctl cluster inject --use-sa not working. ([#1294](https://github.com/dell/csm/issues/1294))
-- Issue while Configuring Authorization module with Powermax CSI Driver using Operator. ([#1220](https://github.com/dell/csm/issues/1220))
+- a documentation issue for raw block in Unity CSI driver doc. ([#1363](https://github.com/dell/csm/issues/1363))
+- Document update : PowerFlex expecting secret CR as <csm-cr-name>-config in operator. ([#1350](https://github.com/dell/csm/issues/1350))
+- Quota capacity limit exceeded. ([#1375](https://github.com/dell/csm/issues/1375))
+- API command to check filesystem is taking 20s + causing ControllerUnPublish to take 20+secs. ([#1370](https://github.com/dell/csm/issues/1370))
+- Setting large quota in Role causes overflow. ([#1368](https://github.com/dell/csm/issues/1368))
+- Support Minimum 3GB Volume Size for NFS in CSI-PowerFlex. ([#1366](https://github.com/dell/csm/issues/1366))
+- mkfsFormatOption not working for powerflex. ([#1364](https://github.com/dell/csm/issues/1364))
 - Indentation of secret.yaml mentioned on the csm-doc portal for powerflex driver is incorrect.. ([#1355](https://github.com/dell/csm/issues/1355))
 - karavictl storage create doesn't prompt for storage password. ([#1347](https://github.com/dell/csm/issues/1347))
 - Parsing an NVME response fails for list-subsys. ([#1346](https://github.com/dell/csm/issues/1346))
 - Helm install of PowerScale does not support snapshots. ([#1340](https://github.com/dell/csm/issues/1340))
 - Data loss (DL) when deleting PVC but leaves unusable volumesnapshot and volumesnapshotcontent. ([#1338](https://github.com/dell/csm/issues/1338))
 - CSM Replication repctl not supporting static build on OpenSUSE. ([#1330](https://github.com/dell/csm/issues/1330))
+- Helm chart is not issuing a warning when installing complex Kubernetes version like Mirantis and alpha/beta versions of Kubernetes. ([#1325](https://github.com/dell/csm/issues/1325))
 - Sample file for PowerFlex SDC CR is not updated correctly in the main. ([#1319](https://github.com/dell/csm/issues/1319))
 - Link for Dell PowerFlex Deployment Guide is missing in the operator document. ([#1318](https://github.com/dell/csm/issues/1318))
 - CSM PowerStore - Remove the RESTAPI code that is not needed. ([#1317](https://github.com/dell/csm/issues/1317))
@@ -54,6 +61,7 @@
 - Missing mountPropagation param for Powermax node template in CSM-Operator. ([#1238](https://github.com/dell/csm/issues/1238))
 - Error handling not good in node.go:nodeProbe() and other similar functions. ([#1237](https://github.com/dell/csm/issues/1237))
 - Cannot configure export IP for CSI-Unity. ([#1222](https://github.com/dell/csm/issues/1222))
+- Issue while Configuring Authorization module with Powermax CSI Driver using Operator. ([#1220](https://github.com/dell/csm/issues/1220))
 - Add the helm-charts-version parameter to the install command for all drivers in csm-docs. ([#1218](https://github.com/dell/csm/issues/1218))
 - Incorrect Error message in Resiliency Podmon in controllerCleanupPod() func. ([#1216](https://github.com/dell/csm/issues/1216))
 - Discrepancy in their secret. ([#1215](https://github.com/dell/csm/issues/1215))
