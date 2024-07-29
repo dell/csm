@@ -14,24 +14,28 @@
 
 ## Known Issues 
 
-Controller publish is taking too long to complete. Health monitoring is causing the Unity array to panic by opening multiple sessions. There are error messages in the log `context deadline exceeded`, when health monitoring is enabled. As a workaround, disable volume health monitoring on the node and keep it only at the controller level. Refer [here](https://dell.github.io/csm-docs/docs/csidriver/features/unity/#volume-health-monitoring) for more information about enabling/disabling volume health monitoring.
-
 ## Changes by Kind 
 
 ### Deprecation 
 
 ### Features 
 
+- Support for Kubernetes 1.30. ([#1400](https://github.com/dell/csm/issues/1400))
 - Add Support for OpenShift Container Platform (OCP) 4.16. ([#1359](https://github.com/dell/csm/issues/1359))
 - NVMe TCP support for PowerMax. ([#1308](https://github.com/dell/csm/issues/1308))
+- Unity 5.4 Support. ([#1399](https://github.com/dell/csm/issues/1399))
+- PowerScale  OneFS 9.7 support. ([#1398](https://github.com/dell/csm/issues/1398))
+- Observability upgrade is supported in CSM Operator. ([#1397](https://github.com/dell/csm/issues/1397))
+- DCM and DN client upgrade is supported in CSM operator. ([#1396](https://github.com/dell/csm/issues/1396))
 - Support for PowerFlex 4.6. ([#1358](https://github.com/dell/csm/issues/1358))
+- Add Authorization upgrade is supported in CSM Operator. ([#1277](https://github.com/dell/csm/issues/1277))
 - CSM Resiliency support for PowerMax. ([#1082](https://github.com/dell/csm/issues/1082))
 
 ### Bugs 
 
 - Documentation has broken links to sample files that are no longer available.. ([#1392](https://github.com/dell/csm/issues/1392))
 - CSI Powermax chooses ISCSI protocol over NVMeTCP. ([#1388](https://github.com/dell/csm/issues/1388))
-- Revert PR csm-replication/pull/137 (static repctl). ([#1385](https://github.com/dell/csm/issues/1385))
+- Enable static build of repctl. ([#1385](https://github.com/dell/csm/issues/1385))
 - Documentation and Release Issues with Cert-CSI Tool. ([#1383](https://github.com/dell/csm/issues/1383))
 - Cert-CSI Test Suites "Ephemeral Volumes" is failing. ([#1381](https://github.com/dell/csm/issues/1381))
 - Quota capacity limit exceeded. ([#1375](https://github.com/dell/csm/issues/1375))
