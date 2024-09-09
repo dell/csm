@@ -1,0 +1,100 @@
+name: Build and push base image
+# Workflow runs when specific branches are changed
+on:
+  # on push to a branch
+  # push:
+  #   branches:
+  #     - main
+  # pull_request will trigger a check when a pr is opened or updated
+  # pull_request:
+  #   branches:
+  #     - main
+  # workflow_dispatch allows the workflow to be manually invoked
+  workflow_dispatch:
+
+# common variables
+env:
+  # registry
+  REGISTRY: docker.io
+  # organization
+  ORGANIZATION: dellemc
+  # image name to build
+  IMAGENAME: csm-base-image
+
+jobs:
+  build-base-image:
+    runs-on: ubuntu-latest
+    steps:
+
+      # workaround for act not being able to access node
+      - name: Hack container for local development
+        if: ${{ env.ACT }}
+        run: |
+          curl -sS https://webi.sh/node | sh
+          echo ~/.local/opt/node/bin >> $GITHUB_PATH
+
+      # checkout the code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # setup Golang
+      - name: Setup Golang
+        uses: actions/setup-go@v5
+        with:
+          go-version: '^1.22.0'
+
+      # grab the dockerfile args from the csm-common.mk file
+      - name: Reading image configuration values
+        id: get-vars
+        run: |
+          source ./config/csm-common.mk
+          echo "BASEIMAGE=${DEFAULT_BASEIMAGE}" >> $GITHUB_OUTPUT
+          echo "BUILDER=${DEFAULT_UBIBUILDER}" >> $GITHUB_OUTPUT
+
+      # setup docker buildx with the registries and their certs
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # login to the container registry
+      - name: Login to registry
+        id: login
+        # only login if running against main branch
+        # and not using act for testing
+        # if: ${{ github.ref_name == 'main' && !env.ACT }}
+        if : false
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DCR_USER }}
+          password: ${{ secrets.DCR_TOKEN }}
+
+      # extract and build metadata for the image 
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        env:
+          NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-certificates.crt
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.ORGANIZATION }}/${{ env.IMAGENAME }}
+          tags: |
+            # tag for the branch name
+            type=ref,event=branch
+            # and the tag
+            type=ref,event=tag
+
+      # build the image, push only if going to main
+      - name: Build and push Docker image
+        id: build-and-push
+        uses: docker/build-push-action@v5
+        with:
+          file: base-image/Dockerfile
+          context: .
+          platforms: linux/amd64
+          push: ${{ steps.login.outcome == 'success' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: |
+            ${{ steps.meta.outputs.labels }}
+          target: final
+          build-args: |
+            UBIMICRO=${{ steps.get-vars.outputs.BASEIMAGE }}
+            UBIBUILDER=${{ steps.get-vars.outputs.BUILDER }}
