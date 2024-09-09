@@ -12,3 +12,7 @@ user.json
 /templates/repctl
 cockroach-data
 .cockroach
+
+# semantic versioning temp files
+semver.mk
+
