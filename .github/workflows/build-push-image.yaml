@@ -1,3 +1,15 @@
+# Copyright © 2024 Dell Inc. or its subsidiaries. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#      http:#www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 name: Build and push base image
 # Workflow runs when specific branches are changed
 on:
@@ -27,7 +39,7 @@ jobs:
     steps:
 
       # workaround for act not being able to access node
-      - name: Enable ACT runner for local development
+      - name: Enable ACT runner for local development and testing
         if: ${{ env.ACT }}
         run: |
           curl -sS https://webi.sh/node | sh
@@ -37,12 +49,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # setup Golang
-      - name: Setup Golang
-        uses: actions/setup-go@v5
-        with:
-          go-version: '^1.22.0'
-
       # grab the dockerfile args from the csm-common.mk file
       - name: Reading image configuration values
         id: get-vars
@@ -50,6 +56,13 @@ jobs:
           source ./config/csm-common.mk
           echo "BASEIMAGE=${DEFAULT_BASEIMAGE}" >> $GITHUB_OUTPUT
           echo "BUILDER=${DEFAULT_UBIBUILDER}" >> $GITHUB_OUTPUT
+          echo "GOVERSION=${DEFAULT_GOVERSION}" >> $GITHUB_OUTPUT
+
+      # setup Golang
+      - name: Setup Golang
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ steps.get-vars.outputs.GOVERSION }}
 
       # setup docker buildx
       - name: Set up Docker Buildx
