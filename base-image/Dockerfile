@@ -10,15 +10,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# arguments to be passed in or defaulted
-ARG MICRODIR=/microdir
-ARG PACKAGES_TO_INSTALL="rpm"
+# --- DOCKERFILE ARGUMENTS
 
 # reference to the UBI micro image
-ARG UBIMICRO
-# should be defined in csm-common.mk and be the `latest` version of the ubi image corresponding to the micro version
-# reference to the UBI (non-micro) image with access to yum
-ARG UBIBUILDER
+ARG UBIMICRO=unknown
+
+# ubi image corresponding to the micro version
+ARG UBIBUILDER=unknown
+
+# mount dir for installing option packages, should not need to be changed
+ARG MICRODIR=/microdir
+
+# list of packages to install
+ARG PACKAGES_TO_INSTALL="rpm"
+
+
 
 # --- microbase: image provided by RedHat as the UBI micro base image
 FROM $UBIMICRO AS microbase

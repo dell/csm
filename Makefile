@@ -5,7 +5,11 @@ all: help
 include overrides.mk
 
 # variables
-ACT_OPTIONS=--secret GITHUB_TOKEN=$(GITHUB_TOKEN) --no-cache-server --platform ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest --github-instance github.com
+ACT_OPTIONS=--secret GITHUB_TOKEN=$(GITHUB_TOKEN) \
+          	--secret DCR_USER=$(DCR_USER) \
+          	--secret DCR_TOKEN=$(DCR_TOKEN) \
+            --no-cache-server \
+			--platform ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest 
 
 # Help target, prints usefule information
 help:
