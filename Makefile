@@ -5,20 +5,36 @@ all: help
 include overrides.mk
 
 # variables
-ACT_OPTIONS=--secret GITHUB_TOKEN=$(GITHUB_TOKEN) \
-          	--secret DCR_USER=$(DCR_USER) \
-          	--secret DCR_TOKEN=$(DCR_TOKEN) \
-            --no-cache-server \
-			--platform ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-latest 
+BASE_IMAGE_PACKAGES=acl \
+					gnutls \
+					device-mapper-multipath \
+					e2fsprogs \
+					gnutls \
+					gzip \
+					hostname \
+					kmod \
+					libaio \
+					libblockdev \
+					libuuid \
+					libxcrypt-compat \
+					nettle \
+					nfs-utils \
+					nfs4-acl-tools \
+					numactl \
+					openssl \
+					rpm \
+					systemd \
+					tar \
+					util-linux \
+					which \
+					xfsprogs
 
-# Help target, prints usefule information
+# Help target, prints useful information
 help:
 	@echo
 	@echo "The following targets are commonly used:"
 	@echo
-	@echo "action-help      - Displays instructions on how to run a single github workflow locally"
-	@echo "actions          - Run all workflows locally, requires https://github.com/nektos/act"
-	@echo "docker           - Builds the code within a golang container and then creates the driver image"
+	@echo "docker           - Builds the container image"
 	@echo
 
 # Clean the build
@@ -29,39 +45,17 @@ clean:
 
 # Dependencies
 dependencies:
-	go run core/semver/semver.go -f mk >semver.mk
-
-# Generates container via a github workflow
-docker-action:
-	act pull_request \
-		$(ACT_OPTIONS) \
-		--job build-base-image
+	# go run core/semver/semver.go -f mk >semver.mk
+	echo "dependencies not needed"
 
 # Generates the docker container (but does not push)
 docker: dependencies
 	$(eval include config/csm-common.mk)
 	$(eval include semver.mk)
-	@echo "Base Images is set to: $(BASEIMAGE)"
-	@echo "Building: $(REGISTRY)/$(IMAGENAME):$(IMAGETAG)"
-	cd base-image && \
-		$(BUILDER) build \
-		-t "$(REGISTRY)/$(IMAGENAME):$(IMAGEVER)" \
-		--target $(BUILDSTAGE) \
-		--build-arg UBIMICRO=$(DEFAULT_BASEIMAGE) \
-		--build-arg UBIBUILDER=$(DEFAULT_UBIBUILDER) \
-		.
+	@echo "Building base image from $(DEFAULT_BASEIMAGE) and loading dependencies..."
+	cd base-image && ./build_ubi_micro.sh -u $(DEFAULT_BASEIMAGE) -t $(REGISTRY)/$(IMAGENAME):$(IMAGETAG) $(BASE_IMAGE_PACKAGES)
+	$(eval BASEIMAGE=$(REGISTRY)/$(IMAGENAME):$(IMAGETAG))
+	@echo "Built base image: $(BASEIMAGE)"
 
-.PHONY: actions
-actions: ## Run all the github action checks that run on a pull_request creation
-	act -l | grep -v ^Stage | grep pull_request | awk '{print $$2}' | while read WF; do act pull_request $(ACT_OPTIONS) --job "$${WF}"; done
 
-.PHONY: action-help
-action-help: ## Echo instructions to run one specific workflow locally
-	@echo "GitHub Workflows can be run locally with the following command:"
-	@echo "act pull_request $(ACT_OPTIONS) --job <jobid>"
-	@echo
-	@echo "Where '<jobid>' is a Job ID returned by the command:"
-	@echo "act -l"
-	@echo
-	@echo "NOTE: if act if not installed, it can be from https://github.com/nektos/act"
 

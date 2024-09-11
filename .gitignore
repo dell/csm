@@ -13,6 +13,4 @@ user.json
 cockroach-data
 .cockroach
 
-# semantic versioning temp files
-semver.mk
 

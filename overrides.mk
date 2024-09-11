@@ -6,7 +6,7 @@
 DEFAULT_REGISTRY="sample_registry"
 DEFAULT_IMAGENAME="csm-base-image"
 DEFAULT_BUILDSTAGE="final"
-DEFAULT_IMAGETAG="for-testing-only"
+DEFAULT_IMAGETAG="test"
 
 # set the GOIMAGE if needed
 ifeq ($(GOIMAGE),)
@@ -24,7 +24,7 @@ export IMAGENAME="$(DEFAULT_IMAGENAME)"
 endif
 
 #set the IMAGETAG if needed
-ifneq ($(DEFAULT_IMAGETAG), "") 
+ifeq ($(IMAGETAG),) 
 export IMAGETAG="$(DEFAULT_IMAGETAG)"
 endif
 
