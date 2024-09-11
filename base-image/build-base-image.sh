@@ -55,6 +55,13 @@ function build() {
   buildah unshare ./buildah-script.sh
 }
 
+# check to see if the host is RedHat Enterprise Linux as it is required
+if [ ! -f /etc/redhat-release ]; then
+  echo "This does not appear to eb a RedHat Enterprise Linux system"
+  echo "No file at /etc/redhat-release was found"
+  exit 1
+fi
+
 # Parse command line arguments
 while getopts "hu:t:" opt; do
   case $opt in
