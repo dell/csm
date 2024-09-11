@@ -19,7 +19,7 @@ UBIBASE=""
 # CSMBASE specifies the fule name of the target image to build
 CSMBASE=""
 # PACKAGES is an array of packages that need to be installed in the built image
-PACKAGES=()
+PACKAGES=""
 
 
 # --- help: displays a short help message
@@ -43,27 +43,16 @@ function help() {
 
 # --- build: Builds a container image using buildah
 function build() {
-    echo "Building base image from ${UBIBASE}"
-    echo "And creating ${CSMBASE}"
-    echo "With packages of: ${PACKAGES[@]}"
+  echo "Building base image from ${UBIBASE}"
+  echo "And creating ${CSMBASE}"
+  echo "With packages of: ${PACKAGES}"
 
-    # build the image
-    microcontainer=$(buildah from "${UBIBASE}")
-    micromount=$(buildah mount $microcontainer)
-    dnf install \
-      --installroot $micromount \
-      --releasever=9 \
-      --nodocs \
-      --setopt install_weak_deps=false \
-      -y \
-      --setopt=reposdir=/etc/yum.repos.d/ \
-      ${PACKAGES[@]}
-
-    dnf clean all \
-      --installroot $micromount
-
-    buildah umount $microcontainer
-    buildah commit $microcontainer "${CSMBASE}"
+  # export the settings
+  export UBIBASE="${UBIBASE}"
+  export CSMBASE="${CSMBASE}"
+  export PACKAGES="${PACKAGES}"
+  # and run the build script
+  buildah unshare ./buildah-script.sh
 }
 
 # Parse command line arguments
@@ -91,7 +80,7 @@ done
 shift $((OPTIND-1))
 
 # Store the remaining arguments in the UNNAMED_ARGS array
-PACKAGES=("$@")
+PACKAGES="$*"
 
 # Use the parsed values
 if [ -z "$UBIBASE" ]; then

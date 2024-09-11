@@ -33,8 +33,20 @@ For documentation, please visit [Container Storage Modules documentation](https:
 * [List of Adopters](./docs/ADOPTERS.md)
 * [Support](./docs/SUPPORT.md)
 * [Security](./docs/SECURITY.md)
+* [Building](#building)
 * [Container Storage Modules - Components](#container-storage-modules---components)
 * [About](#about)
+
+## Building
+This project includes the base container image definition for the
+[Container Storage Modules - Components](#container-storage-modules---components).
+
+To build the image, some requirements must be met:
+* The supported build environment is restricted to RedHat Enterprise Linux version 9.0 and above
+* buildah is used to build the container and must be installed
+
+Once the requirements above are met, the image can be build via:
+`make docker`
 
 ## Container Storage Modules - Components
 * [Dell Container Storage Modules (CSM) for Authorization](https://github.com/dell/karavi-authorization)
