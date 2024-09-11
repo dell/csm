@@ -27,7 +27,7 @@ dnf install \
   --releasever=9 \
   --nodocs \
   --setopt install_weak_deps=false \
-  -y \
+  --assumeyes \
   --setopt=reposdir=/etc/yum.repos.d/ \
   ${PACKAGES}
 

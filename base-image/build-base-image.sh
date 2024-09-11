@@ -51,8 +51,16 @@ function build() {
   export UBIBASE="${UBIBASE}"
   export CSMBASE="${CSMBASE}"
   export PACKAGES="${PACKAGES}"
-  # and run the build script
-  buildah unshare ./buildah-script.sh
+
+  if [ $(id -u) -eq 0 ]; then
+    # if running as root, just run the script
+    ./buildah-script.sh
+  else
+    # otherwise run in an unshared environment
+    # and run the build script
+    buildah unshare ./buildah-script.sh
+  fi
+
 }
 
 # check to see if the host is RedHat Enterprise Linux as it is required
