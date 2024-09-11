@@ -12,15 +12,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License
 
+# --- variables that are passed in via command line options
+
+# UBIBASE refers to the UBI-micro base image reference
 UBIBASE=""
+# CSMBASE specifies the fule name of the target image to build
 CSMBASE=""
+# PACKAGES is an array of packages that need to be installed in the built image
 PACKAGES=()
 
+
+# --- help: displays a short help message
+function help() {
+  echo "${0}: Builds an image based on a RedHat UBI Micro image, with additional packages added"
+  echo "  Required Arguments:"
+  echo "    -u: Reference to the UBI-micro image to use as a base"
+  echo "    -t: Name of the target image to build"
+  echo "    List of package names to install"
+  echo "  Optional Arguments"
+  echo "    -h: Help, displays this message"
+  echo ""
+  echo ""
+  echo "For example to build an image by adding curl and wget, invoke as:"
+  echo "${0} \\"
+  echo "  -u registry.access.redhat.com/ubi9/ubi-micro@sha256:9dbba858e5c8821fbe1a36c376ba23b83ba00f100126f2073baa32df2c8e183a \\"
+  echo "  -t localhost\myorganization\myimage:mytag \\"
+  echo "  curl wget"
+  echo
+}
+
+# --- build: Builds a container image using buildah
 function build() {
     echo "Building base image from ${UBIBASE}"
     echo "And creating ${CSMBASE}"
     echo "With packages of: ${PACKAGES[@]}"
 
+    # build the image
     microcontainer=$(buildah from "${UBIBASE}")
     micromount=$(buildah mount $microcontainer)
     dnf install \
@@ -40,7 +67,7 @@ function build() {
 }
 
 # Parse command line arguments
-while getopts "u:t:" opt; do
+while getopts "hu:t:" opt; do
   case $opt in
     u)
       UBIBASE="$OPTARG"
@@ -48,8 +75,14 @@ while getopts "u:t:" opt; do
     t)
       CSMBASE="$OPTARG"
       ;;
+    h)
+      help
+      exit 0
+      ;;
     \?)
-      echo "Invalid option: -$OPTARG" >&2
+      echo ""
+      help
+      exit 1
       ;;
   esac
 done
