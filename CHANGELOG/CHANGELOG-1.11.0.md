@@ -86,3 +86,4 @@ Controller publish is taking too long to complete. Health monitoring is causing 
 - CrashLoopBackOff and OOMKilled issue in pod : Dell CSM Operator Manager POD. ([#1200](https://github.com/dell/csm/issues/1200))
 - Topology-related node labels are not added automatically. ([#1198](https://github.com/dell/csm/issues/1198))
 - Controller Pod keeps restarting due to "Lost connection to CSI driver" error. ([#1188](https://github.com/dell/csm/issues/1188))
+- Mounts of NVMe attached volumes fail with the CSI PowerStore driver. ([#1188](https://github.com/dell/csm/issues/1469))
