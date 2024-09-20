@@ -20,7 +20,7 @@
 
 ### Features 
 
-- CSM 1.12 release-specific changes. ([#1449](https://github.com/dell/csm/issues/1449))
+- Simplify the CSM Operator deployment. ([#1449](https://github.com/dell/csm/issues/1449))
 - PowerStore Sync / Metro for Block - CSM Replication. ([#1443](https://github.com/dell/csm/issues/1443))
 - Automatic update of helm charts with latest image version. ([#1414](https://github.com/dell/csm/issues/1414))
 - Adding support for PowerMax Magnolia. ([#1410](https://github.com/dell/csm/issues/1410))
@@ -30,16 +30,17 @@
 ### Bugs 
 
 - Gobrick does not clean wwids from /etc/multipath/wwids after removing multipath devices. ([#1447](https://github.com/dell/csm/issues/1447))
-- Remove mutex locks from interceptors on method calls. ([#1438](https://github.com/dell/csm/issues/1438))
-- Remove leftover files of old patch driver version in csm-operator. ([#1432](https://github.com/dell/csm/issues/1432))
+- Replication Failover/Reprotect operations has "Error" under State field in the ReplicationGroup. ([#1445](https://github.com/dell/csm/issues/1445))
 - Upgrade k8s.io modules in csm-observability module. ([#1431](https://github.com/dell/csm/issues/1431))
 - CSM Operator e2e tests: Error in test 3. ([#1427](https://github.com/dell/csm/issues/1427))
-- Build/unit test execution inconsistencies in README files across repositories. ([#1422](https://github.com/dell/csm/issues/1422))
 - csi-powermax crashed when attempting to unmount volume from node. ([#1418](https://github.com/dell/csm/issues/1418))
 - Dell CSM Installation Issues. ([#1416](https://github.com/dell/csm/issues/1416))
 - Allow to install 2 PowerFlex on a stretched cluster using the CSM Operator or the Helm chart. ([#1413](https://github.com/dell/csm/issues/1413))
-- Samples for volumesnapshot class for taking snapshots on target array are not present in repositories other than pmax. ([#1380](https://github.com/dell/csm/issues/1380))
+- CSI-PowerStore Node Prefix is ignored. ([#1458](https://github.com/dell/csm/issues/1458))
+- CSM Installation Wizard page is not rendered properly. ([#1452](https://github.com/dell/csm/issues/1452))
+- Remove mutex locks from interceptors on method calls. ([#1438](https://github.com/dell/csm/issues/1438))
 - Access token refresh expiration reverts to 30 seconds. ([#1436](https://github.com/dell/csm/issues/1436))
+- Remove leftover files of old patch driver version in csm-operator. ([#1432](https://github.com/dell/csm/issues/1432))
 - Samples for Cert-CSI documentation is not showing the correct values for storage classes. ([#1428](https://github.com/dell/csm/issues/1428))
 - Incorrect Volume Creation Due to Idempotency in CreateVolume. ([#1425](https://github.com/dell/csm/issues/1425))
 - Feedback link is not working in CSM-docs. ([#1421](https://github.com/dell/csm/issues/1421))
