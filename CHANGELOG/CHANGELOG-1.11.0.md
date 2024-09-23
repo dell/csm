@@ -14,7 +14,8 @@
 
 ## Known Issues
 
-Controller publish is taking too long to complete. Health monitoring is causing the Unity array to panic by opening multiple sessions. There are error messages in the log `context deadline exceeded`, when health monitoring is enabled. As a workaround, disable volume health monitoring on the node and keep it only at the controller level. Refer [here](https://dell.github.io/csm-docs/docs/csidriver/features/unity/#volume-health-monitoring) for more information about enabling/disabling volume health monitoring.
+- Controller publish is taking too long to complete. Health monitoring is causing the Unity array to panic by opening multiple sessions. There are error messages in the log `context deadline exceeded`, when health monitoring is enabled. As a workaround, disable volume health monitoring on the node and keep it only at the controller level. Refer [here](https://dell.github.io/csm-docs/docs/csidriver/features/unity/#volume-health-monitoring) for more information about enabling/disabling volume health monitoring.
+- Mount of block devices using the NVMe protocols fail. ([#1469](https://github.com/dell/csm/issues/1469)). Use an alternate block protocol (iSCSI, FC) or delay upgrading to the v2.11.0 version of the PowerStore driver and wait for an update of the driver to be published.
 
 ## Changes by Kind 
 
@@ -86,4 +87,3 @@ Controller publish is taking too long to complete. Health monitoring is causing 
 - CrashLoopBackOff and OOMKilled issue in pod : Dell CSM Operator Manager POD. ([#1200](https://github.com/dell/csm/issues/1200))
 - Topology-related node labels are not added automatically. ([#1198](https://github.com/dell/csm/issues/1198))
 - Controller Pod keeps restarting due to "Lost connection to CSI driver" error. ([#1188](https://github.com/dell/csm/issues/1188))
-- Mounts of NVMe attached volumes fail with the CSI PowerStore driver. ([#1188](https://github.com/dell/csm/issues/1469))
