@@ -30,7 +30,7 @@
 
 ### Bugs
 - Mounts using NVMe on PowerStore fails in v2.11 of the driver ([#1469](https://github.com/dell/csm/issues/1469))
-- sdc 4.5.2.1 fails to load when deployed on OCP 4.16.x using csm-operator ([#1482](https://github.com/dell/csm/issues/1482))
+- SDC 4.5.2.1 fails to load when deployed on OCP 4.16.x using csm-operator ([#1482](https://github.com/dell/csm/issues/1482))
 
 # v1.11.0 
 
