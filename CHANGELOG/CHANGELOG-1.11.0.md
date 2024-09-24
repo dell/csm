@@ -21,13 +21,12 @@
 
 ## Known Issues
 
-- Controller publish is taking too long to complete. Health monitoring is causing the Unity array to panic by opening multiple sessions. There are error messages in the log `context deadline exceeded`, when health monitoring is enabled. As a workaround, disable volume health monitoring on the node and keep it only at the controller level. Refer [here](https://dell.github.io/csm-docs/docs/csidriver/features/unity/#volume-health-monitoring) for more information about enabling/disabling volume health monitoring.
-
 ## Changes by Kind 
 
 ### Deprecation 
 
 ### Features 
+- Unity consistency update to reduce the number of authentication API calls. ([#1415](https://github.com/dell/csm/issues/1415))
 
 ### Bugs
 - Mounts using NVMe on PowerStore fails in v2.11 of the driver ([#1469](https://github.com/dell/csm/issues/1469))
