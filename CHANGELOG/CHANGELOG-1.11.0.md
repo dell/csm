@@ -1,12 +1,36 @@
 <!--toc-->
-- [v1.11.0](#v1110)
-  - [Changelog since v1.10.2](#changelog-since-v1102)
+- [v1.11.1](#1111)
+  - [Changelog since v1.11.0](#changelog-since-v1110)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
     - [Features](#features)
     - [Bugs](#bugs)
+- [v1.11.0](#v1110)
+  - [Changelog since v1.10.2](#changelog-since-v1102)
+  - [Known Issues](#known-issues-1)
+  - [Changes by Kind](#changes-by-kind-1)
+    - [Deprecation](#deprecation-1)
+    - [Features](#features-1)
+    - [Bugs](#bugs-1)
  
+
+# v1.11.1
+
+## Changelog since v1.11.0
+
+## Known Issues
+
+- Controller publish is taking too long to complete. Health monitoring is causing the Unity array to panic by opening multiple sessions. There are error messages in the log `context deadline exceeded`, when health monitoring is enabled. As a workaround, disable volume health monitoring on the node and keep it only at the controller level. Refer [here](https://dell.github.io/csm-docs/docs/csidriver/features/unity/#volume-health-monitoring) for more information about enabling/disabling volume health monitoring.
+
+## Changes by Kind 
+
+### Deprecation 
+
+### Features 
+
+### Bugs
+- Mounts using NVMe on PowerStore fails in v2.11 of the driver ([#1469](https://github.com/dell/csm/issues/1469))
 
 # v1.11.0 
 
@@ -36,7 +60,7 @@
 
 ### Bugs 
 
-- Documentation has broken links to sample files that are no longer available.. ([#1392](https://github.com/dell/csm/issues/1392))
+- Documentation has broken links to sample files that are no longer available. ([#1392](https://github.com/dell/csm/issues/1392))
 - CSI Powermax chooses ISCSI protocol over NVMeTCP. ([#1388](https://github.com/dell/csm/issues/1388))
 - Enable static build of repctl. ([#1385](https://github.com/dell/csm/issues/1385))
 - Documentation and Release Issues with Cert-CSI Tool. ([#1383](https://github.com/dell/csm/issues/1383))
