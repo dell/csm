@@ -25,13 +25,13 @@
 - PowerStore Sync / Metro for Block - CSM Replication. ([#1443](https://github.com/dell/csm/issues/1443))
 - Automatic update of helm charts with latest image version. ([#1414](https://github.com/dell/csm/issues/1414))
 - Adding support for PowerMax Magnolia. ([#1410](https://github.com/dell/csm/issues/1410))
+- Stateless, GitOps, HA enabled deployment of the CSM Authorization proxy server. ([#1281](https://github.com/dell/csm/issues/1281))
 - Enable/disable automatic SDC deployment along with driver installation.. ([#663](https://github.com/dell/csm/issues/663))
 
 ### Bugs 
 
 - Cert-csi Qualification failing for OCP 4.17 rca environment.. ([#1485](https://github.com/dell/csm/issues/1485))
 - Gobrick does not clean wwids from /etc/multipath/wwids after removing multipath devices. ([#1447](https://github.com/dell/csm/issues/1447))
-- Replication Failover/Reprotect operations has "Error" under State field in the ReplicationGroup. ([#1445](https://github.com/dell/csm/issues/1445))
 - Upgrade k8s.io modules in csm-observability module. ([#1431](https://github.com/dell/csm/issues/1431))
 - CSM Operator e2e tests: Error in test 3. ([#1427](https://github.com/dell/csm/issues/1427))
 - csi-powermax crashed when attempting to unmount volume from node. ([#1418](https://github.com/dell/csm/issues/1418))
@@ -40,6 +40,7 @@
 - CSM Operator - Changes to csiDriverSpec does not reflect in CSM state or csidrivers.storage.k8s.io object. ([#1475](https://github.com/dell/csm/issues/1475))
 - CSI-PowerStore Node Prefix is ignored. ([#1458](https://github.com/dell/csm/issues/1458))
 - CSM Installation Wizard page is not rendered properly. ([#1452](https://github.com/dell/csm/issues/1452))
+- Replication Failover/Reprotect operations has "Error" under State field in the ReplicationGroup. ([#1445](https://github.com/dell/csm/issues/1445))
 - Remove mutex locks from interceptors on method calls. ([#1438](https://github.com/dell/csm/issues/1438))
 - Access token refresh expiration reverts to 30 seconds. ([#1436](https://github.com/dell/csm/issues/1436))
 - Samples for Cert-CSI documentation is not showing the correct values for storage classes. ([#1428](https://github.com/dell/csm/issues/1428))
