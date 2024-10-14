@@ -14,7 +14,7 @@
 # Update this file with the image versions change, and it will be automaticall rolled out across all components.
 
 # --- DEFAULT_BASEIMAGE: Specifies the UBI-micro image that is used as the base for the CSM images
-DEFAULT_BASEIMAGE="registry.access.redhat.com/ubi9/ubi-micro@sha256:9dbba858e5c8821fbe1a36c376ba23b83ba00f100126f2073baa32df2c8e183a"
+DEFAULT_BASEIMAGE="registry.access.redhat.com/ubi9/ubi-micro@sha256:7f376b75faf8ea546f28f8529c37d24adcde33dca4103f4897ae19a43d58192b"
 
 # --- DEFAULT_GOVERSION: Specifies the default version of go
 DEFAULT_GOVERSION="1.23"
