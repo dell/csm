@@ -17,7 +17,7 @@
 DEFAULT_BASEIMAGE="registry.access.redhat.com/ubi9/ubi-micro@sha256:7f376b75faf8ea546f28f8529c37d24adcde33dca4103f4897ae19a43d58192b"
 
 # --- DEFAULT_GOVERSION: Specifies the default version of go
-DEFAULT_GOVERSION="1.23"
+DEFAULT_GOVERSION="1.23.2"
 
 # --- DEFAULT_GOIMAGE: Specifies the default Image to be used for building go components in a multi-stage docker file
 DEFAULT_GOIMAGE="golang:${DEFAULT_GOVERSION}"
