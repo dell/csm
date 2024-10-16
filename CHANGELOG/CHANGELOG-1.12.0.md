@@ -30,7 +30,6 @@
 
 ### Bugs 
 
-- Missing Node tolerations for resiliency module. ([#1510](https://github.com/dell/csm/issues/1510))
 - CSM Operator E2E tests are not passing. ([#1507](https://github.com/dell/csm/issues/1507))
 - Gobrick does not clean wwids from /etc/multipath/wwids after removing multipath devices. ([#1447](https://github.com/dell/csm/issues/1447))
 - Upgrade k8s.io modules in csm-observability module. ([#1431](https://github.com/dell/csm/issues/1431))
@@ -38,9 +37,12 @@
 - csi-powermax crashed when attempting to unmount volume from node. ([#1418](https://github.com/dell/csm/issues/1418))
 - Dell CSM Installation Issues. ([#1416](https://github.com/dell/csm/issues/1416))
 - Allow to install 2 PowerFlex on a stretched cluster using the CSM Operator or the Helm chart. ([#1413](https://github.com/dell/csm/issues/1413))
+- PowerFlex e2e-fsgroup tests are failing. ([#1521](https://github.com/dell/csm/issues/1521))
+- Missing Node tolerations for resiliency module. ([#1510](https://github.com/dell/csm/issues/1510))
 - Incorrect CSI Driver Capability for NFS Volume Cloning in CSM Documentation for PowerFlex. ([#1498](https://github.com/dell/csm/issues/1498))
 - Cert-csi Qualification failing for OCP 4.17 rca environment.. ([#1485](https://github.com/dell/csm/issues/1485))
 - CSM Operator - Changes to csiDriverSpec does not reflect in CSM state or csidrivers.storage.k8s.io object. ([#1475](https://github.com/dell/csm/issues/1475))
+- add NVMeTCP connection parameter ctrl-loss-tmo=-1 to implement powerstore best practices. ([#1459](https://github.com/dell/csm/issues/1459))
 - CSI-PowerStore Node Prefix is ignored. ([#1458](https://github.com/dell/csm/issues/1458))
 - CSM Installation Wizard page is not rendered properly. ([#1452](https://github.com/dell/csm/issues/1452))
 - Replication Failover/Reprotect operations has "Error" under State field in the ReplicationGroup. ([#1445](https://github.com/dell/csm/issues/1445))
