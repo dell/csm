@@ -37,14 +37,17 @@
 
 ### Bugs 
 
-- Host definitions not being created after adding new appliance to secret. ([#1538](https://github.com/dell/csm/issues/1538))
-- CSM-Operator resets dell-replication-controller-config configmap. ([#1531](https://github.com/dell/csm/issues/1531))
 - Powermax Intergration test failing. ([#1519](https://github.com/dell/csm/issues/1519))
 - Dell CSM Installation Issues. ([#1416](https://github.com/dell/csm/issues/1416))
+- privTgt mount is lost after vxflexos-node pod restart. ([#1546](https://github.com/dell/csm/issues/1546))
+- Helm charts environment variables are missing for powermax-array-config. ([#1543](https://github.com/dell/csm/issues/1543))
 - csm-docs support matrix is inconsistent with Unity 5.3.x supported platform. ([#1542](https://github.com/dell/csm/issues/1542))
+- CSM Installation Wizard. ([#1540](https://github.com/dell/csm/issues/1540))
 - Wrong storage protocol used when multiple PowerStore arrays are defined in secret. ([#1539](https://github.com/dell/csm/issues/1539))
+- Host definitions not being created after adding new appliance to secret. ([#1538](https://github.com/dell/csm/issues/1538))
 - CSI PowerStore unable to resize NVMe block PVC, even though volume on the array get's resized. ([#1534](https://github.com/dell/csm/issues/1534))
 - CSM Operator Will Continually Add Components to Observability. ([#1533](https://github.com/dell/csm/issues/1533))
+- CSM-Operator resets dell-replication-controller-config configmap. ([#1531](https://github.com/dell/csm/issues/1531))
 - Duplicate host NQNs on nodes with no logs. ([#1530](https://github.com/dell/csm/issues/1530))
 - PowerFlex e2e-fsgroup tests are failing. ([#1521](https://github.com/dell/csm/issues/1521))
 - iSCSI Linux best practices for PowerStore missing from CSI documentation. ([#1518](https://github.com/dell/csm/issues/1518))
