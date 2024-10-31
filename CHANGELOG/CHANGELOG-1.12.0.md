@@ -13,7 +13,7 @@
 ## Changelog since v1.11.1 
 
 ## Known Issues 
-When running CSI-PowerMax with Replication in a multi-cluster configuration, the driver on the target cluster fails and the following error is seen in logs: error="CSI reverseproxy service host or port not found, CSI reverseproxy not installed properly"	The reverseproxy service needs to be created manually on the target cluster. Follow the instructions here to create it.
+When using CSI-PowerMax with Replication in a multi-cluster setup, the driver on the target cluster fails and logs an error: `“CSI reverseproxy service host or port not found, CSI reverseproxy not installed properly.”`This means the reverseproxy service isn’t set up correctly on the target cluster. You’ll need to manually create the reverseproxy service on the target cluster by following the provided instructions [here](https://dell.github.io/csm-docs/docs/deployment/csmoperator/modules/replication/#configuration-steps)
 ## Changes by Kind 
 
 ### Deprecation 
