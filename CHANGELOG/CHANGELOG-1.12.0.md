@@ -13,11 +13,14 @@
 ## Changelog since v1.11.1 
 
 ## Known Issues 
-
+When using CSI-PowerMax with Replication in a multi-cluster setup, the driver on the target cluster fails and logs an error: `“CSI reverseproxy service host or port not found, CSI reverseproxy not installed properly.”`This means the reverseproxy service isn’t set up correctly on the target cluster. You’ll need to manually create the reverseproxy service on the target cluster by following the provided instructions [here](https://dell.github.io/csm-docs/docs/deployment/csmoperator/modules/replication/#configuration-steps)
 ## Changes by Kind 
 
 ### Deprecation 
-
+- Deprecate Encryption. ([#1517](https://github.com/dell/csm/issues/1517))
+- Issue deprecation notice for CSM Volume Group Snapshotter module. ([#1544](https://github.com/dell/csm/issues/1544))
+- Deprecate DockerHub - ([#1435](https://github.com/dell/csm/issues/1435))
+  
 ### Features 
 
 - Add Support for KubeVirt. ([#1508](https://github.com/dell/csm/issues/1508))
@@ -27,8 +30,6 @@
 - CSM 1.12 release specific changes. ([#1435](https://github.com/dell/csm/issues/1435))
 - Automatic update of helm charts with latest image version. ([#1414](https://github.com/dell/csm/issues/1414))
 - Adding support for PowerMax Magnolia. ([#1410](https://github.com/dell/csm/issues/1410))
-- Issue deprecation notice for CSM Volume Group Snapshotter module. ([#1544](https://github.com/dell/csm/issues/1544))
-- Deprecate Encryption. ([#1517](https://github.com/dell/csm/issues/1517))
 - Remove ACC Support. ([#1484](https://github.com/dell/csm/issues/1484))
 - Enable Light/Dark Mode Menu in Navbar. ([#1476](https://github.com/dell/csm/issues/1476))
 - PowerStore Sync / Metro for Block - CSM Replication. ([#1443](https://github.com/dell/csm/issues/1443))
