@@ -1,0 +1,156 @@
+name: Release CSM
+# Invocable as a reusable workflow
+# Can be manually triggered
+on:  # yamllint disable-line rule:truthy
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (major, minor, patch) Ex: 1.0.0'
+        required: true
+
+env:
+  version: ${{ github.event.inputs.version }}
+  branch_name: release-v${{ github.event.inputs.version }}
+
+jobs:
+  validate-and-prepare:
+    name: Validate Input and Prepare Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print version and branch name
+        run: |
+          echo "Version: ${{ env.version }}"
+          echo "Branch name: ${{ env.branch_name }}"
+
+      - name: Validate version input
+        run: |
+          if [[ "$version" == "none" ]]; then
+            echo "Invalid version specified: $version. Must follow major, minor, patch versioning."
+            exit 1
+          fi
+        env:
+          version: ${{ env.version }}
+
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.branch_name }}
+          fetch-depth: 0
+
+      - name: Verify if release branch exists
+        run: |
+          echo "Checking if release branch '${{ env.branch_name }}' exists..."
+          git fetch --all
+          if git branch -r | grep "origin/${{ env.branch_name }}"; then
+            echo "The branch ${{ env.branch_name }} exists."
+          else
+            echo "The branch ${{ env.branch_name }} does not exist."
+            exit 1
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify branch changes
+        run: |
+          if git diff --quiet origin/main origin/${{ env.branch_name }}; then
+            echo "No changes detected between ${{ env.branch_name }} and main. Aborting."
+            exit 1
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create-pull-request:
+    name: Create Pull Request
+    runs-on: ubuntu-latest
+    needs: validate-and-prepare
+    steps:
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.branch_name }}
+          fetch-depth: 0
+
+      - name: Create Pull Request
+        run: |
+          sed 's/A few sentences describing the overall goals of the pull request'"'"'s commits./Release v${{ env.version }}/' .github/pull_request_template.md > temp_release_pr_body.md
+          gh pr create --title "Release v${{ env.version }}" \
+                       --body-file "temp_release_pr_body.md" \
+                       --base main \
+                       --head ${{ env.branch_name }}
+          echo "Waiting for 30 seconds to ensure PR is registered..."
+          sleep 30
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Wait for PR to be merged
+        run: |
+          pr_number=$(gh pr list --base main --head ${{ env.branch_name }} --search "Release v${{ env.version }}" --json number --jq '.[0].number')
+          if [ -z "$pr_number" ]; then
+            echo "No PR found with the name Release v${{ env.version }}."
+            exit 1
+          fi
+
+          echo "Waiting for the PR to be merged. Please merge the PR manually."
+          timeout=60  # Timeout in minutes
+          while [ $timeout -gt 0 ]; do
+            pr_status=$(gh pr view "$pr_number" --json state --jq '.state')
+            if [ "$pr_status" = "MERGED" ]; then
+              echo "PR has been merged."
+              break
+            fi
+            echo "PR not merged yet. Sleeping for 1 minute..."
+            sleep 60
+            timeout=$((timeout - 1))
+          done
+          if [ $timeout -eq 0 ]; then
+            echo "Timeout reached. PR was not merged."
+            exit 1
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # TODO: attach built binaries to the release (if any like repctl, dellctl etc.)
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: create-pull-request
+    steps:
+      - name: Set up Git
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create new tag
+        run: |
+          git fetch --tags
+          git tag v${{ env.version }}
+          git push origin v${{ env.version }}
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.version }}
+          release_name: v${{ env.version }}
+          draft: true
+          prerelease: false
+          generate_release_notes: false
+          make_latest: true
+          body: |
+            ## Documentation
+            - [General Documentation](https://dell.github.io/csm-docs/docs/)
+            ## Change Log
+            See the [CHANGELOG](https://github.com/dell/csm/blob/main/CHANGELOG/CHANGELOG-${{ env.version }}.md) for more details.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
