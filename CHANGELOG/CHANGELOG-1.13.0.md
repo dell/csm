@@ -32,10 +32,10 @@
 
 ### Bugs 
 
-- UI is broken for Operator documentation page in the instructions. ([#1615](https://github.com/dell/csm/issues/1615))
+- Cannot create PowerMax clones. ([#1644](https://github.com/dell/csm/issues/1644))
+- E2E and cert-csi tets are failing. ([#1642](https://github.com/dell/csm/issues/1642))
 - Isolation Mechanism for CSI Driver in Shared Storage Pool environments. ([#1606](https://github.com/dell/csm/issues/1606))
 - Not able to create CSM using the minimal file, if the Operator deployed from the Operator Hub. ([#1605](https://github.com/dell/csm/issues/1605))
-- CSM Operator not deleting the deployment and daemon sets after deleting the CSM. ([#1604](https://github.com/dell/csm/issues/1604))
 - CSM Operator Crashing. ([#1603](https://github.com/dell/csm/issues/1603))
 - Remove extra fields from the driver specs when using minimal sample. ([#1594](https://github.com/dell/csm/issues/1594))
 - Driver should not be expecting a secret which is not used at all for PowerMax when authorization is enabled. ([#1584](https://github.com/dell/csm/issues/1584))
@@ -43,9 +43,12 @@
 - Stale entries in CSM operator samples and helm-charts for PowerMax. ([#1570](https://github.com/dell/csm/issues/1570))
 - Inconsistent naming convention of secret is misleading in Installation of PowerMax. ([#1566](https://github.com/dell/csm/issues/1566))
 - cert-csi CapacityTracking test fails when more than 1 CSI driver is deployed. ([#1504](https://github.com/dell/csm/issues/1504))
+- NodeGetVolumeStats will cause panic when called w/ an Ephemeral volume. ([#1641](https://github.com/dell/csm/issues/1641))
 - Broken links in helm charts readme. ([#1635](https://github.com/dell/csm/issues/1635))
 - PowerScale - handle panic error in ParseNormalizedSnapshotID. ([#1620](https://github.com/dell/csm/issues/1620))
+- UI is broken for Operator documentation page in the instructions. ([#1615](https://github.com/dell/csm/issues/1615))
 - Volume Size Rounding Issue in PowerFlex: Rounds Down Instead of Up for Multiples of 8GB. ([#1608](https://github.com/dell/csm/issues/1608))
+- CSM Operator not deleting the deployment and daemon sets after deleting the CSM. ([#1604](https://github.com/dell/csm/issues/1604))
 - "make install" command is failing for csm-operator. ([#1601](https://github.com/dell/csm/issues/1601))
 - Operator e2e scenario for powerscale driver with second set of alternate values is failing in OpenShift cluster. ([#1600](https://github.com/dell/csm/issues/1600))
 - Documentation for iSCSI and FC multipathing for PowerStore. ([#1595](https://github.com/dell/csm/issues/1595))
