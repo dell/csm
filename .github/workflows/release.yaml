@@ -83,8 +83,8 @@ jobs:
                        --body-file "temp_release_pr_body.md" \
                        --base main \
                        --head ${{ env.branch_name }}
-          echo "Waiting for 30 seconds to ensure PR is registered..."
-          sleep 30
+          echo "Waiting for 10 seconds to ensure PR is registered..."
+          sleep 10
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -131,11 +131,33 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Determine previous major/ minor version
+        id: get_previous_version
+        run: |
+          # Extract the previous version from tags
+          MAJOR_MINOR_VERSION=$(echo "${{ env.version }}" | grep -oE '^[0-9]+\.[0-9]+')
+          PREVIOUS_VERSION=$(git tag --sort=-v:refname | grep -E "^v${MAJOR_MINOR_VERSION}\.0$" | sed 's/v//' | head -n 1)
+          echo "Previous version: $PREVIOUS_VERSION"
+          echo "previous_version=$PREVIOUS_VERSION" >> $GITHUB_ENV
+
       - name: Create new tag
         run: |
           git fetch --tags
           git tag v${{ env.version }}
           git push origin v${{ env.version }}
+
+      - name: Set CHANGELOG URL
+        id: set_changelog_url
+        run: |
+          if [[ "${{ env.version }}" =~ \.0$ ]]; then
+            # Major or minor release: Link to the new changelog file for the version
+            echo "Changelog URL: https://github.com/dell/csm/blob/main/CHANGELOG/CHANGELOG-${{ env.version }}.md"
+            echo "changelog_url=https://github.com/dell/csm/blob/main/CHANGELOG/CHANGELOG-${{ env.version }}.md" >> $GITHUB_ENV
+          else
+            # Patch release: Link to the previous version's changelog
+            echo "Changelog URL: https://github.com/dell/csm/blob/main/CHANGELOG/CHANGELOG-${{ env.previous_version }}.md"
+            echo "changelog_url=https://github.com/dell/csm/blob/main/CHANGELOG/CHANGELOG-${{ env.previous_version }}.md" >> $GITHUB_ENV
+          fi
 
       - name: Create Release
         id: create_release
@@ -151,6 +173,6 @@ jobs:
             ## Documentation
             - [General Documentation](https://dell.github.io/csm-docs/docs/)
             ## Change Log
-            See the [CHANGELOG](https://github.com/dell/csm/blob/main/CHANGELOG/CHANGELOG-${{ env.version }}.md) for more details.
+             See the [CHANGELOG](${{ env.changelog_url }}) for more details.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
