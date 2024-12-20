@@ -6,7 +6,7 @@ on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to release (major, minor, patch) Ex: 1.0.0'
+        description: 'Version to release (major, minor, patch) Example: 1.0.0'
         required: true
 
 env:
