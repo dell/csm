@@ -32,12 +32,15 @@
 
 ### Bugs 
 
-- Helm installation still check snapshot CRD even though snapshot enabled is set to false. ([#1654](https://github.com/dell/csm/issues/1654))
 - csm-metrics-powerstore doesn't start when the PowerStore endpoint is using a DNS name. ([#1632](https://github.com/dell/csm/issues/1632))
 - SubjectAltName needs to be updated in the tls.crt. ([#1571](https://github.com/dell/csm/issues/1571))
 - cert-csi CapacityTracking test fails when more than 1 CSI driver is deployed. ([#1504](https://github.com/dell/csm/issues/1504))
+- A revoked tenant is too tightly coupled to validity of tenant token. ([#1662](https://github.com/dell/csm/issues/1662))
+- Latest OPA version (1.0.0) fails to parse Authorization policies. ([#1661](https://github.com/dell/csm/issues/1661))
+- Helm installation still check snapshot CRD even though snapshot enabled is set to false. ([#1654](https://github.com/dell/csm/issues/1654))
 - Cert-csi is failing for k8s environment. ([#1652](https://github.com/dell/csm/issues/1652))
 - PowerMax - X_CSI_IG_MODIFY_HOSTNAME fails to rename a host with same name in different case. ([#1650](https://github.com/dell/csm/issues/1650))
+- CSM-Operator: E2E Tests are running with 1 replica count. ([#1648](https://github.com/dell/csm/issues/1648))
 - Cannot create PowerMax clones. ([#1644](https://github.com/dell/csm/issues/1644))
 - E2E and cert-csi tets are failing. ([#1642](https://github.com/dell/csm/issues/1642))
 - NodeGetVolumeStats will cause panic when called w/ an Ephemeral volume. ([#1641](https://github.com/dell/csm/issues/1641))
