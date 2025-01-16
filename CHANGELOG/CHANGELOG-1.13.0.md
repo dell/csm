@@ -18,6 +18,8 @@
 
 ### Deprecation 
 
+- Support for CSM via Slack will be deprecated on 5/31/2025, aligning with the CSM 1.14 release. All existing Slack channels will be archived from that date onward. Please create a [GitHub Issue](https://github.com/dell/csm/issues) for community support or reach out via the [Dell Support Portal](https://dell.com/support) if you have a valid support contract. For more details, please see our [Dell Support Page](https://dell.github.io/csm-docs/docs/support/).
+
 ### Features 
 
 - Deprecation note for slack external support. ([#1679](https://github.com/dell/csm/issues/1679))
