@@ -22,15 +22,13 @@
 
 ### Features 
 
-- Deprecation note for slack external support. ([#1679](https://github.com/dell/csm/issues/1679))
-- CSI Powerflex must have the ability to connect a subset of the worker nodes to a storage array for multi-array suppport. ([#1613](https://github.com/dell/csm/issues/1613))
+- CSI PowerFlex must have the ability to connect a subset of the worker nodes to a storage array for multi-array suppport. ([#1613](https://github.com/dell/csm/issues/1613))
 - Multi-Availability Zone (AZ) support with multiple storage systems - dedicated storage systems in each AZ. ([#1612](https://github.com/dell/csm/issues/1612))
 - Added support for PowerScale 9.10. ([#1611](https://github.com/dell/csm/issues/1611))
 - Added Support for PowerStore 4.1. ([#1610](https://github.com/dell/csm/issues/1610))
 - Support Kubevirt for CSM modules. ([#1563](https://github.com/dell/csm/issues/1563))
 - Added support for Kubernetes 1.32. ([#1561](https://github.com/dell/csm/issues/1561))
-- Supporting Openshift 4.18 for CSM.. ([#1560](https://github.com/dell/csm/issues/1560))
-- Release CSM 1.13 changes. ([#1559](https://github.com/dell/csm/issues/1559))
+- Supporting Openshift 4.18 for CSM. ([#1560](https://github.com/dell/csm/issues/1560))
 
 ### Bugs 
 
