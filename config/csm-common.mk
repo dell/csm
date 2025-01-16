@@ -23,12 +23,12 @@ CSMBASEIMAGE_REGISTRY="docker.io"
 CSMBASEIMAGE_NAMESPACE="dellemc"
 # iamge
 CSMBASEIMAGE_NAME="csm-base-image"
-# finds the highest semanticly versioned tag
+# finds the highest semantically versioned tag
 CSMBASEIMAGE_TAG_NEWEST=$(curl -s "https://hub.docker.com/v2/namespaces/${CSMBASEIMAGE_NAMESPACE}/repositories/${CSMBASEIMAGE_NAME}/tags?page_size=1000" | grep -o '"name": *"[^"]*' | grep -o '[^"]*$' | grep -E '^([0-9]|v[0-9])' | sort -V | tail -n 1)
 # full image name, without tag
 CSMBASEIMAGE_IMAGE="${CSMBASEIMAGE_REGISTRY}/${CSMBASEIMAGE_NAMESPACE}/${CSMBASEIMAGE_NAME}"
 
-# set the CSMBASEIMAGE_TAG_NEWEST if no semanticly versioned tags were found
+# set the CSMBASEIMAGE_TAG_NEWEST if no semantically versioned tags were found
 ifeq ($(CSMBASEIMAGE_TAG_NEWEST),)
 export CSMBASEIMAGE_TAG_NEWEST="nightly"
 endif
