@@ -18,9 +18,11 @@
 
 ### Deprecation 
 
+- Support for CSM via Slack will be deprecated on 5/31/2025, aligning with the CSM 1.14 release. All existing Slack channels will be archived from that date onward. Please create a [GitHub Issue](https://github.com/dell/csm/issues) for community support or reach out via the [Dell Support Portal](https://dell.com/support) if you have a valid support contract. For more details, please see our [Dell Support Page](https://dell.github.io/csm-docs/docs/support/).
+
 ### Features 
 
-- CSI-PowerMax - Mount credentials secret to the reverse-proxy (Customer Ask). ([#1614](https://github.com/dell/csm/issues/1614))
+- Deprecation note for slack external support. ([#1679](https://github.com/dell/csm/issues/1679))
 - CSI Powerflex must have the ability to connect a subset of the worker nodes to a storage array for multi-array suppport. ([#1613](https://github.com/dell/csm/issues/1613))
 - Multi-Availability Zone (AZ) support with multiple storage systems - dedicated storage systems in each AZ. ([#1612](https://github.com/dell/csm/issues/1612))
 - Added support for PowerScale 9.10. ([#1611](https://github.com/dell/csm/issues/1611))
@@ -32,18 +34,33 @@
 
 ### Bugs 
 
-- Helm installation still check snapshot CRD even though snapshot enabled is set to false. ([#1654](https://github.com/dell/csm/issues/1654))
+- Minimal CR for Powerflex is failing in Csm-operator. ([#1671](https://github.com/dell/csm/issues/1671))
+- CSM PowerMax wrong error message. ([#1634](https://github.com/dell/csm/issues/1634))
+- CSM deployment minimal file - pulling from quay after updating the image registry. ([#1633](https://github.com/dell/csm/issues/1633))
 - csm-metrics-powerstore doesn't start when the PowerStore endpoint is using a DNS name. ([#1632](https://github.com/dell/csm/issues/1632))
-- SubjectAltName needs to be updated in the tls.crt. ([#1571](https://github.com/dell/csm/issues/1571))
 - cert-csi CapacityTracking test fails when more than 1 CSI driver is deployed. ([#1504](https://github.com/dell/csm/issues/1504))
+- CSM-Authorization unit test race condition with goscaleio v1.18.0. ([#1677](https://github.com/dell/csm/issues/1677))
+- PowerMax Driver unable to Delete Replication Group During Replication Operations. ([#1669](https://github.com/dell/csm/issues/1669))
+- CSM-Operator is reconciling non CSM pods. ([#1668](https://github.com/dell/csm/issues/1668))
+- Labels versions and maintainer update for CSM images. ([#1667](https://github.com/dell/csm/issues/1667))
+- Cert-csi is hitting a failure in MultiAttachSuite (MAS). ([#1665](https://github.com/dell/csm/issues/1665))
+- Cert-csi modifies ephemeral.volumeAttributes fields causing test failure. ([#1664](https://github.com/dell/csm/issues/1664))
+- Pod filesystem not resized while volume gets succesfully expanded. ([#1663](https://github.com/dell/csm/issues/1663))
+- A revoked tenant is too tightly coupled to validity of tenant token. ([#1662](https://github.com/dell/csm/issues/1662))
+- Latest OPA version (1.0.0) fails to parse Authorization policies. ([#1661](https://github.com/dell/csm/issues/1661))
+- Helm installation still check snapshot CRD even though snapshot enabled is set to false. ([#1654](https://github.com/dell/csm/issues/1654))
 - Cert-csi is failing for k8s environment. ([#1652](https://github.com/dell/csm/issues/1652))
 - PowerMax - X_CSI_IG_MODIFY_HOSTNAME fails to rename a host with same name in different case. ([#1650](https://github.com/dell/csm/issues/1650))
+- CSM-Operator: E2E Tests are running with 1 replica count. ([#1648](https://github.com/dell/csm/issues/1648))
 - Cannot create PowerMax clones. ([#1644](https://github.com/dell/csm/issues/1644))
 - E2E and cert-csi tets are failing. ([#1642](https://github.com/dell/csm/issues/1642))
 - NodeGetVolumeStats will cause panic when called w/ an Ephemeral volume. ([#1641](https://github.com/dell/csm/issues/1641))
+- CSM PowerFlex entering boot loop when array has long response times. ([#1639](https://github.com/dell/csm/issues/1639))
 - CSM Docs Multiple fixes for CSI-Powermax installation. ([#1638](https://github.com/dell/csm/issues/1638))
 - Broken links in helm charts readme. ([#1635](https://github.com/dell/csm/issues/1635))
+- Documentation requires enhancements for PowerStore multipath.conf. ([#1627](https://github.com/dell/csm/issues/1627))
 - PowerScale - handle panic error in ParseNormalizedSnapshotID. ([#1620](https://github.com/dell/csm/issues/1620))
+- Prefix with `99-` the CSM-PowerMax MachineConfig sample for multipathing. ([#1618](https://github.com/dell/csm/issues/1618))
 - UI is broken for Operator documentation page in the instructions. ([#1615](https://github.com/dell/csm/issues/1615))
 - Volume Size Rounding Issue in PowerFlex: Rounds Down Instead of Up for Multiples of 8GB. ([#1608](https://github.com/dell/csm/issues/1608))
 - Not able to create CSM using the minimal file, if the Operator deployed from the Operator Hub. ([#1605](https://github.com/dell/csm/issues/1605))
@@ -65,6 +82,7 @@
 - Offline bundle doesn't include Authorization Server images. ([#1581](https://github.com/dell/csm/issues/1581))
 - Operator offline bundle doesn't prepare registries correctly. ([#1574](https://github.com/dell/csm/issues/1574))
 - Apex Navigator for Kubernetes reference be removed from the documentation. ([#1572](https://github.com/dell/csm/issues/1572))
+- SubjectAltName needs to be updated in the tls.crt. ([#1571](https://github.com/dell/csm/issues/1571))
 - Stale entries in CSM operator samples and helm-charts for PowerMax. ([#1570](https://github.com/dell/csm/issues/1570))
 - Unused variable "X_CSI_POWERMAX_ENDPOINT" resulting in driver not to start in PowerMax. ([#1569](https://github.com/dell/csm/issues/1569))
 - Examples provided in the secrets of install driver for the Primary Unisphere and Back up Unisphere is lacking clarity in ConfigMap. ([#1568](https://github.com/dell/csm/issues/1568))
