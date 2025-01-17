@@ -47,7 +47,7 @@ clean:
 docker:
 	$(eval include config/csm-common.mk)
 	$(eval include semver.mk)
-	@echo "Building base image from $(DEFAULT_BASEIMAGE) and loading dependencies..."
-	cd base-image && ./build-base-image.sh -u $(DEFAULT_BASEIMAGE) -t $(REGISTRY)/$(IMAGENAME):$(IMAGETAG) $(BASE_IMAGE_PACKAGES)
-	$(eval BASEIMAGE=$(REGISTRY)/$(IMAGENAME):$(IMAGETAG))
-	@echo "Built base image: $(BASEIMAGE)"
+	@echo "Building base image from $(UBI_BASEIMAGE) and loading dependencies..."
+	cd base-image && ./build-base-image.sh -u $(UBI_BASEIMAGE) -t $(CSMBASEIMAGE_IMAGE):$(IMAGETAG) $(BASE_IMAGE_PACKAGES)
+	$(eval BASEIMAGE=$(CSMBASEIMAGE_IMAGE):$(IMAGETAG))
+	@echo "Built base image: $(CSMBASEIMAGE_IMAGE):$(IMAGETAG)"
