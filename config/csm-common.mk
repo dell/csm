@@ -17,27 +17,10 @@
 # Update this file when the image versions change, and it will be automatically rolled out across all components.
 
 # --- UBI_BASEIMAGE: Value of the UBI image to be used as a base for all images.
-UBI_BASEIMAGE=registry.access.redhat.com/ubi9/ubi-micro@sha256:7f376b75faf8ea546f28f8529c37d24adcde33dca4103f4897ae19a43d58192b
-
-# --- CSMBASEIMAGE settings: Define the values for a common UBI-micro based image.
-# registry
-CSMBASEIMAGE_REGISTRY=quay.io
-# organization
-CSMBASEIMAGE_NAMESPACE=dell/container-storage-modules
-# image
-CSMBASEIMAGE_NAME=csm-base-image
-# tag
-CSMBASEIMAGE_TAG_NEWEST=nightly
-# full image name, without tag
-CSMBASEIMAGE_IMAGE=${CSMBASEIMAGE_REGISTRY}/${CSMBASEIMAGE_NAMESPACE}/${CSMBASEIMAGE_NAME}
-
-# Set the CSMBASEIMAGE_TAG_NEWEST if no semantically versioned tags were found.
-ifeq ($(CSMBASEIMAGE_TAG_NEWEST),)
-export CSMBASEIMAGE_TAG_NEWEST=nightly
-endif
+UBI_BASEIMAGE=registry.access.redhat.com/ubi9/ubi-micro@sha256:f6e0a71b7e0875b54ea559c2e0a6478703268a8d4b8bdcf5d911d0dae76aef51
 
 # --- CSM_BASEIMAGE: Specifies the common baseimage that is used for all CSM images.
-CSM_BASEIMAGE=${CSMBASEIMAGE_IMAGE}:${CSMBASEIMAGE_TAG_NEWEST}
+CSM_BASEIMAGE=quay.io/dell/container-storage-modules/csm-base-image:nightly
 
 # --- DEFAULT_BASEIMAGE: Specifies the default image for repositories not yet using the CSM_BASEIMAGE.
 # --- Repositories should switch to using the CSM_BASEIMAGE to use the new common base image.
