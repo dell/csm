@@ -11,6 +11,7 @@ BASE_IMAGE_PACKAGES=acl \
 					e2fsprogs \
 					gnutls \
 					gzip \
+					bzip2 \
 					hostname \
 					kmod \
 					libaio \
