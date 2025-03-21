@@ -1,4 +1,30 @@
 <!--toc-->
+
+- [v1.13.1](#1111)
+  - [Changelog since v1.11.0](#changelog-since-v1110)
+  - [Known Issues](#known-issues)
+  - [Changes by Kind](#changes-by-kind)
+    - [Deprecation](#deprecation)
+    - [Features](#features)
+    - [Bugs](#bugs)
+
+# v1.13.1
+
+## Changelog since v1.13.0
+
+## Known Issues
+
+## Changes by Kind 
+
+### Deprecation 
+
+### Features
+
+### Bugs
+- Mounts using NVMe on PowerStore fails in v2.11 of the driver ([#1469](https://github.com/dell/csm/issues/1469))
+- SDC 4.5.2.1 fails to load when deployed on OCP 4.16.x using csm-operator ([#1482](https://github.com/dell/csm/issues/1482))
+<br>**Note**: To get the latest 4.5.2.1 SDC image, `ImagePullPolicy` for the `dellemc/sdc:4.5.2.1` image will have to be set to `Always`.
+
 - [v1.13.0](#v1130)
   - [Changelog since v1.12.0](#changelog-since-v1120)
   - [Known Issues](#known-issues)
