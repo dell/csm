@@ -1,12 +1,38 @@
 <!--toc-->
-- [v1.13.0](#v1130)
-  - [Changelog since v1.12.0](#changelog-since-v1120)
+
+- [v1.13.1](#v1131)
+  - [Changelog since v1.13.0](#changelog-since-v1130)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
     - [Features](#features)
     - [Bugs](#bugs)
+
+
+- [v1.13.0](#v1130)
+  - [Changelog since v1.12.0](#changelog-since-v1120)
+  - [Known Issues](#known-issues-1)
+  - [Changes by Kind](#changes-by-kind-1)
+    - [Deprecation](#deprecation-1)
+    - [Features](#features-1)
+    - [Bugs](#bugs-1)
  
+
+# v1.13.1
+
+## Changelog since v1.13.0
+
+## Known Issues
+
+## Changes by Kind 
+
+### Deprecation 
+
+### Features
+
+### Bugs
+- Pods Stuck in Terminating State After PowerFlex CSI Node Pod Restart When Deployments Share Same Node ([#1782](https://github.com/dell/csm/issues/1782))
+
 
 # v1.13.0 
 
