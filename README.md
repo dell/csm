@@ -30,13 +30,30 @@ For documentation, please visit [Container Storage Modules documentation](https:
 * [Maintainer Guide](./docs/MAINTAINER_GUIDE.md)
 * [Committer Guide](./docs/COMMITTER_GUIDE.md)
 * [Contributing Guide](./docs/CONTRIBUTING.md)
-* [Branching Strategy](./docs/BRANCHING.md)
 * [List of Adopters](./docs/ADOPTERS.md)
-* [Maintainers](./docs/MAINTAINERS.md)
 * [Support](./docs/SUPPORT.md)
 * [Security](./docs/SECURITY.md)
+* [Building](#building)
 * [Container Storage Modules - Components](#container-storage-modules---components)
 * [About](#about)
+
+## Building
+This project includes the base container image definition for the
+[Container Storage Modules - Components](#container-storage-modules---components).
+
+To build the image, some requirements must be met:
+* The supported build environment is restricted to RedHat Enterprise Linux version 9.0 and above
+* buildah is used to build the container and must be installed
+
+Once the requirements above are met, the image can be build via:
+`make docker`
+
+Note: Due to the way that buildah operates, you may see warnings (or errors) in the output of `make docker`. 
+The following messages can be safely ignored:
+* `/proc/ is not mounted. This is not a supported mode of operation. Please fix
+your invocation environment to mount /proc/ and /sys/ properly. Proceeding anyway.` The /proc filesystem is not needed for the image creation.
+* `[Errno 13] Permission denied: '/var/log/rhsm/rhsm.log' - Further logging output will be written to stderr`. This error comes from `dnf` as it is unable to write to the log file. Further errors from dnf will be sent to stderr instead of the log. 
+
 
 ## Container Storage Modules - Components
 * [Dell Container Storage Modules (CSM) for Authorization](https://github.com/dell/karavi-authorization)
