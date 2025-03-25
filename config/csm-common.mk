@@ -17,7 +17,7 @@
 # Update this file when the image versions change, and it will be automatically rolled out across all components.
 
 # --- UBI_BASEIMAGE: Value of the UBI image to be used as a base for all images.
-UBI_BASEIMAGE=registry.access.redhat.com/ubi9/ubi-micro@sha256:f6e0a71b7e0875b54ea559c2e0a6478703268a8d4b8bdcf5d911d0dae76aef51
+UBI_BASEIMAGE=registry.access.redhat.com/ubi9/ubi-micro@sha256:8a6071b01366611fd9433bf9688f5c3150de819874fa2c06c4fcd4c25ea26f03
 
 # --- CSM_BASEIMAGE: Specifies the common baseimage that is used for all CSM images.
 CSM_BASEIMAGE=quay.io/dell/container-storage-modules/csm-base-image:nightly

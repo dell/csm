@@ -1,27 +1,40 @@
 <!--toc-->
+- [v1.12.1](#v1121)
+  - [Changelog since v1.12.0](#changelog-since-v1120)
+  - [Changes by Kind](#changes-by-kind)
+    - [Bugs](#bugs)
 - [v1.12.0](#v1120)
   - [Changelog since v1.11.1](#changelog-since-v1111)
   - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind)
+  - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation)
     - [Features](#features)
-    - [Bugs](#bugs)
- 
+    - [Bugs](#bugs-1)
 
-# v1.12.0 
+# v1.12.1
 
-## Changelog since v1.11.1 
+## Changelog since v1.12.0
 
-## Known Issues 
+## Changes by Kind
+
+### Bugs
+
+- Support multiple sidecar headers in the Authorization Proxy Server. ([#1804](https://github.com/dell/csm/issues/1804))
+
+# v1.12.0
+
+## Changelog since v1.11.1
+
+## Known Issues
 When using CSI-PowerMax with Replication in a multi-cluster setup, the driver on the target cluster fails and logs an error: `“CSI reverseproxy service host or port not found, CSI reverseproxy not installed properly.”`This means the reverseproxy service isn’t set up correctly on the target cluster. You’ll need to manually create the reverseproxy service on the target cluster by following the provided instructions [here](https://dell.github.io/csm-docs/docs/deployment/csmoperator/modules/replication/#configuration-steps)
-## Changes by Kind 
+## Changes by Kind
 
-### Deprecation 
+### Deprecation
 - Deprecate Encryption. ([#1517](https://github.com/dell/csm/issues/1517))
 - Issue deprecation notice for CSM Volume Group Snapshotter module. ([#1544](https://github.com/dell/csm/issues/1544))
 - Deprecate DockerHub - ([#1435](https://github.com/dell/csm/issues/1435))
-  
-### Features 
+
+### Features
 
 - Add Support for KubeVirt. ([#1508](https://github.com/dell/csm/issues/1508))
 - Add Support for OpenShift Container Platform (OCP) 4.17. ([#1473](https://github.com/dell/csm/issues/1473))
@@ -36,7 +49,7 @@ When using CSI-PowerMax with Replication in a multi-cluster setup, the driver on
 - Stateless, GitOps, HA enabled deployment of the CSM Authorization proxy server. ([#1281](https://github.com/dell/csm/issues/1281))
 - Enable/disable automatic SDC deployment along with driver installation.. ([#663](https://github.com/dell/csm/issues/663))
 
-### Bugs 
+### Bugs
 
 - Powermax Intergration test failing. ([#1519](https://github.com/dell/csm/issues/1519))
 - Dell CSM Installation Issues. ([#1416](https://github.com/dell/csm/issues/1416))
