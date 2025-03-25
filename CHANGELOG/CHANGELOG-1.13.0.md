@@ -13,6 +13,7 @@
 ## Changelog since v1.12.0 
 
 ## Known Issues 
+When using Helm charts to install the PowerMax driver with multiple arrays, the powermax-array-config ConfigMap is incorrectly created, resulting in multiple X_CSI_POWERMAX_ENDPOINT entries. This causes the driver pods to crash with the error "mapping key "X_CSI_POWERMAX_ENDPOINT" already defined". To resolve this issue, you will need to manually edit the ConfigMap powermax-array-config to remove all instances of X_CSI_POWERMAX_ENDPOINT and restart the driver pods (https://github.com/dell/csm/issues/1760).
 
 ## Changes by Kind 
 
