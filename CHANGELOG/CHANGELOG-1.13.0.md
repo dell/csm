@@ -28,6 +28,8 @@
 
 ### Deprecation 
 
+- Support for CSM via Slack will be deprecated on 5/31/2025, aligning with the CSM 1.14 release. All existing Slack channels will be archived from that date onward. Please create a [GitHub Issue](https://github.com/dell/csm/issues) for community support or reach out via the [Dell Support Portal](https://dell.com/support) if you have a valid support contract. For more details, please see our [Dell Support Page](https://dell.github.io/csm-docs/docs/support/).
+
 ### Features
 
 ### Bugs
@@ -40,6 +42,7 @@
 
 ## Known Issues 
 When using Helm charts to install the PowerMax driver with multiple arrays, the powermax-array-config ConfigMap is incorrectly created, resulting in multiple X_CSI_POWERMAX_ENDPOINT entries. This causes the driver pods to crash with the error "mapping key "X_CSI_POWERMAX_ENDPOINT" already defined". To resolve this issue, you will need to manually edit the ConfigMap powermax-array-config to remove all instances of X_CSI_POWERMAX_ENDPOINT and restart the driver pods (https://github.com/dell/csm/issues/1760).
+After restarting a PowerFlex CSI node pod, any deployment whose pods are scheduled on the same node as the restarted CSI node pod will experience pods stuck indefinitely in the Terminating state when the deployment is restarted via a command such as 'oc rollout restart'. To resolve this issue, upgrade to v1.13.1 (https://github.com/dell/csm/issues/1782).
 
 ## Changes by Kind 
 
