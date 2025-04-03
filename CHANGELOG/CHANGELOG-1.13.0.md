@@ -1,26 +1,56 @@
 <!--toc-->
-- [v1.13.0](#v1130)
-  - [Changelog since v1.12.0](#changelog-since-v1120)
+
+- [v1.13.1](#v1131)
+  - [Changelog since v1.13.0](#changelog-since-v1130)
   - [Known Issues](#known-issues)
   - [Changes by Kind](#changes-by-kind)
     - [Deprecation](#deprecation)
     - [Features](#features)
     - [Bugs](#bugs)
- 
 
-# v1.13.0 
 
-## Changelog since v1.12.0 
+- [v1.13.0](#v1130)
+  - [Changelog since v1.12.0](#changelog-since-v1120)
+  - [Known Issues](#known-issues-1)
+  - [Changes by Kind](#changes-by-kind-1)
+    - [Deprecation](#deprecation-1)
+    - [Features](#features-1)
+    - [Bugs](#bugs-1)
 
-## Known Issues 
 
-## Changes by Kind 
+# v1.13.1
 
-### Deprecation 
+## Changelog since v1.13.0
+
+## Known Issues
+
+## Changes by Kind
+
+### Deprecation
 
 - Support for CSM via Slack will be deprecated on 5/31/2025, aligning with the CSM 1.14 release. All existing Slack channels will be archived from that date onward. Please create a [GitHub Issue](https://github.com/dell/csm/issues) for community support or reach out via the [Dell Support Portal](https://dell.com/support) if you have a valid support contract. For more details, please see our [Dell Support Page](https://dell.github.io/csm-docs/docs/support/).
 
-### Features 
+### Features
+
+### Bugs
+- Pods Stuck in Terminating State After PowerFlex CSI Node Pod Restart When Deployments Share Same Node ([#1782](https://github.com/dell/csm/issues/1782))
+- Support multiple sidecar headers in the Authorization Proxy Server. ([#1804](https://github.com/dell/csm/issues/1804))
+
+# v1.13.0
+
+## Changelog since v1.12.0
+
+## Known Issues
+When using Helm charts to install the PowerMax driver with multiple arrays, the powermax-array-config ConfigMap is incorrectly created, resulting in multiple X_CSI_POWERMAX_ENDPOINT entries. This causes the driver pods to crash with the error "mapping key "X_CSI_POWERMAX_ENDPOINT" already defined". To resolve this issue, you will need to manually edit the ConfigMap powermax-array-config to remove all instances of X_CSI_POWERMAX_ENDPOINT and restart the driver pods (https://github.com/dell/csm/issues/1760).
+When restarting a PowerFlex deployment via a command such as 'oc rollout restart', Powerflex CSI node pods will restart. Any deployment whose pods are scheduled on the same node as the restarted pod will be stuck in the Terminating state indefinitely. To resolve this issue, upgrade to v1.13.1 (https://github.com/dell/csm/issues/1782).
+
+## Changes by Kind 
+
+### Deprecation
+
+- Support for CSM via Slack will be deprecated on 5/31/2025, aligning with the CSM 1.14 release. All existing Slack channels will be archived from that date onward. Please create a [GitHub Issue](https://github.com/dell/csm/issues) for community support or reach out via the [Dell Support Portal](https://dell.com/support) if you have a valid support contract. For more details, please see our [Dell Support Page](https://dell.github.io/csm-docs/docs/support/).
+
+### Features
 
 - Deprecation note for slack external support. ([#1679](https://github.com/dell/csm/issues/1679))
 - CSI Powerflex must have the ability to connect a subset of the worker nodes to a storage array for multi-array suppport. ([#1613](https://github.com/dell/csm/issues/1613))
@@ -32,7 +62,7 @@
 - Supporting Openshift 4.18 for CSM.. ([#1560](https://github.com/dell/csm/issues/1560))
 - Release CSM 1.13 changes. ([#1559](https://github.com/dell/csm/issues/1559))
 
-### Bugs 
+### Bugs
 
 - Minimal CR for Powerflex is failing in Csm-operator. ([#1671](https://github.com/dell/csm/issues/1671))
 - CSM PowerMax wrong error message. ([#1634](https://github.com/dell/csm/issues/1634))
