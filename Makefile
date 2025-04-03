@@ -11,6 +11,7 @@ BASE_IMAGE_PACKAGES=acl \
 					e2fsprogs \
 					gnutls \
 					gzip \
+					bzip2 \
 					hostname \
 					kmod \
 					libaio \
@@ -47,7 +48,6 @@ clean:
 docker:
 	$(eval include config/csm-common.mk)
 	$(eval include semver.mk)
-	@echo "Building base image from $(DEFAULT_BASEIMAGE) and loading dependencies..."
-	cd base-image && ./build-base-image.sh -u $(DEFAULT_BASEIMAGE) -t $(REGISTRY)/$(IMAGENAME):$(IMAGETAG) $(BASE_IMAGE_PACKAGES)
-	$(eval BASEIMAGE=$(REGISTRY)/$(IMAGENAME):$(IMAGETAG))
-	@echo "Built base image: $(BASEIMAGE)"
+	@echo "Building base image from $(UBI_BASEIMAGE) and loading dependencies..."
+	cd base-image && ./build-base-image.sh -u $(UBI_BASEIMAGE) -t $(REGISTRY)/$(IMAGENAME):$(IMAGETAG) $(BASE_IMAGE_PACKAGES)
+	@echo "Built base image: $(REGISTRY)/$(IMAGENAME):$(IMAGETAG)"

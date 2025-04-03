@@ -1,4 +1,4 @@
-# Copyright © 2024 Dell Inc. or its subsidiaries. All Rights Reserved.
+# Copyright © 2024-2025 Dell Inc. or its subsidiaries. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -10,14 +10,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Common settings for all CSM components amd images.
-# Update this file with the image versions change, and it will be automaticall rolled out across all components.
+# This file is intended to be included from within a Makefile,
+# so is restricted to Makefile syntax
 
-# --- DEFAULT_BASEIMAGE: Specifies the UBI-micro image that is used as the base for the CSM images
-DEFAULT_BASEIMAGE="registry.access.redhat.com/ubi9/ubi-micro@sha256:7f376b75faf8ea546f28f8529c37d24adcde33dca4103f4897ae19a43d58192b"
+# Common settings for all CSM components and images.
+# Update this file when the image versions change, and it will be automatically rolled out across all components.
 
-# --- DEFAULT_GOVERSION: Specifies the default version of go
-DEFAULT_GOVERSION="1.23"
+# --- UBI_BASEIMAGE: Value of the UBI image to be used as a base for all images.
+UBI_BASEIMAGE=registry.access.redhat.com/ubi9/ubi-micro@sha256:8a6071b01366611fd9433bf9688f5c3150de819874fa2c06c4fcd4c25ea26f03
 
-# --- DEFAULT_GOIMAGE: Specifies the default Image to be used for building go components in a multi-stage docker file
-DEFAULT_GOIMAGE="golang:${DEFAULT_GOVERSION}"
+# --- CSM_BASEIMAGE: Specifies the common baseimage that is used for all CSM images.
+CSM_BASEIMAGE=quay.io/dell/container-storage-modules/csm-base-image:nightly
+
+# --- DEFAULT_BASEIMAGE: Specifies the default image for repositories not yet using the CSM_BASEIMAGE.
+# --- Repositories should switch to using the CSM_BASEIMAGE to use the new common base image.
+DEFAULT_BASEIMAGE=${UBI_BASEIMAGE}
+
+# --- DEFAULT_GOVERSION: Specifies the default version of go.
+DEFAULT_GOVERSION=1.24
+
+# --- DEFAULT_GOIMAGE: Specifies the default Image to be used for building go components in a multi-stage docker file.
+DEFAULT_GOIMAGE=golang:${DEFAULT_GOVERSION}
