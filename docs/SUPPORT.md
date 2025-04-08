@@ -21,7 +21,3 @@ We use GitHub for creating/tracking various [issues](https://github.com/dell/csm
 ## Documentation
 
 For documentation, please visit [Container Storage Modules documentation](https://dell.github.io/csm-docs/).
-
-## Slack
-
-Join our Slack group. Click [Here](http://del.ly/Slack_request) to request your invite.
