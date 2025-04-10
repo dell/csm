@@ -1,0 +1,27 @@
+# Copyright (c) 2025 Dell Inc., or its subsidiaries. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+
+# Reusable workflow to perform ubi9 image version update to latest
+name: UBI Image Update
+
+on:
+
+  # Trigger with cron job
+  schedule:
+    - cron: "0 12 * * 1" # This cron expression means "every monday at mid-day"
+  
+  # Trigger manually also
+  workflow_dispatch:
+  
+
+jobs:
+  # go version update
+  go-version-update:
+    uses: dell/common-github-actions/.github/workflows/ubi-version-update.yaml@main
+    name: Go Version Update
+    secrets: inherit
