@@ -22,6 +22,6 @@ on:
 jobs:
   # ubi version update to latest
   ubi-version-update:
-    uses: dell/common-github-actions/.github/workflows/ubi-version-update.yaml@main
+    uses: panigs7/common-github-actions/.github/workflows/ubi-version-update.yaml@main
     name: UBI Version Update
     secrets: inherit
