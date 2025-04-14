@@ -20,8 +20,8 @@ on:
   
 
 jobs:
-  # go version update
-  go-version-update:
+  # ubi version update to latest
+  ubi-version-update:
     uses: dell/common-github-actions/.github/workflows/ubi-version-update.yaml@main
-    name: Go Version Update
+    name: UBI Version Update
     secrets: inherit
