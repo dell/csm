@@ -29,4 +29,5 @@ karavi-topology : v1.11.0
 
 
 # Some third party libraries referred in CSM
-otel-collector : v0.48.0
+otel-collector : v0.124.0
+
