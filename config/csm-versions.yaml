@@ -1,0 +1,32 @@
+# This file maintains the latest versions for all the CSM products in the given release
+# The format is as follows:
+# <product> : <version>
+
+# CSM program version
+csm-version : v1.14.0
+
+# CSM Operator version
+csm-operator : v1.9.0
+
+# Driver versions
+csi-powerscale : v2.14.0
+csi-powerstore : v2.14.0
+csi-powermax : v2.14.0
+csi-vxflexos : v2.14.0
+csi-unity : v2.14.0
+
+# Module versions
+csm-replication : v1.11.0
+karavi-resiliency : v1.12.0
+csm-authorization-v2 : v2.2.0
+csireverseproxy : v2.13.0
+karavi-observability : v1.11.0
+karavi-metrics-powerflex : v1.11.0
+csm-metrics-powerstore : v1.11.0
+csm-metrics-powerscale : v1.8.0
+csm-metrics-powermax : v1.6.0
+karavi-topology : v1.11.0
+
+
+# Some third party libraries referred in CSM
+otel-collector : v0.48.0
