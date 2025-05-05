@@ -18,6 +18,7 @@ csi-unity : v2.14.0
 # Module versions
 csm-replication : v1.11.0
 karavi-resiliency : v1.12.0
+karavi-authorization : v1.14.0
 csm-authorization-v2 : v2.2.0
 csireverseproxy : v2.13.0
 karavi-observability : v1.11.0
@@ -27,6 +28,8 @@ csm-metrics-powerscale : v1.8.0
 csm-metrics-powermax : v1.6.0
 karavi-topology : v1.11.0
 
+# Tooling
+cert-csi : v1.8.0
 
 # Some third party libraries referred in CSM
 otel-collector : v0.124.0
