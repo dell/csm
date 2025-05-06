@@ -32,6 +32,7 @@ karavi-authorization : v1.14.0
 cert-csi : v1.8.0
 dellctl : v1.14.0
 karavictl : v1.14.0
+installation-wizard : 1.6.0
 
 # Some third party libraries referred in CSM
 otel-collector : v0.124.0
