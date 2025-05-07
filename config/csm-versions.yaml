@@ -27,6 +27,7 @@ csm-metrics-powerscale : v1.9.0
 csm-metrics-powermax : v1.7.0
 karavi-topology : v1.12.0
 karavi-authorization : v1.14.0
+application-mobility : v1.4.0
 
 # Tools
 cert-csi : v1.8.0
