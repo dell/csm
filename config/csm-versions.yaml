@@ -16,22 +16,23 @@ csi-vxflexos : v2.14.0
 csi-unity : v2.14.0
 
 # Module versions
-csm-replication : v1.11.0
-karavi-resiliency : v1.12.0
+csm-replication : v1.12.0
+karavi-resiliency : v1.13.0
 csm-authorization-v2 : v2.2.0
 csireverseproxy : v2.13.0
-karavi-observability : v1.11.0
-karavi-metrics-powerflex : v1.11.0
-csm-metrics-powerstore : v1.11.0
-csm-metrics-powerscale : v1.8.0
-csm-metrics-powermax : v1.6.0
-karavi-topology : v1.11.0
+karavi-observability : v1.12.0
+karavi-metrics-powerflex : v1.12.0
+csm-metrics-powerstore : v1.12.0
+csm-metrics-powerscale : v1.9.0
+csm-metrics-powermax : v1.7.0
+karavi-topology : v1.12.0
 karavi-authorization : v1.14.0
 
 # Tools
 cert-csi : v1.8.0
 dellctl : v1.14.0
 karavictl : v1.14.0
+repctl : v1.12.0
 installation-wizard : 1.6.0
 
 # Some third party libraries referred in CSM
