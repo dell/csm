@@ -60,7 +60,6 @@ your invocation environment to mount /proc/ and /sys/ properly. Proceeding anywa
 * [Dell Container Storage Modules (CSM) for Observability](https://github.com/dell/karavi-observability)
 * [Dell Container Storage Modules (CSM) for Replication](https://github.com/dell/csm-replication)
 * [Dell Container Storage Modules (CSM) for Resiliency](https://github.com/dell/karavi-resiliency)
-* [Dell Container Storage Modules (CSM) for Volume Group Snapshotter](https://github.com/dell/csi-volumegroup-snapshotter)
 * [CSI Driver for Dell PowerFlex](https://github.com/dell/csi-powerflex)
 * [CSI Driver for Dell PowerMax](https://github.com/dell/csi-powermax)
 * [CSI Driver for Dell PowerScale](https://github.com/dell/csi-powerscale)
