@@ -31,7 +31,6 @@ For documentation, please visit [Container Storage Modules documentation](https:
 * [Committer Guide](./docs/COMMITTER_GUIDE.md)
 * [Contributing Guide](./docs/CONTRIBUTING.md)
 * [List of Adopters](./docs/ADOPTERS.md)
-* [Support](./docs/SUPPORT.md)
 * [Security](./docs/SECURITY.md)
 * [Building](#building)
 * [Container Storage Modules - Components](#container-storage-modules---components)
@@ -60,16 +59,17 @@ your invocation environment to mount /proc/ and /sys/ properly. Proceeding anywa
 * [Dell Container Storage Modules (CSM) for Observability](https://github.com/dell/karavi-observability)
 * [Dell Container Storage Modules (CSM) for Replication](https://github.com/dell/csm-replication)
 * [Dell Container Storage Modules (CSM) for Resiliency](https://github.com/dell/karavi-resiliency)
-* [Dell Container Storage Modules (CSM) for Volume Group Snapshotter](https://github.com/dell/csi-volumegroup-snapshotter)
 * [CSI Driver for Dell PowerFlex](https://github.com/dell/csi-powerflex)
 * [CSI Driver for Dell PowerMax](https://github.com/dell/csi-powermax)
 * [CSI Driver for Dell PowerScale](https://github.com/dell/csi-powerscale)
 * [CSI Driver for Dell PowerStore](https://github.com/dell/csi-powerstore)
 * [CSI Driver for Dell Unity](https://github.com/dell/csi-unity)
 * [COSI Driver](https://github.com/dell/cosi)
-  
-## About
 
+## Support
+For any issues, questions or feedback, please contact [Dell support](https://www.dell.com/support/incidents-online/en-us/contactus/product/container-storage-modules).
+
+## About
 Dell Container Storage Modules (CSM) is 100% open source and community-driven. All components are available
 under [Apache 2 License](https://www.apache.org/licenses/LICENSE-2.0.html) on
 GitHub.
