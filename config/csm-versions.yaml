@@ -3,44 +3,42 @@
 # <product> : <version>
 
 # CSM program version
-csm-version : v1.14.0
+csm-version : v1.15.0
 
 # CSM Operator version
-csm-operator : v1.9.0
+csm-operator : v1.10.0
 
 # Driver versions
-csi-powerscale : v2.14.0
-csi-powerstore : v2.14.0
-csi-powermax : v2.14.0
-csi-vxflexos : v2.14.0
-csi-unity : v2.14.0
+csi-powerscale : v2.15.0
+csi-powerstore : v2.15.0
+csi-powermax : v2.15.0
+csi-vxflexos : v2.15.0
+csi-unity : v2.15.0
 
 # Module versions
-csm-replication : v1.12.0
-karavi-resiliency : v1.13.0
-csm-authorization-v2 : v2.2.0
-csireverseproxy : v2.13.0
-karavi-observability : v1.12.0
-karavi-metrics-powerflex : v1.12.0
-csm-metrics-powerstore : v1.12.0
-csm-metrics-powerscale : v1.9.0
-csm-metrics-powermax : v1.7.0
-karavi-topology : v1.12.0
-karavi-authorization : v1.14.0
-application-mobility : v1.4.0
+csm-replication : v1.13.0
+karavi-resiliency : v1.14.0
+csm-authorization-v2 : v2.3.0
+csireverseproxy : v2.14.0
+karavi-observability : v1.13.0
+karavi-metrics-powerflex : v1.13.0
+csm-metrics-powerstore : v1.13.0
+csm-metrics-powerscale : v1.10.0
+csm-metrics-powermax : v1.8.0
+karavi-topology : v1.13.0
 
 # Tools
-cert-csi : v1.8.0
-dellctl : v1.14.0
-karavictl : v1.14.0
-repctl : v1.12.0
-installation-wizard : 1.6.0
+cert-csi : v1.9.0
+dellctl : v1.15.0
+karavictl : v1.15.0
+repctl : v1.13.0
+installation-wizard : 1.7.0
 
-# Some third party libraries referred in CSM
-otel-collector : v0.124.0
+# Third Party Libraries referred in CSM
+otel-collector : v0.127.0
 nginx-unprivileged : 1.27
 grafana : 11.5.2
 prometheus : v2.34.0
 openpolicyagent-opa : 0.70.0
 openpolicyagent-kube-mgmt : 8.5.10
-redis : 7.4.1-alpine 
+redis : 7.4.1-alpine
