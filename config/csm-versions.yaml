@@ -42,3 +42,11 @@ prometheus : v2.34.0
 openpolicyagent-opa : 0.70.0
 openpolicyagent-kube-mgmt : 8.5.10
 redis : 7.4.1-alpine
+
+# CSI Sidecar versions
+csi-resizer : v1.14.0
+csi-provisioner : v5.3.0
+csi-node-driver-registrar : v2.14.0
+csi-attacher : v4.9.0
+csi-external-health-monitor-controller : v0.15.0
+csi-snapshotter : v8.3.0
