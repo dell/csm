@@ -26,6 +26,12 @@ update_versions() {
 
         if grep -q $key $version_file; then
             current_version=$(grep $key $version_file | cut -d ":" -f 2 | tr -d ' ')
+
+            # Sanitize otel-collector version. Tag is different format than artifactory.
+            if [ "$key" == "otel-collector" ]; then
+                latest_tag=$(echo "$latest_tag" | sed 's/^v//')
+            fi
+
             if [ "$current_version" == "$latest_tag" ]; then
                 echo "$key already up to date"
                 continue
