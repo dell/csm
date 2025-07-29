@@ -1,5 +1,13 @@
 <!--toc-->
 
+- [v1.13.2](#v1132)
+  - [Changelog since v1.13.1](#changelog-since-v1131)
+  - [Known Issues](#known-issues)
+  - [Changes by Kind](#changes-by-kind)
+    - [Deprecation](#deprecation)
+    - [Features](#features)
+    - [Bugs](#bugs)
+
 - [v1.13.1](#v1131)
   - [Changelog since v1.13.0](#changelog-since-v1130)
   - [Known Issues](#known-issues)
@@ -17,6 +25,24 @@
     - [Features](#features-1)
     - [Bugs](#bugs-1)
 
+# v1.13.2
+
+## Changelog since v1.13.1
+
+## Known Issues
+
+- CSM Operator v1.13.1 may cause pod crashes when PowerFlex response times exceed one second due to premature communication timeout. To resolve this issue, upgrade CSM to v1.14.1 or later through CSM Operator.
+
+## Changes by Kind
+
+### Deprecation
+
+- Support for CSM via Slack will be deprecated on 5/31/2025, aligning with the CSM 1.14 release. All existing Slack channels will be archived from that date onward. Please create a [GitHub Issue](https://github.com/dell/csm/issues) for community support or reach out via the [Dell Support Portal](https://dell.com/support) if you have a valid support contract. For more details, please see our [Dell Support Page](https://dell.github.io/csm-docs/docs/support/).
+
+### Features
+
+### Bugs
+- Make probe-retry in Powerflex driver configurable ([#1956](https://github.com/dell/csm/issues/1804))
 
 # v1.13.1
 
