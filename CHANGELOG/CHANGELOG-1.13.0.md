@@ -10,20 +10,20 @@
 
 - [v1.13.1](#v1131)
   - [Changelog since v1.13.0](#changelog-since-v1130)
-  - [Known Issues](#known-issues)
-  - [Changes by Kind](#changes-by-kind)
-    - [Deprecation](#deprecation)
-    - [Features](#features)
-    - [Bugs](#bugs)
-
-
-- [v1.13.0](#v1130)
-  - [Changelog since v1.12.0](#changelog-since-v1120)
   - [Known Issues](#known-issues-1)
   - [Changes by Kind](#changes-by-kind-1)
     - [Deprecation](#deprecation-1)
     - [Features](#features-1)
     - [Bugs](#bugs-1)
+
+
+- [v1.13.0](#v1130)
+  - [Changelog since v1.12.0](#changelog-since-v1120)
+  - [Known Issues](#known-issues-2)
+  - [Changes by Kind](#changes-by-kind-2)
+    - [Deprecation](#deprecation-2)
+    - [Features](#features-2)
+    - [Bugs](#bugs-2)
 
 # v1.13.2
 
