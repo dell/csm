@@ -27,7 +27,7 @@ CSM_BASEIMAGE=quay.io/dell/container-storage-modules/csm-base-image:nightly
 DEFAULT_BASEIMAGE=${UBI_BASEIMAGE}
 
 # --- DEFAULT_GOVERSION: Specifies the default version of go.
-DEFAULT_GOVERSION=1.24
+DEFAULT_GOVERSION=1.25
 
 # --- DEFAULT_GOIMAGE: Specifies the default Image to be used for building go components in a multi-stage docker file.
 DEFAULT_GOIMAGE=golang:${DEFAULT_GOVERSION}
