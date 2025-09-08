@@ -32,16 +32,16 @@ cert-csi : v1.9.0
 dellctl : v1.15.0
 karavictl : v1.15.0
 repctl : v1.13.0
-installation-wizard : 1.7.0
+installation-wizard : 1.8.0
 
 # Third Party Libraries referred in CSM
-otel-collector : 0.134.0
+otel-collector : 0.134.1
 nginx-unprivileged : 1.27
 grafana : 11.5.2
 prometheus : v2.34.0
 openpolicyagent-opa : 0.70.0
-openpolicyagent-kube-mgmt : 8.5.10
-redis : 7.4.1-alpine
+openpolicyagent-kube-mgmt : 8.5.11
+redis : 8.2.0-alpine
 
 # CSI Sidecar versions
 csi-resizer : v1.14.0
