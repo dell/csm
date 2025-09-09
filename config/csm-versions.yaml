@@ -25,7 +25,6 @@ karavi-metrics-powerflex : v1.13.0
 csm-metrics-powerstore : v1.13.0
 csm-metrics-powerscale : v1.10.0
 csm-metrics-powermax : v1.8.0
-karavi-topology : v1.13.0
 
 # Tools
 cert-csi : v1.9.0
@@ -36,7 +35,7 @@ installation-wizard : 1.8.0
 
 # Third Party Libraries referred in CSM
 otel-collector : 0.134.1
-nginx-unprivileged : 1.27
+nginx-unprivileged : 1.29
 grafana : 11.5.2
 prometheus : v2.34.0
 openpolicyagent-opa : 0.70.0
