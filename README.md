@@ -26,7 +26,7 @@ For existing customers using Dell’s Container Storage Modules, you will contin
 * **Continued Access to Current Open Source Version**<br>
        The current open-source version will remain available under its existing license for those who rely on it.
 
-Moving to a Enterprise model allows Dell’s development team to accelerate feature delivery and enhance integration across our Enterprise Kubernetes Storage solutions ultimately providing a more seamless and robust experience.<br>
+Moving to a closed source model allows Dell’s development team to accelerate feature delivery and enhance integration across our Enterprise Kubernetes Storage solutions ultimately providing a more seamless and robust experience.<br>
 We deeply appreciate the contributions of the open source community and remain committed to supporting our customers through this transition.<br>
 
 For questions or access requests, please contact the maintainers via [Dell Support](https://www.dell.com/support/kbdoc/en-in/000188046/container-storage-interface-csi-drivers-and-container-storage-modules-csm-how-to-get-support).
@@ -90,3 +90,4 @@ For any issues, questions or feedback, please contact [Dell support](https://www
 Dell Container Storage Modules (CSM) is 100% open source and community-driven. All components are available
 under [Apache 2 License](https://www.apache.org/licenses/LICENSE-2.0.html) on
 GitHub.
+
