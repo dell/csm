@@ -7,7 +7,12 @@ latest_images[csi-snapshotter]="https://api.github.com/repos/kubernetes-csi/exte
 latest_images[csi-resizer]="https://api.github.com/repos/kubernetes-csi/external-resizer/releases/latest"
 latest_images[csi-node-driver-registrar]="https://api.github.com/repos/kubernetes-csi/node-driver-registrar/releases/latest"
 latest_images[csi-external-health-monitor-controller]="https://api.github.com/repos/kubernetes-csi/external-health-monitor/releases/latest"
-latest_images[otel-collector]="https://api.github.com/repos/open-telemetry/opentelemetry-collector/releases/latest"
+latest_images[opentelemetry-collector]="https://api.github.com/repos/open-telemetry/opentelemetry-collector/releases/latest"
+latest_images[nginx-unprivileged]="https://api.github.com/repos/nginx/docker-nginx-unprivileged/releases/latest"
+latest_images[prometheus]="https://api.github.com/repos/prometheus/prometheus/releases/latest"
+latest_images[grafana]="https://api.github.com/repos/grafana/grafana/releases/latest"
+latest_images[openpolicyagent-kube-mgmt]="https://api.github.com/repos/open-policy-agent/kube-mgmt/releases/latest"
+latest_images[openpolicyagent-opa]="https://api.github.com/repos/open-policy-agent/opa/releases/latest"
 
 retrieve_latest_tag() {
     curl -s $1 | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
@@ -27,9 +32,14 @@ update_versions() {
         if grep -q $key $version_file; then
             current_version=$(grep $key $version_file | cut -d ":" -f 2 | tr -d ' ')
 
-            # Sanitize otel-collector version. Tag is different format than artifactory.
-            if [ "$key" == "otel-collector" ]; then
+            # Tags don't contain the 'v' prefix.
+            if [[ "$key" == "opentelemetry-collector" || "$key" == "openpolicyagent-kube-mgmt" || "$key" == "openpolicyagent-opa" || "$key" == "grafana" ]]; then
                 latest_tag=$(echo "$latest_tag" | sed 's/^v//')
+            fi
+
+            # Remove the patch version from the tag.
+            if [[ "$key" == "nginx-unprivileged" || "$key" == "grafana" ]]; then
+                latest_tag=$(echo "$latest_tag" | sed 's/\.[0-9]*$//')
             fi
 
             if [ "$current_version" == "$latest_tag" ]; then
