@@ -17,11 +17,11 @@ csi-unity : v2.15.0
 
 # Module versions
 csm-replication : v1.13.0
-karavi-resiliency : v1.14.0
-csm-authorization-v2 : v2.3.0
+csm-resiliency : v1.14.0
+csm-authorization : v2.3.0
+csm-observability : v1.13.0
 csireverseproxy : v2.14.0
-karavi-observability : v1.13.0
-karavi-metrics-powerflex : v1.13.0
+csm-metrics-powerflex : v1.13.0
 csm-metrics-powerstore : v1.13.0
 csm-metrics-powerscale : v1.10.0
 csm-metrics-powermax : v1.8.0
