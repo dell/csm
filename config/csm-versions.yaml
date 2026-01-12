@@ -34,7 +34,7 @@ repctl : v1.13.0
 installation-wizard : 1.8.0
 
 # Third Party Libraries referred in CSM
-otel-collector : 0.134.1
+otel-collector : 0.143.0
 nginx-unprivileged : 1.29
 grafana : 11.5.2
 prometheus : v2.34.0
@@ -43,9 +43,9 @@ openpolicyagent-kube-mgmt : 8.5.11
 redis : 8.2.0-alpine
 
 # CSI Sidecar versions
-csi-resizer : v1.14.0
-csi-provisioner : v5.3.0
-csi-node-driver-registrar : v2.14.0
-csi-attacher : v4.9.0
-csi-external-health-monitor-controller : v0.15.0
-csi-snapshotter : v8.3.0
+csi-resizer : v2.0.0
+csi-provisioner : v6.1.0
+csi-node-driver-registrar : v2.15.0
+csi-attacher : v4.10.0
+csi-external-health-monitor-controller : v0.16.0
+csi-snapshotter : v8.4.0
