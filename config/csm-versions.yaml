@@ -30,12 +30,11 @@ csm-metrics-powermax: v1.9.0
 # Tools
 cert-csi: v1.10.0
 dellctl: v1.16.0
-karavictl: v1.16.0
 repctl: v1.14.0
 installation-wizard: 1.9.0
 
 # Third Party Libraries referred in CSM
-opentelemetry-collector: 0.142.0
+opentelemetry-collector: 0.143.1
 nginx-unprivileged: 1.29
 grafana: 11.5.2
 prometheus: v2.34.0
