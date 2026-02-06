@@ -3,10 +3,10 @@
 # <product> : <version>
 
 # CSM program version
-csm-version: v1.16.0
+csm-version: v1.16.1
 
 # CSM Operator version
-csm-operator: v1.11.0
+csm-operator: v1.11.1
 
 # Driver versions
 csi-powerscale: v2.16.0
