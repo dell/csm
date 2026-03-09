@@ -49,3 +49,4 @@ csi-node-driver-registrar: v2.15.0
 csi-attacher: v4.10.0
 csi-external-health-monitor-controller: v0.16.0
 csi-snapshotter: v8.4.0
+otel-collector : v0.147.0
