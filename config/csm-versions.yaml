@@ -3,16 +3,16 @@
 # <product> : <version>
 
 # CSM program version
-csm-version: v1.16.1
+csm-version: v1.16.3
 
 # CSM Operator version
-csm-operator: v1.11.1
+csm-operator: v1.11.3
 
 # Driver versions
 csi-powerscale: v2.16.0
 csi-powerstore: v2.16.0
-csi-powermax: v2.16.0
-csi-vxflexos: v2.16.0
+csi-powermax: v2.16.2
+csi-vxflexos: v2.16.1
 csi-unity: v2.16.0
 cosi: v1.0.0
 
@@ -20,7 +20,7 @@ cosi: v1.0.0
 csm-replication: v1.14.0
 karavi-resiliency: v1.15.0
 csm-authorization-v2: v2.4.0
-csireverseproxy: v2.15.0
+csireverseproxy: v2.15.2
 karavi-observability: v1.14.0
 karavi-metrics-powerflex: v1.14.0
 csm-metrics-powerstore: v1.14.0
