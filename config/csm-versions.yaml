@@ -3,16 +3,16 @@
 # <product> : <version>
 
 # CSM program version
-csm-version : v1.15.1
+csm-version : v1.15.2
 
 # CSM Operator version
-csm-operator : v1.10.1
+csm-operator : v1.10.2
 
 # Driver versions
 csi-powerscale : v2.15.1
 csi-powerstore : v2.15.1
 csi-powermax : v2.15.1
-csi-vxflexos : v2.15.1
+csi-vxflexos : v2.15.2
 csi-unity : v2.15.0
 
 # Module versions
