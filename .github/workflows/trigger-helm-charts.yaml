@@ -1,0 +1,72 @@
+# Copyright © 2026 Dell Inc., or its subsidiaries. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+
+# Workflow to trigger updates to the dell/helm-charts when they're updates to config/csm-versions.yaml
+name: Trigger Updates to Helm Charts 
+
+on:
+  push:
+    branches:
+      - main
+      - 'release-**'
+    paths:
+      - 'config/csm-versions.yaml'
+  workflow_dispatch:
+
+jobs:
+  get-inputs:
+    runs-on: ubuntu-latest
+    outputs:
+      source-branch: ${{ steps.determine-branches.outputs.source-branch }}
+      target-branch: ${{ steps.determine-branches.outputs.target-branch }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Get release status and target branches
+        id: determine-branches
+        run: |
+          SOURCE_BRANCH="${{ github.ref_name }}"
+          TARGET_BRANCH=""
+          
+          CSM_VERSION=$(grep "^csm-version:" config/csm-versions.yaml | awk '{print $2}')
+          if [[ -z "$CSM_VERSION" ]]; then
+            echo "❌ Error: Could not find csm-version in config/csm-versions.yaml"
+            exit 1
+          fi
+
+          # always reference the branch that triggered the job
+          echo "source-branch=$SOURCE_BRANCH" >> $GITHUB_OUTPUT
+          # Check if branch is a release branch (format: release-vX.Y.Z)
+          if [[ "$SOURCE_BRANCH" =~ ^release-v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Detected release branch: $SOURCE_BRANCH"
+            # Extract version from branch name (e.g., release-v1.17.1 -> v1.17.1)
+            BRANCH_VERSION=$(echo "$SOURCE_BRANCH" | sed -E 's/release-//')
+            # Validate that branch version matches CSM_VERSION in yaml
+            if [[ "$BRANCH_VERSION" != "$CSM_VERSION" ]]; then
+              echo "❌ Error: Branch version ($BRANCH_VERSION) does not match CSM_VERSION in csm-versions.yaml ($CSM_VERSION)"
+              exit 1
+            fi
+            echo "✅ Branch version matches CSM_VERSION"
+            TARGET_BRANCH="release-${CSM_VERSION}"
+          else
+            echo "No release branch detected; using main branch"
+            TARGET_BRANCH="main"
+          fi
+          echo "target-branch=${TARGET_BRANCH}" >> $GITHUB_OUTPUT
+          echo "CSM branch: $SOURCE_BRANCH"
+          echo "Target branch: $TARGET_BRANCH"
+          
+  update-charts:
+    name: Update Helm Charts
+    needs: get-inputs
+    uses: dell/helm-charts/.github/workflows/update-versions.yaml@main
+    with:
+      source_branch: ${{ needs.get-inputs.outputs.source-branch }}
+      destination_branch: ${{ needs.get-inputs.outputs.target-branch }}
+    secrets: inherit
