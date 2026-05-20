@@ -8,6 +8,9 @@ csm-version: v1.17.0
 # CSM Operator version
 csm-operator: v1.12.0
 
+# container-storage-modules helm chart version
+container-storage-modules: v1.10.0
+
 # Driver versions
 csi-powerscale: v2.17.0
 csi-powerstore: v2.17.0
