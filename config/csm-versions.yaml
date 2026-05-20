@@ -27,6 +27,7 @@ karavi-metrics-powerflex: v1.15.0
 csm-metrics-powerstore: v1.15.0
 csm-metrics-powerscale: v1.12.0
 csm-metrics-powermax: v1.10.0
+csm-disaster-recovery: v1.1.0
 
 # Tools
 dellctl: v1.17.0
