@@ -14,6 +14,7 @@ csi-powerstore: v2.17.0
 csi-powermax: v2.17.0
 csi-vxflexos: v2.17.0
 csi-unity: v2.17.0
+csi-lightningfs: v1.0.0
 cosi: v1.1.0
 
 # Module versions
