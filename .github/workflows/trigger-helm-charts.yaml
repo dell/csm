@@ -71,6 +71,6 @@ jobs:
     needs: get-inputs
     uses: dell/helm-charts/.github/workflows/update-versions.yaml@main
     with:
-      source_branch: ${{ needs.get-inputs.outputs.source-branch }}
-      destination_branch: ${{ needs.get-inputs.outputs.target-branch }}
+      source-branch: ${{ needs.get-inputs.outputs.source-branch }}
+      target-branch: ${{ needs.get-inputs.outputs.target-branch }}
     secrets: inherit
