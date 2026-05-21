@@ -8,16 +8,12 @@ csm-version: v1.17.0
 # CSM Operator version
 csm-operator: v1.12.0
 
-# container-storage-modules helm chart version
-container-storage-modules: v1.10.0
-
 # Driver versions
 csi-powerscale: v2.17.0
 csi-powerstore: v2.17.0
 csi-powermax: v2.17.0
 csi-vxflexos: v2.17.0
 csi-unity: v2.17.0
-csi-lightningfs: v1.0.0
 cosi: v1.1.0
 
 # Module versions
@@ -30,7 +26,6 @@ karavi-metrics-powerflex: v1.15.0
 csm-metrics-powerstore: v1.15.0
 csm-metrics-powerscale: v1.12.0
 csm-metrics-powermax: v1.10.0
-csm-disaster-recovery: v1.1.0
 
 # Tools
 dellctl: v1.17.0
