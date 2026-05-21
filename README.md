@@ -14,8 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-
-
 # Dell Container Storage Modules (CSM)
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](docs/CODE_OF_CONDUCT.md)
@@ -75,5 +73,4 @@ For any issues, questions or feedback, please contact [Dell support](https://www
 Dell Container Storage Modules (CSM) is 100% open source and community-driven. All components are available
 under [Apache 2 License](https://www.apache.org/licenses/LICENSE-2.0.html) on
 GitHub.
-
 

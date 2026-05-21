@@ -246,12 +246,6 @@ Copyright: Copyright (c) 2013-2019, DATA-DOG team
 License: [BSD-3-Clause](https://raw.githubusercontent.com/DATA-DOG/go-sqlmock/master/LICENSE)  
 * * *
   
-Package: github.com/dell/csm-sharednfs  
-Version: v1.0.0  
-Copyright: N/A  
-License: [Apache-2.0](https://raw.githubusercontent.com/dell/csm-sharednfs/main/LICENSE)  
-* * *
-  
 Package: gopkg.in/dnaeon/go-vcr.v3  
 Version: v3.1.2  
 Copyright: Copyright (c) 2015-2022 Marin Atanasov Nikolov <dnaeon@gmail.com>  

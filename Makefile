@@ -45,9 +45,13 @@ clean:
 	go clean
 
 # Generates the docker container (but does not push)
-docker:
+images:
 	$(eval include config/csm-common.mk)
 	$(eval include semver.mk)
 	@echo "Building base image from $(UBI_BASEIMAGE) and loading dependencies..."
-	cd base-image && ./build-base-image.sh -u $(UBI_BASEIMAGE) -t $(REGISTRY)/$(IMAGENAME):$(IMAGETAG) $(BASE_IMAGE_PACKAGES)
-	@echo "Built base image: $(REGISTRY)/$(IMAGENAME):$(IMAGETAG)"
+	cd base-image && ./build-base-image.sh -u $(UBI_BASEIMAGE) -t $(IMAGE_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG) $(BASE_IMAGE_PACKAGES)
+	@echo "Built base image: $(IMAGE_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG)"
+
+push:
+	@echo "Pushing: $(IMAGE_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG)"
+	$(BUILDER) push "$(IMAGE_REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG)"
