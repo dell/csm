@@ -6,7 +6,7 @@
 #
 #  http://www.apache.org/licenses/LICENSE-2.0
 
-# Workflow to trigger updates to the dell/helm-charts when they're updates to config/csm-versions.yaml
+# Workflow to trigger updates to the dell/helm-charts when there are updates to config/csm-versions.yaml
 name: Trigger Updates to Helm Charts 
 
 on:
