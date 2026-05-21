@@ -14,6 +14,7 @@ on:
     branches:
       - main
       - 'release-**'
+      - 'rel/**'
     paths:
       - 'config/csm-versions.yaml'
   workflow_dispatch:
@@ -42,11 +43,14 @@ jobs:
 
           # always reference the branch that triggered the job
           echo "source-branch=$SOURCE_BRANCH" >> $GITHUB_OUTPUT
-          # Check if branch is a release branch (format: release-vX.Y.Z)
-          if [[ "$SOURCE_BRANCH" =~ ^release-v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          
+          # Check if branch is a release branch (formats: release-vX.Y.Z or rel/vX.Y.Z)
+          if [[ "$SOURCE_BRANCH" =~ ^release-v[0-9]+\.[0-9]+\.[0-9]+$ ]] || [[ "$SOURCE_BRANCH" =~ ^rel/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Detected release branch: $SOURCE_BRANCH"
-            # Extract version from branch name (e.g., release-v1.17.1 -> v1.17.1)
-            BRANCH_VERSION=$(echo "$SOURCE_BRANCH" | sed -E 's/release-//')
+            
+            # Extract version from branch name (e.g., release-v1.17.1 or rel/v1.17.1 -> v1.17.1)
+            BRANCH_VERSION=$(echo "$SOURCE_BRANCH" | sed -E 's/^release-//; s#^rel/##')
+            
             # Validate that branch version matches CSM_VERSION in yaml
             if [[ "$BRANCH_VERSION" != "$CSM_VERSION" ]]; then
               echo "❌ Error: Branch version ($BRANCH_VERSION) does not match CSM_VERSION in csm-versions.yaml ($CSM_VERSION)"
