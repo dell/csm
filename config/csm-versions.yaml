@@ -19,7 +19,7 @@ cosi: v1.1.0
 # Module versions
 csm-replication: v1.15.0
 karavi-resiliency: v1.16.0
-csm-authorization: v2.5.0
+csm-authorization-v2: v2.5.0
 csireverseproxy: v2.16.0
 karavi-observability: v1.15.0
 karavi-metrics-powerflex: v1.15.0
@@ -32,19 +32,18 @@ dellctl: v1.17.0
 repctl: v1.15.0
 
 # Third Party Libraries referred in CSM
-opentelemetry-collector: 0.150.1
+opentelemetry-collector: 0.146.1
 nginx-unprivileged: 1.29
 grafana: 11.5.2
 prometheus: v2.34.0
 openpolicyagent-opa: 0.70.0
-openpolicyagent-kube-mgmt: 11.0.6
+openpolicyagent-kube-mgmt: 10.0.0
 redis: 8.4.0-alpine
 
 # CSI Sidecar versions
 csi-resizer: v2.1.0
-csi-provisioner: v6.2.0
+csi-provisioner: v6.1.1
 csi-node-driver-registrar: v2.16.0
 csi-attacher: v4.11.0
 csi-external-health-monitor-controller: v0.17.0
 csi-snapshotter: v8.5.0
-csi-metadata-retriever: v1.14.0
