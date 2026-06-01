@@ -46,10 +46,10 @@ openpolicyagent-kube-mgmt: 11.0.7
 redis: 8.4.0-alpine
 
 # CSI Sidecar versions
-csi-resizer: v2.1.0
+csi-resizer: v2.2.0
 csi-provisioner: v6.2.0
 csi-node-driver-registrar: v2.17.0
 csi-attacher: v4.12.0
-csi-external-health-monitor-controller: v0.17.0
-csi-snapshotter: v8.5.0
+csi-external-health-monitor-controller: v0.18.0
+csi-snapshotter: v8.6.0
 csi-metadata-retriever: v1.15.0
