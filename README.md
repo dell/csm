@@ -1,5 +1,5 @@
 <!--
-Copyright (c) 2021-2025 Dell Inc., or its subsidiaries. All Rights Reserved.
+Copyright (c) 2021-2026 Dell Inc., or its subsidiaries. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -13,8 +13,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-
-
 
 # Dell Container Storage Modules (CSM)
 
@@ -35,6 +33,7 @@ Dell Container Storage Modules (CSM) is an open-source suite of Kubernetes stora
 * [Building](#building)
 * [Container Storage Modules - Components](#container-storage-modules---components)
 * [About](#about)
+* [Documentation](#documentation)
 
 ## Building
 This project includes the base container image definition for the
@@ -74,4 +73,5 @@ Dell Container Storage Modules (CSM) is 100% open source and community-driven. A
 under [Apache 2 License](https://www.apache.org/licenses/LICENSE-2.0.html) on
 GitHub.
 
-
+## Documentation
+For more detailed information on the driver, please refer to [Container Storage Modules documentation](https://www.dell.com/support/product-details/en-us/product/container-storage-modules/resources/manuals).

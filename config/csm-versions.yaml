@@ -37,7 +37,7 @@ dellctl: v1.18.0
 repctl: v1.16.0
 
 # Third Party Libraries referred in CSM
-opentelemetry-collector: 0.153.0
+opentelemetry-collector: 0.154.0
 nginx-unprivileged: 1.29
 grafana: 11.5.2
 prometheus: v2.34.0
@@ -47,7 +47,7 @@ redis: 8.4.0-alpine
 
 # CSI Sidecar versions
 csi-resizer: v2.2.0
-csi-provisioner: v6.2.0
+csi-provisioner: v6.3.0
 csi-node-driver-registrar: v2.17.0
 csi-attacher: v4.12.0
 csi-external-health-monitor-controller: v0.18.0
