@@ -3,15 +3,15 @@
 # <product> : <version>
 
 # CSM program version
-csm-version: v1.17.0
+csm-version: v1.17.1
 
 # CSM Operator version
-csm-operator: v1.12.0
+csm-operator: v1.12.1
 
 # Driver versions
-csi-powerscale: v2.17.0
+csi-powerscale: v2.17.1
 csi-powerstore: v2.17.0
-csi-powermax: v2.17.0
+csi-powermax: v2.17.1
 csi-vxflexos: v2.17.0
 csi-unity: v2.17.0
 cosi: v1.1.0
@@ -20,15 +20,15 @@ cosi: v1.1.0
 csm-replication: v1.15.0
 karavi-resiliency: v1.16.0
 csm-authorization: v2.5.0
-csireverseproxy: v2.16.0
+csireverseproxy: v2.16.1
 karavi-observability: v1.15.0
 karavi-metrics-powerflex: v1.15.0
 csm-metrics-powerstore: v1.15.0
 csm-metrics-powerscale: v1.12.0
-csm-metrics-powermax: v1.10.0
+csm-metrics-powermax: v1.10.1
 
 # Tools
-dellctl: v1.17.0
+dellctl: v1.17.1
 repctl: v1.15.0
 
 # Third Party Libraries referred in CSM
