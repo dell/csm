@@ -3,15 +3,15 @@
 # <product> : <version>
 
 # CSM program version
-csm-version: v1.17.1
+csm-version: v1.17.2
 
 # CSM Operator version
-csm-operator: v1.12.1
+csm-operator: v1.12.2
 
 # Driver versions
-csi-powerscale: v2.17.1
+csi-powerscale: v2.17.2
 csi-powerstore: v2.17.0
-csi-powermax: v2.17.1
+csi-powermax: v2.17.2
 csi-vxflexos: v2.17.0
 csi-unity: v2.17.0
 cosi: v1.1.0
@@ -28,7 +28,7 @@ csm-metrics-powerscale: v1.12.0
 csm-metrics-powermax: v1.10.1
 
 # Tools
-dellctl: v1.17.1
+dellctl: v1.17.2
 repctl: v1.15.0
 
 # Third Party Libraries referred in CSM
