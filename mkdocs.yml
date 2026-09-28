@@ -1,0 +1,7 @@
+site_name: 'csm'
+site_description: 'csm Documentation.'
+docs_dir: docs
+plugins:
+  - techdocs-core
+theme:
+  name: material

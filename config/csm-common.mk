@@ -1,4 +1,4 @@
-# Copyright © 2024-2025 Dell Inc. or its subsidiaries. All Rights Reserved.
+# Copyright © 2024-2026 Dell Inc. or its subsidiaries. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 # Defaults to ubi9 if not specified
 REGISTRY ?= registry.access.redhat.com
 UBI_VERSION ?= ubi9
-UBI_BASEIMAGE=$(REGISTRY)/$(UBI_VERSION)/ubi-micro@sha256:b498b3ea26111ab4b81d65139f2ebd2ef9a2abb7a4588b7fdcc54889f95e9caa
+UBI_BASEIMAGE=$(REGISTRY)/$(UBI_VERSION)/ubi-micro@sha256:7a0454cbd9bd847e8f6a63b6f0254a6efbeb6e0ed71a5d824a4f6cccbe626650
 
 # --- CSM_BASEIMAGE: Specifies the common baseimage that is used for all CSM images.
 CSM_BASEIMAGE=quay.io/dell/container-storage-modules/csm-base-image:nightly
@@ -33,7 +33,7 @@ CSM_BASEIMAGE=quay.io/dell/container-storage-modules/csm-base-image:nightly
 DEFAULT_BASEIMAGE=${UBI_BASEIMAGE}
 
 # --- DEFAULT_GOVERSION: Specifies the default version of go.
-DEFAULT_GOVERSION=1.26
+DEFAULT_GOVERSION=1.27
 
 # --- DEFAULT_GOIMAGE: Specifies the default Image to be used for building go components in a multi-stage docker file.
 DEFAULT_GOIMAGE=golang:${DEFAULT_GOVERSION}
