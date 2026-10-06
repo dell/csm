@@ -16,6 +16,5 @@ limitations under the License.
 
 # Reporting Security Issues/Vulnerabilities
 
-The Dell Container Storage Modules team and community take security bugs seriously. We sincerely appreciate all your efforts and responsibility to disclose your findings.
-
-To report a security issue, please submit a support request. 
+Dell takes reports of potential security vulnerabilities in its products seriously. If you discover a security vulnerability in Dell CSM, report it at: https://www.dell.com/support/security. 
+For the latest instructions on how to report a security issue to Dell, see the Dell Vulnerability Response Policy
