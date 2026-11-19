@@ -23,7 +23,6 @@ BASE_IMAGE_PACKAGES=acl \
 					nfs4-acl-tools \
 					numactl \
 					openssl \
-					rpm \
 					systemd \
 					tar \
 					util-linux \

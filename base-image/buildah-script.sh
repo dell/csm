@@ -39,6 +39,14 @@ if [ ${DNF_EXIT_CODE} -ne 0 ]; then
   exit 1
 fi
 
+# Remove packages that pull in libbrotli through dependency chain:
+# systemd → policycoreutils → rpm → curl → libbrotli
+# These are not needed in the base image.
+dnf remove \
+  --installroot $micromount \
+  --assumeyes \
+  policycoreutils rpm curl libbrotli
+
 dnf clean all \
   --installroot $micromount
 
