@@ -23,7 +23,7 @@
 # Defaults to ubi9 if not specified
 REGISTRY ?= registry.access.redhat.com
 UBI_VERSION ?= ubi9
-UBI_BASEIMAGE=$(REGISTRY)/$(UBI_VERSION)/ubi-micro@sha256:7a0454cbd9bd847e8f6a63b6f0254a6efbeb6e0ed71a5d824a4f6cccbe626650
+UBI_BASEIMAGE=$(REGISTRY)/$(UBI_VERSION)/ubi-micro@sha256:dbd325b96bcd432dd42816d31412bdf1dc0fb973b79ed310344bc23c76c068db
 
 # --- CSM_BASEIMAGE: Specifies the common baseimage that is used for all CSM images.
 CSM_BASEIMAGE=quay.io/dell/container-storage-modules/csm-base-image:nightly
